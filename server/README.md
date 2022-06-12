@@ -52,6 +52,7 @@ Recommended extensions:
   - yzhang.markdown-all-in-one
 - Quality of Life Extensions
   - eamodio.gitlens
+  - GitHub.vscode-pull-request-github
   - VisualStudioExptTeam.vscodeintellicode
   - christian-kohler.path-intellisense
   - oderwat.indent-rainbow
