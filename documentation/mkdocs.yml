@@ -1,4 +1,6 @@
-pip install mkdocstringssite_name: Elucidate Backend
+site_name: Elucidate Backend
+copyright: Copyright Coders for Causes
+repo_url: https://github.com/codersforcauses/elucidate
 
 theme:
   name: "material"
