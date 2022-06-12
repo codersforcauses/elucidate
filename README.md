@@ -3,3 +3,5 @@
 ## Introduction
 
 ## Setting up VS Code
+
+## Getting started
