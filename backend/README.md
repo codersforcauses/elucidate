@@ -1,9 +1,9 @@
 # Elucidate Backend
 
-# Table of Contents
+## Table of Contents
 
 - [Elucidate Backend](#elucidate-backend)
-- [Table of Contents](#table-of-contents)
+  - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Technologies](#technologies)
   - [Setting up your Django workspace](#setting-up-your-django-workspace)
