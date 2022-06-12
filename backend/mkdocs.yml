@@ -1,0 +1,8 @@
+pip install mkdocstringssite_name: Elucidate Backend
+
+theme:
+  name: "material"
+
+plugins:
+  - search
+  - mkdocstrings
