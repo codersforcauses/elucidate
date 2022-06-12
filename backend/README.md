@@ -1,5 +1,21 @@
 # Elucidate Backend
 
+# Table of Contents
+
+- [Elucidate Backend](#elucidate-backend)
+- [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [Technologies](#technologies)
+  - [Setting up your Django workspace](#setting-up-your-django-workspace)
+    - [0. Install VS Code extensions](#0-install-vs-code-extensions)
+    - [1. Install python 3.10.5 from here](#1-install-python-3105-from-here)
+    - [2. Create a python virtual environment at the root of the backend folder](#2-create-a-python-virtual-environment-at-the-root-of-the-backend-folder)
+    - [3. Activate the virtual environment](#3-activate-the-virtual-environment)
+    - [4. Install dependencies](#4-install-dependencies)
+  - [Setting up a local PostgreSQL database](#setting-up-a-local-postgresql-database)
+
+<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
+
 ## Introduction
 
 ### Technologies
@@ -15,7 +31,7 @@
   - [MkDocs](https://www.mkdocs.org/)
   - [MkDocstrings](https://mkdocstrings.github.io/)
 
-## Setting up your backend workspace
+## Setting up your Django workspace
 
 ### 0. Install VS Code extensions
 
