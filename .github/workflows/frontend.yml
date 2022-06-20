@@ -64,9 +64,7 @@ jobs:
         with:
           working-directory: client
           install-command: yarn --frozen-lockfile --silent
-          build: yarn run build
-          start: yarn start
-          wait-on: "http://localhost:5000"
+          build: yarn build
 
       - name: Upload Coverage ☂️
         uses: codecov/codecov-action@v3.1.0
