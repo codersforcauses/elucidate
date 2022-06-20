@@ -18,6 +18,10 @@ jobs:
   ci:
     runs-on: ${{ matrix.os }}
 
+    defaults:
+      run:
+        working-directory: client
+
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -25,7 +29,7 @@ jobs:
 
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
 
       - name: Setup node env 🏗
         uses: actions/setup-node@v3.3.0
@@ -48,15 +52,19 @@ jobs:
 
       - name: Install dependencies 👨🏻‍💻
         run: yarn
-        working-directory: client
 
       - name: Run linter 👀
         run: yarn lint
-        working-directory: client
 
-      - name: Run tests 🧪
+      - name: Run Jest tests 🧪
         run: yarn test
-        working-directory: client
+
+      - name: Run Cypress tests 🧪
+        uses: cypress-io/github-action@v4
+        with:
+          working-directory: client
+          install-command: yarn --frozen-lockfile --silent
+          build: yarn build
 
       - name: Upload Coverage ☂️
         uses: codecov/codecov-action@v3.1.0

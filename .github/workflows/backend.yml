@@ -1,0 +1,87 @@
+name: Backend CI/CD
+
+on:
+  push:
+    paths:
+      - server/**
+    branches:
+      - main
+      - master
+  pull_request:
+    paths:
+      - server/**
+    branches:
+      - main
+      - master
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        working-directory: server
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.10.5]
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: github-actions
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Setup Python env 🏗
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+
+      - name: Setup Poetry 🏗
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.1.10
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: Cache .venv 📦
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3.0.4
+        with:
+          path: server/.venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install dependencies 👨🏻‍💻
+        run: poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+
+      - name: Run linter 👀
+        run: |
+          source .venv/bin/activate
+          flake8 api manage.py
+          black api manage.py --check --line-length 80 --preview
+          isort api manage.py
+
+      - name: Run Migrations 🕊️
+        run: |
+          source .venv/bin/activate
+          python manage.py migrate
+
+      - name: Run tests 🧪
+        run: |
+          source .venv/bin/activate
+          python manage.py test
+
+      - name: Upload Coverage ☂️
+        uses: codecov/codecov-action@v3.1.0

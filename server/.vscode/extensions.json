@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    // backend
+    "ms-python.python",
+    "batisteo.vscode-django",
+    "KevinRose.vsc-python-indent",
+    "njpwerner.autodocstring",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+
+    // quality of life
+    "aaron-bond.better-comments",
+    "eamodio.gitlens",
+    "GitHub.vscode-pull-request-github",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "christian-kohler.path-intellisense",
+    "oderwat.indent-rainbow",
+    "DavidAnson.vscode-markdownlint",
+    "yzhang.markdown-all-in-one",
+    "rangav.vscode-thunder-client"
+  ]
+}
