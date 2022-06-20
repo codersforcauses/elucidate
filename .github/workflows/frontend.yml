@@ -62,7 +62,7 @@ jobs:
       - name: Run Cypress tests 🧪
         uses: cypress-io/github-action@v4
         with:
-          working-directory: server
+          working-directory: client
           install-command: yarn --frozen-lockfile --silent
           build: yarn run build
           start: yarn start
