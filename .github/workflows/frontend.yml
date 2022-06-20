@@ -1,11 +1,15 @@
-name: frontend ci
+name: Frontend CI/CD
 
 on:
   push:
+    paths:
+      - client/**
     branches:
       - main
       - master
   pull_request:
+    paths:
+      - client/**
     branches:
       - main
       - master
@@ -53,3 +57,6 @@ jobs:
       - name: Run tests 🧪
         run: yarn test
         working-directory: client
+
+      - name: Upload Coverage ☂️
+        uses: codecov/codecov-action@v3.1.0

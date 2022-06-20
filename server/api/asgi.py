@@ -1,5 +1,5 @@
 """
-ASGI config for elucidate_backend project.
+ASGI config for Elucidate API project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'elucidate_backend.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.settings")
 
 application = get_asgi_application()
