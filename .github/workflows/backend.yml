@@ -66,17 +66,20 @@ jobs:
         run: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
 
-      - name: Activate virtual environment
-        run: poetry shell
-
       - name: Run linter 👀
-        run: flake8 api manage.py
+        run: |
+          source .venv/bin/activate
+          flake8 api manage.py
 
       - name: Run Migrations 🕊️
-        run: python manage.py migrate
+        run: |
+          source .venv/bin/activate
+          python manage.py migrate
 
       - name: Run tests 🧪
-        run: python manage.py test
+        run: |
+          source .venv/bin/activate
+          python manage.py test
 
       - name: Upload Coverage ☂️
         uses: codecov/codecov-action@v3.1.0
