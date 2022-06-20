@@ -2,9 +2,5 @@
   "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
   "python.formatting.provider": "black",
-  "python.formatting.blackArgs": [
-    "--line-length",
-    "80",
-    "--experimental-string-processing"
-  ]
+  "python.formatting.blackArgs": ["--line-length", "80", "--preview"]
 }
