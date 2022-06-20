@@ -59,7 +59,7 @@ jobs:
         id: cached-poetry-dependencies
         uses: actions/cache@v3.0.4
         with:
-          path: .venv
+          path: server/.venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Install dependencies 👨🏻‍💻
