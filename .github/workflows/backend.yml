@@ -63,7 +63,7 @@ jobs:
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Activate virtual environment
-        run: source .venv/bin/activate
+        run: ls
 
       - name: Install dependencies 👨🏻‍💻
         run: poetry install
