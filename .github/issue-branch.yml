@@ -3,7 +3,5 @@
 # ex: i4-lower_camel_upper
 branchName: "i${issue.number}-${issue.title,}"
 branches:
-  - label: epic
-    skip: true
-  - label: debt
+  - label: point::5
     skip: true
