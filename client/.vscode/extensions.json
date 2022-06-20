@@ -1,0 +1,26 @@
+{
+  "recommendations": [
+    // frontend
+    "octref.vetur",
+    "hollowtree.vue-snippets",
+    "bradlc.vscode-tailwindcss",
+    "heybourn.headwind",
+    "austenc.tailwind-docs",
+    "csstools.postcss",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "eg2.vscode-npm-script",
+    "christian-kohler.npm-intellisense",
+
+    // quality of life
+    "aaron-bond.better-comments",
+    "eamodio.gitlens",
+    "GitHub.vscode-pull-request-github",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "christian-kohler.path-intellisense",
+    "oderwat.indent-rainbow",
+    "DavidAnson.vscode-markdownlint",
+    "yzhang.markdown-all-in-one",
+    "rangav.vscode-thunder-client"
+  ]
+}
