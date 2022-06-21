@@ -6,10 +6,10 @@ module.exports = {
       'always',
       [
         'core',
-        'linting',
         'frontend',
         'backend',
         'auth',
+        'linting',
         'styles',
         'misc',
         'config',
