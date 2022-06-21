@@ -16,6 +16,10 @@ Frontend
 - Testing
   - [Jest](https://jestjs.io/)
   - [Cypress](https://www.cypress.io/)
+- Linting
+  - [ESLint](https://eslint.org/)
+- Formatting
+  - [Prettier](https://prettier.io/)
 
 Backend
 
@@ -26,6 +30,10 @@ Backend
 - Database
   - [PostgreSQL](https://www.postgresql.org/)
   - [psycopg2](https://www.psycopg.org/)
+- Linting
+  - [flake8](https://flake8.pychond.org/)
+- Formatting
+  - [black](https://black.readthedocs.io/)
 
 Other
 
@@ -36,11 +44,3 @@ Other
 ## Getting started
 
 ### Setting up VS Code
-
-I recommend the following quality of life extensions:
-
-- eamodio.gitlens
-- GitHub.vscode-pull-request-github
-- VisualStudioExptTeam.vscodeintellicode
-- christian-kohler.path-intellisense
-- oderwat.indent-rainbow
