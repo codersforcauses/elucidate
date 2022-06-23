@@ -86,6 +86,14 @@ Yarn is a better NodeJS package manager than npm. Download and install Yarn by u
 
 From the `client` directory, run the following command to install dependencies: `yarn install`
 
+### Install Recommended VS Code extensions
+
+1. Open a VS Code window from the `server` directory.
+2. Open the extensions tab on the left bar of VS Code.
+3. Search for `@recommended`.
+4. Install all extensions under the `workspace recommendations` tab.s
+5. Repeat the above but open a VS Code window from the `client` directory to install the frontend extensions.
+
 ## Setup commitlint
 
 Commitlint is a tool that enforces your commits to be semantically formatted under the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
@@ -118,7 +126,7 @@ feat(core): add hat wobble
 +-------------> Type: Description of the type of change.
 ```
 
-### Types
+#### Types
 
 More types can be added if neccessary in the `commitlint.config.js` file.
 
@@ -135,7 +143,7 @@ perf: (increasing performance)
 revert: (reverting a commit)
 ci: (continuous integration related changes. We won't be using this; instead we will be using the ci and cd scopes for devops related changes.)
 
-### Scopes
+#### Scopes
 
 More scopes can be added if neccessary in the `commitlint.config.js` file. If there are overlapping scopes in your commit/pull request, choose the most suitable scope.
 
@@ -151,14 +159,29 @@ misc: (other miscellaneous changes)
 ci: (changes to the continuous integration)
 cd: (changes to the continuous delivery)
 
-## Running tests
+### Setting environment variables
 
-### Frontend
-
-#### Jest tests
-
-#### Cypress tests
-
-### Backend
+1. Get in touch with a Elcuidate committee member to get the `.env` file for the project.
+2. Add the `.env` file to the root folder of the project (do not delete or replace `.env.example`).
 
 ## Writing documentations
+
+We will be using MkDocs to generate the documentations for this project. MkDocs is a documentation generator that is based on Markdown.
+
+## Using MkDocs
+
+1. Assuming you have a Python development set up and Poetry is installed, open a VS Code session from he documentation directory.
+2. Run `poetry install` to install MkDocs and related dependencies.
+3. Run `poetry run mkdocs serve` to open a development server.
+
+### Development workflow
+
+1. Decide as a team the issue/s you want to work on.
+2. Assign yourselves to the relevant issue on GitHub.
+3. A branch corresponding to the issue should be created (unless it is a point 5 issue).
+4. checkout the branch corresponding to the issue. It should be in the format of `i<issue number>-<issue_name>`
+5. Work on your changes.
+6. Make commits and push them to the issue branch.
+7. Open a pull request on GitHub.
+8. Await for code reviews.
+9. Your feature is merged!
