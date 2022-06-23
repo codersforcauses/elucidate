@@ -3,7 +3,7 @@ copyright: Copyright Coders for Causes
 repo_url: https://github.com/codersforcauses/elucidate
 
 theme:
-  name: "material"
+  name: "readthedocs"
 
 plugins:
   - search

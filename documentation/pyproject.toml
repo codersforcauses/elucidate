@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "Elucidate Documentation"
+version = "0.1.0"
+description = "Documentations for the Elucidate project"
+authors = ["Coders for Causes <hello@codersforcauses.org>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mkdocs = "^1.3.0"
+mkdocstrings = "^0.19.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
