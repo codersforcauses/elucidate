@@ -6,9 +6,33 @@
 
 ![Alt](https://repobeats.axiom.co/api/embed/05fb1e2f61500a1be3ed92811dc0c097522d696d.svg "Repobeats analytics image")
 
-## Introduction
+## Table of Contents
 
-### Technologies
+- [Elucidate Winter 2022](#elucidate-winter-2022)
+  - [Table of Contents](#table-of-contents)
+  - [Technologies](#technologies)
+  - [Getting started](#getting-started)
+    - [Setting environment variables](#setting-environment-variables)
+    - [Setup Python development enivorment](#setup-python-development-enivorment)
+      - [Install Poetry](#install-poetry)
+      - [Install Python dependencies](#install-python-dependencies)
+      - [Activate the virtual environment](#activate-the-virtual-environment)
+    - [Setup NodeJS development environment](#setup-nodejs-development-environment)
+      - [Install Yarn](#install-yarn)
+      - [Install NodeJS dependencies](#install-nodejs-dependencies)
+    - [Install Recommended VS Code extensions](#install-recommended-vs-code-extensions)
+  - [Setup commitlint](#setup-commitlint)
+    - [Install Husky](#install-husky)
+    - [Conventional commit messages](#conventional-commit-messages)
+      - [Types](#types)
+      - [Scopes](#scopes)
+  - [Writing documentations](#writing-documentations)
+    - [Using MkDocs](#using-mkdocs)
+  - [Development workflow](#development-workflow)
+
+<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
+
+## Technologies
 
 Frontend
 
@@ -46,6 +70,11 @@ Other
   - [MkDocstrings](https://mkdocstrings.github.io/)
 
 ## Getting started
+
+### Setting environment variables
+
+1. Get in touch with a Elcuidate committee member to get the `.env` file for the project.
+2. Add the `.env` file to the root folder of the project (do not delete or replace `.env.example`).
 
 ### Setup Python development enivorment
 
@@ -159,22 +188,19 @@ misc: (other miscellaneous changes)
 ci: (changes to the continuous integration)
 cd: (changes to the continuous delivery)
 
-### Setting environment variables
-
-1. Get in touch with a Elcuidate committee member to get the `.env` file for the project.
-2. Add the `.env` file to the root folder of the project (do not delete or replace `.env.example`).
-
 ## Writing documentations
 
 We will be using MkDocs to generate the documentations for this project. MkDocs is a documentation generator that is based on Markdown.
 
-## Using MkDocs
+### Using MkDocs
 
 1. Assuming you have a Python development set up and Poetry is installed, open a VS Code session from he documentation directory.
 2. Run `poetry install` to install MkDocs and related dependencies.
 3. Run `poetry run mkdocs serve` to open a development server.
+4. Change VS Code indentation size to 4 spaces.
+5. Start documenting!
 
-### Development workflow
+## Development workflow
 
 1. Decide as a team the issue/s you want to work on.
 2. Assign yourselves to the relevant issue on GitHub.
@@ -185,3 +211,4 @@ We will be using MkDocs to generate the documentations for this project. MkDocs 
 7. Open a pull request on GitHub.
 8. Await for code reviews.
 9. Your feature is merged!
+10. Delete your local branch with `git branch -d <branch_name>`.
