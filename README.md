@@ -160,33 +160,33 @@ feat(core): add hat wobble
 More types can be added if neccessary in the `commitlint.config.js` file.
 
 The commit type must be of the following:
-feat: (new feature for the user, not a new feature for build script)
-fix: (bug fix for the user, not a fix to a build script)
-docs: (changes to the documentation)
-style: (formatting, missing semi colons, etc; no production code change)
-refactor: (refactoring production code, eg. renaming a variable)
-test: (adding missing tests, refactoring tests; no production code change)
-chore: (updating grunt tasks etc; no production code change)
-build: (changes related to the build process)
-perf: (increasing performance)
-revert: (reverting a commit)
-ci: (continuous integration related changes. We won't be using this; instead we will be using the ci and cd scopes for devops related changes.)
+- `feat:` (new feature for the user, not a new feature for build script)
+- `fix:` (bug fix for the user, not a fix to a build script)
+- `docs:` (changes to the documentation)
+- `style:` (formatting, missing semi colons, etc; no production code change)
+- `refactor:` (refactoring production code, eg. renaming a variable)
+- `test:` (adding missing tests, refactoring tests; no production code change)
+- `chore:` (updating grunt tasks etc; no production code change)
+- `build:` (changes related to the build process)
+- `perf:` (increasing performance)
+- `revert:` (reverting a commit)
+- `ci:` (continuous integration related changes. We won't be using this; instead we will be using the ci and cd scopes for devops related changes.)
 
 #### Scopes
 
 More scopes can be added if neccessary in the `commitlint.config.js` file. If there are overlapping scopes in your commit/pull request, choose the most suitable scope.
-
+<br>
 The commit scope must be of the following or blank:
-core: (core functionality changes)
-linting: (linting related changes)
-frontend: (frontend changes)
-backend: (backend changes)
-auth: (authenication changes)
-styles: (changes to the styling)
-config: (changes to the configuration)
-misc: (other miscellaneous changes)
-ci: (changes to the continuous integration)
-cd: (changes to the continuous delivery)
+- `core:` (core functionality changes)
+- `linting:` (linting related changes)
+- `frontend:` (frontend changes)
+- `backend:` (backend changes)
+- `auth:` (authenication changes)
+- `styles:` (changes to the styling)
+- `config:` (changes to the configuration)
+- `misc:` (other miscellaneous changes)
+- `ci:` (changes to the continuous integration)
+- `cd:` (changes to the continuous delivery)
 
 ## Writing documentations
 
