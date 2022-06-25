@@ -80,13 +80,17 @@ Other
 
 Download and install Python from [here](https://www.python.org/downloads/). 3.10.5 is recommended, but any 3.10.x version should work.
 
+Note: you will have to update Python if you are using the default one on mac os. To update just download and install latest Python.
+
 #### Install Poetry
 
-Poetry is a better Python package manager than pip. Download and install Poetry from [here](hhttps://python-poetry.org/docs/#installation).
+Poetry is a better Python package manager than pip. Download and install Poetry from [here](https://python-poetry.org/docs/#installation).
 
 Run the following command to configure virtual environments to be created in the project directory: `poetry config virtualenvs.in-project true`
 
 #### Install Python dependencies
+
+On mac os install postgresql `brew install postgresql`, this requires [homebrew](https://brew.sh/)
 
 From the `server` directory, run the following command to install dependencies: `poetry install`
 
@@ -103,6 +107,14 @@ If you are using a terminal
 
 - Type in `source .venv/bin/activate`
 
+### Run server
+
+```sh
+python manage.py runserver
+```
+
+Visit http://127.0.0.1:8000/ you should see something if all went well.
+
 ### Setup NodeJS development environment
 
 Install NodeJS from [here](https://nodejs.org/). 16.15.1 LTS is recommended, but any 16.x LTS version should work.
@@ -114,6 +126,14 @@ Yarn is a better NodeJS package manager than npm. Download and install Yarn by u
 #### Install NodeJS dependencies
 
 From the `client` directory, run the following command to install dependencies: `yarn install`
+
+#### Run client
+
+```sh
+yarn dev
+```
+
+Visit http://localhost:3000/ should see something if all went well
 
 ### Install Recommended VS Code extensions
 
@@ -160,6 +180,7 @@ feat(core): add hat wobble
 More types can be added if neccessary in the `commitlint.config.js` file.
 
 The commit type must be of the following:
+
 - `feat:` (new feature for the user, not a new feature for build script)
 - `fix:` (bug fix for the user, not a fix to a build script)
 - `docs:` (changes to the documentation)
@@ -177,6 +198,7 @@ The commit type must be of the following:
 More scopes can be added if neccessary in the `commitlint.config.js` file. If there are overlapping scopes in your commit/pull request, choose the most suitable scope.
 <br>
 The commit scope must be of the following or blank:
+
 - `core:` (core functionality changes)
 - `linting:` (linting related changes)
 - `frontend:` (frontend changes)
