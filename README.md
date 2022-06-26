@@ -131,8 +131,8 @@ Other
 - To start developing, navigate to the remote extensions tab. Hover over the frontend or backend container and click the folder icon.
 ![open folder](https://media.discordapp.net/attachments/701301203849576501/990574912181784656/unknown.png)
 - Note, for the backend, you may need to start the database container first. To do so, right click on the database container and click `Start Container`.
-
 ![start db](https://media.discordapp.net/attachments/701301203849576501/990571489587789864/unknown.png)
+
 ## Writing documentations
 
 We will be using MkDocs to generate the documentations for this project. MkDocs is a documentation generator that is based on Markdown.
