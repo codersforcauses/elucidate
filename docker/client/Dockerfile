@@ -1,4 +1,4 @@
-FROM node:16 as development-stage
+FROM node:18 as development-stage
 
 # SET WORKING DIRECTORY
 WORKDIR /app_code
@@ -20,7 +20,7 @@ RUN yarn install
 # CMD commands get executed at container runtime!
 CMD ["/runtime.sh"]
 
-FROM node:16 as build-stage
+FROM node:18 as build-stage
 # These values are hardcoded in as we would only reach this stage in a production environment
 ENV APP_ENV=production
 ENV VUE_APP_PUBLIC_BACKEND_URL=""
