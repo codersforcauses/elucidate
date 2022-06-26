@@ -21,7 +21,7 @@ python manage.py migrate --noinput
 
 # Create Django Superuser
 printf "\n" && echo "Creating Django Superuser" | boxes -d shell -p a1l2
-python manage.py createsuperuser --noinput --username $DJANGO_SUPERUSER_USERNAME --email $DJANGO_SUPERUSER_EMAIL
+python manage.py createsuperuser --noinput
 
 printf "\n" && echo "MIGRATION & SETUP TASK COMPLETED" | boxes -d dog -a c
 
