@@ -1,0 +1,57 @@
+version: "3.3"
+
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  client:
+    build:
+      context: .
+      dockerfile: docker/client/Dockerfile
+      target: development-stage
+    container_name: elucidate_client
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    volumes:
+      # File syncing
+      - ./client:/app_code
+      # Barrier for OS node modules specific
+      - /app_code/node_modules
+
+  # docs:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/docs/Dockerfile
+  #   container_name: wais_docs
+  #   restart: unless-stopped
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - 8000:8000
+  #   volumes:
+  #     - ./mkdocs:/mkdocs
+
+  server:
+    build:
+      context: .
+      dockerfile: docker/server/Dockerfile
+    container_name: elucidate_server
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - 8081:8081
+    volumes:
+      - ./server:/app_code
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
