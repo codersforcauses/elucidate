@@ -5,6 +5,8 @@ services:
       - .:/workspace:cached
     links:
       - db
+    depends_on:
+      - db
 
   db:
     image: postgres
