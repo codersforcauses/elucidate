@@ -126,7 +126,10 @@ Other
 - Afterwards, close out of the remote container
 
 ![close](https://media.discordapp.net/attachments/701301203849576501/990568354895003648/unknown.png)
+
 - Navigate to the remote explorer extension tab again. If you see the below, then the frontend workspace has been successfully configured.
+
+![success frontend](https://media.discordapp.net/attachments/701301203849576501/990569098280837120/unknown.png)
 
 - Press the plus symbol.
 
@@ -148,6 +151,7 @@ Other
 
 - To start developing, navigate to the remote extensions tab. Hover over the frontend or backend container and click the folder icon.
 ![open folder](https://media.discordapp.net/attachments/701301203849576501/990574912181784656/unknown.png)
+
 - Note, for the backend, you may need to start the database container first. To do so, right click on the database container and click `Start Container`.
 
 ![start db](https://media.discordapp.net/attachments/701301203849576501/990571489587789864/unknown.png)
