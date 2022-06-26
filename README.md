@@ -104,33 +104,52 @@ Other
 - **Linux** : 
 
 ### Development environment setup
+
 - Install the `Docker` and the `Remote - Containers` extensions.
+
 ![Docker extension](https://cdn.discordapp.com/attachments/701301203849576501/990567061350658128/unknown.png)
 ![Remote containers](https://cdn.discordapp.com/attachments/701301203849576501/990566970493661234/unknown.png)
+
 - Navigate to the remote explorer tab
+
 ![Remote explorer tab](https://cdn.discordapp.com/attachments/701301203849576501/990565794536632340/unknown.png)
+
 - Click the `Open Folder in Container` button and open the `client` folder.
+
 ![Client folder](https://cdn.discordapp.com/attachments/701301203849576501/990567691284795402/unknown.png)
+
 - The first time this is launched, it may take up to 5 minutes to install and configure everything.
 - After you are shown the workspace, there should be a pop up at the bottom right asking you to install recommended extensions. Click install.
+
 ![Install extensions](https://cdn.discordapp.com/attachments/701301203849576501/990568208878694400/unknown.png)
+
 - Afterwards, close out of the remote container
+
 ![close](https://media.discordapp.net/attachments/701301203849576501/990568354895003648/unknown.png)
 - Navigate to the remote explorer extension tab again. If you see the below, then the frontend workspace has been successfully configured.
+
 - Press the plus symbol.
+
 ![client](https://cdn.discordapp.com/attachments/701301203849576501/990568519617888316/unknown.png)
+
 - Click open folder in container
+
 ![open folder] (https://media.discordapp.net/attachments/701301203849576501/990568586412183562/unknown.png)
+
 - Select the `server` folder
+
 ![server folder](https://media.discordapp.net/attachments/701301203849576501/990568648055873556/unknown.png)
+
 - Again, wait until the installation process completes, install the recommended extensions, and exit the container.
 - If you now navigate to the remote explorer tab, you should see 3 containers; one for frontend, backend, and database.
 - The installation process is now complete.
 
 ### Development
+
 - To start developing, navigate to the remote extensions tab. Hover over the frontend or backend container and click the folder icon.
 ![open folder](https://media.discordapp.net/attachments/701301203849576501/990574912181784656/unknown.png)
 - Note, for the backend, you may need to start the database container first. To do so, right click on the database container and click `Start Container`.
+
 ![start db](https://media.discordapp.net/attachments/701301203849576501/990571489587789864/unknown.png)
 
 ## Writing documentations
@@ -139,11 +158,7 @@ We will be using MkDocs to generate the documentations for this project. MkDocs 
 
 ### Using MkDocs
 
-1. Assuming you have a Python development set up and Poetry is installed, open a VS Code session from he documentation directory.
-2. Run `poetry install` to install MkDocs and related dependencies.
-3. Run `poetry run mkdocs serve` to open a development server.
-4. Change VS Code indentation size to 4 spaces.
-5. Start documenting!
+Quickstart guide in progress
 
 ## Development workflow
 
