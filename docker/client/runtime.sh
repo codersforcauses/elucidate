@@ -3,7 +3,7 @@
 echo "${APP_NAME^^} - Vue CONTAINER STARTING..."
 echo $APP_NAME
 
-# Display Docker Image / CI / Release details
+# .Display Docker Image / CI / Release details
 echo "Image Build Date/Time: " "$(cat /app_code/build_timestamp.txt)" "UTC"
 
 echo "-----------------------------------------------------------"

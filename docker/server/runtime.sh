@@ -3,7 +3,7 @@
 echo "████ ${APP_NAME^^} - DJANGO CONTAINER STARTING... ████████████████████████████████████"
 figlet $APP_NAME
 
-# Debug / Sanity check info
+# .Debug / Sanity check info
 echo "Current Dir / Files (Debug)" | boxes -d shell -p a1l2
 pwd
 ls -al
