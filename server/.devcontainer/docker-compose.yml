@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+  server:
+    volumes:
+      - .:/workspace:cached
+    links:
+      - db
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: unless-stopped

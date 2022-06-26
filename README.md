@@ -73,142 +73,65 @@ Other
 
 ### Setting environment variables
 
-1. Get in touch with a Elcuidate committee member to get the `.env` file for the project.
-2. Add the `.env` file to the root folder of the project (do not delete or replace `.env.example`).
+1. Create a copy of the `.env.example` file. (do not delete or replace the original `.env.example`).
+2. Rename the copy to `.env`.
 
-### Setup Python development enivorment
+### Installing Docker
 
-Download and install Python from [here](https://www.python.org/downloads/). 3.10.5 is recommended, but any 3.10.x version should work.
+- [Download and Install Docker Documentation + Links](https://docs.docker.com/get-started/#download-and-install-docker)
 
-Note: you will have to update Python if you are using the default one on mac os. To update just download and install latest Python.
+#### Windows
+- Once docker is installed, try running it. If docker-engine starts successfully, you can proceed.
+- If your docker requires you to install WSL, you can easily do so by the following steps:
+  - Open powershell with administrator privileges.
+  - Type `WSL --install`
+  - Restart your computer and try running `WSL` in cmd. If you get no error, then you are all set.
+  - If you are asked to enable Windows Virtualisation Platform, or HyperV then:
+    - Run `bcdedit /set hypervisorlaunchtype auto` in an admin privilege Powershell and restart your computer.
+- Once docker-engine is running successfully, you can close the docker window as it should continue running in the background.
 
-#### Install Poetry
+#### Linux
+- If you are running Linux, Docker compose wil not be automatically installed. You will need to install it manually by following [this guide](https://docs.docker.com/compose/install/).
 
-Poetry is a better Python package manager than pip. Download and install Poetry from [here](https://python-poetry.org/docs/#installation).
+### Potential Errors While Running The Docker Container
 
-Run the following command to configure virtual environments to be created in the project directory: `poetry config virtualenvs.in-project true`
+- **Windows** : If the client and/or server continers fail to run due to `runtime.sh` not being found, then you need to change the line endings of the "runtime.sh" file (located in `docker/client/` and `docker/server`) from CRLF to LF.
+  - You can do this in VS code by opening the `runtime.sh` file, and at the bottom-right corner, click on CRLF. A dialogue box pops up, click on LF and save the file.
+  <p align="center">
+    <img src="https://cdn.discordapp.com/attachments/831493951185485883/990558770209882162/unknown.png" height="50px"/>
+  </p>
+- **Mac** : 
+- **Linux** : 
 
-#### Install Python dependencies
+### Development environment setup
+- Install the `Docker` and the `Remote - Containers` extensions.
+![Docker extension](https://cdn.discordapp.com/attachments/701301203849576501/990567061350658128/unknown.png)
+![Remote containers](https://cdn.discordapp.com/attachments/701301203849576501/990566970493661234/unknown.png)
+- Navigate to the remote explorer tab
+![Remote explorer tab](https://cdn.discordapp.com/attachments/701301203849576501/990565794536632340/unknown.png)
+- Click the `Open Folder in Container` button and open the `client` folder.
+![Client folder](https://cdn.discordapp.com/attachments/701301203849576501/990567691284795402/unknown.png)
+- The first time this is launched, it may take up to 5 minutes to install and configure everything.
+- After you are shown the workspace, there should be a pop up at the bottom right asking you to install recommended extensions. Click install.
+![Install extensions](https://cdn.discordapp.com/attachments/701301203849576501/990568208878694400/unknown.png)
+- Afterwards, close out of the remote container
+![close](https://media.discordapp.net/attachments/701301203849576501/990568354895003648/unknown.png)
+- Navigate to the remote explorer extension tab again. If you see the below, then the frontend workspace has been successfully configured.
+- Press the plus symbol.
+![client](https://cdn.discordapp.com/attachments/701301203849576501/990568519617888316/unknown.png)
+- Click open folder in container
+![open folder] (https://media.discordapp.net/attachments/701301203849576501/990568586412183562/unknown.png)
+- Select the `server` folder
+![server folder](https://media.discordapp.net/attachments/701301203849576501/990568648055873556/unknown.png)
+- Again, wait until the installation process completes, install the recommended extensions, and exit the container.
+- If you now navigate to the remote explorer tab, you should see 3 containers; one for frontend, backend, and database.
+- The installation process is now complete.
 
-On mac os install postgresql `brew install postgresql`, this requires [homebrew](https://brew.sh/)
-
-From the `server` directory, run the following command to install dependencies: `poetry install`
-
-#### Activate the virtual environment
-
-if you are using VS Code
-
-- Press `Ctrl + Shift + P`
-- Type in `Python: Select Interpreter`
-- Choose the virtual environment in the project directory.
-- Kill and restart the terminal.
-
-If you are using a terminal
-
-- Type in `source .venv/bin/activate`
-
-### Run server
-
-```sh
-python manage.py runserver
-```
-
-Visit http://127.0.0.1:8000/ you should see something if all went well.
-
-### Setup NodeJS development environment
-
-Install NodeJS from [here](https://nodejs.org/). 16.15.1 LTS is recommended, but any 16.x LTS version should work.
-
-#### Install Yarn
-
-Yarn is a better NodeJS package manager than npm. Download and install Yarn by using the following command: `npm install --global yarn`
-
-#### Install NodeJS dependencies
-
-From the `client` directory, run the following command to install dependencies: `yarn install`
-
-#### Run client
-
-```sh
-yarn dev
-```
-
-Visit http://localhost:3000/ should see something if all went well
-
-### Install Recommended VS Code extensions
-
-1. Open a VS Code window from the `server` directory.
-2. Open the extensions tab on the left bar of VS Code.
-3. Search for `@recommended`.
-4. Install all extensions under the `workspace recommendations` tab.s
-5. Repeat the above but open a VS Code window from the `client` directory to install the frontend extensions.
-
-## Setup commitlint
-
-Commitlint is a tool that enforces your commits to be semantically formatted under the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
-
-Commitlint should have been automatically installed by the `yarn install` command.
-
-### Install Husky
-
-Husky is a tool that automatically manages your git hooks. For this project, I have configured Husky to run `commitlint` before each commit.
-
-Husky can be installed by using the following command in the `client` directory: `yarn prepare`.
-
-Then run the following command from the root directory to make Husky executable: `chmod a+x .husky/commit-msg`.
-
-### Conventional commit messages
-
-Your commit messages **and** pull requests should be in the following format.
-
-```none
-Format: <type>(<scope>): <subject>
-
-<scope> is optional, but highly recommended
-
-Example
-feat(core): add hat wobble
-^--^^----^  ^------------^
-|   |       |
-|   |       +-> Subject: Summary in present tense and in lowercase.
-|   +---------> scope: What is the scope of the change?
-+-------------> Type: Description of the type of change.
-```
-
-#### Types
-
-More types can be added if neccessary in the `commitlint.config.js` file.
-
-The commit type must be of the following:
-
-- `feat:` (new feature for the user, not a new feature for build script)
-- `fix:` (bug fix for the user, not a fix to a build script)
-- `docs:` (changes to the documentation)
-- `style:` (formatting, missing semi colons, etc; no production code change)
-- `refactor:` (refactoring production code, eg. renaming a variable)
-- `test:` (adding missing tests, refactoring tests; no production code change)
-- `chore:` (updating grunt tasks etc; no production code change)
-- `build:` (changes related to the build process)
-- `perf:` (increasing performance)
-- `revert:` (reverting a commit)
-- `ci:` (continuous integration related changes. We won't be using this; instead we will be using the ci and cd scopes for devops related changes.)
-
-#### Scopes
-
-More scopes can be added if neccessary in the `commitlint.config.js` file. If there are overlapping scopes in your commit/pull request, choose the most suitable scope.
-<br>
-The commit scope must be of the following or blank:
-
-- `core:` (core functionality changes)
-- `linting:` (linting related changes)
-- `frontend:` (frontend changes)
-- `backend:` (backend changes)
-- `auth:` (authenication changes)
-- `styles:` (changes to the styling)
-- `config:` (changes to the configuration)
-- `misc:` (other miscellaneous changes)
-- `ci:` (changes to the continuous integration)
-- `cd:` (changes to the continuous delivery)
+### Development
+- To start developing, navigate to the remote extensions tab. Hover over the frontend or backend container and click the folder icon.
+![open folder](https://media.discordapp.net/attachments/701301203849576501/990574912181784656/unknown.png)
+- Note, for the backend, you may need to start the database container first. To do so, right click on the database container and click `Start Container`.
+![start db](https://media.discordapp.net/attachments/701301203849576501/990571489587789864/unknown.png)
 
 ## Writing documentations
 

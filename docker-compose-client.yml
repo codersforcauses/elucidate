@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: docker/client/Dockerfile
+      target: development-stage
+    container_name: elucidate_client
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    volumes:
+      # File syncing
+      - ./client:/app_code
+      # Barrier for OS node modules specific
+      - /app_code/node_modules
