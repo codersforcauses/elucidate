@@ -130,7 +130,7 @@ Other
 
 - Click open folder in container
 
-![open folder] (https://media.discordapp.net/attachments/701301203849576501/990568586412183562/unknown.png)
+![open folder](https://media.discordapp.net/attachments/701301203849576501/990568586412183562/unknown.png)
 
 - Select the `server` folder
 
