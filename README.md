@@ -1,7 +1,7 @@
 # Elucidate Winter 2022
 
-![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/codersforcauses/elucidate)
-![Codecov](https://img.shields.io/codecov/c/github/codersforcauses/elucidate)
+[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/codersforcauses/elucidate)](https://www.codefactor.io/repository/github/codersforcauses/elucidate/)
+[![Codecov](https://img.shields.io/codecov/c/github/codersforcauses/elucidate)](https://app.codecov.io/gh/codersforcauses/elucidate/)
 ![GitHub](https://img.shields.io/github/license/codersforcauses/elucidate)
 
 ![Alt](https://repobeats.axiom.co/api/embed/05fb1e2f61500a1be3ed92811dc0c097522d696d.svg "Repobeats analytics image")
@@ -74,16 +74,20 @@ Other
 - [Download and Install Docker Documentation + Links](https://docs.docker.com/get-started/#download-and-install-docker)
 
 #### Windows
+
 - Once docker is installed, try running it. If docker-engine starts successfully, you can proceed.
 - If your docker requires you to install WSL, you can easily do so by the following steps:
   - Open powershell with administrator privileges.
-  - Type `WSL --install`
-  - Restart your computer and try running `WSL` in cmd. If you get no error, then you are all set.
-  - If you are asked to enable Windows Virtualisation Platform, or HyperV then:
-    - Run `bcdedit /set hypervisorlaunchtype auto` in an admin privilege Powershell and restart your computer.
+  - Type `wsl --install`
+  - Restart your computer and try running `wsl` in cmd. If you get no error, then you are all set.
+- If you get an error about needing to update the kernel, you can do so by installing [this package](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi).
+  - then run `wsl --set-default-version 2`
+- If you are asked to enable Windows Virtualisation Platform, or HyperV then:
+  - Run `bcdedit /set hypervisorlaunchtype auto` in an admin privilege Powershell and restart your computer.
 - Once docker-engine is running successfully, you can close the docker window as it should continue running in the background.
 
 #### Linux
+
 - If you are running Linux, Docker compose wil not be automatically installed. You will need to install it manually by following [this guide](https://docs.docker.com/compose/install/).
 
 ### Potential Errors While Running The Docker Container
@@ -93,8 +97,8 @@ Other
   <p align="center">
     <img src="https://cdn.discordapp.com/attachments/831493951185485883/990558770209882162/unknown.png" height="50px"/>
   </p>
-- **Mac** : 
-- **Linux** : 
+- **Mac** :
+- **Linux** :
 
 ### Development environment setup
 
@@ -122,11 +126,9 @@ Other
 
 - Navigate to the remote explorer extension tab again. If you see the below, then the frontend workspace has been successfully configured.
 
-![success frontend](https://media.discordapp.net/attachments/701301203849576501/990569098280837120/unknown.png)
+![client](https://cdn.discordapp.com/attachments/701301203849576501/990568519617888316/unknown.png)
 
 - Press the plus symbol.
-
-![client](https://cdn.discordapp.com/attachments/701301203849576501/990568519617888316/unknown.png)
 
 - Click open folder in container
 
@@ -140,10 +142,12 @@ Other
 - If you now navigate to the remote explorer tab, you should see 3 containers; one for frontend, backend, and database.
 - The installation process is now complete.
 
+![success](https://media.discordapp.net/attachments/701301203849576501/990569098280837120/unknown.png)
+
 ### Development
 
 - To start developing, navigate to the remote extensions tab. Hover over the frontend or backend container and click the folder icon.
-![open folder](https://media.discordapp.net/attachments/701301203849576501/990574912181784656/unknown.png)
+  ![open folder](https://media.discordapp.net/attachments/701301203849576501/990574912181784656/unknown.png)
 
 - Note, for the backend, you may need to start the database container first. To do so, right click on the database container and click `Start Container`.
 
