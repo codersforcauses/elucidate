@@ -1,8 +1,9 @@
 # Elucidate Winter 2022
 
-![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/codersforcauses/elucidate)
-![Codecov](https://img.shields.io/codecov/c/github/codersforcauses/elucidate)
+[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/codersforcauses/elucidate)](https://www.codefactor.io/repository/github/codersforcauses/elucidate/)
+[![Codecov](https://img.shields.io/codecov/c/github/codersforcauses/elucidate)](https://app.codecov.io/gh/codersforcauses/elucidate/)
 ![GitHub](https://img.shields.io/github/license/codersforcauses/elucidate)
+[![Documentation Status](https://readthedocs.org/projects/elucidate-project-documentation/badge/?version=latest)](https://elucidate-project-documentation.readthedocs.io/en/latest/?badge=latest)
 
 ![Alt](https://repobeats.axiom.co/api/embed/05fb1e2f61500a1be3ed92811dc0c097522d696d.svg "Repobeats analytics image")
 
@@ -13,19 +14,12 @@
     - [Technologies](#technologies)
     - [Getting started](#getting-started)
         - [Setting environment variables](#setting-environment-variables)
-        - [Setup Python development enivorment](#setup-python-development-enivorment)
-            - [Install Poetry](#install-poetry)
-            - [Install Python dependencies](#install-python-dependencies)
-            - [Activate the virtual environment](#activate-the-virtual-environment)
-        - [Setup NodeJS development environment](#setup-nodejs-development-environment)
-            - [Install Yarn](#install-yarn)
-            - [Install NodeJS dependencies](#install-nodejs-dependencies)
-        - [Install Recommended VS Code extensions](#install-recommended-vs-code-extensions)
-    - [Setup commitlint](#setup-commitlint)
-        - [Install Husky](#install-husky)
-        - [Conventional commit messages](#conventional-commit-messages)
-            - [Types](#types)
-            - [Scopes](#scopes)
+        - [Installing Docker](#installing-docker)
+            - [Windows](#windows)
+            - [Linux](#linux)
+        - [Potential Errors While Running The Docker Container](#potential-errors-while-running-the-docker-container)
+        - [Development environment setup](#development-environment-setup)
+        - [Development](#development)
     - [Writing documentations](#writing-documentations)
         - [Using MkDocs](#using-mkdocs)
     - [Development workflow](#development-workflow)
@@ -67,126 +61,97 @@ Other
 
 - Documentation
     - [MkDocs](https://www.mkdocs.org/)
-    - [MkDocstrings](https://mkdocstrings.github.io/)
 
 ## Getting started
 
 ### Setting environment variables
 
-1. Get in touch with a Elcuidate committee member to get the `.env` file for the project.
-2. Add the `.env` file to the root folder of the project (do not delete or replace `.env.example`).
+1. Create a copy of the `.env.example` file. (do not delete or replace the original `.env.example`).
+2. Rename the copy to `.env`.
 
-### Setup Python development enivorment
+### Installing Docker
 
-Download and install Python from [here](https://www.python.org/downloads/). 3.10.5 is recommended, but any 3.10.x version should work.
+- [Download and Install Docker Documentation + Links](https://docs.docker.com/get-started/#download-and-install-docker)
 
-#### Install Poetry
+#### Windows
 
-Poetry is a better Python package manager than pip. Download and install Poetry from [here](hhttps://python-poetry.org/docs/#installation).
+- Once docker is installed, try running it. If docker-engine starts successfully, you can proceed.
+- If your docker requires you to install WSL, you can easily do so by the following steps:
+    - Open powershell with administrator privileges.
+    - Type `wsl --install`
+    - Restart your computer and try running `wsl` in cmd. If you get no error, then you are all set.
+- If you get an error about needing to update the kernel, you can do so by installing [this package](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi).
+    - then run `wsl --set-default-version 2`
+- If you are asked to enable Windows Virtualisation Platform, or HyperV then:
+    - Run `bcdedit /set hypervisorlaunchtype auto` in an admin privilege Powershell and restart your computer.
+- Once docker-engine is running successfully, you can close the docker window as it should continue running in the background.
 
-Run the following command to configure virtual environments to be created in the project directory: `poetry config virtualenvs.in-project true`
+#### Linux
 
-#### Install Python dependencies
+- If you are running Linux, Docker compose wil not be automatically installed. You will need to install it manually by following [this guide](https://docs.docker.com/compose/install/).
 
-From the `server` directory, run the following command to install dependencies: `poetry install`
+### Potential Errors While Running The Docker Container
 
-#### Activate the virtual environment
+- **Windows** : If the client and/or server continers fail to run due to `runtime.sh` not being found, then you need to change the line endings of the "runtime.sh" file (located in `docker/client/` and `docker/server`) from CRLF to LF.
+    - You can do this in VS code by opening the `runtime.sh` file, and at the bottom-right corner, click on CRLF. A dialogue box pops up, click on LF and save the file.
+  <p align="center">
+    <img src="https://cdn.discordapp.com/attachments/831493951185485883/990558770209882162/unknown.png" height="50px"/>
+  </p>
+- **Mac** :
+- **Linux** :
 
-if you are using VS Code
+### Development environment setup
 
-- Press `Ctrl + Shift + P`
-- Type in `Python: Select Interpreter`
-- Choose the virtual environment in the project directory.
-- Kill and restart the terminal.
+- Install the `Docker` and the `Remote - Containers` extensions.
 
-If you are using a terminal
+![Docker extension](https://cdn.discordapp.com/attachments/701301203849576501/990567061350658128/unknown.png)
+![Remote containers](https://cdn.discordapp.com/attachments/701301203849576501/990566970493661234/unknown.png)
 
-- Type in `source .venv/bin/activate`
+- Navigate to the remote explorer tab
 
-### Setup NodeJS development environment
+![Remote explorer tab](https://cdn.discordapp.com/attachments/701301203849576501/990565794536632340/unknown.png)
 
-Install NodeJS from [here](https://nodejs.org/). 16.15.1 LTS is recommended, but any 16.x LTS version should work.
+- Click the `Open Folder in Container` button and open the `client` folder.
 
-#### Install Yarn
+![Client folder](https://cdn.discordapp.com/attachments/701301203849576501/990567691284795402/unknown.png)
 
-Yarn is a better NodeJS package manager than npm. Download and install Yarn by using the following command: `npm install --global yarn`
+- The first time this is launched, it may take up to 5 minutes to install and configure everything.
+- After you are shown the workspace, there should be a pop up at the bottom right asking you to install recommended extensions. Click install.
 
-#### Install NodeJS dependencies
+![Install extensions](https://cdn.discordapp.com/attachments/701301203849576501/990568208878694400/unknown.png)
 
-From the `client` directory, run the following command to install dependencies: `yarn install`
+- Afterwards, close out of the remote container
 
-### Install Recommended VS Code extensions
+![close](https://media.discordapp.net/attachments/701301203849576501/990568354895003648/unknown.png)
 
-1. Open a VS Code window from the `server` directory.
-2. Open the extensions tab on the left bar of VS Code.
-3. Search for `@recommended`.
-4. Install all extensions under the `workspace recommendations` tab.s
-5. Repeat the above but open a VS Code window from the `client` directory to install the frontend extensions.
+- Navigate to the remote explorer extension tab again. If you see the below, then the frontend workspace has been successfully configured.
 
-## Setup commitlint
+![client](https://cdn.discordapp.com/attachments/701301203849576501/990568519617888316/unknown.png)
 
-Commitlint is a tool that enforces your commits to be semantically formatted under the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
+- Press the plus symbol.
 
-Commitlint should have been automatically installed by the `yarn install` command.
+- Click open folder in container
 
-### Install Husky
+![open folder](https://media.discordapp.net/attachments/701301203849576501/990568586412183562/unknown.png)
 
-Husky is a tool that automatically manages your git hooks. For this project, I have configured Husky to run `commitlint` before each commit.
+- Select the `server` folder
 
-Husky can be installed by using the following command in the `client` directory: `yarn prepare`.
+![server folder](https://media.discordapp.net/attachments/701301203849576501/990568648055873556/unknown.png)
 
-Then run the following command from the root directory to make Husky executable: `chmod a+x .husky/commit-msg`.
+- Again, wait until the installation process completes, install the recommended extensions, and exit the container.
+- If you now navigate to the remote explorer tab, you should see 3 containers; one for frontend, backend, and database.
+- The installation process is now complete.
 
-### Conventional commit messages
+![success](https://media.discordapp.net/attachments/701301203849576501/990569098280837120/unknown.png)
 
-Your commit messages **and** pull requests should be in the following format.
+### Development
 
-```none
-Format: <type>(<scope>): <subject>
+- To start developing, navigate to the remote extensions tab. Hover over the frontend or backend container and click the folder icon.
+  ![open folder](https://media.discordapp.net/attachments/701301203849576501/990574912181784656/unknown.png)
 
-<scope> is optional, but highly recommended
+- Note, for the backend, you may need to start the database container first. To do so, right click on the database container and click `Start Container`.
 
-Example
-feat(core): add hat wobble
-^--^^----^  ^------------^
-|   |       |
-|   |       +-> Subject: Summary in present tense and in lowercase.
-|   +---------> scope: What is the scope of the change?
-+-------------> Type: Description of the type of change.
-```
-
-#### Types
-
-More types can be added if neccessary in the `commitlint.config.js` file.
-
-The commit type must be of the following:
-feat: (new feature for the user, not a new feature for build script)
-fix: (bug fix for the user, not a fix to a build script)
-docs: (changes to the documentation)
-style: (formatting, missing semi colons, etc; no production code change)
-refactor: (refactoring production code, eg. renaming a variable)
-test: (adding missing tests, refactoring tests; no production code change)
-chore: (updating grunt tasks etc; no production code change)
-build: (changes related to the build process)
-perf: (increasing performance)
-revert: (reverting a commit)
-ci: (continuous integration related changes. We won't be using this; instead we will be using the ci and cd scopes for devops related changes.)
-
-#### Scopes
-
-More scopes can be added if neccessary in the `commitlint.config.js` file. If there are overlapping scopes in your commit/pull request, choose the most suitable scope.
-
-The commit scope must be of the following or blank:
-core: (core functionality changes)
-linting: (linting related changes)
-frontend: (frontend changes)
-backend: (backend changes)
-auth: (authenication changes)
-styles: (changes to the styling)
-config: (changes to the configuration)
-misc: (other miscellaneous changes)
-ci: (changes to the continuous integration)
-cd: (changes to the continuous delivery)
+![start db](https://media.discordapp.net/attachments/701301203849576501/990571489587789864/unknown.png)
 
 ## Writing documentations
 
@@ -194,11 +159,8 @@ We will be using MkDocs to generate the documentations for this project. MkDocs 
 
 ### Using MkDocs
 
-1. Assuming you have a Python development set up and Poetry is installed, open a VS Code session from he documentation directory.
-2. Run `poetry install` to install MkDocs and related dependencies.
-3. Run `poetry run mkdocs serve` to open a development server.
-4. Change VS Code indentation size to 4 spaces.
-5. Start documenting!
+- Using the remote explorer extension tab, open the folder inside the `documentation` directory. This is the same process as setting up the workspace.
+- Run `mkdocs serve` to launch a development server.
 
 ## Development workflow
 
