@@ -11,6 +11,10 @@ module.exports = {
         orange: '#FCD47C',
         red: '#F54A87',
       },
+      fontFamily: {
+        Montserrat: ['Montserrat', 'sans-serif'],
+        openSans: ['Open Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [],
