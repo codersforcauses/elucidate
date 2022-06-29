@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+      // quality of life
+      "aaron-bond.better-comments",
+      "eamodio.gitlens",
+      "GitHub.vscode-pull-request-github",
+      "VisualStudioExptTeam.vscodeintellicode",
+      "christian-kohler.path-intellisense",
+      "oderwat.indent-rainbow",
+      "DavidAnson.vscode-markdownlint",
+      "yzhang.markdown-all-in-one",
+    ]
+  }
+  
