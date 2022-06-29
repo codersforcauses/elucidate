@@ -7,8 +7,7 @@ build:
 
 python:
   install:
-    - method: pip
-      path: documentation
+    - requirements: documentation/requirements.txt
 
 mkdocs:
   configuration: documentation/mkdocs.yml

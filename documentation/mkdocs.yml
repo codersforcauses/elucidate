@@ -1,4 +1,4 @@
-site_name: Elucidate Backend
+site_name: Elucidate Documentation
 copyright: Copyright Coders for Causes
 repo_url: https://github.com/codersforcauses/elucidate
 
@@ -7,4 +7,3 @@ theme:
 
 plugins:
   - search
-  - mkdocstrings
