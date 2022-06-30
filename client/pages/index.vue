@@ -1,14 +1,14 @@
 <template>
-  <body class="flex flex-col min-h-screen">
+  <div class="flex flex-col min-h-screen">
     <AuthHeader />
 
-    <main class="flex flex-grow justify-center">
+    <div class="flex flex-grow justify-center">
       <!-- Add sign up form here? -->
       Page content
-    </main>
+    </div>
 
     <AuthFooter />
-  </body>
+  </div>
 </template>
 
 <script>
