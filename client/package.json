@@ -15,6 +15,11 @@
   "dependencies": {
     "@fontsource/montserrat": "^4.5.11",
     "@fontsource/open-sans": "^4.5.10",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/vue-fontawesome": "^2.0.8",
     "@nuxtjs/axios": "5.13.6",
     "core-js": "3.23.1",
     "cypress": "10.1.0",
