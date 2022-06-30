@@ -15,5 +15,12 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['vue', 'cypress'],
-  rules: {},
+  rules: {
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: ['default'],
+      },
+    ],
+  },
 };
