@@ -13,6 +13,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^4.5.11",
+    "@fontsource/open-sans": "^4.5.10",
     "@nuxtjs/axios": "5.13.6",
     "core-js": "3.23.1",
     "cypress": "10.1.0",
@@ -37,7 +39,6 @@
     "eslint-plugin-n": "15.2.3",
     "eslint-plugin-promise": "6.0.0",
     "eslint-plugin-vue": "9.1.1",
-    "husky": "8.0.1",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "postcss": "8.4.14",
