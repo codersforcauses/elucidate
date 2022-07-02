@@ -1,26 +1,20 @@
 <template>
-  <nav class="h-[78px] flex items-center shadow-xl justify-between">
-    <div>
+  <nav class="h-20 flex items-center shadow-xl justify-between">
+    <div class="flex">
       <NuxtLink to="/" class="mx-4 font-Montserrat">Home</NuxtLink>
       <NuxtLink to="/quiz" class="mx-4 font-Montserrat">Quiz</NuxtLink>
       <NuxtLink to="/about" class="mx-4 font-Montserrat">About</NuxtLink>
     </div>
     <div class="flex items-center">
-      <div
-        class="flex items-center h-10 bg-gray-200 rounded-md focus-within:outline focus-within:outline-2 focus-within:outline-gray-400"
+      <InputSearchBar class="mr-24" />
+      <!-- TODO: Do we want the button to open a pop up window or redirect to a
+      login page? -->
+      <InputButtonElement type="primary" class="mr-3"
+        >Log in</InputButtonElement
       >
-        <font-awesome-icon
-          :icon="['fas', 'magnifying-glass']"
-          class="mx-4 text-gray-400"
-        />
-        <input
-          type="text"
-          placeholder="Find a quiz"
-          class="bg-transparent focus:outline-none"
-        />
-      </div>
-      <ButtonElement>Log in</ButtonElement>
-      <ButtonElement>Sign up</ButtonElement>
+      <InputButtonElement type="secondary" class="mr-10"
+        >Sign up</InputButtonElement
+      >
     </div>
   </nav>
 </template>
