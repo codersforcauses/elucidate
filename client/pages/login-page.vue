@@ -3,7 +3,7 @@
     <AuthHeader />
     <h1 class="italic text-3xl my-4">Sign In</h1>
     <div
-      class="flex flex-col bg-green/75 py-6 px-10 rounded drop-shadow-lg mb-10"
+      class="flex flex-col bg-green2 py-6 px-10 rounded drop-shadow-lg mb-10"
     >
       <TextBox header="Email" inputType="text" />
       <TextBox
