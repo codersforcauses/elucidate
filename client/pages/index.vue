@@ -6,12 +6,9 @@
     </div>
     <div class="flex flex-grow justify-center">
       <!-- Add sign up form here? -->
-      <div class="w-11/12 max-w-lg flex flex-col items-center bg-teal-200 drop-shadow-lg">
+      <div class="w-11/12 max-w-lg flex flex-col items-center bg-green drop-shadow-lg">
         <form class="flex flex-col w-11/12 mx-6 my-8">
-          <div v-for="field in fields" :key="field.index">
-            <label>{{field.name}}</label>
-            <input type="field.name" class="w-full h-10 drop-shadow-lg mt-2 mb-4">
-          </div>
+          <InputField v-for="field in fields" :key="field.index" :fieldName="field.name" :fieldType="field.type"/>
         </form>
         <p class="self-end mx-1 mb-1 mt-auto text-white drop-shadow-lg">Continue -></p>
       </div>
