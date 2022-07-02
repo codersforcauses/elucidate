@@ -20,7 +20,7 @@
 <script>
 let count = 0;
 export default {
-  name: 'IndexPage',
+  name: 'signup-page',
   data: () => ({
     fields: [
       { name: "First Name", type: "text", index: count++ },
