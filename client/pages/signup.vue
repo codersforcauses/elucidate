@@ -1,10 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <AuthHeader />
-    <div class="flex justify-center items-center my-5 ">
-      <img class="w-8 mx-2" src="~/assets/personIcon.svg" />
-      <p class="text-2xl italic">Sign-Up</p>
-    </div>
+    <AuthHeader :pageTitle="title" />
     <div class="flex flex-grow justify-center">
       <!-- Add sign up form here? -->
       <div class="w-11/12 max-w-lg flex flex-col items-center bg-green drop-shadow-lg">
@@ -23,6 +19,7 @@ let count = 0;
 export default {
   name: 'signup-page',
   data: () => ({
+    title: "",
     fields: [
       { name: "First Name", type: "text", index: count++ },
       { name: "Last Name", type: "text", index: count++ },
