@@ -1,8 +1,9 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <AuthHeader />
-    <div class="flex justify-center">
-      Sign Up
+    <div class="flex justify-center items-center my-5 ">
+      <img class="w-8 mx-2" src="~/assets/personIcon.svg" />
+      <p class="text-2xl italic">Sign-Up</p>
     </div>
     <div class="flex flex-grow justify-center">
       <!-- Add sign up form here? -->
