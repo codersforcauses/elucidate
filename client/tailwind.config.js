@@ -8,8 +8,8 @@ module.exports = {
            'white': '#FFFFFF', 
         },
 
-        fontFamily: {
-            sans: ['Montserrat', 'sans-serif'],
-        }
+    fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
     }
+  }
 }
