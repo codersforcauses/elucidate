@@ -5,13 +5,13 @@
         <AuthHeader/>
         <h1 class="italic text-3xl my-4">Sign In</h1>
 
-        <div class="bg-green/75 py-6 px-10 rounded drop-shadow-lg mb-10">
-            <h2 class="font-bold mb-0.5">Email</h2><input type="text" class="drop-shadow h-10 w-max">
+        <div class="flex flex-col bg-green/75 py-6 px-10 rounded drop-shadow-lg mb-10">
+            <h2 class="font-bold mb-0.5">Email</h2><input type="text" class="drop-shadow h-10 w-full">
 
-            <h2 class="font-bold mb-0.5 mt-2">Password</h2><input type="password" class="drop-shadow h-10 w-300"><br/>
-            <a href="forgot-password" class="text-xs">forgot password?</a><br/>
+            <h2 class="font-bold mb-0.5 mt-2">Password</h2><input type="password" class="drop-shadow h-10 w-full">
+            <a href="forgot-password" class="place-self-end text-xs text-white underline underline-offset-2 pb-10 pt-1">forgot password?</a>
 
-            <button class="font-bold text-red bg-white px-3 border-1 border-red">Login</button>
+            <button class="font-bold text-red bg-white w-20 rounded border-10 border-red border-solid">Login</button>
             <p>don't have an account? <a href="sign-up"></a>sign up!</a></p>
             </div>
         </div>
