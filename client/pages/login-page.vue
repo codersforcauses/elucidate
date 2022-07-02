@@ -11,14 +11,12 @@
             <h2 class="font-bold mb-0.5 mt-2">Password</h2><input type="password" class="drop-shadow h-10 w-full">
             <a href="forgot-password" class="place-self-end text-xs text-white underline underline-offset-2 pb-10 pt-1">forgot password?</a>
 
-            <button class="font-bold text-red bg-white w-20 rounded border-10 border-red border-solid">Login</button>
-            <p>don't have an account? <a href="sign-up"></a>sign up!</a></p>
+            <button class="place-self-center text-xl font-bold text-red bg-white w-20 h-auto rounded border border-solid mb-7">Login</button>
+            <p>don't have an account? <a href="sign-up" class="text-blue underline underline-offset-2">sign up!</a></p>
             </div>
         </div>
         <AuthFooter/>
     </div>
-   
-</div>  
 </template>
 
 <script>
