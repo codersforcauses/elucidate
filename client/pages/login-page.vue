@@ -5,7 +5,7 @@
         <AuthHeader/>
         <h1 class="italic text-3xl my-4">Sign In</h1>
 
-        <div class="flex flex-col bg-green/75 py-6 px-10 rounded drop-shadow-lg mb-10">
+        <div class="flex flex-col bg-green2 py-6 px-10 rounded drop-shadow-lg mb-10">
             <h2 class="font-bold mb-0.5">Email</h2><input type="text" class="drop-shadow h-10 w-full">
 
             <h2 class="font-bold mb-0.5 mt-2">Password</h2><input type="password" class="drop-shadow h-10 w-full">
