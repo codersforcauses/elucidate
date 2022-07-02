@@ -1,31 +1,39 @@
 <template>
 <div>
-  <img
-  id="logo" 
-  src="~/assets/elucidate-logo.jpg"
-  alt="Elucidate Logo">
     
+    <div class="flex flex-grow flex-col items-center content-center">
+        <AuthHeader/>
+        <h1 class="italic text-3xl my-4">Sign In</h1>
+
+        <div class="bg-green/75 py-6 px-10 rounded drop-shadow-lg mb-10">
+            <h2 class="font-bold mb-0.5">Email</h2><input type="text" class="drop-shadow h-10 w-max">
+
+            <h2 class="font-bold mb-0.5 mt-2">Password</h2><input type="password" class="drop-shadow h-10 w-300"><br/>
+            <a href="forgot-password" class="text-xs">forgot password?</a><br/>
+
+            <button class="font-bold text-red bg-white px-3 border-1 border-red">Login</button>
+            <p>don't have an account? <a href="sign-up"></a>sign up!</a></p>
+            </div>
+        </div>
+        <AuthFooter/>
+    </div>
    
-<div class="sign-in">
-  <h1><em>Sign in</em></h1>
-</div>
-
-
-<div class="enter-info" id="box"> 
-    <h2>Email</h2>
-    <input type="text">
-
-    <h2>Password</h2>
-    <input type="password">
-    <a href="forgot-password" id="password"><u>forgot password?</u></a>
-
-    <button id="login">Login</button>
-
-    <p>don't have an account? <a href="sign-up" id="sign-up"><u>sign up!</u></a></p>
-</div>
 </div>  
 </template>
 
+<script>
+import AuthFooter from '~/components/AuthFooter.vue'
+import AuthHeader from '~/components/AuthHeader.vue'
+
+export default {
+    components: {
+        AuthFooter,
+        AuthHeader
+    },
+}
+</script>
+
+<!--
 <style>
 
 div {
@@ -97,3 +105,5 @@ p {
 }
 
 </style>
+
+-->
