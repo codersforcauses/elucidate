@@ -1,21 +1,21 @@
-from django import forms
-from django.contrib.auth import forms
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
-# Create your views here.
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets, permissions, status
+from .serializers import UserSerializer, GroupSerializer
+from rest_framework.response import Response
 
 
-def create_user(request):
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            print(form.data)
-            form.save()
-            messages.success(request, 'User created successfully')
-            return redirect('/')  # Change this after
-    else:
-        form = CreateUserForm()
-        
-    return render(request, 'register.html', {'form': form})
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
