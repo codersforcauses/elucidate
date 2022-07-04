@@ -1,9 +1,9 @@
 <template>
   <nav class="h-20 flex items-center shadow-xl justify-between">
     <div class="flex">
-      <NuxtLink to="/" class="mx-4 font-Montserrat">Home</NuxtLink>
-      <NuxtLink to="/quiz" class="mx-4 font-Montserrat">Quiz</NuxtLink>
-      <NuxtLink to="/about" class="mx-4 font-Montserrat">About</NuxtLink>
+      <NuxtLink to="/" class="mx-4">Home</NuxtLink>
+      <NuxtLink to="/quiz" class="mx-4">Quiz</NuxtLink>
+      <NuxtLink to="/about" class="mx-4">About</NuxtLink>
     </div>
     <div class="flex items-center">
       <InputSearchBar class="mr-24" />
@@ -24,7 +24,9 @@ export default {
   name: 'NavBar',
 };
 </script>
-<style scoped>
-@import '@fontsource/montserrat';
-@import '@fontsource/open-sans';
+
+<style scoped lang="postcss">
+.nuxt-link-exact-active {
+  @apply font-bold;
+}
 </style>
