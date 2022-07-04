@@ -3,7 +3,7 @@
 exports[`ButtonElement renders correctly 1`] = `
 <span>
   <button
-    class="text-white bg-primary h-10 w-32 rounded-md"
+    class="text-white bg-primary h-10 w-32 rounded-md hover:shadow-lg transition-shadow duration-200 ease-in-out"
   />
 </span>
 `;
