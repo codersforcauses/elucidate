@@ -2,16 +2,14 @@
   <span>
     <button
       v-if="type === 'primary'"
-      :class="'text-white bg-primary ' + commonCSS"
+      :class="`text-white bg-primary ${commonBtnStyles}`"
     >
       <slot></slot>
     </button>
 
     <button
       v-else
-      :class="
-        'bg-white text-primary border border-solid border-primary ' + commonCSS
-      "
+      :class="`bg-white text-primary border border-solid border-primary ${commonBtnStyles}`"
     >
       <slot></slot>
     </button>
@@ -22,7 +20,8 @@
 export default {
   name: 'ButtonElement',
   data: () => ({
-    commonCSS: 'h-10 w-32 rounded-md',
+    commonBtnStyles:
+      'h-10 w-32 rounded-md hover:shadow-lg transition-shadow duration-200 ease-in-out',
   }),
   props: {
     type: {
@@ -32,5 +31,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
