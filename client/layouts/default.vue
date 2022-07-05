@@ -1,7 +1,9 @@
 <template>
   <div>
     <SectionNavBar />
-    <Nuxt />
+    <div class="min-h-[74vh]">
+      <Nuxt />
+    </div>
     <SectionPageFooter />
   </div>
 </template>
