@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col mb-7">
     <h2 class="font-semibold mb-0.5">{{ header }}</h2>
-    <input :type="inputType" class="drop-shadow-md h-10 w-full" />
+    <input :type="inputType" class="drop-shadow-md h-11 w-full px-2" />
     <p v-if="subtext !== null && subtextLink === null">
       {{ subtext }}
     </p>
