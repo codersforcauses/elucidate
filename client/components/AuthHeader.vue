@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-center my-5">
-    <img class="w-11" src="~/assets/logo.svg" />
+  <div class="flex justify-center mt-10 mb-6">
+    <img class="w-16" src="~/assets/logo.svg" />
   </div>
 </template>
 
