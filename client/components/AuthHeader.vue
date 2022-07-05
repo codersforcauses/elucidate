@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center mt-10 mb-6">
-    <img class="w-16" src="~/assets/logo.svg" />
+    <img class="w-16" src="~/assets/logo.svg" alt="Elucidate Logo" />
   </div>
 </template>
 
