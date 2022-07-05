@@ -1,14 +1,14 @@
 <template>
-  <div class="flex flex-col mb-2">
-    <h2 class="font-bold mb-0.5">{{ header }}</h2>
-    <input :type="inputType" class="drop-shadow h-10 w-full" />
+  <div class="flex flex-col mb-7">
+    <h2 class="font-semibold mb-0.5">{{ header }}</h2>
+    <input :type="inputType" class="drop-shadow-md h-11 w-full px-2" />
     <p v-if="subtext !== null && subtextLink === null">
       {{ subtext }}
     </p>
     <a
       v-else-if="subtextLink !== null"
       :href="subtextLink"
-      class="place-self-end text-xs text-white underline underline-offset-2 pb-10 pt-1"
+      class="place-self-end text-xs text-white font-semibold underline underline-offset-2 pt-1"
     >
       {{ subtext }}
     </a>

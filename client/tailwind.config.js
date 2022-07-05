@@ -31,9 +31,12 @@ module.exports = {
       black: '#000000',
     },
 
+    dropShadow: {
+      md: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    },
+
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],
     },
   },
-  plugins: [],
 };
