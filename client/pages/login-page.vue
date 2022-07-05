@@ -20,7 +20,7 @@
       >
         Login
       </button>
-      <p>
+      <p class="place-self-center">
         don't have an account?
         <a href="sign-up" class="text-blue underline underline-offset-2">
           sign up!
