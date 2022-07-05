@@ -14,15 +14,15 @@
         </div>
       </div>
     </div>
-    <!-- Section 2 (sneak-peak of the quizzes) -->
-    <div class="bg-indigo-500 pt-20 pb-40">
-      <h2 class="text-white text-5xl text-center py-20">Look at our quizzes</h2>
-      <div class="grid lg:grid-cols-3 gap-14 mx-36 content-evenly">
-        <div><QuizCard /></div>
-        <div><QuizCard /></div>
-        <div><QuizCard /></div>
-      </div>
+  <!-- Section 2 (sneak-peak of the quizzes) -->
+  <div class="bg-indigo-500 pt-20 pb-40">
+    <h2 class="text-white text-5xl text-center py-20">Look at our quizzes</h2>
+    <div class="grid lg:grid-cols-3 gap-14 mx-36 content-evenly">
+      <div><QuizCard /></div>
+      <div><QuizCard /></div>
+      <div><QuizCard /></div>
     </div>
+  </div>
   </div>
 </template>
 
