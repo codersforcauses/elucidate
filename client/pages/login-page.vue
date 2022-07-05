@@ -11,7 +11,7 @@
         subtextLink="forgot-password"
       />
       <button
-        class="place-self-center text-xl font-bold text-red bg-white w-20 h-auto rounded border border-solid mb-7"
+        class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid mb-7"
       >
         Login
       </button>
