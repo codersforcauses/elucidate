@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center my-5">
-    <img class="w-60" src="~/assets/shapes.svg" />
+    <img class="w-72" src="~/assets/shapes.svg" />
   </div>
 </template>
 
