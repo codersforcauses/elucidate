@@ -1,7 +1,11 @@
 <template>
-  <div class="flex flex-grow flex-col items-center content-center">
+  <div class="flex grow flex-col items-center content-center">
     <AuthHeader />
-    <h1 class="italic text-3xl my-4">Sign In</h1>
+
+    <h1 class="italic text-3xl my-4 flex gap-x-3 whitespace-nowrap">
+      <img class="w-8" src="~/assets/avatar.svg" alt="Sign In Logo"  />Sign In
+    </h1>
+
     <AuthForm>
       <TextBox header="Email" inputType="text" />
       <TextBox
