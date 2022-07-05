@@ -1,6 +1,10 @@
 module.exports = {
   theme: {
     colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      primary: '#53DFCB',
+
       blue: '#7087FF',
       blue2: '#7087FF75',
       blue3: '#7087FF50',
@@ -20,6 +24,8 @@ module.exports = {
       red2: '#F54A8775',
       red3: '#F54A8750',
       red4: '#F54A8725',
+
+      orange: '#FCD47C',
 
       white: '#FFFFFF',
       black: '#000000',

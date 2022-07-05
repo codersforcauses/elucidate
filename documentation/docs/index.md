@@ -10,19 +10,19 @@
 ## Table of Contents
 
 - [Elucidate Winter 2022](#elucidate-winter-2022)
-  - [Table of Contents](#table-of-contents)
-  - [Technologies](#technologies)
-  - [Getting started](#getting-started)
-    - [Setting environment variables](#setting-environment-variables)
-    - [Installing Docker](#installing-docker)
-      - [Windows](#windows)
-      - [Linux](#linux)
-    - [Potential Errors While Running The Docker Container](#potential-errors-while-running-the-docker-container)
-    - [Development environment setup](#development-environment-setup)
-    - [Development](#development)
-  - [Writing documentations](#writing-documentations)
-    - [Using MkDocs](#using-mkdocs)
-  - [Development workflow](#development-workflow)
+    - [Table of Contents](#table-of-contents)
+    - [Technologies](#technologies)
+    - [Getting started](#getting-started)
+        - [Setting environment variables](#setting-environment-variables)
+        - [Installing Docker](#installing-docker)
+            - [Windows](#windows)
+            - [Linux](#linux)
+        - [Potential Errors While Running The Docker Container](#potential-errors-while-running-the-docker-container)
+        - [Development environment setup](#development-environment-setup)
+        - [Development](#development)
+    - [Writing documentations](#writing-documentations)
+        - [Using MkDocs](#using-mkdocs)
+    - [Development workflow](#development-workflow)
 
 <!-- Created by https://github.com/ekalinin/github-markdown-toc -->
 

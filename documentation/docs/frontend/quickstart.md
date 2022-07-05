@@ -21,4 +21,3 @@ Jest tests can be run with the command `yarn test`.
 The cypress testing suite can be installed via the command `yarn cypress install`.
 
 After installation, Cypress tests can be run with the command `yarn cypress open`.
-
