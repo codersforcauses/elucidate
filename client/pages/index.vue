@@ -2,7 +2,7 @@
   <div>
     <div class="container mx-auto pl-20">
       <!-- Section 1 -->
-      <div class="grid lg:grid-cols-2 gap-x-14 mt-36 mb-52 items-center">
+      <div class="grid lg:grid-cols-2 gap-x-12 mt-36 mb-52 items-center">
         <div>
           <h1 class="text-black-400 text-6xl leading-snug mb-10">What do you want <br>to learn today?</h1>
           <SearchBar />
