@@ -1,25 +1,21 @@
 <template>
-    <div class="flex flex-grow flex-col items-center content-center">
-            <div>
-                <div class="flex place-content-center bg-green">
-                    <h1 class="text-center text-3xl font-bold">Create a quiz</h1>
-                </div>
-                <Box>
-                    <TextBox header="Quiz Name" inputType="text" />
-                    <TextBox header="Tags" inputType="text"/>
-                    <TextBox header="Time Limit" inputType="number"/>
-                </Box>
-            </div>
-
-    </div>
+  <Box title="Create a Quiz" :isCentered="true">
+    <TextBox header="Quiz Name:" inputType="text"/>
+    <!--<TextBox header="Tags" inputType="text"/> -->
+    <TimeBox header="Time Limit:" inputType="text"/>
+  </Box>
 </template>
 
 <script>
 import Box from '~/components/Box.vue';
+import TextBox from '~/components/TextBox.vue';
+import TimeBox from '~/components/Timebox.vue';
 
 export default {
   components: {
     Box,
+    TextBox,
+    TimeBox,
   },
 };
 </script>
