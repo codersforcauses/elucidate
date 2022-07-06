@@ -1,22 +1,22 @@
 <template>
   <footer class="relative bottom-1 h-[78px]">
-    <div class="flex items-center justify-around font-bold text-sm">
-      <div class="w-full flex justify-center">
+    <div class="flex items-center justify-around text-sm font-bold">
+      <div class="flex justify-center w-full">
         <NuxtLink to="/" class="mx-4 font-Montserrat">Home</NuxtLink>
         <NuxtLink to="/quiz" class="mx-4 font-Montserrat">Quiz</NuxtLink>
         <NuxtLink to="/about" class="mx-4 font-Montserrat">About</NuxtLink>
       </div>
-      <div class="w-full flex justify-center">
-        <img src="~/assets/logo.png" class="h-14" />
+      <div class="flex justify-center w-full">
+        <img src="~/static/logo.png" class="h-14" />
       </div>
-      <div class="w-full flex justify-center">
+      <div class="flex justify-center w-full">
         <NuxtLink to="/about" class="mx-4 font-Montserrat">Resources</NuxtLink>
         <NuxtLink to="/" class="mx-4 font-Montserrat">Contact</NuxtLink>
         <NuxtLink to="/quiz" class="mx-4 font-Montserrat">Sponsors</NuxtLink>
       </div>
     </div>
     <hr />
-    <div class="flex justify-center items-center py-8">
+    <div class="flex items-center justify-center py-8">
       <a href="https://www.facebook.com/AtarSurvivalGuide/">
         <img
           src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_32,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/0fdef751204647a3bbd7eaa2827ed4f9.png"
