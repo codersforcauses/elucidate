@@ -1,7 +1,7 @@
 <template>
-  <nav class="h-20 flex items-center shadow-xl justify-between">
-    <div class="flex items-center">
-      <NuxtLink to="/" class="ml-32 h-12 -mt-2">
+  <nav class="flex items-center justify-between h-20 shadow-xl">
+    <div class="flex items-center text-gray-600">
+      <NuxtLink to="/" class="h-12 ml-32 -mt-2">
         <!-- TODO: Temporary Logo -->
         <nuxt-img
           src="branding/logo_full.png"
