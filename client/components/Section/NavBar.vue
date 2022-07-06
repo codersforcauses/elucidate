@@ -1,6 +1,12 @@
 <template>
   <nav class="h-20 flex items-center shadow-xl justify-between">
-    <div class="flex">
+    <div class="flex items-center">
+      <NuxtLink to="/" class="ml-32 h-12 -mt-2">
+        <!-- TODO: Temporary Logo -->
+        <nuxt-img
+          src="branding/logo_full.png"
+          class="h-12 min-w-max max-w-none"
+      /></NuxtLink>
       <NuxtLink to="/" class="mx-4">Home</NuxtLink>
       <NuxtLink to="/quiz" class="mx-4">Quiz</NuxtLink>
       <NuxtLink to="/about" class="mx-4">About</NuxtLink>
