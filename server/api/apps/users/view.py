@@ -1,6 +1,6 @@
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
-from api.users.serializers import UserSerializer
+from api.apps.users.serializers import UserSerializer
 
 
 class UserAPIView(RetrieveAPIView):
