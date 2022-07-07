@@ -1,9 +1,7 @@
 <template>
-  <div>
+  <div class="font-Montserrat">
     <SectionNavBar />
-    <div class="min-h-[74vh]">
-      <Nuxt />
-    </div>
+    <Nuxt class="h-[72vh]" />
     <SectionPageFooter />
   </div>
 </template>

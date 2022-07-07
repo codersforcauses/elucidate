@@ -2,44 +2,32 @@
   <footer class="relative bottom-1 h-[78px]">
     <div class="flex items-center justify-around text-sm font-bold">
       <div class="flex justify-center w-full">
-        <NuxtLink to="/" class="mx-4 font-Montserrat">Home</NuxtLink>
-        <NuxtLink to="/quiz" class="mx-4 font-Montserrat">Quiz</NuxtLink>
-        <NuxtLink to="/about" class="mx-4 font-Montserrat">About</NuxtLink>
+        <NuxtLink to="/" class="mx-4">Home</NuxtLink>
+        <NuxtLink to="/quiz" class="mx-4">Quiz</NuxtLink>
+        <NuxtLink to="/about" class="mx-4">About</NuxtLink>
       </div>
       <div class="flex justify-center w-full">
         <img src="~/static/logo.png" class="h-14" />
       </div>
       <div class="flex justify-center w-full">
-        <NuxtLink to="/about" class="mx-4 font-Montserrat">Resources</NuxtLink>
-        <NuxtLink to="/" class="mx-4 font-Montserrat">Contact</NuxtLink>
-        <NuxtLink to="/quiz" class="mx-4 font-Montserrat">Sponsors</NuxtLink>
+        <NuxtLink to="/about" class="mx-4">Resources</NuxtLink>
+        <NuxtLink to="/" class="mx-4">Contact</NuxtLink>
+        <NuxtLink to="/quiz" class="mx-4">Sponsors</NuxtLink>
       </div>
     </div>
     <hr />
-    <div class="flex items-center justify-center py-8">
+    <div class="flex items-center justify-center py-8 text-gray-400 text-4xl">
       <a href="https://www.facebook.com/AtarSurvivalGuide/">
-        <img
-          src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_32,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/0fdef751204647a3bbd7eaa2827ed4f9.png"
-          class="h-10 mx-2"
-        />
+        <font-awesome-icon :icon="['fab', 'fa-facebook']" class="mx-4" />
       </a>
       <a href="https://www.instagram.com/atar_survival_guide/">
-        <img
-          src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_32,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/01c3aff52f2a4dffa526d7a9843d46ea.png"
-          class="h-10 mx-2"
-        />
+        <font-awesome-icon :icon="['fab', 'fa-instagram']" class="mx-4" />
       </a>
       <a href="https://www.youtube.com/channel/UC3d8MUFzDD01IoeJCDazSpg">
-        <img
-          src="https://static.wixstatic.com/media/78aa2057f0cb42fbbaffcbc36280a64a.png/v1/fill/w_32,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/78aa2057f0cb42fbbaffcbc36280a64a.png"
-          class="h-10 mx-2"
-        />
+        <font-awesome-icon :icon="['fab', 'fa-youtube']" class="mx-4" />
       </a>
       <a href="https://www.linkedin.com/company/atar-survival-guide/">
-        <img
-          src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_32,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/6ea5b4a88f0b4f91945b40499aa0af00.png"
-          class="h-10 mx-2"
-        />
+        <font-awesome-icon :icon="['fab', 'fa-linkedin']" class="mx-4" />
       </a>
     </div>
   </footer>
@@ -50,7 +38,3 @@ export default {
   name: 'PageFooter',
 };
 </script>
-<style scoped>
-@import '@fontsource/montserrat';
-@import '@fontsource/open-sans';
-</style>
