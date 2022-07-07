@@ -22,12 +22,14 @@ FRONTEND_URL = config("FRONTEND_URL", default="http://localhost:8080")
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config("DJANGO_SECRET_KEY")
+SECRET_KEY = config("DJANGO_SECRET_KEY", "password123")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DJANGO_DEBUG", default=0, cast=int)
 
-ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS").split()
+ALLOWED_HOSTS = config(
+    "DJANGO_ALLOWED_HOSTS", default=".localhost 127.0.0.1 [::1] 0.0.0.0"
+).split()
 
 
 # Application definition
@@ -88,7 +90,7 @@ DATABASES = {
         "NAME": config("POSTGRES_DB", default="postgres"),
         "USER": config("POSTGRES_USER", default="postgres"),
         "PASSWORD": config("POSTGRES_PASSWORD", default="postgres"),
-        "HOST": config("POSTGRES_HOST", default="postgres"),
+        "HOST": config("POSTGRES_HOST", default="localhost"),
         "PORT": config("POSTGRES_PORT", default="5432"),
     }
 }
