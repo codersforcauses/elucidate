@@ -5,7 +5,9 @@
       <div class="grid lg:grid-cols-2 gap-x-12 mt-36 mb-52 items-center">
         <div>
           <h1 class="text-black-400 text-6xl leading-snug mb-10">What do you want <br>to learn today?</h1>
-          <SearchBar />
+          <!-- Search bar -->
+          <InputSearchBar />
+          <!-- 'I already have acc' button which directs user to the log in page -->
           <haveAccBtn />
           <AuthFooter />
         </div>
@@ -27,17 +29,7 @@
 </template>
 
 <script>
-import haveAccBtn from '~/components/haveAccBtn.vue';
-import SearchBar from '~/components/searchBar.vue';
-import AuthFooter from '~/components/AuthFooter.vue';
-import QuizCard from '~/components/QuizCard.vue';
 export default {
-  components: { 
-    haveAccBtn,
-    SearchBar,
-    AuthFooter, 
-    QuizCard,
-  },
   name: 'IndexPage',
   data:function() {
     return {
