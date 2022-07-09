@@ -1,17 +1,21 @@
 <template>
   <div class="flex flex-col mb-7">
     <h2 class="font-semibold mb-0.5">{{ header }}</h2>
-    <input :type="inputType" class="drop-shadow-md h-11 w-full px-2" />
+    <input :type="inputType" class="w-full px-2 drop-shadow-md h-11" />
     <p v-if="subtext !== null && subtextLink === null">
       {{ subtext }}
     </p>
     <a
       v-else-if="subtextLink !== null"
       :href="subtextLink"
-      class="place-self-end text-xs text-white font-semibold underline underline-offset-2 pt-1"
+      class="pt-1 text-xs font-semibold text-white underline place-self-end underline-offset-2"
     >
       {{ subtext }}
     </a>
+    <button type="button" v-if="inputType === 'password'" v-on:click="clickCheck" class="h-10 px-1 mx-1 text-center bg-white border-2 rounded border-green2">
+      SHOW
+    </button>
+
   </div>
 </template>
 
@@ -38,5 +42,11 @@ export default {
       },
     },
   },
+  methods: {
+    clickCheck: function() {
+      this.inputType = "text";
+      console.log(this.inputValue)
+    }
+  }
 };
 </script>

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="flex justify-center  mt-10 mb-6">
-      <img class="w-16" src="~/assets/logo.svg" alt="Elucidate Logo" />
+    <div class="flex justify-center mt-10 mb-6">
+      <img class="w-16" src="~/static/logo.svg" alt="Elucidate Logo" />
     </div>
-    <h1 v-if="pageTitle !== ''" class="italic text-3xl my-4 mr-7 flex gap-x-3 whitespace-nowrap">
-      <img class="w-8" src="~/assets/avatar.svg" alt="Sign In Logo"  />
-      Sign In
-    </h1>
+    <div  v-if="pageTitle !== ''" class="flex items-center justify-center my-5 ">
+      <img class="w-8 mx-2" src="~/static/personIcon.svg" alt="User Icon" />
+      <p class="text-2xl italic">{{pageTitle}}</p>
+    </div>
   </div>
 </template>
 

@@ -1,33 +1,67 @@
 <template>
-  <body class="flex flex-col min-h-screen">
-    <AuthHeader />
+  <div class="flex flex-col min-h-screen">
+    <AuthHeader :pageTitle="title" />
 
-    <main class="flex flex-grow justify-center">
+    <div class="flex justify-center flex-grow">
+      <AuthForm>
+        <ValidationObserver v-slot="{ invalid }" class="w-full">
+          <form @submit.prevent="onSubmit" class="flex flex-col w-11/12 mx-6 my-8">
+            <InputField v-for="field in fields" 
+            :key="field.index" 
+            :fieldName="field.name" 
+            :fieldType="field.type" 
+            :isPassword="field.isPassword"
+            :rules="field.rules"
+            :inputvalue.sync="field.value"
+            :id = "field.id" />
+          <button type="submit" :class="invalid ? 'text-darkgrey bg-lightgrey':'text-red bg-white'" class="w-24 h-8 mt-5 font-bold border border-solid rounded place-self-center text-l drop-shadow-lg">Submit</button>
+          <!-- <button v-else type="submit" :disabled="invalid" class="w-24 h-8 mt-5 font-bold bg-white border border-solid rounded place-self-center text-l text-red">Submit</button> -->
+          </form>
+        </ValidationObserver>
+      </AuthForm>
+
       <!-- Add sign up form here? -->
-      <div class="w-11/12 max-w-lg flex flex-col items-center bg-green drop-shadow-lg">
-        <form class="flex flex-col w-11/12 mx-6 my-8">
-          <InputField v-for="field in fields" :key="field.index" :fieldName="field.name" :fieldType="field.type"/>
-        </form>
-        <p class="self-end mx-1 mb-1 mt-auto text-white drop-shadow-lg">Continue -></p>
-      </div>
     </div>
     <AuthFooter />
-  </body>
+  </div>
 </template>
 
 <script>
+import {ValidationObserver} from 'vee-validate';
+import AuthFooter from '~/components/AuthFooter.vue';
+import AuthHeader from '~/components/AuthHeader.vue';
+import AuthForm from '~/components/form/AuthForm.vue';
+import InputField from '~/components/form/AuthInputField.vue';
+
 let count = 0;
-export default {
+export default{
   name: 'signup-page',
+  components: {
+    ValidationObserver,
+    AuthFooter,
+    AuthHeader,
+    AuthForm,
+    InputField,
+  },
   data: () => ({
+    title: "Sign-Up",
+    password:'',
+    confirm : '',
+    ispassword: true,
+    btnDisable: true,
     fields: [
-      { name: "First Name", type: "text", index: count++ },
-      { name: "Last Name", type: "text", index: count++ },
-      { name: "Email", type: "text", index: count++ },
-      { name: "Password", type: "text", index: count++ },
-      { name: "Confirm Password", type: "text", index: count++ },
-      { name: "Grade", type: "text", index: count++ },
+      { name: "First Name", type: "text", isPassword: false, index: count++, id:"firstname", rules:"required" },
+      { name: "Last Name", type: "text", isPassword: false, index: count++, id:"lastname", rules:"required" },
+      { name: "Email", type: "text", isPassword: false, index: count++, id:"email", rules:"required|email"},
+      { name: "Password", type: "text", isPassword: true, index: count++, id:"password", rules:"required|min:6"},
+      { name: "Confirm Password", type: "text", isPassword: true, index: count++, id:"confirm", rules:"required|password:@password" },
+      { name: "Grade", type: "text", isPassword: false, index: count++, id:"grade", rules:"required" }, 
     ]
-  })
+  }),
+  methods: {
+    onSubmit () {
+      alert('Form has been submitted!');
+    }
+  }
 };
 </script>
