@@ -4,8 +4,8 @@
 
     <div class="flex flex-grow justify-center">
       <TealBox>
-        <ValidationObserver class="w-full">
-        <form class="flex flex-col w-11/12 mx-6 my-8">
+        <ValidationObserver v-slot="{ invalid }" class="w-full">
+        <form @submit.prevent="onSubmit" class="flex flex-col w-11/12 mx-6 my-8">
           <InputField  v-for="field in fields" 
           :key="field.index" 
           :fieldName="field.name" 
@@ -14,6 +14,7 @@
           :rules="field.rules"
           :inputvalue.sync="field.value"
           :id = "field.id" />
+        <button type="submit" :disabled="invalid" class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid mb-7">Submit</button>
         </form>
          </ValidationObserver>
         <p class="self-end mx-1 mb-1 mt-auto text-white drop-shadow-lg">Continue -></p>    
@@ -47,5 +48,10 @@ export default{
       { name: "Grade", type: "text", isPassword: false, index: count++, id:"grade", rules:"required",value:"" }, 
     ]
   }),
+  methods: {
+    onSubmit () {
+      alert('Form has been submitted!');
+    }
+  }
 };
 </script>
