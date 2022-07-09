@@ -4,13 +4,15 @@
       <!-- Section 1 -->
       <div class="grid lg:grid-cols-2 gap-x-12 mt-36 mb-52 items-center">
         <div>
-          <h1 class="text-black-400 text-6xl leading-snug mb-10">What do you want <br>to learn today?</h1>
+          <h1 class="text-black-400 text-6xl leading-snug mb-10">
+            What do you want <br />to learn today?
+          </h1>
           <SearchBar />
           <haveAccBtn />
           <AuthFooter />
         </div>
         <div>
-          <img v-bind:src="illustration">
+          <img v-bind:src="illustration" />
         </div>
       </div>
     </div>
@@ -23,7 +25,7 @@
         <div><QuizCard /></div>
       </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -32,17 +34,17 @@ import SearchBar from '~/components/searchBar.vue';
 import AuthFooter from '~/components/AuthFooter.vue';
 import QuizCard from '~/components/QuizCard.vue';
 export default {
-  components: { 
+  components: {
     haveAccBtn,
     SearchBar,
-    AuthFooter, 
+    AuthFooter,
     QuizCard,
   },
   name: 'IndexPage',
-  data:function() {
+  data: function () {
     return {
-      illustration: require("~/assets/QAimage.svg"),
+      illustration: require('~/assets/QAimage.svg'),
     };
-  }
+  },
 };
 </script>
