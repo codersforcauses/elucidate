@@ -14,7 +14,7 @@
             :rules="field.rules"
             :inputvalue.sync="field.value"
             :id = "field.id" />
-          <button type="submit" :class="invalid ? 'text-darkgrey bg-lightgrey':'text-red bg-white'" class="place-self-center text-l font-bol w-24 h-8 rounded border border-solid mt-5">Submit</button>
+          <button type="submit" :class="invalid ? 'text-darkgrey bg-lightgrey':'text-red bg-white'" class="place-self-center text-l font-bold drop-shadow-lg w-24 h-8 rounded border border-solid mt-5">Submit</button>
           <!-- <button v-else type="submit" :disabled="invalid" class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid mt-5">Submit</button> -->
           </form>
         </ValidationObserver>
