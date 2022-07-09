@@ -12,7 +12,7 @@
           :fieldType="field.type" 
           :isPassword="field.isPassword" />
         </form>
-        <p class="self-end mx-1 mb-1 mt-auto text-white drop-shadow-lg">Continue -></p>
+        <button type="button" class="self-end mx-6 mb-3 mt-auto text-white">Continue</button>
       </TealBox>
     </div>
     <AuthFooter />
