@@ -1,10 +1,12 @@
 <template>
   <div class="p-5 bg-white rounded-xl border border-gray-200 drop-shadow-md">
-    <div class="flex justify-left">
+    <div class="flex justify-between">
       <!-- Quiz tags - looping through an array of tags -->
-      <div v-for="tag in tags" :key="tag.tagLabel" class="flex justify-end">
-        <div class="text-center p-1 mr-2 mb-4
-        bg-yellow-300 rounded-md">{{tag.tagLabel}}
+      <div class="flex flex-wrap">
+        <div v-for="tag in tags" :key="tag.tagLabel">
+          <div class="text-center p-1 mr-2 mb-4
+          bg-yellow-300 rounded-md">{{tag.tagLabel}}
+          </div>
         </div>
       </div>
     </div>
@@ -40,7 +42,9 @@ export default {
       totalHour:'1hr',
       tags:[
         {tagLabel: 'Tag 1'},
-        {tagLabel: 'Tag 2'}
+        {tagLabel: 'Tag 2'},
+        {tagLabel: 'Tag 3'},
+        {tagLabel: 'Tag 4'}
       ]
     };
   }
