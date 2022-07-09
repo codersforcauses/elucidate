@@ -18,12 +18,9 @@
           class="w-full h-10 drop-shadow-lg my-3 px-2"
           v-model="inputValue"
         />
-        <img
-          v-if="isPassword"
-          @mouseover="clickCheck"
-          @mouseleave="clickCheck"
-          class="w-6 mx-2 absolute top-auto bottom-auto left-auto right-0"
-          src="~/assets/eye.svg"
+        <font-awesome-icon
+          :icon="['fas', 'fa-eye']"
+          class="w-6 text-grey-400"
         />
       </div>
       <span class="text-red">{{ errors[0] }}</span>
