@@ -3,36 +3,54 @@
     <AuthHeader :pageTitle="title" />
 
     <div class="flex flex-grow justify-center">
-      <!-- Add sign up form here? -->
       <TealBox>
-        <form class="flex flex-col w-11/12 mx-6 my-8">
-          <InputField v-for="field in fields" 
+        <ValidationObserver v-slot="{ invalid }" class="w-full">
+        <form @submit.prevent="onSubmit" class="flex flex-col w-11/12 mx-6 my-8">
+          <InputField  v-for="field in fields" 
           :key="field.index" 
           :fieldName="field.name" 
           :fieldType="field.type" 
-          :isPassword="field.isPassword" />
+          :isPassword="field.isPassword"
+          :rules="field.rules"
+          :inputvalue.sync="field.value"
+          :id = "field.id" />
+        <button type="submit" :disabled="invalid" class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid mb-7">Submit</button>
         </form>
-        <button type="button" class="self-end mx-6 mb-3 mt-auto text-white">Continue</button>
+         </ValidationObserver>
       </TealBox>
+
     </div>
     <AuthFooter />
   </div>
 </template>
 
 <script>
+import {ValidationObserver} from 'vee-validate';
+
 let count = 0;
-export default {
+export default{
   name: 'signup-page',
+  components: {
+    ValidationObserver,
+  },
   data: () => ({
     title: "Sign-Up",
+    password:'',
+    confirm : '',
+    ispassword: true,
     fields: [
-      { name: "First Name", type: "text", isPassword: false, index: count++ },
-      { name: "Last Name", type: "text", isPassword: false, index: count++ },
-      { name: "Email", type: "text", isPassword: false, index: count++ },
-      { name: "Password", type: "text", isPassword: true, index: count++ },
-      { name: "Confirm Password", type: "text", isPassword: true, index: count++ },
-      { name: "Grade", type: "text", isPassword: false, index: count++ },
+      { name: "First Name", type: "text", isPassword: false, index: count++, id:"firstname", rules:"required",value:"" },
+      { name: "Last Name", type: "text", isPassword: false, index: count++, id:"lastname", rules:"required",value:"" },
+      { name: "Email", type: "text", isPassword: false, index: count++, id:"email", rules:"required|email",value:"" },
+      { name: "Password", type: "text", isPassword: true, index: count++, id:"password", rules:"required|min:6",value:"" },
+      { name: "Password Confirmation", type: "text", isPassword: true, index: count++, id:"confirm", rules:"required|password:@password",value:"" },
+      { name: "Grade", type: "text", isPassword: false, index: count++, id:"grade", rules:"required",value:"" }, 
     ]
-  })
+  }),
+  methods: {
+    onSubmit () {
+      alert('Form has been submitted!');
+    }
+  }
 };
 </script>
