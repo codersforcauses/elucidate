@@ -3,27 +3,10 @@ from django.contrib.auth.models import User
 from . import defines
 
 
-class Quiz_Tag(models.Model):
-    tag = models.CharField(max_length=defines.QUIZ_TAG_MAXLEN)
-    
-    def __str__(self):
-        return self.tag
-
-
-class Quiz_Objective(models.Model):
-    objective = models.CharField(max_length=defines.QUIZ_OBJECTIVE_MAXLEN)
-
-    def __str__(self):
-        return self.objective
-
-
 class Quiz_Details(models.Model):
     name = models.CharField(max_length=defines.QUIZ_NAME_MAXLEN)
     time_limit = models.PositiveIntegerField()
     date_created = models.DateTimeField(auto_now_add=True)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Quiz_Tag)
-    objectives = models.ManyToManyField(Quiz_Objective)
     number_of_questions = models.PositiveIntegerField(default=1)
     
     def __str__(self):
@@ -49,3 +32,19 @@ class Question_Answer(models.Model):
     
     def __str__(self):
         return f"answer: {self.answer}, is correct: {self.is_correct}"
+
+
+class Quiz_Tag(models.Model):
+    quiz_details = models.ManyToManyField(Quiz_Details)
+    tag = models.CharField(max_length=defines.QUIZ_TAG_MAXLEN)
+    
+    def __str__(self):
+        return self.tag
+
+
+class Quiz_Objective(models.Model):
+    quiz_details = models.ManyToManyField(Quiz_Details)
+    objective = models.CharField(max_length=defines.QUIZ_OBJECTIVE_MAXLEN)
+
+    def __str__(self):
+        return self.objective
