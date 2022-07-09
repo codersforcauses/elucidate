@@ -12,7 +12,7 @@
           <AuthFooter />
         </div>
         <div>
-          <img v-bind:src="illustration">
+          <img v-bind:src="illustration" />
         </div>
       </div>
     </div>
@@ -25,16 +25,16 @@
         <div><QuizCard /></div>
       </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
-  data:function() {
+  data: function () {
     return {
-      illustration: require("~/assets/QAimage.svg"),
+      illustration: require('~/assets/QAimage.svg'),
     };
-  }
+  },
 };
 </script>

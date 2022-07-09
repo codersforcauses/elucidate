@@ -1,5 +1,5 @@
 <template>
-  <footer class="relative bottom-1 h-[78px]">
+  <footer class="m-10">
     <div class="flex items-center justify-around text-sm font-bold">
       <div class="flex justify-center w-full">
         <NuxtLink to="/" class="mx-4">Home</NuxtLink>

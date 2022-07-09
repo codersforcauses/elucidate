@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between h-20 shadow-xl">
+  <nav class="sticky top-0 flex items-center justify-between h-20 shadow-xl">
     <div class="flex items-center text-gray-600">
       <NuxtLink to="/" class="h-12 ml-32 -mt-2">
         <nuxt-img
