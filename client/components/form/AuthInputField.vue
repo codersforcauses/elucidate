@@ -8,14 +8,14 @@
           v-if="isPassword && !showText"
           :name="fieldName"
           type="password"
-          class="w-full h-10 drop-shadow-lg my-3 px-2"
+          class="w-full h-10 px-2 my-3 drop-shadow-lg"
           v-model="inputValue"
         />
         <input
           v-else
           :name="fieldName"
           :type="fieldType"
-          class="w-full h-10 drop-shadow-lg my-3 px-2"
+          class="w-full h-10 px-2 my-3 drop-shadow-lg"
           v-model="inputValue"
         />
         <font-awesome-icon

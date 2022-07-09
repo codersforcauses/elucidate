@@ -2,8 +2,8 @@
   <div class="flex flex-col min-h-screen">
     <AuthHeader :pageTitle="title" />
 
-    <div class="flex flex-grow justify-center">
-      <TealBox>
+    <div class="flex justify-center flex-grow">
+      <AuthForm>
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form @submit.prevent="onSubmit" class="flex flex-col w-11/12 mx-6 my-8">
             <InputField  v-for="field in fields" 
@@ -14,22 +14,13 @@
             :rules="field.rules"
             :inputvalue.sync="field.value"
             :id = "field.id" />
-          <button type="submit" :class="invalid ? 'text-darkgrey bg-lightgrey':'text-red bg-white'" class="place-self-center text-l font-bold drop-shadow-lg w-24 h-8 rounded border border-solid mt-5">Submit</button>
-          <!-- <button v-else type="submit" :disabled="invalid" class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid mt-5">Submit</button> -->
+          <button type="submit" :class="invalid ? 'text-darkgrey bg-lightgrey':'text-red bg-white'" class="w-24 h-8 mt-5 font-bold border border-solid rounded place-self-center text-l drop-shadow-lg">Submit</button>
+          <!-- <button v-else type="submit" :disabled="invalid" class="w-24 h-8 mt-5 font-bold bg-white border border-solid rounded place-self-center text-l text-red">Submit</button> -->
           </form>
         </ValidationObserver>
-      </TealBox>
+      </AuthForm>
 
       <!-- Add sign up form here? -->
-      <AuthForm>
-        <form class="flex flex-col w-11/12 mx-6 my-8">
-          <FormTextBox v-for="field in fields" 
-            :key="field.index"
-            :subtext="field.name"
-            :inputType="field.type"/>
-        </form>
-        <p class="self-end mx-1 mb-1 mt-auto text-white drop-shadow-lg">Continue -></p>
-      </AuthForm>
     </div>
     <AuthFooter />
   </div>
@@ -37,12 +28,20 @@
 
 <script>
 import {ValidationObserver} from 'vee-validate';
+import AuthFooter from '~/components/AuthFooter.vue';
+import AuthHeader from '~/components/AuthHeader.vue';
+import AuthForm from '~/components/form/AuthForm.vue';
+import InputField from '~/components/form/AuthInputField.vue';
 
 let count = 0;
 export default{
   name: 'signup-page',
   components: {
     ValidationObserver,
+    AuthFooter,
+    AuthHeader,
+    AuthForm,
+    InputField,
   },
   data: () => ({
     title: "Sign-Up",
