@@ -16,7 +16,10 @@
       </button>
       <p class="place-self-center">
         don't have an account?
-        <a href="sign-up" class="text-blue font-semibold underline underline-offset-2">
+        <a
+          href="sign-up"
+          class="text-blue font-semibold underline underline-offset-2"
+        >
           sign up!
         </a>
       </p>
@@ -28,8 +31,8 @@
 <script>
 import AuthFooter from '~/components/AuthFooter.vue';
 import AuthHeader from '~/components/AuthHeader.vue';
-import AuthForm from '~/components/form/AuthForm.vue';
-import TextBox from '~/components/form/FormTextBox.vue';
+import AuthForm from '~/components/Form/AuthForm.vue';
+import TextBox from '~/components/Form/FormTextBox.vue';
 
 export default {
   components: {
