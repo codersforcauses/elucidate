@@ -1,6 +1,6 @@
 <template>
   <!-- button that directs the user to the log in page -->
-  <a v-bind:href="logInPage"
+  <NuxtLink to="/login"
   data-mdb-ripple="true" data-mdb-ripple-color="light" 
   class="inline-block text-center px-6 py-2.5 mt-6 mb-6 w-full 
   bg-indigo-500 text-white text-xl rounded shadow-md 
@@ -8,16 +8,11 @@
   focus:bg-indigo-600 focus:shadow-lg focus:outline-none focus:ring-0 
   active:bg-indigo-700 active:shadow-lg transition duration-300 ease-in-out">
     <div>I have an account</div>
-  </a>
+  </NuxtLink>
 </template>
 
 <script>
 export default {
-  name: 'haveAccBtn',
-  data:function(){
-    return{
-      logInPage:'http://localhost:8080/login-page',
-    };
-  }
+  name: 'haveAccBtn'
 };
 </script>
