@@ -1,6 +1,6 @@
 <template>
   <div class="font-Montserrat">
-    <SectionNavBar class="sticky top-0" />
+    <SectionNavBar class="sticky top-0 bg-white" />
     <Nuxt class="h-[72vh]" />
     <SectionPageFooter />
   </div>
