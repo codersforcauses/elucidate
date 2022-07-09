@@ -32,7 +32,7 @@ ALLOWED_HOSTS = config(
 # Application definition
 
 INSTALLED_APPS = [
-    "quiz_create",
+    "api.apps.quiz_create",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
