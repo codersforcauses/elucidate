@@ -3,12 +3,12 @@
     <label>{{ fieldName }}</label>
 
     <ValidationProvider :vid="id" :rules="rules" v-slot="{ errors }">
-      <div class="flex items-center">
+      <div class="relative flex items-center">
         <input
           v-if="isPassword && !showText"
           :name="fieldName"
           type="password"
-          class="w-full h-10 drop-shadow-lg my-3 px-2"
+          class="w-full h-10 dropShadow my-3 px-2"
           :value="inputvalue"
           @input="$emit('update:inputvalue', $event.target.value)"
         />
@@ -16,7 +16,7 @@
           v-else
           :name="fieldName"
           :type="fieldType"
-          class="w-full h-10 drop-shadow-lg my-3 px-2"
+          class="w-full h-10 dropShadow my-3 px-2"
           :value="inputvalue"
           @input="$emit('update:inputvalue', $event.target.value)"
         />

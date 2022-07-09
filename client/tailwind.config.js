@@ -28,6 +28,8 @@ module.exports = {
       orange: '#FCD47C',
 
       white: '#FFFFFF',
+      lightgrey: '#E6E6E6',
+      darkgrey: '#ADADAD',
       black: '#000000',
     },
 
