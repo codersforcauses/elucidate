@@ -7,7 +7,7 @@
         <NuxtLink to="/about" class="mx-4">About</NuxtLink>
       </div>
       <div class="flex justify-center w-full">
-        <img src="~/static/logo.png" class="h-14" />
+        <img src="~/assets/logo.png" class="h-14" />
       </div>
       <div class="flex justify-center w-full">
         <NuxtLink to="/about" class="mx-4">Resources</NuxtLink>
