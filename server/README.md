@@ -9,3 +9,10 @@ After setting up your development workspace in the main guide, you can launch a 
 ### Running tests
 
 Tests can be run with the command `python manage.py test`
+
+If you are running through container
+
+```bash
+docker exec -t -i elucidate_server python manage.py
+test
+```
