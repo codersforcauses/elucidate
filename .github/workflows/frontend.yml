@@ -68,3 +68,5 @@ jobs:
 
       - name: Upload Coverage ☂️
         uses: codecov/codecov-action@v3.1.0
+        with:
+          flags: frontend
