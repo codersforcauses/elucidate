@@ -12,7 +12,6 @@
           :fieldType="field.type" 
           :isPassword="field.isPassword"
           :rules="field.rules"
-          :inputvalue.sync="field.value"
           :id = "field.id" />
         <button type="submit" :disabled="invalid" class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid mb-7">Submit</button>
         </form>
@@ -39,12 +38,12 @@ export default{
     confirm : '',
     ispassword: true,
     fields: [
-      { name: "First Name", type: "text", isPassword: false, index: count++, id:"firstname", rules:"required",value:"" },
-      { name: "Last Name", type: "text", isPassword: false, index: count++, id:"lastname", rules:"required",value:"" },
-      { name: "Email", type: "text", isPassword: false, index: count++, id:"email", rules:"required|email",value:"" },
-      { name: "Password", type: "text", isPassword: true, index: count++, id:"password", rules:"required|min:6",value:"" },
-      { name: "Password Confirmation", type: "text", isPassword: true, index: count++, id:"confirm", rules:"required|password:@password",value:"" },
-      { name: "Grade", type: "text", isPassword: false, index: count++, id:"grade", rules:"required",value:"" }, 
+      { name: "First Name", type: "text", isPassword: false, index: count++, id:"firstname", rules:"required" },
+      { name: "Last Name", type: "text", isPassword: false, index: count++, id:"lastname", rules:"required" },
+      { name: "Email", type: "text", isPassword: false, index: count++, id:"email", rules:"required|email"},
+      { name: "Password", type: "text", isPassword: true, index: count++, id:"password", rules:"required|min:6"},
+      { name: "Password Confirmation", type: "text", isPassword: true, index: count++, id:"confirm", rules:"required|password:@password" },
+      { name: "Grade", type: "text", isPassword: false, index: count++, id:"grade", rules:"required" }, 
     ]
   }),
   methods: {
