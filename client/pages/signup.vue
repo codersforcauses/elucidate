@@ -41,12 +41,12 @@ export default{
     ispassword: true,
     btnDisable: true,
     fields: [
-      { name: "First Name", type: "text", isPassword: false, index: count++, id:"firstname", rules:"required",value:"" },
-      { name: "Last Name", type: "text", isPassword: false, index: count++, id:"lastname", rules:"required",value:"" },
-      { name: "Email", type: "text", isPassword: false, index: count++, id:"email", rules:"required|email",value:"" },
-      { name: "Password", type: "text", isPassword: true, index: count++, id:"password", rules:"required|min:6",value:"" },
-      { name: "Password Confirmation", type: "text", isPassword: true, index: count++, id:"confirm", rules:"required|password:@password",value:"" },
-      { name: "Grade", type: "text", isPassword: false, index: count++, id:"grade", rules:"required",value:"" }, 
+      { name: "First Name", type: "text", isPassword: false, index: count++, id:"firstname", rules:"required" },
+      { name: "Last Name", type: "text", isPassword: false, index: count++, id:"lastname", rules:"required" },
+      { name: "Email", type: "text", isPassword: false, index: count++, id:"email", rules:"required|email"},
+      { name: "Password", type: "text", isPassword: true, index: count++, id:"password", rules:"required|min:6"},
+      { name: "Password Confirmation", type: "text", isPassword: true, index: count++, id:"confirm", rules:"required|password:@password" },
+      { name: "Grade", type: "text", isPassword: false, index: count++, id:"grade", rules:"required" }, 
     ]
   }),
   methods: {

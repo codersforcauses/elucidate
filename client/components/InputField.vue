@@ -8,17 +8,15 @@
           v-if="isPassword && !showText"
           :name="fieldName"
           type="password"
-          class="w-full h-10 dropShadow my-3 px-2"
-          :value="inputvalue"
-          @input="$emit('update:inputvalue', $event.target.value)"
+          class="w-full h-10 drop-shadow-lg my-3 px-2"
+          v-model="inputValue"
         />
         <input
           v-else
           :name="fieldName"
           :type="fieldType"
-          class="w-full h-10 dropShadow my-3 px-2"
-          :value="inputvalue"
-          @input="$emit('update:inputvalue', $event.target.value)"
+          class="w-full h-10 drop-shadow-lg my-3 px-2"
+          v-model="inputValue"
         />
         <img
           v-if="isPassword"
@@ -70,7 +68,7 @@ export default {
   },
   data: () => ({
     showText: false,
-    test: 'test',
+    inputValue: ""
   }),
   props: {
     fieldName: String,
@@ -78,7 +76,6 @@ export default {
     isPassword: Boolean,
     id: String,
     rules: String,
-    inputvalue: String,
   },
   methods: {
     clickCheck: function () {
