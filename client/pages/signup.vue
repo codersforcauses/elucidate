@@ -20,6 +20,16 @@
         </ValidationObserver>
       </TealBox>
 
+      <!-- Add sign up form here? -->
+      <AuthForm>
+        <form class="flex flex-col w-11/12 mx-6 my-8">
+          <FormTextBox v-for="field in fields" 
+            :key="field.index"
+            :subtext="field.name"
+            :inputType="field.type"/>
+        </form>
+        <p class="self-end mx-1 mb-1 mt-auto text-white drop-shadow-lg">Continue -></p>
+      </AuthForm>
     </div>
     <AuthFooter />
   </div>
