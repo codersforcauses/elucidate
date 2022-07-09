@@ -17,7 +17,6 @@
         <button type="submit" :disabled="invalid" class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid mb-7">Submit</button>
         </form>
          </ValidationObserver>
-        <p class="self-end mx-1 mb-1 mt-auto text-white drop-shadow-lg">Continue -></p>    
       </TealBox>
 
     </div>

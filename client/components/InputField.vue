@@ -5,7 +5,6 @@
     <ValidationProvider :vid="id" :rules="rules" v-slot="{ errors }">
       <div class="flex items-center">
         <input
-          
           v-if="isPassword && !showText"
           :name="fieldName"
           type="password"
@@ -21,14 +20,13 @@
           :value="inputvalue"
           @input="$emit('update:inputvalue', $event.target.value)"
         />
-        <button
-          type="button"
+        <img
           v-if="isPassword"
-          v-on:click="clickCheck"
-          class="text-center h-10 px-1 mx-1 bg-white border-2 border-green2 rounded"
-        >
-          SHOW
-        </button>
+          @mouseover="clickCheck"
+          @mouseleave="clickCheck"
+          class="w-6 mx-2 absolute top-auto bottom-auto left-auto right-0"
+          src="~/assets/eye.svg"
+        />
       </div>
       <span class="text-red">{{ errors[0] }}</span>
     </ValidationProvider>
