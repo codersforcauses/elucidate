@@ -19,8 +19,11 @@
           v-model="inputValue"
         />
         <font-awesome-icon
+          v-if="isPassword"
           :icon="['fas', 'fa-eye']"
-          class="w-6 text-grey-400"
+          @mouseover="clickCheck"
+          @mouseleave="clickCheck"
+          class="w-6 mx-2 absolute top-auto left-auto bottom-auto right-0 text-gray-400"
         />
       </div>
       <span class="text-red">{{ errors[0] }}</span>

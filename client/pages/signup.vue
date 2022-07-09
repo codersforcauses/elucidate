@@ -6,7 +6,7 @@
       <AuthForm>
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form @submit.prevent="onSubmit" class="flex flex-col w-11/12 mx-6 my-8">
-            <InputField  v-for="field in fields" 
+            <InputField v-for="field in fields" 
             :key="field.index" 
             :fieldName="field.name" 
             :fieldType="field.type" 
@@ -54,7 +54,7 @@ export default{
       { name: "Last Name", type: "text", isPassword: false, index: count++, id:"lastname", rules:"required" },
       { name: "Email", type: "text", isPassword: false, index: count++, id:"email", rules:"required|email"},
       { name: "Password", type: "text", isPassword: true, index: count++, id:"password", rules:"required|min:6"},
-      { name: "Password Confirmation", type: "text", isPassword: true, index: count++, id:"confirm", rules:"required|password:@password" },
+      { name: "Confirm Password", type: "text", isPassword: true, index: count++, id:"confirm", rules:"required|password:@password" },
       { name: "Grade", type: "text", isPassword: false, index: count++, id:"grade", rules:"required" }, 
     ]
   }),
