@@ -10,7 +10,6 @@
             :key="field.index" 
             :fieldName="field.name" 
             :fieldType="field.type" 
-            :isPassword="field.isPassword"
             :rules="field.rules"
             :inputvalue.sync="field.value"
             :id = "field.id" />
@@ -50,12 +49,12 @@ export default{
     ispassword: true,
     btnDisable: true,
     fields: [
-      { name: "First Name", type: "text", isPassword: false, index: count++, id:"firstname", rules:"required" },
-      { name: "Last Name", type: "text", isPassword: false, index: count++, id:"lastname", rules:"required" },
-      { name: "Email", type: "text", isPassword: false, index: count++, id:"email", rules:"required|email"},
-      { name: "Password", type: "text", isPassword: true, index: count++, id:"password", rules:"required|min:6"},
-      { name: "Confirm Password", type: "text", isPassword: true, index: count++, id:"confirm", rules:"required|password:@password" },
-      { name: "Grade", type: "text", isPassword: false, index: count++, id:"grade", rules:"required" }, 
+      { name: "First Name", type: "text", index: count++, id:"firstname", rules:"required" },
+      { name: "Last Name", type: "text", index: count++, id:"lastname", rules:"required" },
+      { name: "Email", type: "text", index: count++, id:"email", rules:"required|email"},
+      { name: "Password", type: "password", index: count++, id:"password", rules:"required|min:6"},
+      { name: "Confirm Password", type: "password", index: count++, id:"confirm", rules:"required|password:@password" },
+      { name: "Grade", type: "text", index: count++, id:"grade", rules:"required" }, 
     ]
   }),
   methods: {

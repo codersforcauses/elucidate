@@ -1,30 +1,22 @@
 <template>
   <div>
     <label>{{ fieldName }}</label>
-
     <ValidationProvider :vid="id" :rules="rules" v-slot="{ errors }">
       <div class="relative flex items-center">
         <input
-          v-if="isPassword && !showText"
           :name="fieldName"
-          type="password"
+          :type="showText ? 'text' : fieldType"
           class="w-full h-10 px-2 my-3 drop-shadow-lg"
           v-model="inputValue"
         />
-        <input
-          v-else
-          :name="fieldName"
-          :type="fieldType"
-          class="w-full h-10 px-2 my-3 drop-shadow-lg"
-          v-model="inputValue"
-        />
-        <font-awesome-icon
-          v-if="isPassword"
-          :icon="['fas', 'fa-eye']"
-          @mouseover="clickCheck"
+        <div 
+          v-if="fieldType == 'password'"
+          @mouseenter="clickCheck"
           @mouseleave="clickCheck"
-          class="w-6 mx-2 absolute top-auto left-auto bottom-auto right-0 text-gray-400"
-        />
+          class="w-10 absolute top-auto left-auto bottom-auto right-0"
+        >
+          <font-awesome-icon :icon="['fas', 'fa-eye']" class="w-6 mx-2" :class="showText ? 'text-blue2' : 'text-gray-400'" />
+        </div>
       </div>
       <span class="text-red">{{ errors[0] }}</span>
     </ValidationProvider>
@@ -66,10 +58,12 @@ export default {
   components: {
     ValidationProvider,
   },
-  data: () => ({
-    showText: false,
-    inputValue: ""
-  }),
+  data: function() {
+    return {
+      showText: false,
+      inputValue: "",
+    }
+  },
   props: {
     fieldName: String,
     fieldType: String,
@@ -79,7 +73,7 @@ export default {
   },
   methods: {
     clickCheck: function () {
-      this.showText = !this.showText;
+      this.showText = !this.showText
     },
   },
 };
