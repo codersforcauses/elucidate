@@ -15,5 +15,5 @@ library.add(fas);
 library.add(fab);
 
 // Register the component globally
-Vue.component('font-awesome-icon', FontAwesomeIcon);
-Vue.component('font-awesome-layers', FontAwesomeLayers);
+Vue.component('FontAwesomeIcon', FontAwesomeIcon);
+Vue.component('FontAwesomeLayers', FontAwesomeLayers);
