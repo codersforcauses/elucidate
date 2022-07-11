@@ -1,13 +1,17 @@
 <template>
   <footer class="relative bottom-1 h-[78px]">
-    <div class="flex items-center justify-around text-sm font-bold">
+    <div class="flex items-center justify-around text-sm font-bold mb-2">
       <div class="flex justify-center w-full">
         <NuxtLink to="/" class="mx-4">Home</NuxtLink>
         <NuxtLink to="/quiz" class="mx-4">Quiz</NuxtLink>
         <NuxtLink to="/about" class="mx-4">About</NuxtLink>
       </div>
       <div class="flex justify-center w-full">
-        <img src="~/static/logo.png" class="h-14" />
+        <nuxt-img
+          src="branding/logo_full.png"
+          class="h-12"
+          alt="Elucidate Logo"
+        />
       </div>
       <div class="flex justify-center w-full">
         <NuxtLink to="/about" class="mx-4">Resources</NuxtLink>

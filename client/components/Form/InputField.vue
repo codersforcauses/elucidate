@@ -68,7 +68,7 @@ export default {
   },
   data: () => ({
     showText: false,
-    inputValue: ""
+    inputValue: '',
   }),
   props: {
     fieldName: String,

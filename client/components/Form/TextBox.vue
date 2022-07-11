@@ -12,10 +12,14 @@
     >
       {{ subtext }}
     </a>
-    <button type="button" v-if="inputType === 'password'" v-on:click="clickCheck" class="h-10 px-1 mx-1 text-center bg-white border-2 rounded border-green2">
+    <button
+      type="button"
+      v-if="inputType === 'password'"
+      v-on:click="clickCheck"
+      class="h-10 px-1 mx-1 text-center bg-white border-2 rounded border-green2"
+    >
       SHOW
     </button>
-
   </div>
 </template>
 
@@ -43,10 +47,10 @@ export default {
     },
   },
   methods: {
-    clickCheck: function() {
-      this.inputType = "text";
-      console.log(this.inputValue)
-    }
-  }
+    clickCheck: function () {
+      this.inputType = 'text';
+      console.log(this.inputValue);
+    },
+  },
 };
 </script>
