@@ -13,10 +13,10 @@
       {{ subtext }}
     </a>
     <button
-      type="button"
       v-if="inputType === 'password'"
-      v-on:click="clickCheck"
+      type="button"
       class="h-10 px-1 mx-1 text-center bg-white border-2 rounded border-green2"
+      @click="clickCheck"
     >
       SHOW
     </button>

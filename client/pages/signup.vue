@@ -1,23 +1,22 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <AuthHeader :pageTitle="title" />
+    <AuthHeader :page-title="title" />
 
     <div class="flex justify-center flex-grow">
       <AuthForm>
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form
-            @submit.prevent="onSubmit"
             class="flex flex-col w-11/12 mx-6 my-8"
+            @submit.prevent="onSubmit"
           >
             <InputField
               v-for="field in fields"
+              :id="field.id"
               :key="field.index"
-              :fieldName="field.name"
-              :fieldType="field.type"
-              :isPassword="field.isPassword"
+              :field-name="field.name"
+              :field-type="field.type"
               :rules="field.rules"
               :inputvalue.sync="field.value"
-              :id="field.id"
             />
             <button
               type="submit"
@@ -44,10 +43,11 @@ import { ValidationObserver } from 'vee-validate';
 
 let count = 0;
 export default {
-  name: 'signupPage',
+  name: 'SignupPage',
   components: {
     ValidationObserver,
   },
+  layout: 'auth',
   data: () => ({
     title: 'Sign-Up',
     password: '',
@@ -58,7 +58,6 @@ export default {
       {
         name: 'First Name',
         type: 'text',
-        isPassword: false,
         index: count++,
         id: 'firstname',
         rules: 'required',
@@ -66,7 +65,6 @@ export default {
       {
         name: 'Last Name',
         type: 'text',
-        isPassword: false,
         index: count++,
         id: 'lastname',
         rules: 'required',
@@ -74,23 +72,20 @@ export default {
       {
         name: 'Email',
         type: 'text',
-        isPassword: false,
         index: count++,
         id: 'email',
         rules: 'required|email',
       },
       {
         name: 'Password',
-        type: 'text',
-        isPassword: true,
+        type: 'password',
         index: count++,
         id: 'password',
         rules: 'required|min:6',
       },
       {
         name: 'Confirm Password',
-        type: 'text',
-        isPassword: true,
+        type: 'password',
         index: count++,
         id: 'confirm',
         rules: 'required|password:@password',
@@ -98,7 +93,6 @@ export default {
       {
         name: 'Grade',
         type: 'text',
-        isPassword: false,
         index: count++,
         id: 'grade',
         rules: 'required',

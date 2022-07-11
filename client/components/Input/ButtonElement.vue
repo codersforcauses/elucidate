@@ -19,15 +19,15 @@
 <script>
 export default {
   name: 'ButtonElement',
-  data: () => ({
-    commonBtnStyles:
-      'h-10 w-32 rounded-md hover:shadow-lg transition-shadow duration-200 ease-in-out',
-  }),
   props: {
     type: {
       type: String,
       default: 'primary',
     },
   },
+  data: () => ({
+    commonBtnStyles:
+      'h-10 w-32 rounded-md hover:shadow-lg transition-shadow duration-200 ease-in-out',
+  }),
 };
 </script>

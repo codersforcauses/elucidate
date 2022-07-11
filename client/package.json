@@ -33,6 +33,7 @@
   "devDependencies": {
     "@babel/core": "7.18.6",
     "@nuxt/image": "0.7.1",
+    "@nuxtjs/eslint-config": "^10.0.0",
     "@nuxtjs/tailwindcss": "5.1.3",
     "@vue/test-utils": "1.3.0",
     "@vue/vue2-jest": "28.0.1",
@@ -46,7 +47,6 @@
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-n": "15.2.4",
     "eslint-plugin-promise": "6.0.0",
-    "eslint-plugin-vue": "9.2.0",
     "jest": "28.1.2",
     "jest-environment-jsdom": "28.1.2",
     "postcss": "8.4.14",

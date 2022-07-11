@@ -1,6 +1,6 @@
 <template>
   <footer class="relative bottom-1 h-[78px]">
-    <div class="flex items-center justify-around text-sm font-bold mb-2">
+    <div class="flex items-center justify-around mb-2 text-sm font-bold">
       <div class="flex justify-center w-full">
         <NuxtLink to="/" class="mx-4">Home</NuxtLink>
         <NuxtLink to="/quiz" class="mx-4">Quiz</NuxtLink>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <hr />
-    <div class="flex items-center justify-center py-8 text-gray-400 text-4xl">
+    <div class="flex items-center justify-center py-8 text-4xl text-gray-400">
       <a href="https://www.facebook.com/AtarSurvivalGuide/">
         <font-awesome-icon :icon="['fab', 'fa-facebook']" class="mx-4" />
       </a>
