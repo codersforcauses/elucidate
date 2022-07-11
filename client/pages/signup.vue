@@ -35,6 +35,7 @@ import InputField from '~/components/form/AuthInputField.vue';
 let count = 0;
 export default{
   name: 'signup-page',
+  layout: 'auth',
   components: {
     ValidationObserver,
     AuthFooter,
