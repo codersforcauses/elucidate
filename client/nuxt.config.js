@@ -1,7 +1,7 @@
 export default {
   server: {
     host: '0.0.0.0',
-    port: "8080"
+    port: '8080',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -51,7 +51,7 @@ export default {
   devServerHandlers: [],
   watchers: {
     webpack: {
-      poll: true
-    }
-  }
+      poll: true,
+    },
+  },
 };
