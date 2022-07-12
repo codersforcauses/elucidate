@@ -1,13 +1,13 @@
 <template>
   <div class="flex grow flex-col items-center content-center">
-    <AuthHeader pageTitle="Sign In" />
+    <AuthHeader page-title="Sign In" />
     <AuthForm>
-      <TextBox header="Email" inputType="text" />
+      <TextBox header="Email" input-type="text" />
       <TextBox
         header="Password"
-        inputType="password"
+        input-type="password"
         subtext="forgot password?"
-        subtextLink="forgot-password"
+        subtext-link="forgot-password"
       />
       <button
         class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid mb-7"
@@ -41,5 +41,6 @@ export default {
     AuthForm,
     TextBox,
   },
+  layout: "auth",
 };
 </script>
