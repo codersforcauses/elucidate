@@ -37,7 +37,7 @@ export default {
   props: {
     to: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     type: {
       type: String,
