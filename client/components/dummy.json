@@ -1,0 +1,52 @@
+[
+    {
+        "quiz_id": 101,
+        "quiz_name": "Basic Maths III",
+        "question_desc": [
+            "Differentiate 5x^2",
+            "What is 8 * 2 * 4",
+            "What is 9 + 10",
+            "How are you going?",
+            "What is 21 * 21?"
+        ],
+        "question_type": [
+            "mcq",
+            "mcq",
+            "mcq",
+            "mcq",
+            "mcq"
+        ],
+        "question_choice": [
+            [
+                "10x",
+                "9x",
+                "8x",
+                "7x"
+            ],
+            [
+                "64",
+                "32",
+                "128",
+                "48"
+            ],
+            [
+                "21",
+                "19",
+                "20",
+                "22"
+            ],
+            [
+                "nice",
+                "bad",
+                "good",
+                "great"
+            ],
+            [
+                "idk",
+                "4021",
+                "4028",
+                "4232"
+            ]
+        ]
+    }
+]

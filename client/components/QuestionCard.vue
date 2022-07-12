@@ -37,13 +37,15 @@
 
 <script>
 import ProgressBar from './ProgressBar.vue'
+import dummyjson from './dummy.json'
 export default {
     name: "QuestionCard",
     data: function () {
         return {
             quizID: "num",
             curr: 1,
-            max: 20
+            max: 20,
+            dummy: dummyjson
         };
     },
     methods: {
@@ -51,6 +53,7 @@ export default {
         if(this.curr == this.max) return // TODO: Fade out styling for Next button (this.currr == this.max)
         this.curr++
         console.log(this.curr);
+        console.log(this.dummy)
       },
       prevQuestion(){
         if(this.curr == 1) return // TODO: Fade out Styling for Prev button (this.curr == 1)
