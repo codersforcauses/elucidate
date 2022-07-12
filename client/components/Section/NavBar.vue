@@ -13,8 +13,8 @@
     </div>
     <div class="flex items-center">
       <SearchBar class="mr-24" />
-      <ButtonElement type="primary" class="mr-3">Log in</ButtonElement>
-      <ButtonElement type="secondary" class="mr-10">Sign up</ButtonElement>
+      <ButtonElement to="/login-page" type="primary" class="mr-3">Log in</ButtonElement>
+      <ButtonElement to="/signup" type="secondary" class="mr-10">Sign up</ButtonElement>
     </div>
   </nav>
 </template>
