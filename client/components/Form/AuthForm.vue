@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex flex-col bg-green2 w-96 pt-11 pb-5 px-9 rounded drop-shadow-lg mb-10"
+    class="flex flex-col items-center w-11/12 max-w-lg bg-green drop-shadow-lg"
   >
-    <slot />
+    <slot></slot>
   </div>
 </template>
 
