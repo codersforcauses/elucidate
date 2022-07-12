@@ -2,15 +2,22 @@
   <div class="flex grow flex-col items-center content-center">
     <AuthHeader page-title="Sign In" />
     <AuthForm>
-      <TextBox header="Email" input-type="text" />
-      <TextBox
-        header="Password"
-        input-type="password"
-        subtext="forgot password?"
-        subtext-link="forgot-password"
+      <InputField
+        field-name="Email"
+        field-type="text"
       />
+      <InputField
+        field-name="Password"
+        field-type="password"
+      />
+      <a
+        href="/forgot-password"
+        class="self-end mr-8 text-xs font-semibold text-white underline underline-offset-2"
+      >
+        forgot password?
+      </a>
       <button
-        class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid mb-7"
+        class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid border-red my-5"
       >
         Login
       </button>
@@ -32,14 +39,14 @@
 import AuthFooter from '~/components/AuthFooter.vue';
 import AuthHeader from '~/components/AuthHeader.vue';
 import AuthForm from '~/components/Form/AuthForm.vue';
-import TextBox from '~/components/Form/FormTextBox.vue';
+import InputField from '~/components/Form/InputField.vue';
 
 export default {
   components: {
     AuthFooter,
     AuthHeader,
     AuthForm,
-    TextBox,
+    InputField,
   },
   layout: "auth",
 };
