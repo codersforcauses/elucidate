@@ -2,7 +2,7 @@
   <div class="relative w-128 pb-4 bg-violet-300 rounded-sm shadow-md">
     <!-- Question Number -->
     <div class="flex bg-teal-100 py-4 rounded-sm">
-      <div class="w-1/4 px-5">
+      <div class="w-1/3 px-5">
         <h1>Question {{this.curr}} / {{this.max}}</h1>
       </div> 
         <ProgressBar 
@@ -18,8 +18,8 @@
     </div>
 
     <!-- Question Choices -->
-    <div>
-      <li v-for="(choice, index) in this.dummy[0].question_choices[this.curr-1]"> {{choice}}</li>
+    <div class = "justify-center grid grid-cols-1 grid-rows-4 my-8 select-none flex">
+      <button class="py-2 px-4 my-5 mx-5 z-50 shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-white hover:bg-black focus:outline-none active:shadow-none" v-for="(choice, index) in this.dummy[0].question_choices[this.curr-1]"> {{choice}}</button>
     </div>
 
     <!-- Next/Back buttons -->
