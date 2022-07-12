@@ -1,18 +1,18 @@
 <template>
   <div class="relative w-128 pb-4 bg-violet-300 rounded-sm shadow-md">
     <!-- Question Number -->
-    <div class="bg-teal-100 py-4 rounded-sm">
-        <h1 class="text-center">
-            Question  {{this.curr}} / {{this.max}}
-            <ProgressBar 
-            :curr = "this.curr"
-            :max = "this.max"
-            />
-        </h1>
+    <div class="flex bg-teal-100 py-4 rounded-sm">
+      <div class="w-1/4 px-5">
+        <h1>Question {{this.curr}} / {{this.max}}</h1>
+      </div> 
+        <ProgressBar 
+        :curr = "this.curr"
+        :max = "this.max"
+        />
     </div>
     <!-- Question Detail -->
     <div class="">
-        <div class="justify-self-start text-sm">
+        <div class="justify-self-start text-sm m-5">
             Question Details 
             A Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
         </div> 
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import ProgressBar from './ProgressBar.vue'
 export default {
     name: "QuestionCard",
     data: function () {
@@ -48,15 +49,13 @@ export default {
     methods: {
       nextQuestion(){
         this.curr++
-        // console.log(this.curr);
+        console.log(this.curr);
       },
       prevQuestion(){
         this.curr--
-        // console.log(this.curr);
+        console.log(this.curr);
       }
     },
     components: { ProgressBar }
 };
-
-import ProgressBar from './ProgressBar.vue';
 </script>
