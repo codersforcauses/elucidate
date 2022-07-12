@@ -12,10 +12,14 @@
     </div>
     <!-- Question Detail -->
     <div class="">
-        <div class="justify-self-start text-sm m-5">
-            Question Details 
-            A Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+        <div class="justify-self-start text-sm m-5 ">
+            {{this.dummy[0].question_desc[this.curr-1]}}
         </div> 
+    </div>
+
+    <!-- Question Choices -->
+    <div>
+      <li v-for="(choice, index) in this.dummy[0].question_choices[this.curr-1]"> {{choice}}</li>
     </div>
 
     <!-- Next/Back buttons -->
@@ -44,7 +48,7 @@ export default {
         return {
             quizID: "num",
             curr: 1,
-            max: 20,
+            max: dummyjson[0].question_desc.length,
             dummy: dummyjson
         };
     },
