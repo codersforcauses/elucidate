@@ -48,10 +48,12 @@ export default {
     },
     methods: {
       nextQuestion(){
+        if(this.curr == this.max) return // TODO: Fade out styling for Next button (this.currr == this.max)
         this.curr++
         console.log(this.curr);
       },
       prevQuestion(){
+        if(this.curr == 1) return // TODO: Fade out Styling for Prev button (this.curr == 1)
         this.curr--
         console.log(this.curr);
       }
