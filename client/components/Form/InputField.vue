@@ -63,11 +63,23 @@ export default {
     ValidationProvider,
   },
   props: {
-    fieldName: String,
-    fieldType: String,
+    fieldName: {
+      type: String,
+      default: 'Field',
+    },
+    fieldType: {
+      type: String,
+      default: 'text',
+    },
     isPassword: Boolean,
-    id: String,
-    rules: String,
+    id: {
+      type: String,
+      default: undefined,
+    },
+    rules: {
+      type: String,
+      default: undefined,
+    },
   },
   data: () => ({
     showText: false,
