@@ -48,5 +48,55 @@
                 "4232"
             ]
         ]
+    },
+    {
+        "quiz_id": 102,
+        "quiz_name": "Geography IV",
+        "question_desc": [
+            "Which of these U.S. states does NOT border Canada?",
+            "Which of these countries was NOT a part of the Soviet Union?",
+            "Which of these cities is NOT a national capital?",
+            "Which of these cities DOESN'T border the Mediterranean Sea?",
+            "Which of these countries was NEVER part of the British Empire?"
+        ],
+        "question_type": [
+            "mcq",
+            "mcq",
+            "mcq",
+            "mcq",
+            "mcq"
+        ],
+        "question_choices": [
+            [
+                "Minnesota",
+                "Indiana",
+                "Maine",
+                "Alaska"
+            ],
+            [
+                "Georgia",
+                "Ukraine",
+                "Belarus",
+                "Poland"
+            ],
+            [
+                "Cairo",
+                "Prague",
+                "Bangkok",
+                "Sydney"
+            ],
+            [
+                "Monaco",
+                "Barcelona",
+                "Alexandria",
+                "Lisbon"
+            ],
+            [
+                "Thailand",
+                "Kenya",
+                "New Zealand",
+                "Ireland"
+            ]
+        ]
     }
 ]

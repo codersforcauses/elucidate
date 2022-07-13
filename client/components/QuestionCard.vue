@@ -13,13 +13,13 @@
     <!-- Question Detail -->
     <div class="">
         <div class="justify-self-start text-sm m-5 ">
-            {{this.dummy[0].question_desc[this.curr-1]}}
+            {{this.quizdata.question_desc[this.curr-1]}}
         </div> 
     </div>
 
     <!-- Question Choices -->
     <div class = "justify-center grid grid-cols-1 grid-rows-4 my-8 select-none flex">
-      <button class="py-2 px-4 my-5 mx-5 z-50 shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-white hover:bg-black focus:outline-none active:shadow-none" v-for="(choice, index) in this.dummy[0].question_choices[this.curr-1]"> {{choice}}</button>
+      <button class="py-2 px-4 my-5 mx-5 z-50 shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-white hover:bg-black focus:outline-none active:shadow-none" v-for="(choice, index) in this.quizdata.question_choices[this.curr-1]"> {{choice}}</button>
     </div>
 
     <!-- Next/Back buttons -->
@@ -46,25 +46,39 @@ export default {
     name: "QuestionCard",
     data: function () {
         return {
-            quizID: "num",
+            quizID: parseInt(this.$route.query.quizid),
             curr: 1,
-            max: dummyjson[0].question_desc.length,
-            dummy: dummyjson
+            max: null,
+            quizdata: null,
         };
     },
     methods: {
       nextQuestion(){
         if(this.curr == this.max) return // TODO: Fade out styling for Next button (this.currr == this.max)
         this.curr++
-        console.log(this.curr);
-        console.log(this.dummy)
       },
       prevQuestion(){
         if(this.curr == 1) return // TODO: Fade out Styling for Prev button (this.curr == 1)
         this.curr--
-        console.log(this.curr);
       }
     },
-    components: { ProgressBar }
+    components: { ProgressBar },
+    created() {
+      // TODO: Use API to process route.query.quizID
+      //process dummyjson
+      for (const quiz of dummyjson) {
+        // console.log(quiz, quiz.quiz_id)
+        if (this.quizID === quiz.quiz_id) {
+          this.quizdata = quiz
+          // console.log(this.quizdata)
+          this.max = this.quizdata.question_choices[0].length
+          break
+        }
+      }
+      if (this.max === null){
+        this.quizdata = dummyjson[0]
+        this.max = this.quizdata.question_choices.length
+      }
+    },
 };
 </script>
