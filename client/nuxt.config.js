@@ -54,7 +54,7 @@ export default {
     webpack: {
       poll: true,
     },
-
+  },
   // Purge CSS Configuration: https://go.nuxtjs.dev/config-purgecss
   purgeCSS: {
     whitelistPatterns: [/svg.*/, /fa.*/],
