@@ -1,7 +1,7 @@
 <template>
     <div>
         <label>{{ header }}</label>
-    </div>>
+    </div>
 </template>
 
 <script>
@@ -9,8 +9,7 @@ export default {
     name: 'TagBox',
     props: {
         header: String,
-        tag: Array;
-
+        tag: Array,
     }
 }
 </script>
