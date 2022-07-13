@@ -46,10 +46,7 @@ export default {
     name: "QuestionCard",
     data: function () {
         return {
-            quizID: parseInt(this.$route.query.quizid),
             curr: 1,
-            max: null,
-            quizdata: null,
         };
     },
     methods: {
@@ -63,22 +60,9 @@ export default {
       }
     },
     components: { ProgressBar },
-    created() {
-      // TODO: Use API to process route.query.quizID
-      //process dummyjson
-      for (const quiz of dummyjson) {
-        // console.log(quiz, quiz.quiz_id)
-        if (this.quizID === quiz.quiz_id) {
-          this.quizdata = quiz
-          // console.log(this.quizdata)
-          this.max = this.quizdata.question_choices[0].length
-          break
-        }
-      }
-      if (this.max === null){
-        this.quizdata = dummyjson[0]
-        this.max = this.quizdata.question_choices.length
-      }
-    },
+    props: [
+      'quizdata',
+      'max'
+    ]
 };
 </script>

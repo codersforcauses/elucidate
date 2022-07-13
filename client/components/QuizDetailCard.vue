@@ -13,7 +13,7 @@
       </div>
       <!-- Questions and time -->
       <div class="grid grid-cols-2 pt-5 px-9">
-        <div class="justify-self-start text-sm">{{ totalQues }}</div>
+        <div class="justify-self-start text-sm">{{ totalQues }} Questions</div>
         <div class="justify-self-end text-sm">{{ time }}</div>
       </div>
       <!-- Objectives -->
@@ -57,21 +57,26 @@
 </template>
 
 <script>
+import dummyjson from './dummy.json'
+
 export default {
   name: 'QuizDetailCard',
   data: function () {
     return {
       quizName: 'Quiz Name',
-      topicName: 'Accounting & Finance',
-      totalQues: '50 questions',
+      pointImg: require('~/assets/point.svg'),
       time: '1 hour',
       aimList: [
         { content: 'Aim no.1' },
         { content: 'Aim no.2' },
         { content: 'Aim no.3' },
       ],
-      pointImg: require('~/assets/point.svg'),
     };
   },
+  props: [
+    'topicName',
+    'totalQues',
+  ]
+  
 };
 </script>
