@@ -1,7 +1,7 @@
 <template>
   <div>
     <label>{{ fieldName }}</label>
-    <ValidationProvider :vid="id" :rules="rules" v-slot="{ errors }">
+    <ValidationProvider :vid="id" :rules="rules" v-slot="{ errors, touched }">
       <div class="relative flex items-center">
         <input
           :name="fieldName"
@@ -9,16 +9,20 @@
           class="w-full h-10 px-2 my-3 drop-shadow-lg"
           v-model="inputValue"
         />
-        <div 
+        <div
           v-if="fieldType == 'password'"
           @mouseenter="clickCheck"
           @mouseleave="clickCheck"
           class="w-10 absolute top-auto left-auto bottom-auto right-0"
         >
-          <font-awesome-icon :icon="['fas', 'fa-eye']" class="w-6 mx-2" :class="showText ? 'text-blue2' : 'text-gray-400'" />
+          <font-awesome-icon
+            :icon="['fas', 'fa-eye']"
+            class="w-6 mx-2"
+            :class="showText ? 'text-blue2' : 'text-gray-400'"
+          />
         </div>
       </div>
-      <span class="text-red">{{ errors[0] }}</span>
+      <span v-if="touched" class="text-red">{{ errors[0] }}</span>
     </ValidationProvider>
   </div>
 </template>
@@ -58,11 +62,11 @@ export default {
   components: {
     ValidationProvider,
   },
-  data: function() {
+  data: function () {
     return {
       showText: false,
-      inputValue: "",
-    }
+      inputValue: '',
+    };
   },
   props: {
     fieldName: String,
@@ -73,7 +77,7 @@ export default {
   },
   methods: {
     clickCheck: function () {
-      this.showText = !this.showText
+      this.showText = !this.showText;
     },
   },
 };
