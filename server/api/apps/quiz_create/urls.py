@@ -3,10 +3,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('quiz/', views.QuizTask),
-    path('quiz/<int:pk>/', views.SpecificQuizTask),
-    # path('quiz/<int:pk>/answer/', views.SpecificAnswerTask),
-    # path('quiz/<int:pk>/answer/<int:pk>', views.SpecificAnswerTask),
-    # path('quiz/<int:pk>/question/', views.SpecificAnswerTask),
-    # path('quiz/<int:pk>/question/<int:pk>', views.SpecificAnswerTask),
+    path('question/', views.QuestionTask),
+    path('question/<int:question_pk>/', views.SpecificQuestionTask),
+    path('question/<int:question_pk>/answer/', views.AnswerTask),
+    path('question/<int:question_pk>/answer/<int:answer_pk>', views.SpecificAnswerTask),
+    path('question/<int:question_pk>/tag', views.TagTask),
 ]
