@@ -4,7 +4,7 @@
       <NuxtLink to="/" class="h-12 ml-32 -mt-2">
         <nuxt-img
           src="branding/logo_full.png"
-          class="h-12 min-w-max max-w-none"
+          class="h-12"
           alt="Elucidate Logo Full"
       /></NuxtLink>
       <NuxtLink to="/" class="mx-4">Home</NuxtLink>
