@@ -24,6 +24,7 @@ It features validation, a label & a password variant.
     - Specifies the validation rules to apply. Can be one or more of the following:
         - `email` Ensures the value is an email address.
         - `required` Ensures the value is not null.
+        - `min:length` Ensures the value is at least `min` characters long.
         - `password:target` Ensures the value matches the argument `target`.
     - String.
     - Optional.
