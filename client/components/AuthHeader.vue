@@ -20,7 +20,10 @@
 export default {
   name: 'AuthHeader',
   props: {
-    pageTitle: String,
+    pageTitle: {
+      type: String,
+      default: '',
+    },
   },
 };
 </script>
