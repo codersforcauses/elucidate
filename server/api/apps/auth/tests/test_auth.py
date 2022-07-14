@@ -11,8 +11,9 @@ class AuthTestCase(APITestCase):
             first_name="John",
             last_name="Doe",
             grade=11,
+            password="password",
         )
-        self.testuser.set_password("password")
+        # self.testuser.set_password("password")
         self.testuser.save()
 
     def test_get_token(self):

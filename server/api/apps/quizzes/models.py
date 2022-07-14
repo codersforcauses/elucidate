@@ -5,7 +5,6 @@ User = get_user_model()
 
 
 class Quiz(models.Model):
-
     CATEGORY_CHOICES = (
         ("General", "General"),
         ("Science", "Science"),

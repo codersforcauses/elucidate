@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,18 +14,51 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Quiz',
+            name="Quiz",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('question', models.CharField(max_length=200, unique=True)),
-                ('answer', models.CharField(max_length=200)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('category', models.CharField(choices=[('General', 'General'), ('Science', 'Science'), ('Maths', 'Maths'), ('History', 'History'), ('Geography', 'Geography'), ('Art', 'Art'), ('Literature', 'Literature'), ('Computer Science', 'Computer Science'), ('Business', 'Business'), ('Engineering', 'Engineering'), ('Medicine', 'Medicine')], default='General', max_length=100)),
-                ('attempts', models.IntegerField(default=0)),
-                ('correct', models.IntegerField(default=0)),
-                ('creator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("question", models.CharField(max_length=200, unique=True)),
+                ("answer", models.CharField(max_length=200)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("General", "General"),
+                            ("Science", "Science"),
+                            ("Maths", "Maths"),
+                            ("History", "History"),
+                            ("Geography", "Geography"),
+                            ("Art", "Art"),
+                            ("Literature", "Literature"),
+                            ("Computer Science", "Computer Science"),
+                            ("Business", "Business"),
+                            ("Engineering", "Engineering"),
+                            ("Medicine", "Medicine"),
+                        ],
+                        default="General",
+                        max_length=100,
+                    ),
+                ),
+                ("attempts", models.IntegerField(default=0)),
+                ("correct", models.IntegerField(default=0)),
+                (
+                    "creator",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
