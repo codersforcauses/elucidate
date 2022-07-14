@@ -28,7 +28,7 @@ jobs:
         python-version: [3.10.5]
 
     services:
-      postgres:
+      db:
         image: postgres
         env:
           POSTGRES_USER: postgres
@@ -57,7 +57,7 @@ jobs:
 
       - name: Cache .venv 📦
         id: cached-poetry-dependencies
-        uses: actions/cache@v3.0.4
+        uses: actions/cache@v3.0.5
         with:
           path: server/.venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
@@ -81,7 +81,10 @@ jobs:
       - name: Run tests 🧪
         run: |
           source .venv/bin/activate
-          python manage.py test
+          coverage run manage.py test
+          coverage json
 
       - name: Upload Coverage ☂️
         uses: codecov/codecov-action@v3.1.0
+        with:
+          flags: backend
