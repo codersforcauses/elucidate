@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,8 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "api.apps.quizzes",
     "api.apps.users",
     "rest_framework",
+    "djoser",
 ]
 
 MIDDLEWARE = [
@@ -78,12 +81,14 @@ WSGI_APPLICATION = "api.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("POSTGRES_DB"),
-        "USER": os.environ.get("POSTGRES_USER"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-        "HOST": "db",
-        "PORT": "5432",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+        # "ENGINE": "django.db.backends.postgresql",
+        # "NAME": os.environ.get("POSTGRES_DB"),
+        # "USER": os.environ.get("POSTGRES_USER"),
+        # "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        # "HOST": "db",
+        # "PORT": "5432",
     }
 }
 
@@ -139,8 +144,25 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
+    "NON_FIELD_ERRORS_KEY": "errors",
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
     "DEFAULT_PAGINATION_CLASS": (
         "rest_framework.pagination.PageNumberPagination"
     ),
     "PAGE_SIZE": 10,
 }
+
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "BLACKLIST_AFTER_ROTATION": False,
+}
+
+# REST_FRAMEWORK = {
+#     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema"
+# }
+
+AUTH_USER_MODEL = "users.User"

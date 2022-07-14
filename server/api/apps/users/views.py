@@ -1,23 +1,18 @@
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, permissions, status
-from .serializers import UserSerializer, GroupSerializer
+from django.shortcuts import render
+from rest_framework import generics, status
 from rest_framework.response import Response
+from .models import User
+from . import serializers
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
+class UserCreateView(generics.CreateAPIView):
+    serializer_class = serializers.UserCreationSerializer
 
-    queryset = User.objects.all().order_by("-date_joined")
-    serializer_class = UserSerializer
-
-
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+            serializer.data, status=status.HTTP_201_CREATED, headers=headers
+        )

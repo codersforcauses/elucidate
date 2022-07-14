@@ -12,6 +12,13 @@ djangorestframework = "^3.13.1"
 Markdown = "^3.3.7"
 django-filter = "^22.1"
 psycopg2 = "^2.9.3"
+Pygments = "^2.12.0"
+django-rest-auth = "^0.9.5"
+django-allauth = "^0.51.0"
+django-cors-headers = "^3.13.0"
+django-phonenumber-field = {extras = ["phonenumbers"], version = "^6.3.0"}
+djoser = "^2.1.0"
+drf-yasg = "^1.20.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
