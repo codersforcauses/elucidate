@@ -26,7 +26,9 @@ class Quiz(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(
-        max_length=100, choices=CATEGORY_CHOICES, default=CATEGORY_CHOICES[0][0]
+        max_length=100,
+        choices=CATEGORY_CHOICES,
+        default=CATEGORY_CHOICES[0][0],
     )
     attempts = models.IntegerField(default=0)
     correct = models.IntegerField(default=0)
