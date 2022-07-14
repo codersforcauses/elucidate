@@ -66,7 +66,7 @@ Other
 
 ### Setting environment variables
 
-1. Create a copy of the `.env.example` file. (do not delete or replace the original `.env.example`).
+1. Create a copy of the `.env.example` file. (Do not delete or replace the original `.env.example`).
 2. Rename the copy to `.env`.
 
 ### Installing Docker
@@ -78,17 +78,17 @@ Other
 - Once docker is installed, try running it. If docker-engine starts successfully, you can proceed.
 - If your docker requires you to install WSL, you can easily do so by the following steps:
     - Open powershell with administrator privileges.
-    - Type `wsl --install`
+    - Type `wsl --install`.
     - Restart your computer and try running `wsl` in cmd. If you get no error, then you are all set.
 - If you get an error about needing to update the kernel, you can do so by installing [this package](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi).
-    - then run `wsl --set-default-version 2`
+    - Then run `wsl --set-default-version 2`.
 - If you are asked to enable Windows Virtualisation Platform, or HyperV then:
     - Run `bcdedit /set hypervisorlaunchtype auto` in an admin privilege Powershell and restart your computer.
 - Once docker-engine is running successfully, you can close the docker window as it should continue running in the background.
 
 #### Linux
 
-- If you are running Linux, Docker compose wil not be automatically installed. You will need to install it manually by following [this guide](https://docs.docker.com/compose/install/).
+- If you are running Linux, Docker compose will not be automatically installed. You will need to install it manually by following [this guide](https://docs.docker.com/compose/install/).
 
 ### Potential Errors While Running The Docker Container
 
@@ -107,7 +107,7 @@ Other
 ![Docker extension](https://cdn.discordapp.com/attachments/701301203849576501/990567061350658128/unknown.png)
 ![Remote containers](https://cdn.discordapp.com/attachments/701301203849576501/990566970493661234/unknown.png)
 
-- Navigate to the remote explorer tab
+- Navigate to the remote explorer tab.
 
 ![Remote explorer tab](https://cdn.discordapp.com/attachments/701301203849576501/990565794536632340/unknown.png)
 
@@ -120,7 +120,7 @@ Other
 
 ![Install extensions](https://cdn.discordapp.com/attachments/701301203849576501/990568208878694400/unknown.png)
 
-- Afterwards, close out of the remote container
+- Afterwards, close out of the remote container.
 
 ![close](https://media.discordapp.net/attachments/701301203849576501/990568354895003648/unknown.png)
 
@@ -130,11 +130,11 @@ Other
 
 - Press the plus symbol.
 
-- Click open folder in container
+- Click open folder in container.
 
 ![open folder](https://media.discordapp.net/attachments/701301203849576501/990568586412183562/unknown.png)
 
-- Select the `server` folder
+- Select the `server` folder.
 
 ![server folder](https://media.discordapp.net/attachments/701301203849576501/990568648055873556/unknown.png)
 
@@ -167,7 +167,7 @@ We will be using MkDocs to generate the documentations for this project. MkDocs 
 1. Decide as a team the issue/s you want to work on.
 2. Assign yourselves to the relevant issue on GitHub.
 3. A branch corresponding to the issue should be created (unless it is a point 5 issue).
-4. checkout the branch corresponding to the issue. It should be in the format of `i<issue number>-<issue_name>`
+4. Checkout the branch corresponding to the issue. It should be in the format of `i<issue number>-<issue_name>`.
 5. Work on your changes.
 6. Make commits and push them to the issue branch.
 7. Open a pull request on GitHub.
