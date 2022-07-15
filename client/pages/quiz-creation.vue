@@ -1,8 +1,5 @@
 <template>
   <Box title="Create a Quiz" :isCentered="true">
-    <TextBox header="Quiz Name:" inputType="text"/>
-    <!--<TextBox header="Tags" inputType="text"/> -->
-    <TimeBox header="Time Limit:" inputType="text"/>
   </Box>
 </template>
 

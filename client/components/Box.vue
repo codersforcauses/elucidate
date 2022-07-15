@@ -1,7 +1,10 @@
 <template>
-    <div class="flex flex-col flex-grow bg-blue w-1/2" >
+    <div class="absolute top-1/4 left-1/4 bg-blue w-1/2" >
         <div :class="`flex ${isCentered ? 'self-center' : ''}`">
-            <h1 class=" w-full bg-green text-3xl font-bold">{{ title }}</h1>
+            <h1 
+                class="font-bold text-center text-3xl bg-green w-full">
+                {{ title }}
+            </h1>
         </div>
     <slot></slot>
     </div>
