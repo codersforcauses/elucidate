@@ -11,7 +11,7 @@
         <font-awesome-icon :icon="['fas', 'circle']" class="text-green" />
         <font-awesome-icon :icon="['fas', 'user']" class="text-lg text-white" />
       </font-awesome-layers>
-      <p class="text-2xl italic">{{ pageTitle }}</p>
+      <p class="text-3xl italic">{{ pageTitle }}</p>
     </div>
   </div>
 </template>
