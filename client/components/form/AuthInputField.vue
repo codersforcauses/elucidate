@@ -12,8 +12,8 @@
         />
         <div
           v-if="fieldType == 'password'"
-          @mouseenter="clickCheck"
-          @mouseleave="clickCheck"
+          @mouseenter="toggleShowText"
+          @mouseleave="toggleShowText"
           class="absolute right-0 top-auto bottom-auto left-auto w-10"
         >
           <font-awesome-icon
@@ -91,7 +91,7 @@ export default {
     rules: String,
   },
   methods: {
-    clickCheck: function () {
+    toggleShowText: function () {
       this.showText = !this.showText;
     },
   },
