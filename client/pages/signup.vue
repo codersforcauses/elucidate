@@ -32,6 +32,7 @@
             <!-- <button v-else type="submit" :disabled="invalid" class="w-24 h-8 mt-5 font-bold bg-white border border-solid rounded place-self-center text-l text-red">Submit</button> -->
           </form>
         </ValidationObserver>
+        <p>Already have an account? <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink></p>
       </AuthForm>
 
       <!-- Add sign up form here? -->
