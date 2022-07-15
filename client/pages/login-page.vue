@@ -2,11 +2,11 @@
   <div class="flex grow flex-col items-center content-center">
     <AuthHeader page-title="Sign In" />
     <AuthForm>
-      <InputField field-name="Email" field-type="text" />
-      <InputField field-name="Password" field-type="password" />
+      <InputField class="w-full" field-name="Email" field-type="text" />
+      <InputField class="w-full" field-name="Password" field-type="password" />
       <a
         href="/forgot-password"
-        class="self-end mr-8 text-xs font-semibold text-white underline underline-offset-2"
+        class="self-end text-xs font-semibold text-white underline underline-offset-2"
       >
         forgot password?
       </a>
