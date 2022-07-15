@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label>{{ fieldName }}</label>
+    <label class="font-semibold">{{ fieldName }}</label>
     <ValidationProvider v-slot="{ errors }" :vid="id" :rules="rules">
       <div class="relative flex items-center -mt-2">
         <input
