@@ -6,6 +6,8 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+
+import datetime
 from decouple import config
 from pathlib import Path
 from django.core.management.commands.runserver import Command as runserver
@@ -142,7 +144,16 @@ REST_FRAMEWORK = {
     ),
     "PAGE_SIZE": 10,
     "NON_FIELD_ERRORS_KEY": "errors",
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
+    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ),
 }
-
-
+JWT_AUTH = {
+    "JWT_EXPIRATION_DELTA": datetime.timedelta(days=7),
+}
 AUTH_USER_MODEL = "users.User"
