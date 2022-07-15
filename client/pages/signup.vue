@@ -3,8 +3,7 @@
     <AuthHeader :pageTitle="title" />
 
     <div class="flex justify-center flex-grow">
-      <AuthForm>
-        <div v-if="!accountCreated">
+      <AuthForm v-if="!accountCreated">
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form
             @submit.prevent="onSubmit"
@@ -33,15 +32,21 @@
             <!-- <button v-else type="submit" :disabled="invalid" class="w-24 h-8 mt-5 font-bold bg-white border border-solid rounded place-self-center text-l text-red">Submit</button> -->
           </form>
         </ValidationObserver>
-        <p>Already have an account? <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink></p>
-        </div>
-        <div v-else>
-          Congratulations! Your account has been created.<br>
-          <NuxtLink to="/quiz" class="text-blue">Click here</NuxtLink> to go to the home page, or <NuxtLink to="/login" class="text-blue">click here</NuxtLink> to begin searching for quizes.
-        </div>
-
+        <p>
+          Already have an account?
+          <NuxtLink to="/login" class="text-blue"
+            >Click here to log in</NuxtLink
+          >
+        </p>
       </AuthForm>
 
+      <AuthForm v-else>
+        Congratulations! Your account has been created.
+        <NuxtLink to="/quiz" class="text-blue"> Click here </NuxtLink>
+        to go to the home page, or
+        <NuxtLink to="/login" class="text-blue"> Click here </NuxtLink>
+        to begin searching for quizes.
+      </AuthForm>
       <!-- Add sign up form here? -->
     </div>
     <AuthFooter />
@@ -121,8 +126,8 @@ export default {
   }),
   methods: {
     onSubmit() {
-      alert('Form has been submitted!')
-      this.accountCreated = true
+      alert('Form has been submitted!');
+      this.accountCreated = true;
     },
   },
 };
