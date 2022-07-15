@@ -10,12 +10,12 @@
     </div>
     <div class="flex items-center">
       <InputSearchBar class="mr-24" />
-      <InputButtonElement type="primary" class="mr-3"
+      <NuxtLink to="/login"><InputButtonElement type="primary" class="mr-3"
         >Log in</InputButtonElement
-      >
-      <InputButtonElement type="secondary" class="mr-10"
+      ></NuxtLink>
+      <NuxtLink to="/signup"><InputButtonElement type="secondary" class="mr-10"
         >Sign up</InputButtonElement
-      >
+      ></NuxtLink>
     </div>
   </nav>
 </template>
