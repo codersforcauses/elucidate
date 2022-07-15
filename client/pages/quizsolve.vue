@@ -34,7 +34,7 @@ export default {
   created() {
     // TODO: Use API to process route.query.quizID
 
-    //process dummyjson
+    // process dummyjson
     for (const quiz of dummyjson) {
       if (this.quizID === quiz.quiz_id) {
         this.quizdata = quiz
