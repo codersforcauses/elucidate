@@ -6,7 +6,8 @@
           src="branding/logo_full.png"
           class="h-12"
           alt="Elucidate Logo Full"
-      /></NuxtLink>
+        />
+      </NuxtLink>
       <NuxtLink to="/" class="mx-4">Home</NuxtLink>
       <NuxtLink to="/quiz" class="mx-4">Quiz</NuxtLink>
       <NuxtLink to="/about" class="mx-4">About</NuxtLink>
