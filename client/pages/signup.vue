@@ -14,6 +14,7 @@
               :key="field.index"
               :fieldName="field.name"
               :fieldType="field.type"
+              :fieldOptions="field.options"
               :rules="field.rules"
               :inputvalue.sync="field.value"
               :id="field.id"
@@ -101,7 +102,8 @@ export default {
       },
       {
         name: 'Grade',
-        type: 'text',
+        type: 'dropdown',
+        options: ['Grade 11', 'Grade 12', 'Other'],
         index: count++,
         id: 'grade',
         rules: 'required',

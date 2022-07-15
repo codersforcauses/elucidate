@@ -4,6 +4,7 @@
     <ValidationProvider :vid="id" :rules="rules" v-slot="{ errors, touched }">
       <div class="relative flex items-center">
         <input
+          v-if="fieldType != 'dropdown'"
           :name="fieldName"
           :type="showText ? 'text' : fieldType"
           class="w-full h-10 px-2 my-3 drop-shadow-lg"
@@ -13,7 +14,7 @@
           v-if="fieldType == 'password'"
           @mouseenter="clickCheck"
           @mouseleave="clickCheck"
-          class="w-10 absolute top-auto left-auto bottom-auto right-0"
+          class="absolute right-0 top-auto bottom-auto left-auto w-10"
         >
           <font-awesome-icon
             :icon="['fas', 'fa-eye']"
@@ -21,6 +22,19 @@
             :class="showText ? 'text-blue2' : 'text-gray-400'"
           />
         </div>
+        <select
+          v-if="fieldType == 'dropdown'"
+          v-model="inputValue"
+          class="w-full h-10 px-2 my-3 drop-shadow-lg"
+        >
+          <option selected disabled value="">Please Choose Grade...</option>
+          <option
+            v-for="(option, index) in fieldOptions"
+            :key="index"
+            :value="option"
+            v-text="option"
+          />
+        </select>
       </div>
       <span v-if="touched" class="text-red">{{ errors[0] }}</span>
     </ValidationProvider>
@@ -71,6 +85,7 @@ export default {
   props: {
     fieldName: String,
     fieldType: String,
+    fieldOptions: Array,
     isPassword: Boolean,
     id: String,
     rules: String,
