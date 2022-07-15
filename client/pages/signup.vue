@@ -4,6 +4,7 @@
 
     <div class="flex justify-center flex-grow">
       <AuthForm>
+        <div v-if="!accountCreated">
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form
             @submit.prevent="onSubmit"
@@ -33,6 +34,12 @@
           </form>
         </ValidationObserver>
         <p>Already have an account? <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink></p>
+        </div>
+        <div v-else>
+          Congratulations! Your account has been created.<br>
+          <NuxtLink to="/quiz" class="text-blue">Click here</NuxtLink> to go to the home page, or <NuxtLink to="/login" class="text-blue">click here</NuxtLink> to begin searching for quizes.
+        </div>
+
       </AuthForm>
 
       <!-- Add sign up form here? -->
@@ -65,6 +72,7 @@ export default {
     confirm: '',
     ispassword: true,
     btnDisable: true,
+    accountCreated: false,
     fields: [
       {
         name: 'First Name',
@@ -113,7 +121,8 @@ export default {
   }),
   methods: {
     onSubmit() {
-      alert('Form has been submitted!');
+      alert('Form has been submitted!')
+      this.accountCreated = true
     },
   },
 };
