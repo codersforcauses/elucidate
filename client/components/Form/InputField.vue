@@ -2,7 +2,7 @@
   <div>
     <label>{{ fieldName }}</label>
     <ValidationProvider v-slot="{ errors }" :vid="id" :rules="rules">
-      <div class="relative flex items-center">
+      <div class="relative flex items-center -mt-2">
         <input
           v-model="inputValue"
           :name="fieldName"
