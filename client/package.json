@@ -24,9 +24,9 @@
     "consola": "2.15.3",
     "core-js": "3.23.3",
     "nuxt": "2.15.8",
-    "vue": "2.7.4",
-    "vue-server-renderer": "2.7.4",
-    "vue-template-compiler": "2.7.4",
+    "vue": "2.7.5",
+    "vue-server-renderer": "2.7.5",
+    "vue-template-compiler": "2.7.5",
     "webpack": "4.46.0"
   },
   "devDependencies": {
