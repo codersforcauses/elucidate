@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from . import defines
 
 from datetime import timedelta
@@ -31,7 +32,13 @@ class Tag(models.Model):
 
 
 class Question(models.Model):
-    text = models.TextField(blank=False)
+
+    class QuestionType(models.TextChoices):
+        MULTICHOICE = "MC", _("Multiple Choice")
+        SHORT_ANSWER = "SA", _("Short Answer")
+
+
+    text = models.TextField(blank=True, default="")
     question_type = models.CharField(max_length=2,
                                      choices=QuestionType.choices,
                                      default=QuestionType.MULTICHOICE)
@@ -39,10 +46,6 @@ class Question(models.Model):
     
     def __str__(self):
         return self.text
-
-    class QuestionType(models.TextChoices):
-        MULTICHOICE = "MC", _("Multiple Choice")
-        SHORT_ANSWER = "SA", _("Short Answer")
 
 
 class Answer(models.Model):
