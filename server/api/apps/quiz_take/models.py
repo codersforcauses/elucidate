@@ -1,11 +1,13 @@
 from django.db import models
 from . import defines
 
+from datetime import timedelta
+
 
 class Quiz(models.Model):
     name = models.CharField(max_length=defines.QUIZ_NAME_MAXLEN)
     subject = models.CharField(max_length=defines.QUIZ_SUBJECT_MAXLEN)
-    time_limit = models.DurationField()
+    time_limit = models.DurationField(default=timedelta(minutes=5))
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     
     def __str__(self):
@@ -29,15 +31,23 @@ class Tag(models.Model):
 
 
 class Question(models.Model):
-    text = models.TextField(blank=True, null=True)
+    text = models.TextField(blank=False)
+    question_type = models.CharField(max_length=2,
+                                     choices=QuestionType.choices,
+                                     default=QuestionType.MULTICHOICE)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.text
 
+    class QuestionType(models.TextChoices):
+        MULTICHOICE = "MC", _("Multiple Choice")
+        SHORT_ANSWER = "SA", _("Short Answer")
+
 
 class Answer(models.Model):
     text = models.CharField(max_length=defines.ANSWER_TEXT_MAXLEN)
+    is_correct = models.BooleanField(default=False)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     
     def __str__(self):
