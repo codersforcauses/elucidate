@@ -31,7 +31,7 @@
         <label for="javascript">JavaScript</label> -->
         
         <button class="py-2 px-4 my-5 mx-5 z-50 shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-white hover:text-gray-700 hover:bg-gray-200 focus:outline-none active:shadow-none" v-for="(choice, index) in this.quizdata.question_choices[this.curr-1]">
-          <input type="radio" :id="index" name="answer_form" :value="choice">
+          <input type="radio" :id="index" name="answer_form" :value="choice" v-model="answer">
           <label :for="index">{{choice}}
           <svg aria-hidden="true" class="ml-3 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
           </label><br>
@@ -67,12 +67,14 @@ export default {
     data: function () {
         return {
             curr: 1,
+            answer: null
         };
     },
     methods: {
       nextQuestion(){
         if(this.curr == this.max) return // TODO: Fade out styling for Next button (this.currr == this.max)
         this.curr++
+        console.log(this.answer)
       },
       prevQuestion(){
         if(this.curr == 1) return // TODO: Fade out Styling for Prev button (this.curr == 1)
