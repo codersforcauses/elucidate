@@ -38,7 +38,7 @@ export default {
   methods: {
     // Set the interval to increment time passed by 1 every 60000 ms or 1 minute 
     startTimer() {
-      this.timeInterval = setInterval(() => (this.timePassed += 1), 1000);
+      this.timeInterval = setInterval(() => (this.timePassed += 1), 60000);
     },
 
     // Clear the interval 
