@@ -1,6 +1,6 @@
 <template>
-  <div class="font-Montserrat">
-    <Nuxt class="h-[72vh]" />
+  <div>
+    <Nuxt class="min-h-[72vh]" />
   </div>
 </template>
 

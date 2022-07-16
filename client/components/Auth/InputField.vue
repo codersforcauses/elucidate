@@ -1,14 +1,14 @@
 <template>
   <div>
-    <label>{{ fieldName }}</label>
+    <label class="font-semibold">{{ fieldName }}</label>
     <ValidationProvider :vid="id" :rules="rules" v-slot="{ errors, touched }">
-      <div class="relative flex items-center">
+      <div class="relative flex items-center -mt-2">
         <input
           v-if="fieldType != 'dropdown'"
+          v-model="inputValue"
           :name="fieldName"
           :type="showText ? 'text' : fieldType"
           class="w-full h-10 px-2 my-3 drop-shadow-lg"
-          v-model="inputValue"
         />
         <div
           v-if="fieldType == 'password'"
@@ -83,13 +83,28 @@ export default {
     };
   },
   props: {
-    fieldName: String,
-    fieldType: String,
-    fieldOptions: Array,
+    fieldName: {
+      type: String,
+      default: 'Field',
+    },
+    fieldType: {
+      type: String,
+      default: 'text',
+    },
     isPassword: Boolean,
-    id: String,
-    rules: String,
+    id: {
+      type: String,
+      default: undefined,
+    },
+    rules: {
+      type: String,
+      default: undefined,
+    },
   },
+  data: () => ({
+    showText: false,
+    inputValue: '',
+  }),
   methods: {
     toggleShowText: function () {
       this.showText = !this.showText;
