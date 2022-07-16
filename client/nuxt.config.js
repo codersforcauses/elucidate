@@ -21,7 +21,10 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
 
-  css: ['@fontsource/montserrat/variable.css', '@fortawesome/fontawesome-svg-core/styles.css'],
+  css: [
+    '@fontsource/montserrat/variable.css',
+    '@fortawesome/fontawesome-svg-core/styles.css',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~/plugins/fontawesome.js'],
@@ -50,9 +53,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: [
-      "vee-validate/dist/rules"
-    ],
+    transpile: ['vee-validate/dist/rules'],
   },
   devServerHandlers: [],
 
