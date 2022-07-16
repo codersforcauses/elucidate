@@ -1,8 +1,8 @@
 <template>
-    <div class="place-self-center bg-blue w-1/2" >
+    <div class="place-self-center bg-blue2 w-1/2 rounded" >
         <div :class="`flex ${isCentered ? 'self-center' : ''}`">
             <h1 
-                class="w-full text-center font-bold text-xl bg-green p-7">
+                class="w-full text-center font-bold text-xl bg-green2 p-7 rounded">
                 {{ title }}
             </h1>
         </div>

@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <label class="place-self-center text-white text-xl font-bold">{{ header }}</label>
-        <input :type="inputType" />
+    <div class="mt-10 mb-5">
+        <label class="p-10 text-white text-xl font-bold">{{ header }}</label>
+        <input class="p-0 m-0 w-1/2 h-9 rounded shadow-sm" :type="inputType" />
     </div>
 </template>
 
