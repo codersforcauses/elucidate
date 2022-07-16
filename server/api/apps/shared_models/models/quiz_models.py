@@ -7,6 +7,7 @@ class Question(models.Model):
     class QuestionType(models.TextChoices):
         MULTICHOICE = "MC", _("Multiple Choice")
         NUMERIC = "NA", _("Numerical Answer")
+        SHORT_ANSWER = "SA", _("Short Answer")
 
 
     text = models.TextField(blank=True, default="")
