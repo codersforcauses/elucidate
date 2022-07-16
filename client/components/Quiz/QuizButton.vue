@@ -1,7 +1,7 @@
 <template>
   <button
     :class="`inline-flex rounded-full shadow-sm 
-    ${'bg-' + colour} ${'text-' + textColour} 
+    ${colour} ${textColour} 
     font-bold px-7 py-1`"
   >
     <slot />
@@ -15,13 +15,16 @@ export default {
   props: {
     colour: {
       type: String,
-      default: 'red',
+      default: 'bg-red',
+      validator(v) {
+        return v.startsWith('bg-');
+      },
     },
   },
   data() {
     return {
       // Display white text on dark backgrounds & vice-versa
-      textColour: 'white',
+      textColour: 'text-white',
     };
   },
   mounted() {
@@ -31,9 +34,9 @@ export default {
       .getPropertyValue('background-color');
 
     if (Color(buttonColour).isLight()) {
-      this.textColour = 'black';
+      this.textColour = 'text-black';
     } else {
-      this.textColour = 'white';
+      this.textColour = 'text-white';
     }
   },
 };
