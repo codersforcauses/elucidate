@@ -24,3 +24,6 @@ There are three shared quiz models:
 ## Serializers
 The `shared_models` app provides serializers for each of the above models.
 
+## Testing
+Unit tests can be run from within the backend Docker container using the command `python manage.py test` (more verbosely if executing from a terminal not SSH'd into the container: `docker exec -it elucidate_server python manage.py test`). Ensure you are executing the command from the same directory as `manage.py`.
+
