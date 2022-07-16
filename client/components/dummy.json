@@ -47,6 +47,10 @@
                 "4028",
                 "4232"
             ]
+        ],
+        "tags":[
+            "Maths",
+            "Problem/Solving"
         ]
     },
     {
@@ -97,6 +101,9 @@
                 "New Zealand",
                 "Ireland"
             ]
+        ], "tags":[
+            "Geography",
+            "Humanities"
         ]
     }
 ]
