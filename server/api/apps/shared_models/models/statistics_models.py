@@ -1,6 +1,5 @@
 from django.db import models
-from . import defines
-from .quiz_models import *
+from .quiz_models import Question, Answer
 from django.contrib.auth.models import User
 
 from datetime import timedelta
@@ -18,4 +17,3 @@ class QuestionResponse(models.Model):
 
     def __str__(self):
         return str((self.question, self.selected_answer))
-

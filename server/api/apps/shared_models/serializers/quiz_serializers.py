@@ -1,5 +1,5 @@
-from rest_framework import routers, serializers, viewsets
-from ..models.quiz_models import *
+from rest_framework import serializers
+from ..models.quiz_models import Question, Tag, Answer
 
 
 class QuestionSerializer(serializers.HyperlinkedModelSerializer):
@@ -7,7 +7,7 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
         model = Question
         fields = ["id", "text", "question_type", "date_created"]
 
-        
+
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tag
@@ -18,4 +18,3 @@ class AnswerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Answer
         fields = ["id", "text", "is_correct", "question"]
-

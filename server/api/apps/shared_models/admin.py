@@ -22,4 +22,3 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Tag)
 admin.site.register(QuestionResponse)
-
