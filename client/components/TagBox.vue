@@ -10,7 +10,6 @@ export default {
     props: {
         header: String,
         tag: Array,
-
     }
 }
 </script>

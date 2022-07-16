@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageFooter renders correctly 1`] = `
+<footer
+  class="relative bottom-1 h-[78px]"
+>
+  <div
+    class="flex items-center justify-around mb-2 text-sm font-bold"
+  >
+    <div
+      class="flex justify-center w-full"
+    >
+      <nuxtlink
+        class="mx-4"
+        to="/"
+      >
+        Home
+      </nuxtlink>
+       
+      <nuxtlink
+        class="mx-4"
+        to="/quiz"
+      >
+        Quiz
+      </nuxtlink>
+       
+      <nuxtlink
+        class="mx-4"
+        to="/about"
+      >
+        About
+      </nuxtlink>
+    </div>
+     
+    <div
+      class="flex justify-center w-full"
+    >
+      <nuxt-img
+        alt="Elucidate Logo"
+        class="h-12"
+        src="branding/logo_full.png"
+      />
+    </div>
+     
+    <div
+      class="flex justify-center w-full"
+    >
+      <nuxtlink
+        class="mx-4"
+        to="/about"
+      >
+        Resources
+      </nuxtlink>
+       
+      <nuxtlink
+        class="mx-4"
+        to="/"
+      >
+        Contact
+      </nuxtlink>
+       
+      <nuxtlink
+        class="mx-4"
+        to="/quiz"
+      >
+        Sponsors
+      </nuxtlink>
+    </div>
+  </div>
+   
+  <hr />
+   
+  <div
+    class="flex items-center justify-center py-8 text-4xl text-gray-400"
+  >
+    <a
+      href="https://www.facebook.com/AtarSurvivalGuide/"
+    >
+      <font-awesome-icon
+        class="mx-4"
+        icon="fab,fa-facebook"
+      />
+    </a>
+     
+    <a
+      href="https://www.instagram.com/atar_survival_guide/"
+    >
+      <font-awesome-icon
+        class="mx-4"
+        icon="fab,fa-instagram"
+      />
+    </a>
+     
+    <a
+      href="https://www.youtube.com/channel/UC3d8MUFzDD01IoeJCDazSpg"
+    >
+      <font-awesome-icon
+        class="mx-4"
+        icon="fab,fa-youtube"
+      />
+    </a>
+     
+    <a
+      href="https://www.linkedin.com/company/atar-survival-guide/"
+    >
+      <font-awesome-icon
+        class="mx-4"
+        icon="fab,fa-linkedin"
+      />
+    </a>
+  </div>
+</footer>
+`;
