@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <NavBar class="sticky top-0 z-50" />
-    <Nuxt class="min-h-[72vh]" />
-    <PageFooter />
+  <div class="flex flex-col min-h-screen">
+    <NavBar/>
+    <Nuxt class="my-auto"/>
+    <PageFooter/>
   </div>
 </template>
 
