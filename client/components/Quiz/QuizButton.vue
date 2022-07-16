@@ -1,8 +1,8 @@
 <template>
   <button
     :class="`inline-flex rounded-full shadow-sm 
-    ${'bg-' + colour} 
-    text-${textColour} font-bold px-7 py-1`"
+    ${'bg-' + colour} ${'text-' + textColour} 
+    font-bold px-7 py-1`"
   >
     <slot />
   </button>
@@ -31,9 +31,9 @@ export default {
       .getPropertyValue('background-color');
 
     if (Color(buttonColour).isLight()) {
-      return 'black';
+      this.textColour = 'black';
     } else {
-      return 'white';
+      this.textColour = 'white';
     }
   },
 };
