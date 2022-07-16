@@ -1,6 +1,8 @@
 <template>
   <button
-    :class="`inline-flex rounded-full shadow-sm bg-${colour} text-${textColour} font-bold px-7 py-1`"
+    :class="`inline-flex rounded-full shadow-sm 
+    ${'bg-' + colour} 
+    text-${textColour} font-bold px-7 py-1`"
   >
     <slot />
   </button>
