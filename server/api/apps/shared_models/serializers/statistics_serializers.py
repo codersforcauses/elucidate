@@ -1,5 +1,5 @@
 from rest_framework import routers, serializers, viewsets
-from models.statistics_models import *
+from ..models.statistics_models import *
 
 
 class QuestionResponseSerializer(serializers.HyperlinkedModelSerializer):

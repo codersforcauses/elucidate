@@ -1,5 +1,5 @@
 from rest_framework import routers, serializers, viewsets
-from models.quiz_models import *
+from ..models.quiz_models import *
 
 
 class QuestionSerializer(serializers.HyperlinkedModelSerializer):
