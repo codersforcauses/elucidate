@@ -1,12 +1,13 @@
 from django.db import models
 from . import defines
 from .quiz_models import *
+from django.contrib.auth.models import User
 
 from datetime import timedelta
 
 
 class QuestionResponse(models.Model):
-    # TODO later: add in a field for the user who submitted the response
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     selected_answer = models.ForeignKey(Answer,
                                         on_delete=models.CASCADE,
