@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label class="text-white text-xl font-bold">{{ header }}</label>
+        <label class="place-self-center text-white text-xl font-bold">{{ header }}</label>
         <input :type="inputType" />
     </div>
 </template>

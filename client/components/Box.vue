@@ -1,8 +1,8 @@
 <template>
-    <div class="absolute top-1/4 left-1/4 bg-blue w-1/2" >
+    <div class="place-self-center bg-blue w-1/2" >
         <div :class="`flex ${isCentered ? 'self-center' : ''}`">
             <h1 
-                class="font-bold text-center text-3xl bg-green w-full">
+                class="w-full text-center font-bold text-xl bg-green p-7">
                 {{ title }}
             </h1>
         </div>
