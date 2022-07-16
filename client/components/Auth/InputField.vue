@@ -92,6 +92,10 @@ export default {
       default: 'text',
     },
     isPassword: Boolean,
+    fieldOptions: {
+      type: Array,
+      default: undefined,
+    },
     id: {
       type: String,
       default: undefined,

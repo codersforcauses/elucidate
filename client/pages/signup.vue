@@ -55,10 +55,10 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import AuthFooter from '~/components/AuthFooter.vue';
-import AuthHeader from '~/components/AuthHeader.vue';
-import AuthForm from '~/components/form/AuthForm.vue';
-import InputField from '~/components/form/AuthInputField.vue';
+import AuthFooter from '~/components/Auth/AuthFooter.vue';
+import AuthHeader from '~/components/Auth/AuthHeader.vue';
+import AuthForm from '~/components/Auth/AuthForm.vue';
+import InputField from '~/components/Auth/InputField.vue';
 
 let count = 0;
 export default {
