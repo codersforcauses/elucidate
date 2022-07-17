@@ -8,7 +8,7 @@
         >
           <!-- to be Profile pic -->
           <nuxt-img
-            src="branding/logo.svg"
+            :src="User.profPic ? User.profPic : ''"
             class="h-52"
             :alt="User.name + ' profile picture'"
           />
@@ -42,9 +42,9 @@ export default {
     Temp_testPerson: {
       name: 'Lorem Ipsum',
       email: 'LoremIpsum@gmail.com',
-      profPicUrl: '',
+      profPic: 'branding/logo.svg',
     },
-    
+
   }),
   beforeMount() {
     this.User = this.getUserData();
