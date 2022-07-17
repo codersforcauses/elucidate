@@ -5,13 +5,13 @@
 
         <!-- background image, along with alignment of elements -->
         <div
-          class="bg-[url('~/static/temp_Shapebg.svg')] justify-center bg-contain bg-no-repeat bg-center h-full w-full"
+          class="bg-[url('~/static/temp_Shapebg.svg')] justify-center content-center bg-contain bg-no-repeat bg-center h-full w-full"
         >
           <!-- to be Profile pic -->
           <div class=""></div>
 
           <!-- to be Welcome text -->
-          <div class="text-center">Welcome {{ Temp_testPerson.name }}</div>
+          <div class="text-center font-bold text-xl">Welcome {{ Temp_testPerson.name }}</div>
 
           <!-- to be your Email -->
           <div class="text-center">sample {{ Temp_testPerson.email }}</div>
