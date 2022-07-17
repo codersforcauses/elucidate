@@ -11,14 +11,17 @@
 
           <!-- to be Welcome text -->
           <div class="">
+            Welcome {{Temp_testPerson.name}}
           </div>
 
           <!-- to be your Email -->
           <div class="">
+            sample {{Temp_testPerson.email}}
           </div>
           
           <!-- to be Edit Profile Button-->
           <div class="">
+            edit profile
           </div>
         </div>
       </div>
@@ -31,8 +34,18 @@
   </main>
 </template>
 
-<script>4
+<script>
+
 export default {
   name: 'UserDashboard',
+
+  data: () => ({
+    Temp_testPerson: {
+        name: 'Lorem Ipsum',
+        email: 'LoremIpsum@gmail.com',
+        profPicUrl: '',
+    },
+  }),
+
 };
 </script>
