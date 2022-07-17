@@ -1,8 +1,6 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <NavBar/>
-    <Nuxt class="my-auto"/>
-    <PageFooter/>
+  <div>
+    <Nuxt class="min-h-[72vh]" />
   </div>
 </template>
 
