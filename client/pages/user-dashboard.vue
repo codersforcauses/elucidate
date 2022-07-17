@@ -1,10 +1,10 @@
 <template>
   <main>
     <div class="flex h-screen">
-      <div class="p-9 flex-none w-1/3 h-full bg-blue4">
+      <div class="p-9 flex-none w-1/3 h-full">
         <!-- background image, along with alignment of elements -->
         <div
-          class="flex flex-col justify-center items-center content-evenly space-y-3 h-full bg-[url('~/static/temp_Shapebg.svg')] bg-contain bg-no-repeat bg-center bg-green4"
+          class="flex flex-col justify-center items-center content-evenly space-y-3 h-full bg-[url('~/static/temp_Shapebg.svg')] bg-contain bg-no-repeat bg-center"
         >
           <!-- to be Profile pic -->
           <nuxt-img
