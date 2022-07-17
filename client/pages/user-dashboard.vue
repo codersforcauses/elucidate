@@ -4,7 +4,7 @@
       <div class="p-9 flex-none w-1/3 h-full bg-blue4">
         <!-- background image, along with alignment of elements -->
         <div
-          class="flex h-full bg-[url('~/static/temp_Shapebg.svg')] bg-contain bg-no-repeat bg-center bg-green4"
+          class="flex flex-col justify-center items-center content-evenly h-full bg-[url('~/static/temp_Shapebg.svg')] bg-contain bg-no-repeat bg-center bg-green4"
         >
           <!-- to be Profile pic -->
           <nuxt-img
