@@ -126,11 +126,14 @@ export default {
         postData[field.id] = e.target.elements[field.name].value;
       });
 
-      await this.$axios.post('auth/register/', postData).then(data => console.log(data)).catch((error) => {
-        console.log(error.response.data);
-        // TODO: Display error messages on duplicate email and form errors
-        this.$router.push('signup-error');
-      });
+      await this.$axios
+        .post('auth/register/', postData)
+        .then((data) => console.log(data))
+        .catch((error) => {
+          console.log(error.response.data);
+          // TODO: Display error messages on duplicate email and form errors
+          this.$router.push('signup-error');
+        });
 
       this.$router.push('login');
     },
