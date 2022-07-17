@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-col">
+<div>
+  <!-- <div class="fixed inset-0 z-0" :style="{backgroundImage: `url(${bgImage}`}"/> -->
+  <div class="flex flex-col z-10">
       <Box title="Create a Quiz" :is-centered="true">
       <TextBox header='Quiz Name:'/>
       <TimeBox header='Time Limit:'/>
@@ -11,7 +13,8 @@
         <button class="inline-flex rounded-full shadow-sm bg-red text-white font-bold px-7 py-1">Next</button>
       </div>
       </Box>
-  </div>
+</div>
+</div>
 </template>
 
 <script>
@@ -19,6 +22,7 @@ import Box from '~/components/Box.vue';
 import TextBox from '~/components/TextBox.vue';
 import TimeBox from '~/components/TimeBox.vue';
 import ObjectivesBox from '~/components/ObjectivesBox.vue';
+import image from '~/assets/ambient_shapes.png'
 
 export default {
   components: {
@@ -27,5 +31,8 @@ export default {
     TimeBox,
     ObjectivesBox,
   },
+    data: () => ({
+  bgImage: image,
+    }),
 };
 </script>
