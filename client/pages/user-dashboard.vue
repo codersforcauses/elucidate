@@ -8,7 +8,7 @@
         >
           <!-- to be Profile pic -->
           <nuxt-img
-            :src="User.profPic ? User.profPic : ''"
+            :src="User.profPic ? User.profPic : '/avatar.svg'"
             class="h-52"
             :alt="User.name + ' profile picture'"
           />
