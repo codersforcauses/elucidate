@@ -9,7 +9,7 @@
           <!-- to be Profile pic -->
           <nuxt-img
             src="branding/logo.svg"
-            class="h-12"
+            class="h-52"
             :alt="Temp_testPerson.name + ' profile picture'"
           />
 
