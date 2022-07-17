@@ -1,9 +1,9 @@
 <template>
   <main>
     <div class="bg-red flex items-center justify-between h-full shadow-xl">
-      <div class="bg-blue flex flex-row h-12 ml-32 -mt-2">
+      <div class="bg-green flex-none w-1/4 h-full">
       </div>
-      <div class="bg-green flex flex-row h-12 ml-32 -mt-2 ">  asdf!
+      <div class="bg-yellow flex-1 flex-row h-full">
       </div>
     </div>
   </main>
