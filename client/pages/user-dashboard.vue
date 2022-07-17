@@ -21,7 +21,9 @@
           <!-- to be your Email -->
           <div class="font-thin">{{ Temp_testPerson.email }}</div>
 
-          <ButtonElement class="" to="/edit-Profile" type="primary" class="">Edit Profile</ButtonElement>
+          <ButtonElement class="" to="/edit-Profile" type="primary" class=""
+            >Edit Profile</ButtonElement
+          >
         </div>
       </div>
 
