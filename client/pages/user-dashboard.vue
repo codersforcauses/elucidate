@@ -14,7 +14,7 @@
           <div class="text-center font-bold text-xl">Welcome {{ Temp_testPerson.name }}</div>
 
           <!-- to be your Email -->
-          <div class="text-center">sample {{ Temp_testPerson.email }}</div>
+          <div class="text-center font-thin">{{ Temp_testPerson.email }}</div>
 
           <!-- to be Edit Profile Button-->
           <div class="text-center">edit profile</div>
