@@ -1,7 +1,7 @@
 <template>
   <div>
     <label class="font-semibold">{{ fieldName }}</label>
-    <ValidationProvider :vid="id" :rules="rules" v-slot="{ errors, touched }">
+    <ValidationProvider v-slot="{ errors, touched }" :vid="id" :rules="rules">
       <div class="relative flex items-center -mt-2">
         <input
           v-if="fieldType != 'dropdown'"
@@ -12,9 +12,9 @@
         />
         <div
           v-if="fieldType == 'password'"
+          class="absolute right-0 top-auto bottom-auto left-auto w-10"
           @mouseenter="toggleShowText"
           @mouseleave="toggleShowText"
-          class="absolute right-0 top-auto bottom-auto left-auto w-10"
         >
           <font-awesome-icon
             :icon="['fas', 'fa-eye']"
@@ -25,9 +25,12 @@
         <select
           v-if="fieldType == 'dropdown'"
           v-model="inputValue"
+          :name="fieldName"
           class="w-full h-10 px-2 my-3 drop-shadow-lg"
         >
-          <option selected disabled value="">Please Choose Grade...</option>
+          <option selected disabled value="">
+            Please Choose Your Grade...
+          </option>
           <option
             v-for="(option, index) in fieldOptions"
             :key="index"
@@ -75,12 +78,6 @@ export default {
   name: 'InputField',
   components: {
     ValidationProvider,
-  },
-  data: function () {
-    return {
-      showText: false,
-      inputValue: '',
-    };
   },
   props: {
     fieldName: {

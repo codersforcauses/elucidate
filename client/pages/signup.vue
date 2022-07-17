@@ -1,23 +1,23 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <AuthHeader :pageTitle="title" />
+    <AuthHeader :page-title="title" />
 
     <div class="flex justify-center flex-grow">
       <AuthForm v-if="!accountCreated">
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form
-            @submit.prevent="onSubmit"
             class="flex flex-col w-11/12 mx-6 my-8"
+            @submit.prevent="register"
           >
             <InputField
               v-for="field in fields"
+              :id="field.id"
               :key="field.index"
-              :fieldName="field.name"
-              :fieldType="field.type"
-              :fieldOptions="field.options"
+              :field-name="field.name"
+              :field-type="field.type"
+              :field-options="field.options"
               :rules="field.rules"
               :inputvalue.sync="field.value"
-              :id="field.id"
             />
             <button
               type="submit"
@@ -59,14 +59,13 @@ import { ValidationObserver } from 'vee-validate';
 let count = 0;
 export default {
   name: 'SignupPage',
+  auth: false,
   components: {
     ValidationObserver,
   },
   layout: 'auth',
   data: () => ({
     title: 'Sign-Up',
-    password: '',
-    confirm: '',
     ispassword: true,
     btnDisable: true,
     accountCreated: false,
@@ -75,14 +74,14 @@ export default {
         name: 'First Name',
         type: 'text',
         index: count++,
-        id: 'firstname',
+        id: 'first_name',
         rules: 'required',
       },
       {
         name: 'Last Name',
         type: 'text',
         index: count++,
-        id: 'lastname',
+        id: 'last_name',
         rules: 'required',
       },
       {
@@ -121,25 +120,19 @@ export default {
       alert('Form has been submitted!');
       this.accountCreated = true;
     },
-    async register() {
-      try {
-        await this.$axios.post('register', {
-          username: this.username,
-          email: this.email,
-          password: this.password,
-        });
+    async register(e) {
+      const postData = {};
+      this.fields.forEach((field) => {
+        postData[field.id] = e.target.elements[field.name].value;
+      });
 
-        await this.$auth.loginWith('local', {
-          data: {
-            email: this.email,
-            password: this.password,
-          },
-        });
+      await this.$axios.post('auth/register/', postData).then(data => console.log(data)).catch((error) => {
+        console.log(error.response.data);
+        // TODO: Display error messages on duplicate email and form errors
+        this.$router.push('signup-error');
+      });
 
-        this.$router.push('/');
-      } catch (e) {
-        this.error = e.response.data.message;
-      }
+      this.$router.push('login');
     },
   },
 };
