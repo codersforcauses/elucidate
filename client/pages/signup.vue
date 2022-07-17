@@ -55,22 +55,14 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import AuthFooter from '~/components/Auth/AuthFooter.vue';
-import AuthHeader from '~/components/Auth/AuthHeader.vue';
-import AuthForm from '~/components/Auth/AuthForm.vue';
-import InputField from '~/components/Auth/InputField.vue';
 
 let count = 0;
 export default {
-  name: 'signup-page',
-  layout: 'auth',
+  name: 'SignupPage',
   components: {
     ValidationObserver,
-    AuthFooter,
-    AuthHeader,
-    AuthForm,
-    InputField,
   },
+  layout: 'auth',
   data: () => ({
     title: 'Sign-Up',
     password: '',
@@ -128,6 +120,26 @@ export default {
     onSubmit() {
       alert('Form has been submitted!');
       this.accountCreated = true;
+    },
+    async register() {
+      try {
+        await this.$axios.post('register', {
+          username: this.username,
+          email: this.email,
+          password: this.password,
+        });
+
+        await this.$auth.loginWith('local', {
+          data: {
+            email: this.email,
+            password: this.password,
+          },
+        });
+
+        this.$router.push('/');
+      } catch (e) {
+        this.error = e.response.data.message;
+      }
     },
   },
 };

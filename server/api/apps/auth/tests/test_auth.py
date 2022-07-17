@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.contrib.auth.models import User
+from api.apps.users.models import User
 from rest_framework import status
 from rest_framework.test import APITestCase
 
@@ -7,8 +7,13 @@ from rest_framework.test import APITestCase
 class AuthTestCase(APITestCase):
     def setUp(self):
         self.testuser = User.objects.create_user(
-            "james", "john@james.com", "password"
+            email="john.doe@example.com",
+            first_name="John",
+            last_name="Doe",
+            grade=11,
+            password="password",
         )
+        # self.testuser.set_password("password")
         self.testuser.save()
 
     def test_get_token(self):
@@ -20,7 +25,7 @@ class AuthTestCase(APITestCase):
         AND: The Body should contain pk and jwt token
         """
         url = reverse("get-jwt-token")
-        body = {"username": "james", "password": "password"}
+        body = {"email": "john.doe@example.com", "password": "password"}
 
         response = self.client.post(url, body, format="json")
 
@@ -39,7 +44,7 @@ class AuthTestCase(APITestCase):
         self.testuser.is_active = False
         self.testuser.save()
 
-        body = {"username": "test_user", "password": "password"}
+        body = {"email": "test_user", "password": "password"}
 
         response = self.client.post(url, body, format="json")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -52,7 +57,10 @@ class AuthTestCase(APITestCase):
         THEN: The API HTTP Response Code should be 201
         """
         get_token_url = reverse("get-jwt-token")
-        get_token_body = {"username": "james", "password": "password"}
+        get_token_body = {
+            "email": "john.doe@example.com",
+            "password": "password",
+        }
         get_token_response = self.client.post(
             get_token_url, get_token_body, format="json"
         )
@@ -75,7 +83,10 @@ class AuthTestCase(APITestCase):
         THEN: The API HTTP Response Code should be 201
         """
         get_token_url = reverse("get-jwt-token")
-        get_token_body = {"username": "james", "password": "password"}
+        get_token_body = {
+            "email": "john.doe@example.com",
+            "password": "password",
+        }
         get_token_response = self.client.post(
             get_token_url, get_token_body, format="json"
         )
