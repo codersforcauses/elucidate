@@ -10,16 +10,16 @@
           <nuxt-img
             src="branding/logo.svg"
             class="h-52"
-            :alt="Temp_testPerson.name + ' profile picture'"
+            :alt="User.name + ' profile picture'"
           />
 
           <!-- to be Welcome text -->
           <div class="font-bold text-xl">
-            Welcome {{ Temp_testPerson.name }}
+            Welcome {{ User.name }}
           </div>
 
           <!-- to be your Email -->
-          <div class="font-thin">{{ Temp_testPerson.email }}</div>
+          <div class="font-thin">{{ User.email }}</div>
 
           <ButtonElement to="/edit-Profile" type="primary" class=""
             >Edit Profile</ButtonElement
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div class="bg-yellow4 flex-1 flex-row h-full"></div>
+      <div class="flex-1 flex-row h-full"></div>
     </div>
   </main>
 </template>
@@ -37,11 +37,23 @@ export default {
   name: 'UserDashboard',
 
   data: () => ({
+    User: {},
+
     Temp_testPerson: {
       name: 'Lorem Ipsum',
       email: 'LoremIpsum@gmail.com',
       profPicUrl: '',
     },
+    
   }),
+  beforeMount() {
+    this.User = this.getUserData();
+    console.log(this.User)
+  }, 
+  methods: {
+    getUserData() {
+      return this.Temp_testPerson;
+    }
+  },   
 };
 </script>
