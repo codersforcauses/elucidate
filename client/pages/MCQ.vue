@@ -15,7 +15,7 @@
             </div>
             <QuestionBox header="Question:"></QuestionBox>
 
-            <div class="flex flex-col columns-4">
+            <div class="flex flex-col columns-4 gap-2 ml-10">
                 <AnswersBox header="Question A:"></AnswersBox>
                 <AnswersBox header="Question B:"></AnswersBox>
                 <AnswersBox header="Question C:"></AnswersBox>
