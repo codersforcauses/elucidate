@@ -1,0 +1,106 @@
+name: E2E Tests
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  e2e-tests:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.10.5]
+        node: [16]
+
+    services:
+      db:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: github-actions
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Get yarn cache directory path 🛠
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+        working-directory: client
+
+      - name: Cache node_modules 📦
+        uses: actions/cache@v3.0.5
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install yarn dependencies 👨🏻‍💻
+        run: yarn
+        working-directory: client
+
+      - name: Setup Python env 🏗
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+
+      - name: Setup Poetry 🏗
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.1.10
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: Cache .venv 📦
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3.0.5
+        with:
+          path: server/.venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install Python dependencies 👨🏻‍💻
+        run: poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        working-directory: server
+
+      - name: Run Migrations 🕊️
+        run: |
+          source .venv/bin/activate
+          python manage.py migrate
+        working-directory: server
+
+      - name: Start backend 🚛
+        run: |
+          source .venv/bin/activate
+          python manage.py runserver 0.0.0.0:8081 &
+          sleep 5 && 
+          curl http://localhost:8081 -I
+        working-directory: server
+
+      - name: Run Cypress tests 🧪
+        uses: cypress-io/github-action@v4
+        with:
+          working-directory: client
+          install-command: yarn --frozen-lockfile --silent
+          build: yarn build
+          start: yarn start
