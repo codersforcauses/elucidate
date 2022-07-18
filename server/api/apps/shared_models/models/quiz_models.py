@@ -11,9 +11,11 @@ class Question(models.Model):
         SHORT_ANSWER = "SA", _("Short Answer")
 
     text = models.TextField(blank=True, default="")
-    question_type = models.CharField(max_length=2,
-                                     choices=QuestionType.choices,
-                                     default=QuestionType.MULTICHOICE)
+    question_type = models.CharField(
+        max_length=2,
+        choices=QuestionType.choices,
+        default=QuestionType.MULTICHOICE,
+    )
     creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 

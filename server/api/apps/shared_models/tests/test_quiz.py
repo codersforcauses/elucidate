@@ -11,12 +11,15 @@ class QuestionTestCase(TestCase):
     def setUp(self):
         self.creation_time = timezone.now()
 
-        Question.objects.create(text="Test multiple choice question",
-                                question_type=MC)
-        Question.objects.create(text="Test numerical answer question",
-                                question_type=NA)
-        Question.objects.create(text="Test short answer question",
-                                question_type=SA)
+        Question.objects.create(
+            text="Test multiple choice question", question_type=MC
+        )
+        Question.objects.create(
+            text="Test numerical answer question", question_type=NA
+        )
+        Question.objects.create(
+            text="Test short answer question", question_type=SA
+        )
 
     def test_text(self):
         mc = Question.objects.get(text="Test multiple choice question")
@@ -45,14 +48,16 @@ class QuestionTestCase(TestCase):
 
     def test_date_created(self):
         q = Question.objects.get(text="Test multiple choice question")
-        self.assertLess((q.date_created-self.creation_time).total_seconds(),
-                        0.1)
+        self.assertLess(
+            (q.date_created - self.creation_time).total_seconds(), 0.1
+        )
 
 
 class TagTestCase(TestCase):
     def setUp(self):
-        q = Question.objects.create(text="This is a physics question",
-                                    question_type=NA)
+        q = Question.objects.create(
+            text="This is a physics question", question_type=NA
+        )
         t = Tag.objects.create(name="Unit 3 Physics")
         q.tag_set.add(t)
 
@@ -66,8 +71,7 @@ class TagTestCase(TestCase):
 
 class AnswerTestCase(TestCase):
     def setUp(self):
-        q = Question.objects.create(text="Question?",
-                                    question_type=SA)
+        q = Question.objects.create(text="Question?", question_type=SA)
         Answer.objects.create(text="Answer!", question=q, is_correct=True)
 
     def test(self):
