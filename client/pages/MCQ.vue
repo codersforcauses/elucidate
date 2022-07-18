@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class>
         <!--The time allocated to the quiz bubble:-->
         <label class="bg-blue2 px-10 py-2 text-white font-semibold text-md rounded shadow-sm"><FontAwesomeIcon :icon="['fa', 'stopwatch']" />1hr</label>
 
@@ -25,7 +25,7 @@
                 <AnswersBox header="Question D:"></AnswersBox>
             </div>
             
-            <div class="flex place-content-end m-5">
+            <div class="flex place-content-end mt-5 pb-5 mx-10">
             <QuizButton color="red" class="mr-10">+ Add Question</QuizButton>
             <QuizButton color="red">Finish</QuizButton>
             </div>
