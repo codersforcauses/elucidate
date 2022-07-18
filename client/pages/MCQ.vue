@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Create A Quiz</h1>
-        <div>
+        <div class="flex flex-col">
             <Box title="{Display Quiz Name}" :is-centered="false">
 
             <div class="flex inline-flex mt-10 mb-5 mx-20">
@@ -11,7 +11,6 @@
                     <button class="bg-blue rounded-full shadow-sm px-3 py-1">Short Answer</button>
                 </div>
             </div>
-
             <QuestionBox header="Question:"></QuestionBox>
 
             </Box>
@@ -21,11 +20,11 @@
 
 <script>
 import Box from '~/components/Box.vue';
-import TextBox from '~/components/TextBox.vue';
+import QuestionBox from '~/components/QuestionBox.vue';
 
 export default {
 components: {
     Box,
-    TextBox,
+    QuestionBox,
 }}
 </script>
