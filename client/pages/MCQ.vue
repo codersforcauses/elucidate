@@ -21,8 +21,8 @@
                 <AnswersBox header="Question D:"></AnswersBox>
             </div>
             
-            <div class="flex inline-flex gap-2 place-content-center">
-            <QuizButton color="red">+ Add Question</QuizButton>
+            <div class="flex place-content-end m-5">
+            <QuizButton color="red" class="mr-10">+ Add Question</QuizButton>
             <QuizButton color="red">Finish</QuizButton>
             </div>
             </Box>
