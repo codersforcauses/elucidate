@@ -41,11 +41,23 @@
       </AuthForm>
 
       <AuthForm v-else>
-        Congratulations! Your account has been created.
-        <NuxtLink to="/quiz" class="text-blue"> Click here </NuxtLink>
-        to go to the home page, or
-        <NuxtLink to="/login" class="text-blue"> Click here </NuxtLink>
-        to begin searching for quizes.
+        <div class="flex flex-col grow items-center text-center font-bold text-white">
+          <p class="text-3xl my-5">Congratulations {{ name }}!</p>
+          <p class="text-2xl mx-10 my-5">
+            Your new Elucidate account has been created
+          </p>
+          <font-awesome-icon
+            :icon="['fas', 'fa-face-smile-beam']"
+            class="text-[10rem] my-10 text-white"
+          />
+          <p class="text-2xl mx-10 my-5">
+            Please proceed to the
+            <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink> or
+            <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
+            for quizzes
+          </p>
+          
+        </div>
       </AuthForm>
       <!-- Add sign up form here? -->
     </div>
@@ -78,6 +90,7 @@ export default {
     ispassword: true,
     btnDisable: true,
     accountCreated: false,
+    name: '',
     fields: [
       {
         name: 'First Name',
@@ -127,6 +140,8 @@ export default {
   methods: {
     onSubmit() {
       alert('Form has been submitted!');
+      this.title = "Account Created!"
+      this.name = document.getElementsByName("First Name")[0].value
       this.accountCreated = true;
     },
   },
