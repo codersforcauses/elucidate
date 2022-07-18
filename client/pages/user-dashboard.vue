@@ -16,8 +16,10 @@
           />
 
           <!-- to be Welcome text -->
-          <div class="font-bold text-xl">
-            Welcome {{ User.name }}
+          <div>
+            <p class="font-bold text-xl">
+              Welcome {{ User.name }}
+            </p>
           </div>
 
           <!-- to be your Email -->
@@ -33,10 +35,15 @@
       <div class="bg-green4 flex-1 flex-row h-full">
         <!-- right hand side, top  -->
         <div class="">
-
+          <h1 class="font-bold text-xl" > 
+            Overview
+          </h1>
         </div>
         <!-- right hand side, bottom part -->
         <div class="">
+          <h1 class="font-bold text-xl"> 
+            Your Quizzes
+          </h1>
 
         </div>
       </div>
