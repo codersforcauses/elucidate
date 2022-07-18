@@ -5,15 +5,15 @@
 
         <h1 class="text-4xl mt-7">Create A Quiz</h1>
 
-        <div class="flex flex-col">
+        <div class="flex flex-col mb-10">
             <Box title="{Display Quiz Name}" subtitle="Qn-1" :is-centered="false">
 
             <div class="flex inline-flex mt-10 mb-5 mx-20">
                 <p class="flex align-middle mr-8 text-white text-l font-bold">Question Type:</p>
                 <div class="flex inline-flex gap-2  text-white text-md font-bold">
-                    <button class="bg-yellow rounded-full shadow-sm shadow-sm px-3 py-1">Multiple Choice</button>
-                    <button class="bg-blue rounded-full shadow-sm px-3 py-1">Short Answer</button>
-                    <button class="bg-red rounded-full shadow-sm px-3 py-1">Numeric Question</button>
+                    <button class="bg-yellow rounded-full shadow-md px-3 py-1">Multiple Choice</button>
+                    <button class="bg-blue rounded-full shadow-md px-3 py-1">Short Answer</button>
+                    <button class="bg-red rounded-full shadow-md px-3 py-1">Numeric Question</button>
                 </div>
             </div>
             <QuestionBox header="Question:"></QuestionBox>
@@ -26,8 +26,8 @@
             </div>
             
             <div class="flex place-content-end mt-5 pb-5 mx-10">
-            <QuizButton color="red" class="mr-10">+ Add Question</QuizButton>
-            <QuizButton color="red">Finish</QuizButton>
+            <QuizButton color="red" class="mr-10 shadow-md">+ Add Question</QuizButton>
+            <QuizButton color="red" class="shadow-md">Finish</QuizButton>
             </div>
             </Box>
         </div>
