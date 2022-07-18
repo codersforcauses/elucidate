@@ -1,6 +1,8 @@
 <template>
   <main>
     <div class="flex h-screen">
+
+      <!-- left hand side -- should be component ? -->
       <div class="p-9 flex-none w-1/3 h-full">
         <!-- background image, along with alignment of elements -->
         <div
@@ -27,7 +29,17 @@
         </div>
       </div>
 
-      <div class="flex-1 flex-row h-full"></div>
+      <!-- right hand side - should be component?-->
+      <div class="bg-green4 flex-1 flex-row h-full">
+        <!-- right hand side, top  -->
+        <div class="">
+
+        </div>
+        <!-- right hand side, bottom part -->
+        <div class="">
+
+        </div>
+      </div>
     </div>
   </main>
 </template>
@@ -48,7 +60,6 @@ export default {
   }),
   beforeMount() {
     this.User = this.getUserData();
-    console.log(this.User)
   }, 
   methods: {
     getUserData() {
