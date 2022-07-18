@@ -11,14 +11,14 @@
       </div>
 
       <!-- right hand side - should be component?-->
-      <div class="flex-1 flex-row h-full">
+      <div class="flex-1 flex-row h-full space-y-6">
         <!-- right hand side, top  -->
         <div class="space-y-6">
           <h1 class="font-bold text-xl">Overview</h1>
           <div class="flex flex-row space-x-6">
-            <UserAttributeCard property="Quizzes Answered" propertyValue="42"/>
-            <UserAttributeCard property="Quizzes Created" propertyValue="42"/>
-            <UserAttributeCard property="User Attribute"  propertyValue="42"/>
+            <UserAttributeCard property="Quizzes Answered" propertyValue="42" color="green"/>
+            <UserAttributeCard property="Quizzes Created" propertyValue="42" color="yellow"/>
+            <UserAttributeCard property="User Attribute"  propertyValue="42" color="red"/>
           </div>
         </div>
         <!-- right hand side, bottom part -->
