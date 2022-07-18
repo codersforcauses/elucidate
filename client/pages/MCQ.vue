@@ -10,6 +10,7 @@
                 <div class="flex inline-flex gap-2  text-white text-md font-bold">
                     <button class="bg-yellow rounded-full shadow-sm shadow-sm px-3 py-1">Multiple Choice</button>
                     <button class="bg-blue rounded-full shadow-sm px-3 py-1">Short Answer</button>
+                    <button class="bg-red rounded-full shadow-sm px-3 py-1">Numeric Question</button>
                 </div>
             </div>
             <QuestionBox header="Question:"></QuestionBox>
