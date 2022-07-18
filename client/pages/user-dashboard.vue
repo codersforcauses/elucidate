@@ -42,7 +42,7 @@ export default {
     Temp_testPerson: {
       name: 'Lorem Ipsum',
       email: 'LoremIpsum@gmail.com',
-      profPic: 'branding/logo.svg',
+      profPic: 'tempProfPic.png',
     },
 
   }),
