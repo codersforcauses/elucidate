@@ -6,7 +6,7 @@
         <h1 class="text-4xl mt-7">Create A Quiz</h1>
 
         <div class="flex flex-col">
-            <Box title="{Display Quiz Name}" :is-centered="false">
+            <Box title="{Display Quiz Name}" subtitle="Qn-1" :is-centered="false">
 
             <div class="flex inline-flex mt-10 mb-5 mx-20">
                 <p class="flex align-middle mr-8 text-white text-l font-bold">Question Type:</p>
