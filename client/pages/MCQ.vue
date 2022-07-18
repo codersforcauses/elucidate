@@ -4,13 +4,15 @@
         <div>
             <Box title="{Display Quiz Name}" :is-centered="false">
 
-            <div>
-                <p class="flex inline-flex">Question Type:</p>
-                <button class="flex inline-flex">Multiple Choice</button>
-                <button class="flex inline-flex">Short Answer</button>
+            <div class="flex inline-flex mt-10 mb-5 mx-20">
+                <p class="flex align-bottom mr-8 text-white text-l font-bold">Question Type:</p>
+                <div class="flex inline-flex gap-2  text-white text-md font-bold">
+                    <button class="bg-yellow rounded-full shadow-sm shadow-sm px-3 py-1">Multiple Choice</button>
+                    <button class="bg-blue rounded-full shadow-sm px-3 py-1">Short Answer</button>
+                </div>
             </div>
 
-            <TextBox header="Question:"></TextBox>
+            <QuestionBox header="Question:"></QuestionBox>
 
             </Box>
         </div>
