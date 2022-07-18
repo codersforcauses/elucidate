@@ -32,7 +32,7 @@
       </div>
 
       <!-- right hand side - should be component?-->
-      <div class="bg-green4 flex-1 flex-row h-full">
+      <div class="flex-1 flex-row h-full">
         <!-- right hand side, top  -->
         <div class="">
           <h1 class="font-bold text-xl" > 
