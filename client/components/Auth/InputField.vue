@@ -24,6 +24,7 @@
         </div>
         <select
           v-if="fieldType == 'dropdown'"
+          :name="fieldName"
           v-model="inputValue"
           class="w-full h-10 px-5 my-3 drop-shadow-lg"
         >

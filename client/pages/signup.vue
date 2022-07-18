@@ -29,7 +29,6 @@
             >
               Submit
             </button>
-            <!-- <button v-else type="submit" :disabled="invalid" class="w-24 h-8 mt-5 font-bold bg-white border border-solid rounded place-self-center text-l text-red">Submit</button> -->
           </form>
         </ValidationObserver>
         <p>
@@ -41,7 +40,9 @@
       </AuthForm>
 
       <AuthForm v-else>
-        <div class="flex flex-col grow items-center text-center font-bold text-white">
+        <div
+          class="flex flex-col grow items-center text-center font-bold text-white"
+        >
           <p class="text-3xl my-5">Congratulations {{ name }}!</p>
           <p class="text-2xl mx-10 my-5">
             Your new Elucidate account has been created
@@ -56,10 +57,8 @@
             <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
             for quizzes
           </p>
-          
         </div>
       </AuthForm>
-      <!-- Add sign up form here? -->
     </div>
     <AuthFooter />
   </div>
@@ -139,10 +138,18 @@ export default {
   }),
   methods: {
     onSubmit() {
-      alert('Form has been submitted!');
-      this.title = "Account Created!"
-      this.name = document.getElementsByName("First Name")[0].value
+      this.title = 'Account Created!';
+      this.name = document.getElementsByName('First Name')[0].value;
       this.accountCreated = true;
+
+      // Print input values
+      console.log(document.getElementsByName('First Name')[0].value);
+      console.log(document.getElementsByName('Last Name')[0].value);
+      console.log(document.getElementsByName('Email')[0].value);
+      console.log(document.getElementsByName('Password')[0].value);
+      console.log(document.getElementsByName('Confirm Password')[0].value);
+      var select = document.getElementsByName('Grade')[0];
+      console.log(select.options[select.selectedIndex].text);
     },
   },
 };
