@@ -3,20 +3,20 @@
   <div
     class="flex flex-col justify-center items-center content-evenly space-y-3 h-full bg-[url('~/static/temp_Shapebg.svg')] bg-contain bg-no-repeat bg-center"
   >
-    <!-- to be Profile pic -->
+    <!--Profile pic -->
     <nuxt-img
       :src="profilePic"
       class="h-52"
       :alt="name + ' profile picture'"
     />
 
-    <!-- to be Welcome text -->
+    <!--Welcome text -->
     <div>
       <p class="font-bold text-xl">Welcome {{ name }}</p>
     </div>
 
-    <!-- to be your Email -->
-    <div class="font-thin">{{ email }}</div>
+    <!--Email-->
+    <p class="font-thin">{{ email }}</p>
 
     <ButtonElement to="/edit-Profile" type="primary" class=""
       >Edit Profile</ButtonElement
