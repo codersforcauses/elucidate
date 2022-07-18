@@ -24,9 +24,9 @@
         </div>
         <select
           v-if="fieldType == 'dropdown'"
-          v-model="inputValue"
           :name="fieldName"
-          class="w-full h-10 px-2 my-3 drop-shadow-lg"
+          v-model="inputValue"
+          class="w-full h-10 px-5 my-3 drop-shadow-lg"
         >
           <option selected disabled value="">
             Please Choose Your Grade...
