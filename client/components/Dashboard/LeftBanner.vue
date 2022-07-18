@@ -5,18 +5,18 @@
   >
     <!-- to be Profile pic -->
     <nuxt-img
-      :src="User.profPic ? User.profPic : '/avatar.svg'"
+      :src="profilePic"
       class="h-52"
-      :alt="User.name + ' profile picture'"
+      :alt="name + ' profile picture'"
     />
 
     <!-- to be Welcome text -->
     <div>
-      <p class="font-bold text-xl">Welcome {{ User.name }}</p>
+      <p class="font-bold text-xl">Welcome {{ name }}</p>
     </div>
 
     <!-- to be your Email -->
-    <div class="font-thin">{{ User.email }}</div>
+    <div class="font-thin">{{ email }}</div>
 
     <ButtonElement to="/edit-Profile" type="primary" class=""
       >Edit Profile</ButtonElement
@@ -27,5 +27,19 @@
 <script>
 export default {
   name: 'LeftBanner',
+  props: {
+    name: {
+      type: String,
+      default: undefined,
+    },
+    email: {
+      type: String,
+      default: undefined,
+    },
+    profilePic: {
+      type: String,
+      default: '/avatar.svg',
+    },
+  },
 };
 </script>

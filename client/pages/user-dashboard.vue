@@ -3,7 +3,11 @@
     <div class="flex h-screen">
       <!-- left hand side -- should be component ? -->
       <div class="p-9 flex-none w-1/3 h-full">
-        <LeftBanner />
+        <LeftBanner 
+          :email="Temp_testPerson.email"
+          :name="User.name"
+          :profilePic="User.profilePic"
+        />
       </div>
 
       <!-- right hand side - should be component?-->
@@ -24,16 +28,15 @@
 <script>
 import LeftBanner from '../components/Dashboard/LeftBanner.vue';
 export default {
-  components: { LeftBanner },
   name: 'UserDashboard',
-
+  components: { LeftBanner },
   data: () => ({
     User: {},
 
     Temp_testPerson: {
       name: 'Lorem Ipsum',
       email: 'LoremIpsum@gmail.com',
-      profPic: 'tempProfPic.png',
+      profilePic: 'tempProfPic.png',
     },
   }),
   beforeMount() {
