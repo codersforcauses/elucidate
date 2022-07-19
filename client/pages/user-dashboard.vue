@@ -36,7 +36,7 @@
         <!-- right hand side, bottom part -->
         <div class="h-1/2">
           <h1 class="font-black text-2xl">Quizzes Answered</h1>
-          <Quiz>
+          <QuizList />
         </div>
       </div>
     </div>
