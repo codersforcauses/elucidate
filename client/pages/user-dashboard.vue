@@ -16,9 +16,21 @@
         <div class="h-1/2">
           <h1 class="font-bold text-xl">Overview</h1>
           <div class="flex flex-row space-x-6">
-            <UserAttributeCard property="Quizzes Answered" propertyValue="42" color="green"/>
-            <UserAttributeCard property="Quizzes Created" propertyValue="42" color="yellow"/>
-            <UserAttributeCard property="User Attribute"  propertyValue="42" color="red"/>
+            <UserAttributeCard
+              property="Quizzes Answered"
+              propertyValue="42"
+              color="green"
+            />
+            <UserAttributeCard
+              property="Quizzes Created"
+              propertyValue="42"
+              color="yellow"
+            />
+            <UserAttributeCard
+              property="User Attribute"
+              propertyValue="42"
+              color="red"
+            />
           </div>
         </div>
         <!-- right hand side, bottom part -->
