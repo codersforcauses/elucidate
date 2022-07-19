@@ -11,10 +11,10 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tag
-        fields = ["id", "name", "question"]
+        fields = ["id", "name"]
 
 
 class AnswerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Answer
-        fields = ["id", "text", "is_correct", "question"]
+        fields = ["id", "text", "is_correct"]

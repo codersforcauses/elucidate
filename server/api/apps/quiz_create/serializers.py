@@ -1,30 +1,29 @@
 from rest_framework import serializers
-from .models import Quiz_Question, Question_Answer, Question_Tag
-from .defines import QUIZ_QUESTION_MAXLEN, QUIZ_TAG_MAXLEN
+from api.apps.shared_models.models import defines
+
+QuestionTypes = [
+    ("MC", "Multiple Choice"),
+    ("NA", "Numerical Answer"),
+    ("SA", "Short Answer")
+]
 
 
 class QuestionInfoSerializer(serializers.Serializer):
-    question_type = serializers.IntegerField()
-    question = serializers.CharField(max_length=QUIZ_QUESTION_MAXLEN)
+    text = serializers.CharField(allow_blank=True)
     date_created = serializers.DateTimeField()
-    tags = serializers.ListField(
-        child=serializers.CharField(max_length=QUIZ_TAG_MAXLEN)
+    question_type = serializers.ChoiceField(choices=QuestionTypes)
+    answers = serializers.ListField(
+        child=(
+            serializers.ListField(  # will vailidate types in views
+                allow_empty=False,
+                min_length=2,
+                max_length=2)
+            )
         )
-
-
-class Quiz_QuestionSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Quiz_Question
-        fields = ['id', 'question_type', 'question', 'date_created']
-
-
-class Question_AnswerSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Question_Answer
-        fields = ['id', 'is_correct', 'answer']
-
-
-class Question_TagSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Question_Tag
-        fields = ['id', 'tag']
+    tags = serializers.ListField(
+        child=serializers.CharField(max_length=defines.TAG_NAME_MAXLEN)
+        )
+    # no idea how user verification is gonna work
+    # creator = models.ForeignKey(
+    #     settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
+    # )
