@@ -1,18 +1,18 @@
 <template>
   <!-- background image, along with alignment of elements -->
   <div
-    class="flex flex-col justify-center items-center content-evenly space-y-3 h-full bg-[url('~/static/temp_Shapebg.svg')] bg-contain bg-no-repeat bg-center"
+    class="flex flex-col justify-center items-center content-evenly space-y-2 h-full bg-[url('~/static/temp_Shapebg.svg')] bg-contain bg-no-repeat bg-center"
   >
     <!--Profile pic -->
-    <nuxt-img :src="profilePic" class="h-52" :alt="name + ' profile picture'" />
+    <nuxt-img :src="profilePic" class="h-52 mb-3" :alt="name + ' profile picture'" />
 
     <!--Welcome text -->
     <div>
-      <p class="font-bold text-xl">Welcome {{ name }}</p>
+      <p class="font-extrabold text-xl mb-1">Welcome {{ name }}.</p>
     </div>
 
     <!--Email-->
-    <p class="font-thin">{{ email }}</p>
+    <p class="font-thin text-sm">{{ email }}</p>
 
     <ButtonElement to="/edit-Profile" type="tertiary" class=""
       >Edit Profile</ButtonElement
