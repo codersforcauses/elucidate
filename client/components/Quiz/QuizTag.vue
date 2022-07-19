@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'QuizTag',
   computed: {
     css : function () {
       return this.colour + " rounded";
