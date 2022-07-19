@@ -13,29 +13,29 @@
       <!-- right hand side - should be component?-->
       <div class="flex flex-1 flex-col h-full">
         <!-- right hand side, top  -->
-        <div class="h-1/2">
-          <h1 class="font-bold text-xl">Overview</h1>
+        <div class="h-1/2 px-4 py-9">
+          <h1 class="font-extrabold text-xl mb-4">Overview</h1>
           <div class="flex flex-row space-x-6">
             <UserAttributeCard
               property="Quizzes Answered"
-              propertyValue="42"
+              :propertyValue="User.stats.quizzesAnswered"
               color="green"
             />
             <UserAttributeCard
               property="Quizzes Created"
-              propertyValue="42"
+              :propertyValue="User.stats.quizzesMade"
               color="yellow"
             />
             <UserAttributeCard
               property="User Attribute"
-              propertyValue="42"
+              :propertyValue="User.stats.userAttribute"
               color="red"
             />
           </div>
         </div>
         <!-- right hand side, bottom part -->
         <div class="h-1/2">
-          <h1 class="font-bold text-xl">Your Quizzes</h1>
+          <h1 class="font-black text-2xl">Your Quizzes</h1>
         </div>
       </div>
     </div>
@@ -50,21 +50,41 @@ export default {
   name: 'UserDashboard',
   components: { LeftBanner, UserAttributeCard },
   data: () => ({
-    User: {},
+    User: { stats: {},},
 
     Temp_testPerson: {
       first_name: 'Lorem',
       last_name: 'Ispum',
       email: 'LoremIpsum@gmail.com',
       profilePic: 'tempProfPic.png',
+      stats: {
+        quizzesAnswered: 42,
+        quizzesMade: 17,
+        userAttribute: 27,
+      },
     },
+    Temp_quizzesAnswered: [
+      
+    ],
+    Temp_quizzesMade: [
+
+    ],
   }),
   beforeMount() {
+    console.log(this.Temp_testPerson.stats.userAttribute)
     this.User = this.getUserData();
+    this.quizzesMade = this.getQuizzesMade();
+    this.quizzesAnswered = this.getQuizzesAnswered();
   },
   methods: {
     getUserData() {
       return this.Temp_testPerson;
+    },
+    getQuizzesAnswered() {
+      return this.Temp_quizzesAnswered;
+    },
+    getQuizzesMade() {
+      return this.Temp_quizzesMade;
     },
   },
 };
