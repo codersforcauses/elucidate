@@ -4,12 +4,14 @@
       <!-- Section 1 -->
       <div class="grid lg:grid-cols-2 gap-x-12 mt-36 mb-52 items-center">
         <div>
-          <h1 class="text-black-400 text-6xl leading-snug mb-10">What do you want <br>to learn today?</h1>
+          <h1 class="text-black-400 text-6xl leading-snug mb-10">
+            What do you want <br />to learn today?
+          </h1>
           <!-- Search bar -->
           <InputSearchBar />
           <!-- 'I already have acc' button which directs user to the log in page -->
           <haveAccBtn />
-          <AuthFooter />
+          <img class="mt-5 w-96 justify-self-start" src="~/assets/shapes.png" />
         </div>
         <div>
           <img v-bind:src="illustration" />
