@@ -36,6 +36,7 @@
         <!-- right hand side, bottom part -->
         <div class="h-1/2">
           <h1 class="font-black text-2xl">Quizzes Answered</h1>
+          <Quiz>
         </div>
       </div>
     </div>
@@ -67,7 +68,7 @@ export default {
      {
       Name: 'Maths - Integrals II',
       Tags: ['Calculus', 'Year 12'],
-      Author: NicholasJDavies,
+      Author: 'NicholasJDavies',
       DateCreated: Date.now(),
       Score: 57,
      }, 
