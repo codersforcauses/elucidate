@@ -11,9 +11,9 @@
       </div>
 
       <!-- right hand side - should be component?-->
-      <div class="flex-1 flex-row h-full space-y-6">
+      <div class="flex flex-1 flex-col h-full">
         <!-- right hand side, top  -->
-        <div class="space-y-6">
+        <div class="h-1/2">
           <h1 class="font-bold text-xl">Overview</h1>
           <div class="flex flex-row space-x-6">
             <UserAttributeCard property="Quizzes Answered" propertyValue="42" color="green"/>
@@ -22,7 +22,7 @@
           </div>
         </div>
         <!-- right hand side, bottom part -->
-        <div class="">
+        <div class="h-1/2">
           <h1 class="font-bold text-xl">Your Quizzes</h1>
         </div>
       </div>
