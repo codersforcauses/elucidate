@@ -31,7 +31,7 @@ _/users_
 
 ----
    **Required:**
- 
+
    `id=[integer]`
 
 ----
@@ -42,7 +42,6 @@ _/users_
   |     username         |      String      |  The users username         |
   |     email            |      String      |  Email address of the user  |
 
-
   **_More to come!_**
 
 ----
@@ -50,9 +49,10 @@ _/users_
   
   <_What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!_>
 
-  * **Code:** 200 OK<br />
+* **Code:** 200 OK<br />
     **Content:** <br />
     ```
+
 {
   "url": "http://127.0.0.1:8000/users/1/",
   "username": "foo",
@@ -62,21 +62,21 @@ _/users_
     ```
 
 **_More to come_**
- 
+
 ----
 **Error Response:**
 
-  * **Code:** 403 FORBIDDEN <br />
+* **Code:** 403 FORBIDDEN <br />
     **Content:** `{ detail: "Authentication credentials were not provided." }`
 
   OR
 
-  * **Code:** 400 BAD REQUEST <br />
+* **Code:** 400 BAD REQUEST <br />
     **Content:** `{ "username": ["A user with that username already exists."] }`
 
   OR
 
-  * **Code:** 400 BAD REQUEST <br />
+* **Code:** 400 BAD REQUEST <br />
     **Content:** `{ "username": ["This field may not be blank."] }`
 
 ----
