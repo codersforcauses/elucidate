@@ -35,7 +35,7 @@
         </div>
         <!-- right hand side, bottom part -->
         <div class="h-1/2">
-          <h1 class="font-black text-2xl">Your Quizzes</h1>
+          <h1 class="font-black text-2xl">Quizzes Answered</h1>
         </div>
       </div>
     </div>
@@ -64,7 +64,34 @@ export default {
       },
     },
     Temp_quizzesAnswered: [
-      
+     {
+      Name: 'Maths - Integrals II',
+      Tags: ['Calculus', 'Year 12'],
+      Author: NicholasJDavies,
+      DateCreated: Date.now(),
+      Score: 57,
+     }, 
+     {
+      Name: 'Maths - Integrals I',
+      Tags: ['Calculus', 'Year 11'],
+      Author: 'JohnnyBoi42',
+      DateCreated: Date.now(),
+      Score: 57,
+     }, 
+     {
+      Name: 'Chemistry - Organic',
+      Tags: ['Chemistry', 'Organic'],
+      Author: 'Ms. Vujcich',
+      DateCreated: Date.now(),
+      Score: 80,
+     }, 
+     {
+      Name: 'Which Avengers are you?',
+      Tags: ['Silly', 'notAThing'],
+      Author: 'BuzzFeed',
+      DateCreated: Date.now(),
+      Score: 100,
+     }, 
     ],
     Temp_quizzesMade: [
 
