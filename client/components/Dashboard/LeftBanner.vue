@@ -14,7 +14,7 @@
     <!--Email-->
     <p class="font-thin">{{ email }}</p>
 
-    <ButtonElement to="/edit-Profile" type="primary" class=""
+    <ButtonElement to="/edit-Profile" type="tertiary" class=""
       >Edit Profile</ButtonElement
     >
   </div>

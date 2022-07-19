@@ -8,11 +8,20 @@
     </button>
 
     <button
-      v-else
+      v-if="type === 'secondary'"
       :class="`bg-white text-primary border border-solid border-primary ${commonBtnStyles}`"
     >
       <slot></slot>
     </button>
+
+    
+    <button
+      v-if="type === 'tertiary'"
+      :class="`bg-blue text-white ${thinBtnStyles}`"
+    >
+      <slot></slot>
+    </button>
+
   </nuxt-link>
   <span v-else>
     <button
@@ -23,8 +32,15 @@
     </button>
 
     <button
-      v-else
+      v-if="type === 'secondary'"
       :class="`bg-white text-primary border border-solid border-primary ${commonBtnStyles}`"
+    >
+      <slot></slot>
+    </button>
+
+    <button
+      v-if="type === 'tertiary'"
+      :class="`bg-blue text-white ${thinBtnStyles}`"
     >
       <slot></slot>
     </button>
@@ -47,6 +63,8 @@ export default {
   data: () => ({
     commonBtnStyles:
       'h-10 w-32 rounded-md hover:shadow-lg transition-shadow duration-200 ease-in-out',
+    thinBtnStyles:
+      'h-6 w-40 rounded-md text-xs font-medium hover:shadow-lg transition-shadow duration-200 ease-in-out',
   }),
 };
 </script>
