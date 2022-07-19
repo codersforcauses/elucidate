@@ -1,5 +1,5 @@
 <template>
-  <div class="h-64 w-64 hover:shadow-lg transition-shadow duration-200 ease-in-out">
+  <div class="h-[15.5rem] w-[15.75rem] hover:shadow-lg transition-shadow duration-200 ease-in-out">
     <div class="flex flex-col space-y-2 justify-center items-center bg-lightgrey/75 h-full">
       <div v-if="color === 'green'" :class="`bg-green ${commonColoredBoxStyles}`">
         {{propertyValue}}
@@ -29,7 +29,7 @@ export default {
   name: 'UserAttributeCard',
   data: () => ({
     commonColoredBoxStyles:
-      'rounded-md text-white text-4xl font-extrabold h-20 w-20 flex justify-center items-center ',
+      'rounded-md text-white text-4xl font-extrabold h-20 w-20 flex justify-center items-center',
   }),
   props: {
     property: {
@@ -37,8 +37,8 @@ export default {
       default: undefined,
     },
     propertyValue: {
-      type: String,
-      default: undefined,
+      type: Number,
+      default: 0,
     },
     color: {
       type: String,
