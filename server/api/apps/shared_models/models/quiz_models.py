@@ -1,14 +1,13 @@
+from django.conf import settings
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from . import defines
-from django.contrib.auth.models import User
 
 
 class Question(models.Model):
     class QuestionType(models.TextChoices):
-        MULTICHOICE = "MC", _("Multiple Choice")
-        NUMERIC = "NA", _("Numerical Answer")
-        SHORT_ANSWER = "SA", _("Short Answer")
+        MULTICHOICE = "MC", "Multiple Choice"
+        NUMERIC = "NA", "Numerical Answer"
+        SHORT_ANSWER = "SA", "Short Answer"
 
     text = models.TextField(blank=True, default="")
     question_type = models.CharField(
@@ -16,7 +15,9 @@ class Question(models.Model):
         choices=QuestionType.choices,
         default=QuestionType.MULTICHOICE,
     )
-    creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    creator = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
+    )
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

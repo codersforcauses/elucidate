@@ -1,12 +1,14 @@
+from django.conf import settings
 from django.db import models
 from .quiz_models import Question, Answer
-from django.contrib.auth.models import User
 
 from datetime import timedelta
 
 
 class QuestionResponse(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
+    )
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     selected_answer = models.ForeignKey(
         Answer, on_delete=models.CASCADE, null=True
