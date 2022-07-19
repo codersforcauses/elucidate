@@ -3,7 +3,7 @@
     <div class="border h-[400px] rounded-t-[4px]">
       <p class="font-Montserrat font-light text-xl text-center relative top-[14px] text-centre">Filter Tags</p>
       <div class="bg-zinc-200 relative rounded-[95px] w-[182px] h-[43px] top-[34px] left-[11px]">
-        <img class="relative w-[20px] h-[20px] top-[13px] left-[7px]" src="../static/search.svg" />
+        <img class="relative w-[20px] h-[20px] top-[13px] left-[7px]" src="/static/avatar.svg" />
         <input v-model="searchedTag" placeholder="Search tags..." class="bg-transparent relative top-[-10px] left-[33px] w-[96px] h-[23px] outline-0 font-roboto"/>
       </div>
       <div class="relative top-[50px]">
