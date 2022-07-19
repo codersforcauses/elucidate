@@ -1,6 +1,6 @@
 <template>
   <div class="h-64 w-64">
-    <div class="flex flex-col space-y-2  justify-center items-center bg-lightgrey/75 h-full">
+    <div class="flex flex-col space-y-3  justify-center items-center bg-lightgrey/75 h-full">
       <div v-if="color === 'green'" class="bg-green text-white text-4xl font-extrabold h-20 w-20 flex justify-center items-center">
         {{propertyValue}}
       </div>
