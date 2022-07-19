@@ -36,7 +36,7 @@
         <!-- right hand side, bottom part -->
         <div class="h-1/2">
           <h1 class="font-black text-2xl">Quizzes Answered</h1>
-          <QuizList />
+          <QuizList :quizzes="quizzesAnswered"/>
         </div>
       </div>
     </div>
@@ -45,11 +45,12 @@
 
 <script>
 import LeftBanner from '../components/Dashboard/LeftBanner.vue';
+import QuizList from '../components/Quiz/QuizList.vue';
 import UserAttributeCard from '../components/Dashboard/UserAttributeCard.vue';
 
 export default {
   name: 'UserDashboard',
-  components: { LeftBanner, UserAttributeCard },
+  components: { LeftBanner, UserAttributeCard, QuizList},
   data: () => ({
     User: { stats: {},},
 
