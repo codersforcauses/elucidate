@@ -5,7 +5,7 @@
       <div class="p-9 flex-none w-1/3 h-full">
         <LeftBanner
           :email="Temp_testPerson.email"
-          :name="User.name"
+          :name="User.first_name"
           :profilePic="User.profilePic"
         />
       </div>
@@ -53,7 +53,8 @@ export default {
     User: {},
 
     Temp_testPerson: {
-      name: 'Lorem Ipsum',
+      first_name: 'Lorem',
+      last_name: 'Ispum',
       email: 'LoremIpsum@gmail.com',
       profilePic: 'tempProfPic.png',
     },
