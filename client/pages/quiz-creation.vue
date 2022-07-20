@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col z-10">
     <Box title="Create a Quiz" :is-centered="true">
       <TextBox header="Quiz Name:" />
       <TimeBox header="Time Limit:" />
@@ -24,6 +24,7 @@ import TextBox from '~/components/TextBox.vue';
 import TimeBox from '~/components/TimeBox.vue';
 import ObjectivesBox from '~/components/ObjectivesBox.vue';
 import QuizButton from '~/components/Quiz/QuizButton.vue';
+import image from '~/assets/ambient_shapes.png';
 
 export default {
   components: {
@@ -33,5 +34,8 @@ export default {
     ObjectivesBox,
     QuizButton,
   },
+  data: () => ({
+    bgImage: image,
+  }),
 };
 </script>

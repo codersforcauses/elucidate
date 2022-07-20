@@ -31,10 +31,7 @@
         <QuestionBox header="Question:" />
 
         <div class="flex flex-col columns-4 gap-2 ml-10">
-          <AnswersBox header="Question A:" />
-          <AnswersBox header="Question B:" />
-          <AnswersBox header="Question C:" />
-          <AnswersBox header="Question D:" />
+          <AnswersBox header="Answer:" />
         </div>
 
         <div class="flex place-content-end mt-5 pb-5 mx-10">
