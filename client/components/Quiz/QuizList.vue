@@ -1,8 +1,9 @@
 <template>
   <div class="h-full w-full"> 
     <div class="grid grid-rows-auto mr-10 flex space-y-2">
+      <!-- 9 cols, two per property, one for score -->
       <div class="py-1 px-6 grid grid-cols-9 text-lightgrey font-bold flex"> 
-        <h1 class="col-span-2">Name</h1>
+        <h1 class="col-span-2">Title</h1>
         <h1 class="col-span-2">Tags</h1>
         <h1 class="col-span-2">Author</h1>
         <h1 class="col-span-2">Date Created</h1>
