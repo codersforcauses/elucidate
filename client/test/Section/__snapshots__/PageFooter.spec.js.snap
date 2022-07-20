@@ -2,10 +2,10 @@
 
 exports[`PageFooter renders correctly 1`] = `
 <footer
-  class="relative bottom-1 h-[78px]"
+  class="h-20"
 >
   <div
-    class="flex items-center justify-around text-sm font-bold"
+    class="flex items-center justify-around mb-2 text-sm font-bold"
   >
     <div
       class="flex justify-center w-full"
@@ -35,9 +35,10 @@ exports[`PageFooter renders correctly 1`] = `
     <div
       class="flex justify-center w-full"
     >
-      <img
-        class="h-14"
-        src="~/static/logo.png"
+      <nuxt-img
+        alt="Elucidate Logo"
+        class="h-12"
+        src="branding/logo_full.png"
       />
     </div>
      
@@ -70,7 +71,7 @@ exports[`PageFooter renders correctly 1`] = `
   <hr />
    
   <div
-    class="flex items-center justify-center py-8 text-gray-400 text-4xl"
+    class="flex items-center justify-center py-8 text-4xl text-gray-400"
   >
     <a
       href="https://www.facebook.com/AtarSurvivalGuide/"

@@ -1,5 +1,5 @@
-import ButtonElement from '@/components/Input/ButtonElement.vue';
 import { mount } from '@vue/test-utils';
+import ButtonElement from '@/components/Input/ButtonElement.vue';
 
 describe('ButtonElement', () => {
   it('is a Vue instance', () => {
