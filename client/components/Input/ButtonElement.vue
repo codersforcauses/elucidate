@@ -3,6 +3,7 @@
     <button
       v-if="type === 'primary'"
       :class="`text-white bg-primary ${commonBtnStyles}`"
+      @click="$emit('buttonClicked')"
     >
       <slot></slot>
     </button>
@@ -10,6 +11,7 @@
     <button
       v-if="type === 'secondary'"
       :class="`bg-white text-primary border border-solid border-primary ${commonBtnStyles}`"
+      @click="$emit('buttonClicked')"
     >
       <slot></slot>
     </button>
@@ -18,6 +20,7 @@
     <button
       v-if="type === 'tertiary'"
       :class="`bg-blue text-white ${thinBtnStyles}`"
+      @click="$emit('buttonClicked')"
     >
       <slot></slot>
     </button>
@@ -27,6 +30,7 @@
     <button
       v-if="type === 'primary'"
       :class="`text-white bg-primary ${commonBtnStyles}`"
+      @click="$emit('buttonClicked')"
     >
       <slot></slot>
     </button>
@@ -34,6 +38,7 @@
     <button
       v-if="type === 'secondary'"
       :class="`bg-white text-primary border border-solid border-primary ${commonBtnStyles}`"
+      @click="$emit('buttonClicked')"
     >
       <slot></slot>
     </button>
@@ -41,6 +46,7 @@
     <button
       v-if="type === 'tertiary'"
       :class="`bg-blue text-white ${thinBtnStyles}`"
+      @click="$emit('buttonClicked')"
     >
       <slot></slot>
     </button>
