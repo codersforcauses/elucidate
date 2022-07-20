@@ -17,8 +17,14 @@
 export default {
   name: 'TextBox',
   props: {
-    header: String,
-    inputType: String,
+    header: {
+      type: String,
+      default: 'Objectives',
+    },
+    inputType: {
+      type: String,
+      default: 'text',
+    },
   },
 };
 </script>
