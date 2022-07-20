@@ -18,7 +18,7 @@
 
       <!-- <div @click="$emit('SelectAttri', label)"> -->
       <ButtonElement @buttonClicked="$emit('SelectAttri', label)" type="tertiary"> 
-        View Quizzes
+        {{buttonLabel}}
       </ButtonElement>
       <!-- </div> -->
     </div>
@@ -36,6 +36,10 @@ export default {
   }),
   props: {
     label: {
+      type: String,
+      default: undefined,
+    },
+    buttonLabel: {
       type: String,
       default: undefined,
     },

@@ -17,19 +17,22 @@
           <h1 class="font-extrabold text-xl mb-4">Overview</h1>
           <div class="flex flex-row space-x-6">
             <UserAttributeCard
-              label="Quizzes Answered"
+              label="Quizzes Finished"
+              buttonLabel="View Finished Quizzes"
               :value="User.stats.quizzesAnswered"
               color="green"
               @SelectAttri="(label) => selectedAttri = label"
             />
             <UserAttributeCard
               label="Quizzes Created"
+              buttonLabel="View your Quizzes"
               :value="User.stats.quizzesMade"
               color="yellow"
               @SelectAttri="(label) => selectedAttri = label"
             />
             <UserAttributeCard
               label="User Attribute"
+              buttonLabel="View Your Attributes"
               :value="User.stats.userAttribute"
               color="red"
               @SelectAttri="(label) => selectedAttri = label"
@@ -37,8 +40,8 @@
           </div>
         </div>
         <!-- right hand side, bottom part -->
-        <div v-if="selectedAttri === 'Quizzes Answered'" class="h-1/2">
-          <h1 class="font-black text-2xl">Quizzes Answered</h1>
+        <div v-if="selectedAttri === 'Quizzes Finished'" class="h-1/2">
+          <h1 class="font-black text-2xl">Finished Quizzes</h1>
           <QuizList :quizzes="Temp_quizzesAnswered"/> 
         </div>
         <div v-if="selectedAttri === 'Quizzes Created'" class="h-1/2">
@@ -66,7 +69,7 @@ export default {
     User: { stats: {},},
     quizzesAnswered: [],
     quizzesMade: [],
-    selectedAttri: "Quizzes Answered",
+    selectedAttri: "Quizzes Finished",
 
     Temp_testPerson: {
       first_name: 'Lorem',
