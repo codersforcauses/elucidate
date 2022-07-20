@@ -1,5 +1,5 @@
 <template>
-  <div class="relative m-1.5">
+  <div class="relative mx-1.5">
     <button @click="$emit('toggleTag', label)" :class=css>{{ label }}</button>
   </div>
 </template>
@@ -9,7 +9,7 @@ export default {
   name: 'QuizTag',
   computed: {
     css : function () {
-      return this.colour + " rounded";
+      return "bg-" + this.colour + " rounded px-2";
     }
   },
   props: ['label', 'colour']
