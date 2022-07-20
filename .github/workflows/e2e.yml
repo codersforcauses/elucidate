@@ -1,31 +1,23 @@
-name: Backend CI/CD
-
+name: E2E Tests
 on:
   push:
-    paths:
-      - server/**
     branches:
       - main
       - master
   pull_request:
-    paths:
-      - server/**
     branches:
       - main
       - master
 
 jobs:
-  ci:
+  e2e-tests:
     runs-on: ${{ matrix.os }}
-
-    defaults:
-      run:
-        working-directory: server
 
     strategy:
       matrix:
         os: [ubuntu-latest]
         python-version: [3.10.5]
+        node: [16]
 
     services:
       db:
@@ -41,6 +33,30 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
+
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: Get yarn cache directory path 🛠
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+        working-directory: client
+
+      - name: Cache node_modules 📦
+        uses: actions/cache@v3.0.5
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install yarn dependencies 👨🏻‍💻
+        run: yarn
+        working-directory: client
 
       - name: Setup Python env 🏗
         uses: actions/setup-python@v4
@@ -62,30 +78,29 @@ jobs:
           path: server/.venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-      - name: Install dependencies 👨🏻‍💻
+      - name: Install Python dependencies 👨🏻‍💻
         run: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-
-      - name: Run linter 👀
-        run: |
-          source .venv/bin/activate
-          flake8 api manage.py
-          black api manage.py --check --line-length 80 --preview
-          isort api manage.py
+        working-directory: server
 
       - name: Run Migrations 🕊️
         run: |
           source .venv/bin/activate
           python manage.py migrate
+        working-directory: server
 
-      - name: Run tests 🧪
+      - name: Start backend 🚛
         run: |
           source .venv/bin/activate
-          coverage run manage.py test
-          coverage xml
+          python manage.py runserver 0.0.0.0:8081 &
+          sleep 5 &&
+          curl http://localhost:8081 -I
+        working-directory: server
 
-      - name: Upload Coverage ☂️
-        uses: codecov/codecov-action@v3.1.0
+      - name: Run Cypress tests 🧪
+        uses: cypress-io/github-action@v4
         with:
-          flags: backend
-          files: ./server/coverage.xml
+          working-directory: client
+          install-command: yarn --frozen-lockfile --silent
+          build: yarn build
+          start: yarn start

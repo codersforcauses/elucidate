@@ -2,7 +2,7 @@
 
 exports[`PageFooter renders correctly 1`] = `
 <footer
-  class="relative bottom-1 h-[78px]"
+  class="h-20"
 >
   <div
     class="flex items-center justify-around text-sm font-bold"
