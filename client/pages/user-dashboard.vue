@@ -25,7 +25,7 @@
             />
             <UserAttributeCard
               label="Quizzes Created"
-              buttonLabel="View your Quizzes"
+              buttonLabel="View Your Quizzes"
               :value="User.stats.quizzesMade"
               color="yellow"
               @SelectAttri="(label) => selectedAttri = label"
@@ -46,11 +46,17 @@
         </div>
         <div v-if="selectedAttri === 'Quizzes Created'" class="h-1/2">
           <h1 class="font-black text-2xl">Your Quizzes</h1>
-          <QuizList :quizzes="Temp_quizzesAnswered"/> 
+          <QuizList :quizzes="Temp_quizzesMade"/> 
         </div>
         <div v-if="selectedAttri === 'User Attribute'" class="h-1/2">
           <h1 class="font-black text-2xl">Your Attributes</h1>
-          <QuizList :quizzes="Temp_quizzesAnswered"/> 
+            <UserAttributeCard
+              label="User Attribute"
+              buttonLabel="View Your Attributes"
+              :value="User.stats.userAttribute"
+              color="red"
+              @SelectAttri="(label) => selectedAttri = label"
+            />
         </div>
       </div>
     </div>
@@ -109,15 +115,32 @@ export default {
       tags: [{name: 'Silly', color: 'green'}, {name: 'notAThing', color: 'yellow'}],
       author: 'BuzzFeed',
       dateCreated: Date.now(),
-      score: 100,
+      score: "Iron Man",
      }, 
     ],
     Temp_quizzesMade: [
-
+     {
+      name: 'Star Signs',
+      tags: [{name: 'Astrology', color: 'red'}, {name: 'Beliefs', color: 'yellow'}],
+      author: 'Lorem Ipsum',
+      dateCreated: Date.now(),
+     }, 
+     {
+      name: 'Latin - 1',
+      tags: [{name: 'Language', color: 'blue'}, {name: 'Latin', color: 'yellow'}],
+      author: 'Lorem Ipsum',
+      dateCreated: Date.now(),
+      score: 99,
+     }, 
+     {
+      name: 'What is the shape of Italy?',
+      tags: [{name: 'Geography', color: 'red'}, {name: 'World', color: 'blue'}],
+      author: 'Lorem Ipsum',
+      dateCreated: Date.now(),
+     },
     ],
   }),
   beforeMount() {
-    console.log(this.Temp_testPerson.stats.userAttribute)
     this.User = this.getUserData();
     this.quizzesMade = this.getQuizzesMade();
     this.quizzesAnswered = this.getQuizzesAnswered();
@@ -132,11 +155,6 @@ export default {
     getQuizzesMade() {
       return this.Temp_quizzesMade;
     },
-
-    SelectAttri(selected) {
-      console.log("this is doing something")
-      this.selected = selected;
-    }
   },
 };
 </script>
