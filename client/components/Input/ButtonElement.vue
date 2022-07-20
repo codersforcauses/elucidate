@@ -16,7 +16,6 @@
       <slot></slot>
     </button>
 
-    
     <button
       v-if="type === 'tertiary'"
       :class="`bg-blue text-white ${thinBtnStyles}`"
@@ -24,7 +23,6 @@
     >
       <slot></slot>
     </button>
-
   </nuxt-link>
   <span v-else>
     <button

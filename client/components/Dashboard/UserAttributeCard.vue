@@ -1,24 +1,37 @@
 <template>
-  <div class="h-[15.5rem] w-[15.75rem] hover:shadow-lg transition-shadow duration-200 ease-in-out">
-    <div class="flex flex-col space-y-2 justify-center items-center bg-lightgrey/75 h-full">
-      <div v-if="color === 'green'" :class="`bg-green ${commonColoredBoxStyles}`">
-        {{value}}
+  <div
+    class="h-[15.5rem] w-[15.75rem] hover:shadow-lg transition-shadow duration-200 ease-in-out"
+  >
+    <div
+      class="flex flex-col space-y-2 justify-center items-center bg-lightgrey/75 h-full"
+    >
+      <div
+        v-if="color === 'green'"
+        :class="`bg-green ${commonColoredBoxStyles}`"
+      >
+        {{ value }}
       </div>
-      <div v-if="color === 'yellow'" :class="`bg-yellow ${commonColoredBoxStyles}`">
-        {{value}}
+      <div
+        v-if="color === 'yellow'"
+        :class="`bg-yellow ${commonColoredBoxStyles}`"
+      >
+        {{ value }}
       </div>
       <div v-if="color === 'red'" :class="`bg-red ${commonColoredBoxStyles}`">
-        {{value}}
+        {{ value }}
       </div>
       <div>
         <p class="text-lg font-medium">
-          {{label}}
+          {{ label }}
         </p>
       </div>
 
       <!-- <div @click="$emit('SelectAttri', label)"> -->
-      <ButtonElement @buttonClicked="$emit('SelectAttri', label)" type="tertiary"> 
-        {{buttonLabel}}
+      <ButtonElement
+        @buttonClicked="$emit('SelectAttri', label)"
+        type="tertiary"
+      >
+        {{ buttonLabel }}
       </ButtonElement>
       <!-- </div> -->
     </div>
@@ -49,8 +62,8 @@ export default {
     },
     color: {
       type: String,
-      default: "green",
-    }
-  }
+      default: 'green',
+    },
+  },
 };
 </script>

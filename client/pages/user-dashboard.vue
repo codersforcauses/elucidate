@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="flex h-screen ">
+    <div class="flex h-screen">
       <!-- left hand side -- should be component ? -->
       <div class="p-7 px- w-[28rem] flex-none h-full">
         <LeftBanner
@@ -21,42 +21,42 @@
               buttonLabel="View Finished Quizzes"
               :value="User.stats.quizzesAnswered"
               color="green"
-              @SelectAttri="(label) => selectedAttri = label"
+              @SelectAttri="(label) => (selectedAttri = label)"
             />
             <UserAttributeCard
               label="Quizzes Created"
               buttonLabel="View Your Quizzes"
               :value="User.stats.quizzesMade"
               color="yellow"
-              @SelectAttri="(label) => selectedAttri = label"
+              @SelectAttri="(label) => (selectedAttri = label)"
             />
             <UserAttributeCard
               label="User Attribute"
               buttonLabel="View Your Attributes"
               :value="User.stats.userAttribute"
               color="red"
-              @SelectAttri="(label) => selectedAttri = label"
+              @SelectAttri="(label) => (selectedAttri = label)"
             />
           </div>
         </div>
         <!-- right hand side, bottom part -->
         <div v-if="selectedAttri === 'Quizzes Finished'" class="h-1/2">
           <h1 class="font-black text-2xl">Finished Quizzes</h1>
-          <QuizList :quizzes="Temp_quizzesAnswered"/> 
+          <QuizList :quizzes="Temp_quizzesAnswered" />
         </div>
         <div v-if="selectedAttri === 'Quizzes Created'" class="h-1/2">
           <h1 class="font-black text-2xl">Your Quizzes</h1>
-          <QuizList :quizzes="Temp_quizzesMade"/> 
+          <QuizList :quizzes="Temp_quizzesMade" />
         </div>
         <div v-if="selectedAttri === 'User Attribute'" class="h-1/2">
           <h1 class="font-black text-2xl">Your Attributes</h1>
-            <UserAttributeCard
-              label="User Attribute"
-              buttonLabel="View Your Attributes"
-              :value="User.stats.userAttribute"
-              color="red"
-              @SelectAttri="(label) => selectedAttri = label"
-            />
+          <UserAttributeCard
+            label="User Attribute"
+            buttonLabel="View Your Attributes"
+            :value="User.stats.userAttribute"
+            color="red"
+            @SelectAttri="(label) => (selectedAttri = label)"
+          />
         </div>
       </div>
     </div>
@@ -70,12 +70,12 @@ import UserAttributeCard from '../components/Dashboard/UserAttributeCard.vue';
 
 export default {
   name: 'UserDashboard',
-  components: { LeftBanner, UserAttributeCard, QuizList},
+  components: { LeftBanner, UserAttributeCard, QuizList },
   data: () => ({
-    User: { stats: {},},
+    User: { stats: {} },
     quizzesAnswered: [],
     quizzesMade: [],
-    selectedAttri: "Quizzes Finished",
+    selectedAttri: 'Quizzes Finished',
 
     Temp_testPerson: {
       first_name: 'Lorem',
@@ -89,55 +89,76 @@ export default {
       },
     },
     Temp_quizzesAnswered: [
-     {
-      name: 'Maths - Integrals II',
-      tags: [{name: 'Calculus', color: 'red'}, {name: 'Year 12', color: 'yellow'}],
-      author: 'NicholasJDavies',
-      dateCreated: Date.now(),
-      score: 57,
-     }, 
-     {
-      name: 'Maths - Integrals I',
-      tags: [{name: 'Calculus', color: 'blue'}, {name: 'Year 11', color: 'yellow'}],
-      author: 'JohnnyBoi42',
-      dateCreated: Date.now(),
-      score: 57,
-     }, 
-     {
-      name: 'Chemistry - Organic',
-      tags: [{name: 'Chemistry', color: 'red'}, {name: 'Organic', color: 'blue'}],
-      author: 'Ms. Vujcich',
-      dateCreated: Date.now(),
-      score: 80,
-     }, 
-     {
-      name: 'Which Avenger are you?',
-      tags: [{name: 'Silly', color: 'green'}, {name: 'notAThing', color: 'yellow'}],
-      author: 'BuzzFeed',
-      dateCreated: Date.now(),
-      score: 78,
-     }, 
+      {
+        name: 'Maths - Integrals II',
+        tags: [
+          { name: 'Calculus', color: 'red' },
+          { name: 'Year 12', color: 'yellow' },
+        ],
+        author: 'NicholasJDavies',
+        dateCreated: Date.now(),
+        score: 57,
+      },
+      {
+        name: 'Maths - Integrals I',
+        tags: [
+          { name: 'Calculus', color: 'blue' },
+          { name: 'Year 11', color: 'yellow' },
+        ],
+        author: 'JohnnyBoi42',
+        dateCreated: Date.now(),
+        score: 57,
+      },
+      {
+        name: 'Chemistry - Organic',
+        tags: [
+          { name: 'Chemistry', color: 'red' },
+          { name: 'Organic', color: 'blue' },
+        ],
+        author: 'Ms. Vujcich',
+        dateCreated: Date.now(),
+        score: 80,
+      },
+      {
+        name: 'Which Avenger are you?',
+        tags: [
+          { name: 'Silly', color: 'green' },
+          { name: 'notAThing', color: 'yellow' },
+        ],
+        author: 'BuzzFeed',
+        dateCreated: Date.now(),
+        score: 78,
+      },
     ],
     Temp_quizzesMade: [
-     {
-      name: 'Star Signs',
-      tags: [{name: 'Astrology', color: 'red'}, {name: 'Beliefs', color: 'yellow'}],
-      author: 'Lorem Ipsum',
-      dateCreated: Date.now(),
-     }, 
-     {
-      name: 'Latin - 1',
-      tags: [{name: 'Language', color: 'green'}, {name: 'Latin', color: 'yellow'}],
-      author: 'Lorem Ipsum',
-      dateCreated: Date.now(),
-      score: 99,
-     }, 
-     {
-      name: 'What is the shape of Italy?',
-      tags: [{name: 'Geography', color: 'red'}, {name: 'World', color: 'blue'}],
-      author: 'Lorem Ipsum',
-      dateCreated: Date.now(),
-     },
+      {
+        name: 'Star Signs',
+        tags: [
+          { name: 'Astrology', color: 'red' },
+          { name: 'Beliefs', color: 'yellow' },
+        ],
+        author: 'Lorem Ipsum',
+        dateCreated: Date.now(),
+      },
+      {
+        name: 'Latin - 1',
+        tags: [
+          { name: 'Language', color: 'green' },
+          { name: 'Latin', color: 'yellow' },
+        ],
+        author: 'Lorem Ipsum',
+        dateCreated: Date.now(),
+        score: 99,
+      },
+      {
+        name: 'What is the shape of Italy?',
+        tags: [
+          { name: 'Geography', color: 'red' },
+          { name: 'World', color: 'blue' },
+        ],
+        author: 'Lorem Ipsum',
+        dateCreated: Date.now(),
+      },
     ],
   }),
   beforeMount() {

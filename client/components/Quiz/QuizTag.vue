@@ -1,6 +1,6 @@
 <template>
   <div class="relative mx-1.5">
-    <button :class=css>{{ label }}</button>
+    <button :class="css">{{ label }}</button>
   </div>
 </template>
 
@@ -8,13 +8,12 @@
 export default {
   name: 'QuizTag',
   computed: {
-    css : function () {
-      return "bg-" + this.colour + " rounded px-2";
-    }
+    css: function () {
+      return 'bg-' + this.colour + ' rounded px-2';
+    },
   },
-  props: ['label', 'colour']
-}
+  props: ['label', 'colour'],
+};
 </script>
 
-<style>
-</style>
+<style></style>

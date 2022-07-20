@@ -4,7 +4,11 @@
     class="flex flex-col justify-center items-center content-evenly space-y-2 h-full bg-[url('~/static/temp_Shapebg.svg')] bg-contain bg-no-repeat bg-center"
   >
     <!--Profile pic -->
-    <nuxt-img :src="profilePic" class="h-52 mb-3" :alt="name + ' profile picture'" />
+    <nuxt-img
+      :src="profilePic"
+      class="h-52 mb-3"
+      :alt="name + ' profile picture'"
+    />
 
     <!--Welcome text -->
     <div>

@@ -1,19 +1,21 @@
 <template>
-  <div class="h-full w-full"> 
+  <div class="h-full w-full">
     <div class="grid grid-rows-auto mr-10 flex space-y-2">
       <!-- 9 cols, two per property, one for score -->
-      <div class="py-1 px-6 grid grid-cols-9 text-lightgrey font-bold flex"> 
+      <div class="py-1 px-6 grid grid-cols-9 text-lightgrey font-bold flex">
         <h1 class="col-span-2">Title</h1>
         <h1 class="col-span-2">Tags</h1>
         <h1 class="col-span-2">Author</h1>
         <h1 class="col-span-2">Date Created</h1>
         <h1>Your Score</h1>
       </div>
-      <QuizListItem v-for="(quiz, index) in quizzes" :key="index" :Quiz="quiz"/>
-      
+      <QuizListItem
+        v-for="(quiz, index) in quizzes"
+        :key="index"
+        :Quiz="quiz"
+      />
     </div>
-    
-  </div> 
+  </div>
 </template>
 
 <script>
