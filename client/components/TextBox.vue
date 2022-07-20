@@ -1,16 +1,16 @@
 <template>
-    <div class="pt-10 mb-5 ml-20">
-        <label class="p-10 text-white text-xl font-bold">{{ header }}</label>
-        <input class="p-0 m-0 w-1/2 h-9 rounded shadow-sm" :type="inputType" />
-    </div>
+  <div class="pt-10 mb-5 ml-20">
+    <label class="p-10 text-white text-xl font-bold">{{ header }}</label>
+    <input class="p-0 m-0 w-1/2 h-9 rounded shadow-sm" :type="inputType" />
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'TextBox',
-    props: {
-        header: String,
-        inputType: String
-    }
-}
+  name: 'TextBox',
+  props: {
+    header: String,
+    inputType: String,
+  },
+};
 </script>
