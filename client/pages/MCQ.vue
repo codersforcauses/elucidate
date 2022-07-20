@@ -12,11 +12,11 @@
 
     <div class="flex flex-col mb-10">
       <Box title="{Display Quiz Name}" subtitle="Qn-1" :is-centered="false">
-        <div class="flex inline-flex mt-10 mb-5 mx-20">
+        <div class="inline-flex mt-10 mb-5 mx-20">
           <p class="flex align-middle mr-8 text-white text-l font-bold">
             Question Type:
           </p>
-          <div class="flex inline-flex gap-2 text-white text-md font-bold">
+          <div class="inline-flex gap-2 text-white text-md font-bold">
             <button class="bg-yellow rounded-full shadow-md px-3 py-1">
               Multiple Choice
             </button>
