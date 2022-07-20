@@ -1,6 +1,7 @@
 <template>
   <div
-    class="w-full border-lightgrey/75 border rounded-md py-2 px-6 mr-5 grid-cols-9 grid"
+    @click="$emit('showQuiz', Quiz)"
+    class="w-full border-lightgrey/75 border rounded-md py-2 px-6 mr-5 grid-cols-9 grid hover:border-darkgrey hover:shadow-md transition-all duration-200 ease-in-out"
   >
     <div class="col-span-2">{{ Quiz.name }}</div>
     <div class="flex w-full col-span-2">
