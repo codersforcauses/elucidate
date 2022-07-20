@@ -19,4 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path("take-quiz/", include("api.apps.quiz_take.urls")),
     path("admin/", admin.site.urls),
+    path("api/auth/", include("api.apps.auth.urls")),
+    path("api/user/", include("api.apps.users.urls")),
 ]

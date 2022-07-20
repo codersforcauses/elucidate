@@ -8,4 +8,4 @@ After setting up your development workspace in the main guide, you can launch a 
 
 ### Running tests
 
-Tests can be run with the command `python manage.py test`
+Tests can be run with the command `python manage.py test`.
