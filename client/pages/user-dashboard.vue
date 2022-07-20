@@ -111,11 +111,11 @@ export default {
       score: 80,
      }, 
      {
-      name: 'Which Avengers are you?',
+      name: 'Which Avenger are you?',
       tags: [{name: 'Silly', color: 'green'}, {name: 'notAThing', color: 'yellow'}],
       author: 'BuzzFeed',
       dateCreated: Date.now(),
-      score: "Iron Man",
+      score: 78,
      }, 
     ],
     Temp_quizzesMade: [
@@ -127,7 +127,7 @@ export default {
      }, 
      {
       name: 'Latin - 1',
-      tags: [{name: 'Language', color: 'blue'}, {name: 'Latin', color: 'yellow'}],
+      tags: [{name: 'Language', color: 'green'}, {name: 'Latin', color: 'yellow'}],
       author: 'Lorem Ipsum',
       dateCreated: Date.now(),
       score: 99,
