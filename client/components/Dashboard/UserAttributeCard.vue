@@ -2,22 +2,25 @@
   <div class="h-[15.5rem] w-[15.75rem] hover:shadow-lg transition-shadow duration-200 ease-in-out">
     <div class="flex flex-col space-y-2 justify-center items-center bg-lightgrey/75 h-full">
       <div v-if="color === 'green'" :class="`bg-green ${commonColoredBoxStyles}`">
-        {{propertyValue}}
+        {{value}}
       </div>
       <div v-if="color === 'yellow'" :class="`bg-yellow ${commonColoredBoxStyles}`">
-        {{propertyValue}}
+        {{value}}
       </div>
       <div v-if="color === 'red'" :class="`bg-red ${commonColoredBoxStyles}`">
-        {{propertyValue}}
+        {{value}}
       </div>
       <div>
         <p class="text-lg font-medium">
-          {{property}}
+          {{label}}
         </p>
       </div>
-      <ButtonElement type="tertiary"> 
+
+      <!-- <div @click="$emit('SelectAttri', label)"> -->
+      <ButtonElement @buttonClicked="$emit('SelectAttri', label)" type="tertiary"> 
         View Quizzes
       </ButtonElement>
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -32,11 +35,11 @@ export default {
       'rounded-md text-white text-4xl font-extrabold h-20 w-20 flex justify-center items-center',
   }),
   props: {
-    property: {
+    label: {
       type: String,
       default: undefined,
     },
-    propertyValue: {
+    value: {
       type: Number,
       default: 0,
     },
