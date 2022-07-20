@@ -1,8 +1,8 @@
 <template>
   <main>
-    <div class="flex h-screen">
+    <div class="flex h-screen ">
       <!-- left hand side -- should be component ? -->
-      <div class="p-9 flex-none w-1/3 h-full">
+      <div class="p-7 px- w-[28rem] flex-none h-full">
         <LeftBanner
           :email="Temp_testPerson.email"
           :name="User.first_name"
@@ -34,9 +34,9 @@
           </div>
         </div>
         <!-- right hand side, bottom part -->
-        <div class="h-1/2">
+        <div v-if="selAttri === 'Quizzes Answered'" class="h-1/2">
           <h1 class="font-black text-2xl">Quizzes Answered</h1>
-          <QuizList :quizzes="quizzesAnswered"/>
+          <QuizList :quizzes="Temp_quizzesAnswered"/> 
         </div>
       </div>
     </div>
@@ -53,6 +53,8 @@ export default {
   components: { LeftBanner, UserAttributeCard, QuizList},
   data: () => ({
     User: { stats: {},},
+    quizzesAnswered: [],
+    quizzesMade: [],
 
     Temp_testPerson: {
       first_name: 'Lorem',
@@ -67,32 +69,32 @@ export default {
     },
     Temp_quizzesAnswered: [
      {
-      Name: 'Maths - Integrals II',
-      Tags: ['Calculus', 'Year 12'],
-      Author: 'NicholasJDavies',
-      DateCreated: Date.now(),
-      Score: 57,
+      name: 'Maths - Integrals II',
+      tags: [{name: 'Calculus', color: 'red'}, {name: 'Year 12', color: 'yellow'}],
+      author: 'NicholasJDavies',
+      dateCreated: Date.now(),
+      score: 57,
      }, 
      {
-      Name: 'Maths - Integrals I',
-      Tags: ['Calculus', 'Year 11'],
-      Author: 'JohnnyBoi42',
-      DateCreated: Date.now(),
-      Score: 57,
+      name: 'Maths - Integrals I',
+      tags: [{name: 'Calculus', color: 'blue'}, {name: 'Year 11', color: 'yellow'}],
+      author: 'JohnnyBoi42',
+      dateCreated: Date.now(),
+      score: 57,
      }, 
      {
-      Name: 'Chemistry - Organic',
-      Tags: ['Chemistry', 'Organic'],
-      Author: 'Ms. Vujcich',
-      DateCreated: Date.now(),
-      Score: 80,
+      name: 'Chemistry - Organic',
+      tags: [{name: 'Chemistry', color: 'red'}, {name: 'Organic', color: 'blue'}],
+      author: 'Ms. Vujcich',
+      dateCreated: Date.now(),
+      score: 80,
      }, 
      {
-      Name: 'Which Avengers are you?',
-      Tags: ['Silly', 'notAThing'],
-      Author: 'BuzzFeed',
-      DateCreated: Date.now(),
-      Score: 100,
+      name: 'Which Avengers are you?',
+      tags: [{name: 'Silly', color: 'green'}, {name: 'notAThing', color: 'yellow'}],
+      author: 'BuzzFeed',
+      dateCreated: Date.now(),
+      score: 100,
      }, 
     ],
     Temp_quizzesMade: [
