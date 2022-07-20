@@ -1,5 +1,7 @@
 <template>
-  <div class="flex grow flex-col items-center content-center min-w-full min-h-screen">
+  <div
+    class="flex grow flex-col items-center content-center min-w-full min-h-screen"
+  >
     <AuthHeader page-title="Sign In" />
     <AuthForm>
       <InputField class="w-full" field-name="Email" field-type="text" />
