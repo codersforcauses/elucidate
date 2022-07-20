@@ -100,12 +100,6 @@ export default {
       default: undefined,
     },
   },
-  data: function () {
-    return {
-      showText: false,
-      inputValue: '',
-    };
-  },
   data: () => ({
     showText: false,
     inputValue: '',

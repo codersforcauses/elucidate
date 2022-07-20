@@ -141,15 +141,6 @@ export default {
       this.title = 'Account Created!';
       this.name = document.getElementsByName('First Name')[0].value;
       this.accountCreated = true;
-
-      // Print input values
-      console.log(document.getElementsByName('First Name')[0].value);
-      console.log(document.getElementsByName('Last Name')[0].value);
-      console.log(document.getElementsByName('Email')[0].value);
-      console.log(document.getElementsByName('Password')[0].value);
-      console.log(document.getElementsByName('Confirm Password')[0].value);
-      const select = document.getElementsByName('Grade')[0];
-      console.log(select.options[select.selectedIndex].text);
     },
   },
 };
