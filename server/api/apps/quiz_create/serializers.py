@@ -18,7 +18,9 @@ class QuestionInfoSerializer(serializers.Serializer):
                 allow_empty=False,
                 min_length=2,
                 max_length=2)
-            )
+            ),
+        required=False,
+        allow_empty=True
         )
     tags = serializers.ListField(
         child=serializers.CharField(max_length=defines.TAG_NAME_MAXLEN)
