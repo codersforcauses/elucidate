@@ -1,6 +1,6 @@
 <template>
   <div class="relative mx-1.5">
-    <button @click="$emit('toggleTag', label)" :class=css>{{ label }}</button>
+    <button :class=css>{{ label }}</button>
   </div>
 </template>
 
