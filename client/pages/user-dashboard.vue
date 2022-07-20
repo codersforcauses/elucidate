@@ -17,25 +17,36 @@
           <h1 class="font-extrabold text-xl mb-4">Overview</h1>
           <div class="flex flex-row space-x-6">
             <UserAttributeCard
-              property="Quizzes Answered"
-              :propertyValue="User.stats.quizzesAnswered"
+              label="Quizzes Answered"
+              :value="User.stats.quizzesAnswered"
               color="green"
+              @SelectAttri="(label) => selectedAttri = label"
             />
             <UserAttributeCard
-              property="Quizzes Created"
-              :propertyValue="User.stats.quizzesMade"
+              label="Quizzes Created"
+              :value="User.stats.quizzesMade"
               color="yellow"
+              @SelectAttri="(label) => selectedAttri = label"
             />
             <UserAttributeCard
-              property="User Attribute"
-              :propertyValue="User.stats.userAttribute"
+              label="User Attribute"
+              :value="User.stats.userAttribute"
               color="red"
+              @SelectAttri="(label) => selectedAttri = label"
             />
           </div>
         </div>
         <!-- right hand side, bottom part -->
-        <div v-if="selAttri === 'Quizzes Answered'" class="h-1/2">
+        <div v-if="selectedAttri === 'Quizzes Answered'" class="h-1/2">
           <h1 class="font-black text-2xl">Quizzes Answered</h1>
+          <QuizList :quizzes="Temp_quizzesAnswered"/> 
+        </div>
+        <div v-if="selectedAttri === 'Quizzes Created'" class="h-1/2">
+          <h1 class="font-black text-2xl">Your Quizzes</h1>
+          <QuizList :quizzes="Temp_quizzesAnswered"/> 
+        </div>
+        <div v-if="selectedAttri === 'User Attribute'" class="h-1/2">
+          <h1 class="font-black text-2xl">Your Attributes</h1>
           <QuizList :quizzes="Temp_quizzesAnswered"/> 
         </div>
       </div>
@@ -55,6 +66,7 @@ export default {
     User: { stats: {},},
     quizzesAnswered: [],
     quizzesMade: [],
+    selectedAttri: "Quizzes Answered",
 
     Temp_testPerson: {
       first_name: 'Lorem',
@@ -117,6 +129,11 @@ export default {
     getQuizzesMade() {
       return this.Temp_quizzesMade;
     },
+
+    SelectAttri(selected) {
+      console.log("this is doing something")
+      this.selected = selected;
+    }
   },
 };
 </script>
