@@ -1,23 +1,23 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <AuthHeader :pageTitle="title" />
+    <AuthHeader :page-title="title" />
 
     <div class="flex justify-center flex-grow">
       <AuthForm v-if="!accountCreated">
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form
-            @submit.prevent="onSubmit"
             class="flex flex-col w-11/12 mx-6 my-8"
+            @submit.prevent="onSubmit"
           >
             <InputField
               v-for="field in fields"
+              :id="field.id"
               :key="field.index"
-              :fieldName="field.name"
-              :fieldType="field.type"
-              :fieldOptions="field.options"
+              :field-name="field.name"
+              :field-type="field.type"
+              :field-options="field.options"
               :rules="field.rules"
               :inputvalue.sync="field.value"
-              :id="field.id"
             />
             <button
               type="submit"
@@ -73,8 +73,7 @@ import InputField from '~/components/Auth/InputField.vue';
 
 let count = 0;
 export default {
-  name: 'signup-page',
-  layout: 'auth',
+  name: 'SignupPage',
   components: {
     ValidationObserver,
     AuthFooter,
@@ -82,6 +81,7 @@ export default {
     AuthForm,
     InputField,
   },
+  layout: 'auth',
   data: () => ({
     title: 'Sign-Up',
     password: '',
@@ -148,7 +148,7 @@ export default {
       console.log(document.getElementsByName('Email')[0].value);
       console.log(document.getElementsByName('Password')[0].value);
       console.log(document.getElementsByName('Confirm Password')[0].value);
-      var select = document.getElementsByName('Grade')[0];
+      const select = document.getElementsByName('Grade')[0];
       console.log(select.options[select.selectedIndex].text);
     },
   },
