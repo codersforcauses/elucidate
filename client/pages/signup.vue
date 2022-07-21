@@ -1,9 +1,7 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <AuthHeader :page-title="title" />
-
-    <div class="flex justify-center flex-grow">
-      <AuthForm v-if="!accountCreated">
+    <div class="flex flex-col justify-center flex-grow">
+      <AuthHeader :page-title="title" />
+      <AuthForm v-if="!accountCreated" class="self-center">
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form
             class="flex flex-col w-11/12 mx-6 my-8"
@@ -59,9 +57,8 @@
           </p>
         </div>
       </AuthForm>
+      <AuthFooter />
     </div>
-    <AuthFooter />
-  </div>
 </template>
 
 <script>
