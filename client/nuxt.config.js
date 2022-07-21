@@ -70,7 +70,8 @@ export default {
   },
 
   router: {
-    middleware: ['auth'],
+    // set to false for easier testing
+    // middleware: ['auth'],
   },
 
   auth: {
