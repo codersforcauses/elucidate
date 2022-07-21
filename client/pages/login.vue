@@ -32,18 +32,8 @@
 </template>
 
 <script>
-import AuthFooter from '~/components/Auth/AuthFooter.vue';
-import AuthHeader from '~/components/Auth/AuthHeader.vue';
-import AuthForm from '~/components/Auth/AuthForm.vue';
-import InputField from '~/components/Auth/InputField.vue';
-
 export default {
-  components: {
-    AuthFooter,
-    AuthHeader,
-    AuthForm,
-    InputField,
-  },
+  name: 'LoginPage',
   layout: 'auth',
 };
 </script>
