@@ -1,0 +1,147 @@
+<template>
+  <div class="flex flex-col min-h-screen">
+    <AuthHeader :page-title="title" />
+
+    <div class="flex justify-center flex-grow">
+      <AuthForm v-if="!accountCreated">
+        <ValidationObserver v-slot="{ invalid }" class="w-full">
+          <form
+            class="flex flex-col w-11/12 mx-6 my-8"
+            @submit.prevent="onSubmit"
+          >
+            <InputField
+              v-for="field in fields"
+              :id="field.id"
+              :key="field.index"
+              :field-name="field.name"
+              :field-type="field.type"
+              :field-options="field.options"
+              :rules="field.rules"
+              :inputvalue.sync="field.value"
+            />
+            <button
+              type="submit"
+              :disabled="invalid"
+              :class="
+                invalid ? 'text-darkgrey bg-lightgrey' : 'text-red bg-white'
+              "
+              class="w-24 h-8 mt-5 font-bold border border-solid rounded place-self-center text-l drop-shadow-lg"
+            >
+              Submit
+            </button>
+          </form>
+        </ValidationObserver>
+        <p>
+          Already have an account?
+          <NuxtLink to="/login" class="text-blue"
+            >Click here to log in</NuxtLink
+          >
+        </p>
+      </AuthForm>
+
+      <AuthForm v-else>
+        <div
+          class="flex flex-col grow items-center text-center font-bold text-white"
+        >
+          <p class="text-3xl my-5">Congratulations {{ name }}!</p>
+          <p class="text-2xl mx-10 my-5">
+            Your new Elucidate account has been created
+          </p>
+          <font-awesome-icon
+            :icon="['fas', 'fa-face-smile-beam']"
+            class="text-[10rem] my-10 text-white"
+          />
+          <p class="text-2xl mx-10 my-5">
+            Please proceed to the
+            <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink> or
+            <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
+            for quizzes
+          </p>
+        </div>
+      </AuthForm>
+    </div>
+    <AuthFooter />
+  </div>
+</template>
+
+<script>
+import { ValidationObserver } from 'vee-validate';
+import AuthFooter from '~/components/Auth/AuthFooter.vue';
+import AuthHeader from '~/components/Auth/AuthHeader.vue';
+import AuthForm from '~/components/Auth/AuthForm.vue';
+import InputField from '~/components/Auth/InputField.vue';
+
+let count = 0;
+export default {
+  name: 'SignupPage',
+  components: {
+    ValidationObserver,
+    AuthFooter,
+    AuthHeader,
+    AuthForm,
+    InputField,
+  },
+  layout: 'auth',
+  data: () => ({
+    title: 'Sign-Up',
+    password: '',
+    confirm: '',
+    ispassword: true,
+    btnDisable: true,
+    accountCreated: false,
+    name: '',
+    fields: [
+      {
+        name: 'First Name',
+        type: 'text',
+        index: count++,
+        id: 'firstname',
+        rules: 'required',
+      },
+      {
+        name: 'Last Name',
+        type: 'text',
+        index: count++,
+        id: 'lastname',
+        rules: 'required',
+      },
+      {
+        name: 'Email',
+        type: 'text',
+        index: count++,
+        id: 'email',
+        rules: 'required|email',
+      },
+      {
+        name: 'Password',
+        type: 'password',
+        index: count++,
+        id: 'password',
+        rules: 'required|min:6',
+      },
+      {
+        name: 'Confirm Password',
+        type: 'password',
+        index: count++,
+        id: 'confirm',
+        rules: 'required|password:@password',
+      },
+      {
+        name: 'Grade',
+        type: 'dropdown',
+        options: ['Grade 11', 'Grade 12', 'Other'],
+        index: count++,
+        id: 'grade',
+        rules: 'required',
+      },
+    ],
+  }),
+  methods: {
+    onSubmit() {
+      this.title = 'Account Created!';
+      this.name = document.getElementsByName('First Name')[0].value;
+      this.accountCreated = true;
+    },
+  },
+};
+</script>

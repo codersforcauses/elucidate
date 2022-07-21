@@ -16,6 +16,7 @@ drf-jwt = "^1.19.2"
 python-decouple = "^3.6"
 django-cors-headers = "^3.13.0"
 coverage = "^6.4.1"
+djoser = "^2.1.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
