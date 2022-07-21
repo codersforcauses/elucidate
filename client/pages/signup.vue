@@ -4,6 +4,26 @@
 
     <div class="flex justify-center flex-grow">
       <AuthForm v-if="!accountCreated">
+        <div
+          v-if="Object.keys(errors).length !== 0"
+          class="mx-6 mt-8 bg-red w-11/12 p-3 text-neutral-100 font-bold rounded-md"
+        >
+          <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
+          <p class="inline">
+            Error creating account, please fix the following errors:
+          </p>
+          <div
+            v-for="(messages, error) in errors"
+            :key="error"
+            class="mt-2 text-lg"
+          >
+            {{ error }}
+            <p v-for="(message, i) in messages" :key="i" class="text-base">
+              {{ message }}
+            </p>
+          </div>
+        </div>
+
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form
             class="flex flex-col w-11/12 mx-6 my-8"
@@ -53,9 +73,8 @@
           />
           <p class="text-2xl mx-10 my-5">
             Please proceed to the
-            <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink> or
-            <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
-            for quizzes
+            <NuxtLink to="/quiz" class="text-blue">Login page</NuxtLink> to
+            login!
           </p>
         </div>
       </AuthForm>
@@ -77,10 +96,9 @@ export default {
   layout: 'auth',
   data: () => ({
     title: 'Sign-Up',
-    ispassword: true,
-    btnDisable: true,
     accountCreated: false,
     name: '',
+    errors: {},
     fields: [
       {
         name: 'First Name',
@@ -128,20 +146,6 @@ export default {
     ],
   }),
   methods: {
-    onSubmit() {
-      this.title = 'Account Created!';
-      this.name = document.getElementsByName('First Name')[0].value;
-      this.accountCreated = true;
-
-      // Print input values
-      console.log(document.getElementsByName('First Name')[0].value);
-      console.log(document.getElementsByName('Last Name')[0].value);
-      console.log(document.getElementsByName('Email')[0].value);
-      console.log(document.getElementsByName('Password')[0].value);
-      console.log(document.getElementsByName('Confirm Password')[0].value);
-      var select = document.getElementsByName('Grade')[0];
-      console.log(select.options[select.selectedIndex].text);
-    },
     async register(e) {
       const postData = {};
       this.fields.forEach((field) => {
@@ -150,14 +154,14 @@ export default {
 
       await this.$axios
         .post('auth/register/', postData)
-        .then((data) => console.log(data))
+        .then(() => {
+          this.title = 'Account Created!';
+          this.name = e.target.elements['First Name'].value;
+          this.accountCreated = true;
+        })
         .catch((error) => {
-          console.log(error.response.data);
-          // TODO: Display error messages on duplicate email and form errors
-          this.$router.push('signup-error');
+          this.errors = error.response.data;
         });
-
-      this.$router.push('login');
     },
   },
 };
