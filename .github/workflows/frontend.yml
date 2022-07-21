@@ -59,13 +59,6 @@ jobs:
       - name: Run Jest tests 🧪
         run: yarn test
 
-      - name: Run Cypress tests 🧪
-        uses: cypress-io/github-action@v4
-        with:
-          working-directory: client
-          install-command: yarn --frozen-lockfile --silent
-          build: yarn build
-
       - name: Upload Coverage ☂️
         uses: codecov/codecov-action@v3.1.0
         with:
