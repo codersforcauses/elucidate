@@ -7,32 +7,51 @@
         <input v-model="searchedTag" placeholder="Search tags..." class="bg-transparent relative top-[-10px] left-[33px] w-[96px] h-[23px] outline-0 font-roboto"/>
       </div>
       <div class="relative top-[50px]">
-        <SelectTag v-for="tag in searchedTags" :label="tag.name" :colour="tag.colour" @toggleTag="toggleTag($event)">
+        <SelectTag
+          v-for="tag in searchedTags"
+          :label="tag.name"
+          :colour="tag.colour"
+          @toggleTag="toggleTag($event)"
+        >
         </SelectTag>
       </div>
-    <p>Selected Tags: {{ selectedTags }}</p>
+    </div>
+    <div class="border rounded-b-[4px]">
+      <RemoveTag
+        v-for="tag in selectedTags"
+        :label="tag.name"
+        :colour="tag.colour"
+        @toggleTag="toggleTag($event)"
+      >
+      </RemoveTag>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import SelectTag from "./SelectTag.vue"; // Do we need a form for the input?
+import axios from 'axios';
+import SelectTag from './SelectTag.vue';
+import RemoveTag from './RemoveTag.vue'; // Do we need a form for the input?
 
 export default {
   data() {
     return {
-      searchedTag: "",
+      searchedTag: '',
       // These tags should be generated using the getTags function at the start
-      tags: [{ name: "math", colour: "bg-[#44a36b]", selected: false }, { name: "science", colour: "bg-[#5c2ad7]", selected: false }, { name: "history", colour: "bg-[#bd52a4]", selected: false }, { name: "geography", colour: "bg-[#aca127]" , selected: false }],
+      tags: [
+        { name: 'math', colour: '44a36b', selected: false },
+        { name: 'science', colour: '5c2ad7', selected: false },
+        { name: 'history', colour: 'bd52a4', selected: false },
+        { name: 'geography', colour: 'aca127', selected: false },
+      ],
     };
   },
-  components: { SelectTag },
+  components: { SelectTag, RemoveTag },
   computed: {
     searchedTags: function () {
       this.result = [];
-      this.tags.forEach(tag => {
-        if (tag.name.includes(this.searchedTag)) {
+      this.tags.forEach((tag) => {
+        if (tag.name.includes(this.searchedTag) && tag.selected == false) {
           this.result.push(tag);
         }
       });
@@ -41,13 +60,13 @@ export default {
 
     selectedTags: function () {
       const result = [];
-      this.tags.forEach(tag => {
+      this.tags.forEach((tag) => {
         if (tag.selected) {
-          result.push(tag.name);
+          result.push(tag);
         }
       });
       return result;
-    }
+    },
   },
   methods: {
     getTags: function () {
@@ -55,7 +74,8 @@ export default {
       const res = await axios.get(
         "/tags",
         { params: { searchedTag } }
-      ) */ // Should be in form {name, colour, turned off}
+      ) */
+      // Should be in form {name, colour, turned off}
     },
 
     toggleTag: function (name) {
@@ -65,9 +85,9 @@ export default {
           break;
         }
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
