@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import dummyjson from './dummy.json'
+import dummyjson from './dummy.json';
 
 export default {
   name: 'QuizDetailCard',
@@ -73,10 +73,6 @@ export default {
       ],
     };
   },
-  props: [
-    'topicName',
-    'totalQues',
-  ]
-  
+  props: ['topicName', 'totalQues'],
 };
 </script>

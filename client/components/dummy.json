@@ -1,109 +1,42 @@
 [
-    {
-        "quiz_id": 101,
-        "quiz_name": "Basic Maths III",
-        "question_desc": [
-            "Differentiate 5x^2",
-            "What is 8 * 2 * 4",
-            "What is 9 + 10",
-            "How are you going?",
-            "What is 21 * 21?"
-        ],
-        "question_type": [
-            "mcq",
-            "mcq",
-            "mcq",
-            "mcq",
-            "mcq"
-        ],
-        "question_choices": [
-            [
-                "10x",
-                "9x",
-                "8x",
-                "7x"
-            ],
-            [
-                "64",
-                "32",
-                "128",
-                "48"
-            ],
-            [
-                "21",
-                "19",
-                "20",
-                "22"
-            ],
-            [
-                "nice",
-                "bad",
-                "good",
-                "great"
-            ],
-            [
-                "idk",
-                "4021",
-                "4028",
-                "4232"
-            ]
-        ],
-        "tags":[
-            "Maths",
-            "Problem/Solving"
-        ]
-    },
-    {
-        "quiz_id": 102,
-        "quiz_name": "Geography IV",
-        "question_desc": [
-            "Which of these U.S. states does NOT border Canada?",
-            "Which of these countries was NOT a part of the Soviet Union?",
-            "Which of these cities is NOT a national capital?",
-            "Which of these cities DOESN'T border the Mediterranean Sea?",
-            "Which of these countries was NEVER part of the British Empire?"
-        ],
-        "question_type": [
-            "mcq",
-            "mcq",
-            "mcq",
-            "mcq",
-            "mcq"
-        ],
-        "question_choices": [
-            [
-                "Minnesota",
-                "Indiana",
-                "Maine",
-                "Alaska"
-            ],
-            [
-                "Georgia",
-                "Ukraine",
-                "Belarus",
-                "Poland"
-            ],
-            [
-                "Cairo",
-                "Prague",
-                "Bangkok",
-                "Sydney"
-            ],
-            [
-                "Monaco",
-                "Barcelona",
-                "Alexandria",
-                "Lisbon"
-            ],
-            [
-                "Thailand",
-                "Kenya",
-                "New Zealand",
-                "Ireland"
-            ]
-        ], "tags":[
-            "Geography",
-            "Humanities"
-        ]
-    }
+  {
+    "quiz_id": 101,
+    "quiz_name": "Basic Maths III",
+    "question_desc": [
+      "Differentiate 5x^2",
+      "What is 8 * 2 * 4",
+      "What is 9 + 10",
+      "How are you going?",
+      "What is 21 * 21?"
+    ],
+    "question_type": ["mcq", "mcq", "mcq", "mcq", "mcq"],
+    "question_choices": [
+      ["10x", "9x", "8x", "7x"],
+      ["64", "32", "128", "48"],
+      ["21", "19", "20", "22"],
+      ["nice", "bad", "good", "great"],
+      ["idk", "4021", "4028", "4232"]
+    ],
+    "tags": ["Maths", "Problem/Solving"]
+  },
+  {
+    "quiz_id": 102,
+    "quiz_name": "Geography IV",
+    "question_desc": [
+      "Which of these U.S. states does NOT border Canada?",
+      "Which of these countries was NOT a part of the Soviet Union?",
+      "Which of these cities is NOT a national capital?",
+      "Which of these cities DOESN'T border the Mediterranean Sea?",
+      "Which of these countries was NEVER part of the British Empire?"
+    ],
+    "question_type": ["mcq", "mcq", "mcq", "mcq", "mcq"],
+    "question_choices": [
+      ["Minnesota", "Indiana", "Maine", "Alaska"],
+      ["Georgia", "Ukraine", "Belarus", "Poland"],
+      ["Cairo", "Prague", "Bangkok", "Sydney"],
+      ["Monaco", "Barcelona", "Alexandria", "Lisbon"],
+      ["Thailand", "Kenya", "New Zealand", "Ireland"]
+    ],
+    "tags": ["Geography", "Humanities"]
+  }
 ]
