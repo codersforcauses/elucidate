@@ -7,78 +7,117 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('shared_models', '0004_question_creator_questionresponse_user'),
+        ("shared_models", "0004_question_creator_questionresponse_user"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='QuizStatistics',
+            name="QuizStatistics",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('question_count', models.PositiveIntegerField()),
-                ('total_marks', models.PositiveIntegerField()),
-                ('user_mark', models.PositiveIntegerField()),
-                ('time_taken', models.DurationField(default=datetime.timedelta(0))),
-                ('date_taken', models.DateTimeField(auto_now_add=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("question_count", models.PositiveIntegerField()),
+                ("total_marks", models.PositiveIntegerField()),
+                ("user_mark", models.PositiveIntegerField()),
+                (
+                    "time_taken",
+                    models.DurationField(default=datetime.timedelta(0)),
+                ),
+                (
+                    "date_taken",
+                    models.DateTimeField(auto_now_add=True, null=True),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Subject',
+            name="Subject",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Topic',
+            name="Topic",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('subject', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shared_models.subject')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "subject",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="shared_models.subject",
+                    ),
+                ),
             ],
         ),
         migrations.RemoveField(
-            model_name='tag',
-            name='question',
+            model_name="tag",
+            name="question",
         ),
         migrations.AddField(
-            model_name='question',
-            name='is_verified',
+            model_name="question",
+            name="is_verified",
             field=models.BooleanField(default=False),
         ),
         migrations.AddField(
-            model_name='question',
-            name='mark',
+            model_name="question",
+            name="mark",
             field=models.PositiveIntegerField(null=True),
         ),
         migrations.DeleteModel(
-            name='QuestionResponse',
+            name="QuestionResponse",
         ),
         migrations.DeleteModel(
-            name='Tag',
+            name="Tag",
         ),
         migrations.AddField(
-            model_name='subject',
-            name='question',
-            field=models.ManyToManyField(to='shared_models.question'),
+            model_name="subject",
+            name="question",
+            field=models.ManyToManyField(to="shared_models.question"),
         ),
         migrations.AddField(
-            model_name='quizstatistics',
-            name='subjects',
-            field=models.ManyToManyField(to='shared_models.subject'),
+            model_name="quizstatistics",
+            name="subjects",
+            field=models.ManyToManyField(to="shared_models.subject"),
         ),
         migrations.AddField(
-            model_name='quizstatistics',
-            name='topics',
-            field=models.ManyToManyField(to='shared_models.topic'),
+            model_name="quizstatistics",
+            name="topics",
+            field=models.ManyToManyField(to="shared_models.topic"),
         ),
         migrations.AddField(
-            model_name='quizstatistics',
-            name='user',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
+            model_name="quizstatistics",
+            name="user",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]
