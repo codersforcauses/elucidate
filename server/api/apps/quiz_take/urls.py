@@ -4,11 +4,10 @@ from . import views
 
 app_name = "quiz_take"
 urlpatterns = [
-    path("<int:quiz_pk>/", views.quiz),
-    path("<int:quiz_pk>/objectives/", views.objectives),
-    path("<int:quiz_pk>/tags/", views.tags),
-    path("<int:quiz_pk>/questions/<int:question_pk>/", views.question),
-    path("<int:quiz_pk>/questions/<int:question_pk>/answers/",
-         views.answers),
+    path("<int:question_pk>/", views.QuestionDetailView.as_view()),
+    path("<int:question_pk>/answers/", views.AnswerQuestionListView.as_view()),
+    path("<int:question_pk>/answers/<int:answer_pk>",
+         views.AnswerQuestionDetailView.as_view()),
+    path("<int:question_pk>/tags/", views.TagQuestionListView.as_view()),
 ]
 

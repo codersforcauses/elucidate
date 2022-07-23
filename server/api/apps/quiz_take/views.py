@@ -1,43 +1,32 @@
-from rest_framework.parsers import JSONParser
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import get_object_or_404
+from rest_framework import generics
+from rest_framework import permissions
 
-from api.apps.shared_models.models import quiz_models
+from api.apps.shared_models.models.quiz_models import Question, Answer, Tag
 from api.apps.shared_models.serializers import quiz_serializers
 
 
-# Handle GET requests for Tags of a particular Quiz
-@csrf_exempt
-def tags(request, question_pk):
-    tags = Tag.objects.get(question__pk=question_pk)
-
-    if request.method == "GET":
-        serializer = TagSerializer(tags, many=True)
-        return JsonResponse(serializer.data, safe=False)
-    else:
-        return HttpResponse(status=400)
+class QuestionDetailView(generics.RetrieveAPIView):
+    serializer_class = quiz_serializers.QuestionSerializer
+    queryset = Question.objects.all()
 
 
-# Handle GET requests for a particular Question of a particular Quiz
-@csrf_exempt
-def question(request, question_pk):
-    question = get_object_or_404(Question, pk=question_pk)
+class AnswerQuestionListView(generics.ListAPIView):
+    serializer_class = quiz_serializers.AnswerSerializer
 
-    if request.method == "GET":
-        serializer = QuestionSerializer(question)
-        return JsonResponse(serializer.data, safe=False)
-    else:
-        return HttpResponse(status=400)
+    def get_queryset(self):
+        return Answer.objects.filter(question__pk=self.kwargs["question_pk"])
 
 
-# Handle GET requests for Answers of a particular Question of a particular Quiz
-@csrf_exempt
-def answer(request, question_pk):
-    answer = get_object_or_404(Answer, question__pk=question_pk)
+class AnswerQuestionDetailView(generics.RetrieveAPIView):
+    serializer_class = quiz_serializers.AnswerSerializer
 
-    if request.method == "GET":
-        serializer = AnswerSerializer(answer)
-        return JsonResponse(serializer.data, safe=False)
-    else:
-        return HttpResponse(status=400)
+    def get_queryset(self):
+        return Answer.objects.get(question__pk=self.kwargs["question_pk"],
+                                  answer__pk=self.kwargs["answer_pk"])
+
+
+class TagQuestionListView(generics.ListAPIView):
+    serializer_class = quiz_serializers.TagSerializer
+
+    def get_queryset(self):
+        return Tag.objects.filter(question__pk=self.kwargs["question_pk"])
