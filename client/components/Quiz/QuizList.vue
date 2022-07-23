@@ -9,13 +9,13 @@
         <h1>Your Score</h1>
       </div>
       <QuizListItem
-        @showQuiz="(selectedQuiz) => {quizToShow = selectedQuiz; showQuiz = true;}"
+        @showQuiz="(selectedQuiz) => showSelectedQuiz(selectedQuiz)"
         v-for="(quiz, index) in quizzes"
         :key="index"
         :Quiz="quiz"
       />
     </div>
-    <QuizCard v-if="showQuiz" :quiz="quizToShow" @closeQuiz="() => showQuiz=false"/>
+    <QuizCard v-if="showQuizModal" :quiz="quizToShow" @closeQuiz="closeQuizModal()"/>
   </div>
 </template>
 
@@ -32,7 +32,17 @@ export default {
   },
   data: () => ({
     listItemStyles: 'h-10 my-4 p-10',
-    showQuiz: false,
+    showQuizModal: false,
+    quizToShow: {},
   }),
+  methods: {
+    showSelectedQuiz: function (selectedQuiz) {
+      this.quizToShow = selectedQuiz;
+      this.showQuizModal = true;
+    },
+    closeQuizModal: function () {
+      this.showQuizModal = false;
+    },
+  }
 };
 </script>
