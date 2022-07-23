@@ -27,13 +27,6 @@
               label="Questions Created"
               buttonLabel="View Your Questions"
               :value="User.stats.quizzesMade"
-              color="yellow"
-              @SelectAttri="(label) => (selectedAttri = label)"
-            />
-            <UserAttributeCard
-              label="User Attribute"
-              buttonLabel="View Your Attributes"
-              :value="User.stats.userAttribute"
               color="red"
               @SelectAttri="(label) => (selectedAttri = label)"
             />
@@ -47,16 +40,6 @@
         <div v-if="selectedAttri === 'Questions Created'" class="h-1/2">
           <h1 class="font-black text-2xl">Your Questions</h1>
           <QuizList :quizzes="Temp_quizzesMade" />
-        </div>
-        <div v-if="selectedAttri === 'User Attribute'" class="h-1/2">
-          <h1 class="font-black text-2xl">Your Attributes</h1>
-          <UserAttributeCard
-            label="User Attribute"
-            buttonLabel="View Your Attributes"
-            :value="User.stats.userAttribute"
-            color="red"
-            @SelectAttri="(label) => (selectedAttri = label)"
-          />
         </div>
       </div>
     </div>
