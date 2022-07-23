@@ -5,21 +5,7 @@
     <div
       class="flex flex-col space-y-2 justify-center items-center bg-lightgrey/75 h-full"
     >
-      <div
-        v-if="color === 'green'"
-        :class="`bg-green ${commonColoredBoxStyles}`"
-      >
-        {{ value }}
-      </div>
-      <div
-        v-if="color === 'yellow'"
-        :class="`bg-yellow ${commonColoredBoxStyles}`"
-      >
-        {{ value }}
-      </div>
-      <div v-if="color === 'red'" :class="`bg-red ${commonColoredBoxStyles}`">
-        {{ value }}
-      </div>
+      <ColouredBox :color="color" :value="value" />
       <div>
         <p class="text-lg font-medium">
           {{ label }}
@@ -40,8 +26,9 @@
 
 <script>
 import ButtonElement from '../Input/ButtonElement.vue';
+import ColouredBox from '../Quiz/ColouredBox.vue';
 export default {
-  components: { ButtonElement },
+  components: { ButtonElement, ColouredBox },
   name: 'UserAttributeCard',
   data: () => ({
     commonColoredBoxStyles:
