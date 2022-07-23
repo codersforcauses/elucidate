@@ -4,19 +4,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shared_models', '0005_quizstatistics_subject_topic_remove_tag_question_and_more'),
+        (
+            "shared_models",
+            "0005_quizstatistics_subject_topic_remove_tag_question_and_more",
+        ),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='subject',
-            name='question',
+            model_name="subject",
+            name="question",
         ),
         migrations.AddField(
-            model_name='topic',
-            name='question',
-            field=models.ManyToManyField(to='shared_models.question'),
+            model_name="topic",
+            name="question",
+            field=models.ManyToManyField(to="shared_models.question"),
         ),
     ]
