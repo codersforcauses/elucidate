@@ -2,7 +2,16 @@
   <div class>
     <!--The time allocated to the quiz bubble:-->
     <label
-      class="bg-blue2 px-10 py-2 text-white font-semibold text-md rounded shadow-sm"
+      class="
+        bg-blue2
+        px-10
+        py-2
+        text-white
+        font-semibold
+        text-md
+        rounded
+        shadow-sm
+      "
     >
       <FontAwesomeIcon :icon="['fa', 'stopwatch']" />
       1hr
@@ -48,6 +57,7 @@ import Box from '~/components/Box.vue';
 import QuestionBox from '~/components/QuestionBox.vue';
 import ResponseBox from '~/components/ResponseBox.vue';
 import QuizButton from '~/components/Quiz/QuizButton.vue';
+import TagBox from '~/components/TagBox.vue';
 
 export default {
   components: {
@@ -55,6 +65,7 @@ export default {
     QuestionBox,
     ResponseBox,
     QuizButton,
+    TagBox,
   },
 };
 </script>

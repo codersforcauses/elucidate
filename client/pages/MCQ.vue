@@ -1,17 +1,6 @@
 <template>
-  <div class>
-    <!--The time allocated to the quiz bubble:-->
-    <label
-      class="bg-blue2 px-10 py-2 text-white font-semibold text-md rounded shadow-sm"
-    >
-      <FontAwesomeIcon :icon="['fa', 'stopwatch']" />
-      1hr
-    </label>
-
-    <h1 class="text-4xl mt-7">Create A Quiz</h1>
-
     <div class="flex flex-col mb-10">
-      <Box title="{Display Quiz Name}" subtitle="Qn-1" :is-centered="false">
+      <Box title="Make a Question" subtitle="" :is-centered="false">
         <div class="inline-flex mt-10 mb-5 mx-20">
           <p class="flex align-middle mr-8 text-white text-l font-bold">
             Question Type:
@@ -28,13 +17,18 @@
             </button>
           </div>
         </div>
-        <QuestionBox header="Question:" />
 
+      <div>
+        <TagBox header="Tags: "></TagBox>
+      </div>
+      <div class="">
+        <QuestionBox header="Question:" />
+      </div>
         <div class="flex flex-col columns-4 gap-2 ml-10">
-          <AnswersBox header="Question A:" />
-          <AnswersBox header="Question B:" />
-          <AnswersBox header="Question C:" />
-          <AnswersBox header="Question D:" />
+          <AnswersBox header="A:" />
+          <AnswersBox header="B:" />
+          <AnswersBox header="C:" />
+          <AnswersBox header="D:" />
         </div>
 
         <div class="flex place-content-end mt-5 pb-5 mx-10">
@@ -53,6 +47,7 @@ import Box from '~/components/Box.vue';
 import QuestionBox from '~/components/QuestionBox.vue';
 import AnswersBox from '~/components/AnswersBox.vue';
 import QuizButton from '~/components/Quiz/QuizButton.vue';
+import TagBox from '~/components/TagBox.vue';
 
 export default {
   components: {
@@ -60,6 +55,7 @@ export default {
     QuestionBox,
     AnswersBox,
     QuizButton,
+    TagBox,
   },
 };
 </script>

@@ -9,7 +9,7 @@
           placeholder="Search tags..."
         />
       </div>
-      <div>
+      <div class="flex">
         <SelectTag
           v-for="tag in searchedTags"
           :label="tag.name"
@@ -17,8 +17,8 @@
           @toggleTag="toggleTag($event)"
         >
         </SelectTag>
+      <p class="pl-10 ml-0 text-white text-xl font-bold">Selected Tags: {{ selectedTags }}</p>
       </div>
-      <p>Selected Tags: {{ selectedTags }}</p>
     </div>
   </div>
 </template>

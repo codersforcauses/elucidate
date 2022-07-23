@@ -1,9 +1,11 @@
 <template>
   <div class="pt-10 mb-5 ml-20">
-    <label class="p-10 pr-8 ml-0 text-white text-xl font-bold">{{
+    <div class="flex flex-inline">
+    <label class="ml-14 pr-8 text-white text-xl font-bold">{{
       header
     }}</label>
     <FilterTags></FilterTags>
+    </div>
     <SelectTag></SelectTag>
   </div>
 </template>
