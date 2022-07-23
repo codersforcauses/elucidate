@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework_jwt.views import (
     obtain_jwt_token,
     refresh_jwt_token,
@@ -11,4 +11,5 @@ urlpatterns = [
     path("refresh/", refresh_jwt_token, name="refresh-jwt-token"),
     path("verify/", verify_jwt_token, name="verify-jwt-token"),
     path("register/", RegistrationView.as_view(), name="register"),
+    path("password-reset/", include("api.apps.auth.passwords.urls")),
 ]
