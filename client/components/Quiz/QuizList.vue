@@ -31,7 +31,6 @@ export default {
   data: () => ({
     listItemStyles: 'h-10 my-4 p-10',
   }),
-  methods: {
-  },
+  methods: {},
 };
 </script>

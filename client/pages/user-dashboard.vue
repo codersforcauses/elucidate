@@ -60,6 +60,7 @@ export default {
     quizzesMade: [],
     selectedAttri: 'Quizzes Taken',
 
+    // test data
     Temp_testPerson: {
       first_name: 'Lorem',
       last_name: 'Ispum',

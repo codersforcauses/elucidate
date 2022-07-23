@@ -1,6 +1,5 @@
 <template>
-
-<!--!!!!!! Currently unused, may be utilised in the future.  !!!!!!!-->
+  <!--Currently unused, may be utilised in the future.-->
   <!-- container for modal, covers whole screen -->
   <div
     @click="closeModal()"
