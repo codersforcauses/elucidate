@@ -1,14 +1,26 @@
 <template>
-  <AuthForm>
-    <InputField class="w-full" field-name="Email" field-type="text" />
-    <InputField class="w-full" field-name="Password" field-type="password" />
+  <AuthForm v-slot="{ invalid }">
+    <InputField
+      id="email"
+      class="w-full"
+      rules="required|email"
+      field-name="Email"
+      field-type="text"
+    />
+    <InputField
+      id="password"
+      class="w-full"
+      rules="required"
+      field-name="Password"
+      field-type="password"
+    />
     <NuxtLink
       to="/forgot-password"
       class="self-end text-xs font-semibold text-white underline underline-offset-2"
     >
       forgot password?
     </NuxtLink>
-    <AuthSubmit>Login</AuthSubmit>
+    <AuthSubmit :disabled="invalid">Login</AuthSubmit>
     <p class="place-self-center">
       Don't have an account?
       <NuxtLink
