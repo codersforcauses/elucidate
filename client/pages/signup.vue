@@ -1,37 +1,26 @@
 <template>
-  <AuthForm v-if="!accountCreated" class="self-center">
-    <ValidationObserver v-slot="{ invalid }" class="w-full">
-      <form
-        class="flex flex-col w-11/12 mx-6 my-8"
-        @submit.prevent="onSubmit"
-      >
-        <InputField
-          v-for="field in fields"
-          :id="field.id"
-          :key="field.index"
-          :field-name="field.name"
-          :field-type="field.type"
-          :field-options="field.options"
-          :rules="field.rules"
-          :inputvalue.sync="field.value"
-        />
-        <button
-          type="submit"
-          :disabled="invalid"
-          :class="
-            invalid ? 'text-darkgrey bg-lightgrey' : 'text-red bg-white'
-          "
-          class="w-24 h-8 mt-5 font-bold border border-solid rounded place-self-center text-l drop-shadow-lg"
-        >
-          Submit
-        </button>
-      </form>
-    </ValidationObserver>
-    <p>
+  <AuthForm v-if="!accountCreated" v-slot="{ invalid }" @submit="onSubmit()">
+    <InputField
+      v-for="field in fields"
+      :id="field.id"
+      :key="field.index"
+      :field-name="field.name"
+      :field-type="field.type"
+      :field-options="field.options"
+      :rules="field.rules"
+      :inputvalue.sync="field.value"
+    />
+    <button
+      type="submit"
+      :disabled="invalid"
+      :class="invalid ? 'text-darkgrey bg-lightgrey' : 'text-red bg-white'"
+      class="w-24 h-8 mt-5 font-bold border border-solid rounded place-self-center text-l drop-shadow-lg"
+    >
+      Submit
+    </button>
+    <p class="self-center mt-3">
       Already have an account?
-      <NuxtLink to="/login" class="text-blue"
-        >Click here to log in</NuxtLink
-      >
+      <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink>
     </p>
   </AuthForm>
 
@@ -58,7 +47,6 @@
 </template>
 
 <script>
-import { ValidationObserver } from 'vee-validate';
 import AuthForm from '~/components/Auth/AuthForm.vue';
 import InputField from '~/components/Auth/InputField.vue';
 
@@ -66,7 +54,6 @@ let count = 0;
 export default {
   name: 'SignupPage',
   components: {
-    ValidationObserver,
     AuthForm,
     InputField,
   },
