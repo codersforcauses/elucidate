@@ -7,6 +7,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'elucidate-frontend',
+    titleTemplate: '%s - Elucidate',
     htmlAttrs: {
       lang: 'en',
     },

@@ -35,5 +35,8 @@ export default {
     InputField,
   },
   layout: 'auth',
+  head: {
+    title: 'Login',
+  },
 };
 </script>

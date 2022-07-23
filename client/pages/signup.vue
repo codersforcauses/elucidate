@@ -112,6 +112,9 @@ export default {
       },
     ],
   }),
+  head: {
+    title: 'Sign Up',
+  },
   methods: {
     onSubmit() {
       this.title = 'Account Created!';
