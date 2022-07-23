@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.utils import timezone
-from ..models.quiz_models import Question, Answer
+from ..models.quiz_models import Question
 from ..models.statistics_models import QuizStatistics
 
 from datetime import timedelta

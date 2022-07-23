@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.utils import timezone
-from ..models.quiz_models import Question, Answer, Subject, Topic
+from ..models.quiz_models import Question, Answer, Subject
 
 MC = Question.QuestionType.MULTICHOICE
 NA = Question.QuestionType.NUMERIC
