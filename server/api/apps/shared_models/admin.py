@@ -8,12 +8,12 @@ class AnswerInline(admin.TabularInline):
 
 
 class SubjectInline(admin.TabularInline):
-    model = Subject.question.through
+    model = Topic.question.through
     verbose_name = "Subject"
 
 
 class TopicInline(admin.TabularInline):
-    model = Topic.subject
+    model = Subject
     verbose_name = "Topic"
 
 

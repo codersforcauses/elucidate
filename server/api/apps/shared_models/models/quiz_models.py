@@ -28,7 +28,6 @@ class Question(models.Model):
 
 class Subject(models.Model):
     name = models.CharField(max_length=defines.TAG_NAME_MAXLEN)
-    question = models.ManyToManyField(Question)
 
     def __str__(self):
         return self.name
@@ -36,6 +35,7 @@ class Subject(models.Model):
 
 class Topic(models.Model):
     name = models.CharField(max_length=defines.TAG_NAME_MAXLEN)
+    question = models.ManyToManyField(Question)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
 
     def __str__(self):

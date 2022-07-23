@@ -19,4 +19,4 @@ class QuizStatistics(models.Model):
     date_taken = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return str((self.question, self.selected_answer))
+        return str(self.name)

@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.utils import timezone
-from ..models.quiz_models import Question, Answer, Subject
+from ..models.quiz_models import Question, Answer, Topic
 
 MC = Question.QuestionType.MULTICHOICE
 NA = Question.QuestionType.NUMERIC
@@ -58,15 +58,15 @@ class TagTestCase(TestCase):
         q = Question.objects.create(
             text="This is a physics question", question_type=NA
         )
-        t = Subject.objects.create(name="Unit 3 Physics")
-        q.subject_set.add(t)
+        t = Topic.objects.create(name="Unit 3 Physics")
+        q.topic_set.add(t)
 
     def test(self):
         q = Question.objects.get(text="This is a physics question")
-        t = Subject.objects.get(name="Unit 3 Physics")
+        t = Topic.objects.get(name="Unit 3 Physics")
         self.assertEqual(str(t), "Unit 3 Physics")
 
-        self.assertTrue(t in q.subject_set.all())
+        self.assertTrue(t in q.topic_set.all())
 
 
 class AnswerTestCase(TestCase):
