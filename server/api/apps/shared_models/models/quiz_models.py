@@ -1,4 +1,3 @@
-from operator import mod
 from django.conf import settings
 from django.db import models
 from . import defines
@@ -21,7 +20,7 @@ class Question(models.Model):
     )
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     is_verified = models.BooleanField(default=False)
-    mark = models.PositiveIntegerField()
+    mark = models.PositiveIntegerField(null=True)
 
     def __str__(self):
         return self.text
