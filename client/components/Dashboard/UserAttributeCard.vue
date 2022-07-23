@@ -13,8 +13,8 @@
         </p>
       </div>
       <ButtonElement
-        @buttonClicked="$emit('SelectAttri', label)"
         type="tertiary"
+        @buttonClicked="$emit('SelectAttri', label)"
       >
         {{ buttonLabel }}
       </ButtonElement>
