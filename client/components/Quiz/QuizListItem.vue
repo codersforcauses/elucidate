@@ -22,9 +22,12 @@ export default {
   name: 'QuizListItem',
   props: {
     quiz: {
-      name: '',
-      tags: [],
-      dateCreated: '',
+      type: Object,
+      default: { 
+        name: '',
+        tags: [],
+        dateCreated: '',
+      },
     },
   },
 };

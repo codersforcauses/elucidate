@@ -11,7 +11,7 @@
       <QuizListItem
         v-for="(quiz, index) in quizzes"
         :key="index"
-        :Quiz="quiz"
+        :quiz="quiz"
       />
     </div>
   </div>
@@ -20,8 +20,8 @@
 <script>
 import QuizListItem from './QuizListItem.vue';
 export default {
-  components: { QuizListItem },
   name: 'QuizList',
+  components: { QuizListItem },
   props: {
     quizzes: {
       type: Array,

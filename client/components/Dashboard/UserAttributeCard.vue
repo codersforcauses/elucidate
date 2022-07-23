@@ -26,12 +26,8 @@
 import ButtonElement from '../Input/ButtonElement.vue';
 import ColouredBox from '../Quiz/ColouredBox.vue';
 export default {
-  components: { ButtonElement, ColouredBox },
   name: 'UserAttributeCard',
-  data: () => ({
-    commonColoredBoxStyles:
-      'rounded-md text-white text-4xl font-extrabold h-20 w-20 flex justify-center items-center',
-  }),
+  components: { ButtonElement, ColouredBox },
   props: {
     label: {
       type: String,
@@ -50,5 +46,9 @@ export default {
       default: 'green',
     },
   },
+  data: () => ({
+    commonColoredBoxStyles:
+      'rounded-md text-white text-4xl font-extrabold h-20 w-20 flex justify-center items-center',
+  }),
 };
 </script>

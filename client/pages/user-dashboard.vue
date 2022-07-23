@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="flex h-screen">
-      <!-- left hand side -- should be component ? -->
+      <!-- left hand side -->
       <div class="p-7 px- w-[28rem] flex-none h-full">
         <LeftBanner
           :email="Temp_testPerson.email"
@@ -10,7 +10,7 @@
         />
       </div>
 
-      <!-- right hand side - should be component?-->
+      <!-- right hand side -->
       <div class="flex flex-1 flex-col h-full">
         <!-- right hand side, top  -->
         <div class="h-1/2 px-4 py-9">
@@ -32,7 +32,7 @@
             />
           </div>
         </div>
-        <!-- right hand side, bottom part -->
+        <!-- right hand side, bottom -->
         <div v-if="selectedAttri === 'Quizzes Taken'" class="h-1/2">
           <h1 class="font-black text-2xl">Taken Quizzes</h1>
           <QuizList :quizzes="Temp_quizzesTaken" />

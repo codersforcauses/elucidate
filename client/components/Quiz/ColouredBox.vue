@@ -24,10 +24,6 @@
 <script>
 export default {
   name: 'ColouredBox',
-  data: () => ({
-    commonColoredBoxStyles:
-      'rounded-md text-white text-4xl font-extrabold h-20 w-20 flex justify-center items-center',
-  }),
   props: {
     value: {
       type: Number,
@@ -38,5 +34,9 @@ export default {
       default: 'green',
     },
   },
+  data: () => ({
+    commonColoredBoxStyles:
+      'rounded-md text-white text-4xl font-extrabold h-20 w-20 flex justify-center items-center',
+  }),
 };
 </script>
