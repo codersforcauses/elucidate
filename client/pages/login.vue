@@ -15,12 +15,12 @@
     </button>
     <p class="place-self-center">
       don't have an account?
-      <a
-        href="sign-up"
+      <NuxtLink
+        to="/signup"
         class="text-blue font-semibold underline underline-offset-2"
       >
         sign up!
-      </a>
+      </NuxtLink>
     </p>
   </AuthForm>
 </template>
