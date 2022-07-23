@@ -2,12 +2,12 @@
   <AuthForm>
     <InputField class="w-full" field-name="Email" field-type="text" />
     <InputField class="w-full" field-name="Password" field-type="password" />
-    <a
-      href="/forgot-password"
+    <NuxtLink
+      to="/forgot-password"
       class="self-end text-xs font-semibold text-white underline underline-offset-2"
     >
       forgot password?
-    </a>
+    </NuxtLink>
     <button
       class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid border-red my-5"
     >
