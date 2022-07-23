@@ -1,20 +1,28 @@
 <template>
   <div class="">
+    
     <div
     v-if="color === 'green'"
     :class="`bg-green ${commonColoredBoxStyles}`"
     >
     {{ value }}
     </div>
+
     <div
     v-if="color === 'yellow'"
     :class="`bg-yellow ${commonColoredBoxStyles}`"
     >
     {{ value }}
     </div>
+
     <div v-if="color === 'red'" :class="`bg-red ${commonColoredBoxStyles}`">
     {{ value }}
     </div>
+    
+    <div v-if="color === 'blue'" :class="`bg-blue ${commonColoredBoxStyles}`">
+    {{ value }}
+    </div>
+
   </div>
 </template>
 
