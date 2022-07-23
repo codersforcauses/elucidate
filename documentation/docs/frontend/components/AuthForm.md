@@ -9,9 +9,9 @@ None.
 ## Events
 
 - @submit
-  - Emitted when the form is submitted
+    - Emitted when the form is submitted
 
 ## Slots
 
 - Default.
-  - Inserts elements inside the form.
+    - Inserts elements inside the form.
