@@ -8,6 +8,7 @@
         <h1 class="col-span-2">Date Created</h1>
         <h1>Your Score</h1>
       </div>
+
       <QuizListItem
         @showQuiz="(selectedQuiz) => showSelectedQuiz(selectedQuiz)"
         v-for="(quiz, index) in quizzes"
@@ -15,7 +16,11 @@
         :Quiz="quiz"
       />
     </div>
-    <QuizCard v-if="showQuizModal" :quiz="quizToShow" @closeQuiz="closeQuizModal()"/>
+    <QuizCard
+      v-if="showQuizModal"
+      :quiz="quizToShow"
+      @closeQuiz="closeQuizModal()"
+    />
   </div>
 </template>
 
@@ -43,6 +48,6 @@ export default {
     closeQuizModal: function () {
       this.showQuizModal = false;
     },
-  }
+  },
 };
 </script>
