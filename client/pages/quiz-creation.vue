@@ -2,6 +2,7 @@
   <div class="flex flex-col z-10">
     <Box title="Create a Quiz" :is-centered="true">
       <TextBox header="Quiz Name:" />
+      <TagBox header="Tags: " />
       <TimeBox header="Time Limit:" />
 
       <ObjectivesBox header="Objectives:" />
@@ -25,6 +26,7 @@ import TimeBox from '~/components/TimeBox.vue';
 import ObjectivesBox from '~/components/ObjectivesBox.vue';
 import QuizButton from '~/components/Quiz/QuizButton.vue';
 import image from '~/assets/ambient_shapes.png';
+import TagBox from '~/components/TagBox.vue';
 
 export default {
   components: {
@@ -33,6 +35,7 @@ export default {
     TimeBox,
     ObjectivesBox,
     QuizButton,
+    TagBox,
   },
   data: () => ({
     bgImage: image,
