@@ -69,23 +69,30 @@ export default {
     whitelistPatterns: [/svg.*/, /fa.*/],
   },
 
+  router: {
+    // set to false for easier testing
+    // middleware: ['auth'],
+  },
+
   auth: {
     strategies: {
       local: {
-        endpoints: {
-          login: { url: '/login/', method: 'post', propertyName: 'token' },
-          logout: false,
-          user: { url: '/user', method: 'get', propertyName: 'data' },
+        token: {
+          property: 'token',
+          global: true,
+          // required: true,
+          // type: 'Bearer'
         },
-        tokenRequired: true,
-        tokenType: 'Bearer',
+        user: {
+          property: 'user',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: 'auth/login/', method: 'post' },
+          logout: { url: 'auth/logout/', method: 'post' },
+          user: { url: 'auth/user/', method: 'get' },
+        },
       },
-    },
-    redirect: {
-      login: '/?login=1',
-      logout: '/',
-      user: '/profile',
-      callback: '/',
     },
   },
 };

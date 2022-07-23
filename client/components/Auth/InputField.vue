@@ -21,6 +21,22 @@
             :class="showText ? 'text-blue2' : 'text-gray-400'"
           />
         </div>
+        <select
+          v-if="fieldType == 'dropdown'"
+          v-model="inputValue"
+          :name="fieldName"
+          class="w-full h-10 px-5 my-3 drop-shadow-lg"
+        >
+          <option selected disabled value="">
+            Please Choose Your Grade...
+          </option>
+          <option
+            v-for="(option, index) in fieldOptions"
+            :key="index"
+            :value="option"
+            v-text="option"
+          />
+        </select>
       </div>
       <span class="text-red">{{ errors[0] }}</span>
     </ValidationProvider>
