@@ -1,12 +1,7 @@
 <template>
-  <div>
-    <div class="flex justify-center mt-10 mb-6">
-      <nuxt-img src="branding/logo.svg" class="w-16" alt="Elucidate Logo" />
-    </div>
-    <div
-      v-if="pageTitle !== ''"
-      class="flex items-center justify-center my-5 mr-10"
-    >
+  <div class="flex flex-col items-center mt-5">
+    <nuxt-img src="branding/logo.svg" class="w-16" alt="Elucidate Logo" />
+    <div v-if="pageTitle !== ''" class="flex items-center my-5 mr-10">
       <font-awesome-layers class="fa-2x mx-3">
         <font-awesome-icon :icon="['fas', 'circle']" class="text-green" />
         <font-awesome-icon :icon="['fas', 'user']" class="text-lg text-white" />
