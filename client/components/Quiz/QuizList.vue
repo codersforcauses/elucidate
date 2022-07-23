@@ -14,11 +14,6 @@
         :Quiz="quiz"
       />
     </div>
-    <!-- <QuizCard
-      v-if="showQuizModal"
-      :quiz="quizToShow"
-      @closeQuiz="closeQuizModal()"
-    /> -->
   </div>
 </template>
 
@@ -35,17 +30,8 @@ export default {
   },
   data: () => ({
     listItemStyles: 'h-10 my-4 p-10',
-    // showQuizModal: false,
-    // quizToShow: {},
   }),
   methods: {
-    // showSelectedQuiz: function (selectedQuiz) {
-    //   this.quizToShow = selectedQuiz;
-    //   this.showQuizModal = true;
-    // },
-    // closeQuizModal: function () {
-    //   this.showQuizModal = false;
-    // },
   },
 };
 </script>
