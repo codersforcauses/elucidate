@@ -6,20 +6,18 @@
       class="flex flex-col space-y-2 justify-center items-center bg-lightgrey/75 h-full"
     >
       <ColouredBox :color="color" :value="value" />
+
       <div>
         <p class="text-lg font-medium">
           {{ label }}
         </p>
       </div>
-
-      <!-- <div @click="$emit('SelectAttri', label)"> -->
       <ButtonElement
         @buttonClicked="$emit('SelectAttri', label)"
         type="tertiary"
       >
         {{ buttonLabel }}
       </ButtonElement>
-      <!-- </div> -->
     </div>
   </div>
 </template>
