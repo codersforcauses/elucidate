@@ -1,9 +1,8 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <NavBar />
-    <Nuxt class="my-auto" />
-    <div class="flex justify-center my-5">
-      <nuxt-img src="bg_shapes.svg" class="w-72" alt="Shapes" />
+  <div class="relative bg-[url('/bg_shapes.svg')] bg-cover bg-no-repeat">
+    <div class="relative flex flex-col min-h-screen">
+      <NavBar />
+      <Nuxt class="my-auto" />
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <main></main>
+  <h3 class="relative">Hello</h3>
 </template>
 
 <script>
