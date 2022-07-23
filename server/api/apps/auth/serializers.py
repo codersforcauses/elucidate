@@ -21,8 +21,10 @@ class RegistrationSerializer(serializers.ModelSerializer):
         }
 
     def validate_grade(self, value):
-        if value < 11 or value > 13:
-            raise ValidationError("The grade should be 11, 12 or 13")
+        if value not in ["Grade 11", "Grade 12", "Other"]:
+            raise ValidationError(
+                "The grade should be 'Grade 11', 'Grade 12' or 'Other'"
+            )
         return value
 
     def validate_password(self, value):
