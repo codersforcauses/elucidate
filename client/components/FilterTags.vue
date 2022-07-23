@@ -17,7 +17,9 @@
           @toggleTag="toggleTag($event)"
         >
         </SelectTag>
-      <p class="pl-10 ml-0 text-white text-xl font-bold">Selected Tags: {{ selectedTags }}</p>
+        <p class="pl-10 ml-0 text-white text-xl font-bold">
+          Selected Tags: {{ selectedTags }}
+        </p>
       </div>
     </div>
   </div>
@@ -46,7 +48,7 @@ export default {
     searchedTags() {
       const result = [];
       const search = this.searchedTerm.toLocaleLowerCase().trim();
-      if (search === '') return result; 
+      if (search === '') return result;
       this.tags.forEach((tag) => {
         if (tag.name.includes(search)) {
           result.push(tag);
@@ -87,5 +89,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

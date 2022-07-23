@@ -2,16 +2,7 @@
   <div class>
     <!--The time allocated to the quiz bubble:-->
     <label
-      class="
-        bg-blue2
-        px-10
-        py-2
-        text-white
-        font-semibold
-        text-md
-        rounded
-        shadow-sm
-      "
+      class="bg-blue2 px-10 py-2 text-white font-semibold text-md rounded shadow-sm"
     >
       <FontAwesomeIcon :icon="['fa', 'stopwatch']" />
       1hr
