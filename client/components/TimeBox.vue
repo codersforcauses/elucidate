@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-inline mb-5 ml-20">
-    <label class="p-0 ml-1 mr-12 text-white text-xl font-bold">
+    <label class="p-0 ml-3 mr-11 text-white text-xl font-bold">
       <FontAwesomeIcon :icon="['fa', 'stopwatch']" />
       {{ header }}
     </label>
