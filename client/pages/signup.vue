@@ -10,14 +10,7 @@
       :rules="field.rules"
       :inputvalue.sync="field.value"
     />
-    <button
-      type="submit"
-      :disabled="invalid"
-      :class="invalid ? 'text-darkgrey bg-lightgrey' : 'text-red bg-white'"
-      class="w-24 h-8 mt-5 font-bold border border-solid rounded place-self-center text-l drop-shadow-lg"
-    >
-      Submit
-    </button>
+    <AuthSubmit :disabled="invalid">Submit</AuthSubmit>
     <p class="self-center mt-3">
       Already have an account?
       <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink>
@@ -49,12 +42,14 @@
 <script>
 import AuthForm from '~/components/Auth/AuthForm.vue';
 import InputField from '~/components/Auth/InputField.vue';
+import AuthSubmit from '~/components/Auth/AuthSubmit.vue';
 
 let count = 0;
 export default {
   name: 'SignupPage',
   components: {
     AuthForm,
+    AuthSubmit,
     InputField,
   },
   layout: 'auth',

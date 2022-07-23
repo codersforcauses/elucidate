@@ -8,11 +8,7 @@
     >
       forgot password?
     </NuxtLink>
-    <button
-      class="place-self-center text-l font-bold text-red bg-white w-24 h-8 rounded border border-solid border-red my-5"
-    >
-      Login
-    </button>
+    <AuthSubmit>Login</AuthSubmit>
     <p class="place-self-center">
       Don't have an account?
       <NuxtLink
@@ -28,10 +24,12 @@
 <script>
 import AuthForm from '~/components/Auth/AuthForm.vue';
 import InputField from '~/components/Auth/InputField.vue';
+import AuthSubmit from '~/components/Auth/AuthSubmit.vue';
 
 export default {
   components: {
     AuthForm,
+    AuthSubmit,
     InputField,
   },
   layout: 'auth',
