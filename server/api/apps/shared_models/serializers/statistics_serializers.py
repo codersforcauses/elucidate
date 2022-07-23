@@ -9,7 +9,5 @@ class QuestionResponseSerializer(serializers.HyperlinkedModelSerializer):
             "id",
             "question",
             "selected_answer",
-            "is_correct",
-            "time_taken",
-            "date_created",
+            "date_submitted",
         ]

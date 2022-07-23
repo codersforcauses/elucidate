@@ -9,5 +9,7 @@ urlpatterns = [
     path("<int:question_pk>/answers/<int:answer_pk>",
          views.AnswerQuestionDetailView.as_view()),
     path("<int:question_pk>/tags/", views.TagQuestionListView.as_view()),
+    path("submit/<int:question_pk>/<int:selected_answer_pk>",
+         views.QuestionResponseCreateView.as_view()),
 ]
 
