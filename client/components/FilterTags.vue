@@ -1,45 +1,15 @@
 <template>
-  <div class="drop-shadow-md bg-white w-[208px]">
-    <div class="border h-[400px] rounded-t-[4px]">
-      <p
-        class="
-          font-Montserrat font-light
-          text-xl text-center
-          relative
-          top-[14px]
-          text-centre
-        "
-      >
-        Filter Tags
-      </p>
-      <div
-        class="
-          bg-zinc-200
-          relative
-          rounded-[95px]
-          w-[182px]
-          h-[43px]
-          top-[34px]
-          left-[11px]
-        "
-      >
+  <div class="flex flex-inline">
+    <div class="">
+      <div class="">
         <!-- <img class="relative w-[20px] h-[20px] top-[13px] left-[7px]" src="../static/search.svg" /> -->
         <input
-          v-model="searchedTag"
+          v-model="searchedTerm"
+          class="p-0 m-0 w-full h-9 rounded shadow-md"
           placeholder="Search tags..."
-          class="
-            bg-transparent
-            relative
-            top-[-10px]
-            left-[33px]
-            w-[96px]
-            h-[23px]
-            outline-0
-            font-roboto
-          "
         />
       </div>
-      <div class="relative top-[50px]">
+      <div>
         <SelectTag
           v-for="tag in searchedTags"
           :label="tag.name"
@@ -61,25 +31,28 @@ export default {
   components: { SelectTag },
   data() {
     return {
-      searchedTag: '',
+      searchedTerm: '',
       // These tags should be generated using the getTags function at the start
       tags: [
         { name: 'math', colour: 'bg-[#44a36b]', selected: false },
         { name: 'science', colour: 'bg-[#5c2ad7]', selected: false },
         { name: 'history', colour: 'bg-[#bd52a4]', selected: false },
         { name: 'geography', colour: 'bg-[#aca127]', selected: false },
+        { name: 'home economics', colour: 'bg-[#aca127]', selected: false },
       ],
     };
   },
   computed: {
-    searchedTags: function () {
-      this.result = [];
+    searchedTags() {
+      const result = [];
+      const search = this.searchedTerm.toLocaleLowerCase().trim();
+      if (search === '') return result; 
       this.tags.forEach((tag) => {
-        if (tag.name.includes(this.searchedTag)) {
-          this.result.push(tag);
+        if (tag.name.includes(search)) {
+          result.push(tag);
         }
       });
-      return this.result;
+      return result;
     },
 
     selectedTags: function () {

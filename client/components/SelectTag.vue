@@ -1,19 +1,20 @@
 <template>
-  <div class="relative m-1.5">
-    <button @click="$emit('toggleTag', label)" :class=css>{{ label }}</button>
+  <div>
+    <button :class="css" @click="$emit('toggleTag', label)">{{ label }}</button>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['label', 'colour'],
   computed: {
-    css : function () {
-      return this.colour + " rounded";
-    }
+    css: function () {
+      return this.colour + ' rounded';
+    },
   },
-  props: ['label', 'colour']
-}
+};
 </script>
 
-<style>
+<style scoped>
+
 </style>
