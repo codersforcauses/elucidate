@@ -26,7 +26,7 @@ class AuthTestCase(APITestCase):
         url = reverse("register")
         body = {
             "email": "john.doe@example.com",
-            "grade": 11,
+            "grade": "Grade 11",
             "first_name": "John",
             "last_name": "Doe",
             "password": "password",
@@ -35,7 +35,7 @@ class AuthTestCase(APITestCase):
         # will also return id
         expected_response = {
             "email": "john.doe@example.com",
-            "grade": 11,
+            "grade": "Grade 11",
             "first_name": "John",
             "last_name": "Doe",
         }
@@ -61,7 +61,7 @@ class AuthTestCase(APITestCase):
         expected_response = {
             "email": ["This field may not be blank."],
             "first_name": ["This field may not be blank."],
-            "grade": ["A valid integer is required."],
+            "grade": ["This field may not be blank."],
             "last_name": ["This field may not be blank."],
             "password": ["This field may not be blank."],
         }
@@ -78,7 +78,7 @@ class AuthTestCase(APITestCase):
         url = reverse("register")
         body = {
             "email": "john.doe",
-            "grade": 3,
+            "grade": "3",
             "first_name": "John",
             "last_name": "Doe",
             "password": "pass",
@@ -90,7 +90,7 @@ class AuthTestCase(APITestCase):
                 "This password is too short. It must contain at least 6"
                 " characters."
             ],
-            "grade": ["The grade should be 11, 12 or 13"],
+            "grade": ["The grade should be 'Grade 11', 'Grade 12' or 'Other'"],
         }
 
         response = self.client.post(url, body, format="json")

@@ -10,7 +10,7 @@ class AuthTestCase(APITestCase):
             email="john.doe@example.com",
             first_name="John",
             last_name="Doe",
-            grade=11,
+            grade="Grade 11",
             password="password",
         )
         # self.testuser.set_password("password")
