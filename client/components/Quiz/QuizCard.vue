@@ -6,8 +6,8 @@
 
       <div class="flex flex-col w-1/3">
         <h1 class="font-extrabold text-4xl">{{quiz.name}}</h1>
-        <h2 class="text-lg font-extrathin">Created By - {{quiz.author}}</h2>
-        <div class="flex-1 grid grid-rows-3 grid-cols-2 text-center items-center">
+        <!-- stop from being grid when can -->
+        <div class="flex-1 grid grid-rows-3 grid-cols-2 items-center">
           <!-- hard coded for now. -->
             <ColouredBox color="green" value="42"/> <p>Average Quiz Result</p>
             <ColouredBox color="red" value="42"/> <p>Users Attempted</p>
