@@ -1,70 +1,64 @@
 <template>
-    <div class="flex flex-col justify-center flex-grow">
-      <AuthHeader :page-title="title" />
-      <AuthForm v-if="!accountCreated" class="self-center">
-        <ValidationObserver v-slot="{ invalid }" class="w-full">
-          <form
-            class="flex flex-col w-11/12 mx-6 my-8"
-            @submit.prevent="onSubmit"
-          >
-            <InputField
-              v-for="field in fields"
-              :id="field.id"
-              :key="field.index"
-              :field-name="field.name"
-              :field-type="field.type"
-              :field-options="field.options"
-              :rules="field.rules"
-              :inputvalue.sync="field.value"
-            />
-            <button
-              type="submit"
-              :disabled="invalid"
-              :class="
-                invalid ? 'text-darkgrey bg-lightgrey' : 'text-red bg-white'
-              "
-              class="w-24 h-8 mt-5 font-bold border border-solid rounded place-self-center text-l drop-shadow-lg"
-            >
-              Submit
-            </button>
-          </form>
-        </ValidationObserver>
-        <p>
-          Already have an account?
-          <NuxtLink to="/login" class="text-blue"
-            >Click here to log in</NuxtLink
-          >
-        </p>
-      </AuthForm>
-
-      <AuthForm v-else>
-        <div
-          class="flex flex-col grow items-center text-center font-bold text-white"
+  <AuthForm v-if="!accountCreated" class="self-center">
+    <ValidationObserver v-slot="{ invalid }" class="w-full">
+      <form
+        class="flex flex-col w-11/12 mx-6 my-8"
+        @submit.prevent="onSubmit"
+      >
+        <InputField
+          v-for="field in fields"
+          :id="field.id"
+          :key="field.index"
+          :field-name="field.name"
+          :field-type="field.type"
+          :field-options="field.options"
+          :rules="field.rules"
+          :inputvalue.sync="field.value"
+        />
+        <button
+          type="submit"
+          :disabled="invalid"
+          :class="
+            invalid ? 'text-darkgrey bg-lightgrey' : 'text-red bg-white'
+          "
+          class="w-24 h-8 mt-5 font-bold border border-solid rounded place-self-center text-l drop-shadow-lg"
         >
-          <p class="text-3xl my-5">Congratulations {{ name }}!</p>
-          <p class="text-2xl mx-10 my-5">
-            Your new Elucidate account has been created
-          </p>
-          <font-awesome-icon
-            :icon="['fas', 'fa-face-smile-beam']"
-            class="text-[10rem] my-10 text-white"
-          />
-          <p class="text-2xl mx-10 my-5">
-            Please proceed to the
-            <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink> or
-            <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
-            for quizzes
-          </p>
-        </div>
-      </AuthForm>
-      <AuthFooter />
+          Submit
+        </button>
+      </form>
+    </ValidationObserver>
+    <p>
+      Already have an account?
+      <NuxtLink to="/login" class="text-blue"
+        >Click here to log in</NuxtLink
+      >
+    </p>
+  </AuthForm>
+
+  <AuthForm v-else>
+    <div
+      class="flex flex-col grow items-center text-center font-bold text-white"
+    >
+      <p class="text-3xl my-5">Congratulations {{ name }}!</p>
+      <p class="text-2xl mx-10 my-5">
+        Your new Elucidate account has been created
+      </p>
+      <font-awesome-icon
+        :icon="['fas', 'fa-face-smile-beam']"
+        class="text-[10rem] my-10 text-white"
+      />
+      <p class="text-2xl mx-10 my-5">
+        Please proceed to the
+        <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink> or
+        <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
+        for quizzes
+      </p>
     </div>
+  </AuthForm>
 </template>
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import AuthFooter from '~/components/Auth/AuthFooter.vue';
-import AuthHeader from '~/components/Auth/AuthHeader.vue';
 import AuthForm from '~/components/Auth/AuthForm.vue';
 import InputField from '~/components/Auth/InputField.vue';
 
@@ -73,8 +67,6 @@ export default {
   name: 'SignupPage',
   components: {
     ValidationObserver,
-    AuthFooter,
-    AuthHeader,
     AuthForm,
     InputField,
   },
