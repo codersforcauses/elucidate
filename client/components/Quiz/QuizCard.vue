@@ -1,4 +1,6 @@
 <template>
+
+<!--!!!!!! Currently unused, may be utilised in the future.  !!!!!!!-->
   <!-- container for modal, covers whole screen -->
   <div
     @click="closeModal()"
@@ -12,16 +14,13 @@
       <div class="flex flex-col w-1/3">
         <h1 class="font-extrabold text-4xl">{{ quiz.name }}</h1>
         <!-- stop from being grid when can -->
-        <div class="flex-1 grid grid-rows-3 grid-cols-2 items-center">
+        <div class="flex-1 flex-row space-y-4 justify-center items-center">
           <!-- hard coded for now. -->
           <ColouredBox color="green" value="42" />
-          <p>Average Quiz Result</p>
           <ColouredBox color="red" value="42" />
-          <p>Users Attempted</p>
           <ColouredBox color="blue" value="42" />
-          <p>Questions</p>
         </div>
-        <p>Created on {{ Date(quiz.dateCreated).slice(0, 21) }}</p>
+        <p>Taken on {{ Date(quiz.dateCreated).slice(0, 21) }}</p>
       </div>
 
       <div class="w-2/3">
