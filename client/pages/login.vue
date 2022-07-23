@@ -14,7 +14,7 @@
       Login
     </button>
     <p class="place-self-center">
-      don't have an account?
+      Don't have an account?
       <NuxtLink
         to="/signup"
         class="text-blue font-semibold underline underline-offset-2"
