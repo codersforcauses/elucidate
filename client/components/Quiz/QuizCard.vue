@@ -56,8 +56,8 @@ import ButtonElement from '../Input/ButtonElement.vue';
 import QuizTag from './QuizTag.vue';
 import ColouredBox from './ColouredBox.vue';
 export default {
-  components: { ButtonElement, QuizTag, ColouredBox },
   name: 'QuizCard',
+  components: { ButtonElement, QuizTag, ColouredBox },
   props: {
     quiz: {
       name: 'asdf',
