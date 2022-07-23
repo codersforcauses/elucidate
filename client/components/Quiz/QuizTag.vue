@@ -8,11 +8,11 @@
 export default {
   name: 'QuizTag',
   props: {
-    'label': {
+    label: {
       type: String,
       default: undefined,
     },
-    'colour': {
+    colour: {
       type: String,
       default: 'blue',
     },
@@ -22,6 +22,5 @@ export default {
       return 'bg-' + this.colour + ' rounded px-2';
     },
   },
-  
-}
+};
 </script>

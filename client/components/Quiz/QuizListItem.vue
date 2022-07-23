@@ -2,7 +2,7 @@
   <div
     class="w-full border-lightgrey/75 border rounded-md py-2 px-6 mr-5 grid-cols-7 grid"
     @click="$emit('showQuiz', quiz)"
-    >
+  >
     <div class="col-span-2">{{ quiz.name }}</div>
     <div class="flex w-full space-x-2 col-span-2">
       <QuizTag
@@ -23,7 +23,7 @@ export default {
   props: {
     quiz: {
       type: Object,
-      default: () => ({ 
+      default: () => ({
         name: '',
         tags: [],
         dateCreated: '',
