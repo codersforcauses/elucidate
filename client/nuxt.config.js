@@ -68,4 +68,24 @@ export default {
   purgeCSS: {
     whitelistPatterns: [/svg.*/, /fa.*/],
   },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/login/', method: 'post', propertyName: 'token' },
+          logout: false,
+          user: { url: '/user', method: 'get', propertyName: 'data' },
+        },
+        tokenRequired: true,
+        tokenType: 'Bearer',
+      },
+    },
+    redirect: {
+      login: '/?login=1',
+      logout: '/',
+      user: '/profile',
+      callback: '/',
+    },
+  },
 };
