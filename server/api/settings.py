@@ -32,6 +32,7 @@ ALLOWED_HOSTS = config(
 # Application definition
 
 INSTALLED_APPS = [
+    "api.apps.shared_models",
     "api.apps.quiz_take",
     "django.contrib.admin",
     "django.contrib.auth",
