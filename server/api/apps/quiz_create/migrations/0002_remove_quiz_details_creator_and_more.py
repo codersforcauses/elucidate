@@ -4,32 +4,31 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('quiz_create', '0001_initial'),
+        ("quiz_create", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='quiz_details',
-            name='creator',
+            model_name="quiz_details",
+            name="creator",
         ),
         migrations.RemoveField(
-            model_name='quiz_details',
-            name='objectives',
+            model_name="quiz_details",
+            name="objectives",
         ),
         migrations.RemoveField(
-            model_name='quiz_details',
-            name='tags',
+            model_name="quiz_details",
+            name="tags",
         ),
         migrations.AddField(
-            model_name='quiz_objective',
-            name='quiz_details',
-            field=models.ManyToManyField(to='quiz_create.quiz_details'),
+            model_name="quiz_objective",
+            name="quiz_details",
+            field=models.ManyToManyField(to="quiz_create.quiz_details"),
         ),
         migrations.AddField(
-            model_name='quiz_tag',
-            name='quiz_details',
-            field=models.ManyToManyField(to='quiz_create.quiz_details'),
+            model_name="quiz_tag",
+            name="quiz_details",
+            field=models.ManyToManyField(to="quiz_create.quiz_details"),
         ),
     ]

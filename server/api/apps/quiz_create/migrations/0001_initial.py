@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,56 +14,117 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Quiz_Details',
+            name="Quiz_Details",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('time_limit', models.PositiveIntegerField()),
-                ('date_created', models.DateTimeField(auto_now_add=True)),
-                ('number_of_questions', models.PositiveIntegerField(default=1)),
-                ('creator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("time_limit", models.PositiveIntegerField()),
+                ("date_created", models.DateTimeField(auto_now_add=True)),
+                (
+                    "number_of_questions",
+                    models.PositiveIntegerField(default=1),
+                ),
+                (
+                    "creator",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Quiz_Objective',
+            name="Quiz_Objective",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('objective', models.CharField(max_length=15)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("objective", models.CharField(max_length=15)),
             ],
         ),
         migrations.CreateModel(
-            name='Quiz_Tag',
+            name="Quiz_Tag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tag', models.CharField(max_length=15)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("tag", models.CharField(max_length=15)),
             ],
         ),
         migrations.CreateModel(
-            name='Quiz_Question',
+            name="Quiz_Question",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_multichoice', models.BooleanField()),
-                ('question', models.CharField(max_length=100)),
-                ('quiz', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='quiz_create.quiz_details')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("is_multichoice", models.BooleanField()),
+                ("question", models.CharField(max_length=100)),
+                (
+                    "quiz",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="quiz_create.quiz_details",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='quiz_details',
-            name='objectives',
-            field=models.ManyToManyField(to='quiz_create.quiz_objective'),
+            model_name="quiz_details",
+            name="objectives",
+            field=models.ManyToManyField(to="quiz_create.quiz_objective"),
         ),
         migrations.AddField(
-            model_name='quiz_details',
-            name='tags',
-            field=models.ManyToManyField(to='quiz_create.quiz_tag'),
+            model_name="quiz_details",
+            name="tags",
+            field=models.ManyToManyField(to="quiz_create.quiz_tag"),
         ),
         migrations.CreateModel(
-            name='Question_Answer',
+            name="Question_Answer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_correct', models.BooleanField()),
-                ('answer', models.CharField(max_length=100)),
-                ('question', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='quiz_create.quiz_question')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("is_correct", models.BooleanField()),
+                ("answer", models.CharField(max_length=100)),
+                (
+                    "question",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="quiz_create.quiz_question",
+                    ),
+                ),
             ],
         ),
     ]

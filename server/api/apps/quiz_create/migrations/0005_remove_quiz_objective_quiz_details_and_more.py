@@ -4,57 +4,56 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('quiz_create', '0004_remove_question_answer_answer_number_and_more'),
+        ("quiz_create", "0004_remove_question_answer_answer_number_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='quiz_objective',
-            name='quiz_details',
+            model_name="quiz_objective",
+            name="quiz_details",
         ),
         migrations.RemoveField(
-            model_name='quiz_question',
-            name='is_multichoice',
+            model_name="quiz_question",
+            name="is_multichoice",
         ),
         migrations.RemoveField(
-            model_name='quiz_question',
-            name='quiz',
+            model_name="quiz_question",
+            name="quiz",
         ),
         migrations.RemoveField(
-            model_name='quiz_tag',
-            name='quiz_details',
+            model_name="quiz_tag",
+            name="quiz_details",
         ),
         migrations.AddField(
-            model_name='quiz_question',
-            name='date_created',
+            model_name="quiz_question",
+            name="date_created",
             field=models.DateTimeField(auto_now_add=True, null=True),
         ),
         migrations.AddField(
-            model_name='quiz_question',
-            name='question_type',
+            model_name="quiz_question",
+            name="question_type",
             field=models.PositiveIntegerField(null=True),
         ),
         migrations.AddField(
-            model_name='quiz_tag',
-            name='question',
-            field=models.ManyToManyField(to='quiz_create.quiz_question'),
+            model_name="quiz_tag",
+            name="question",
+            field=models.ManyToManyField(to="quiz_create.quiz_question"),
         ),
         migrations.AlterField(
-            model_name='question_answer',
-            name='answer',
+            model_name="question_answer",
+            name="answer",
             field=models.CharField(max_length=200),
         ),
         migrations.AlterField(
-            model_name='quiz_question',
-            name='question',
+            model_name="quiz_question",
+            name="question",
             field=models.CharField(max_length=200),
         ),
         migrations.DeleteModel(
-            name='Quiz_Details',
+            name="Quiz_Details",
         ),
         migrations.DeleteModel(
-            name='Quiz_Objective',
+            name="Quiz_Objective",
         ),
     ]
