@@ -1,15 +1,10 @@
 from django.contrib import admin
-from .models.quiz_models import Question, Tag, Answer
+from .models.quiz_models import Question, Subject, Topic, Answer, QuestionForm
 from .models.statistics_models import QuestionResponse, UserStatistics, QuizStatistics, QuizTag, QuestionStatistics
 
 
 class AnswerInline(admin.TabularInline):
     model = Answer
-
-
-class TagInline(admin.TabularInline):
-    model = Tag.question.through
-    verbose_name = "Tag"
 
 
 class QuizTagInline(admin.TabularInline):
@@ -21,8 +16,17 @@ class QuizTagInline(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [
         AnswerInline,
-        TagInline,
     ]
+    form = QuestionForm
+
+    def get_object(self, request, object_id, s):
+        self.obj = super(QuestionAdmin, self).get_object(request, object_id)
+        return self.obj
+
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if db_field.name == "topics":
+            kwargs["queryset"] = Topic.objects.filter(subject=self.obj.subject)
+        return super().formfield_for_manytomany(db_field, request, **kwargs)
 
 
 @admin.register(QuizStatistics)
@@ -44,5 +48,6 @@ class QuestionStatisticsAdmin(admin.ModelAdmin):
     readonly_fields = ["number_attempts", "average_score"]
 
 
-admin.site.register(Tag)
+admin.site.register(Subject)
+admin.site.register(Topic)
 admin.site.register(QuestionResponse)

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models.quiz_models import Question, Tag, Answer
+from ..models.quiz_models import Question, Subject, Topic, Answer
 
 
 class QuestionSerializer(serializers.HyperlinkedModelSerializer):
@@ -8,10 +8,16 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
         fields = ["id", "text", "question_type", "date_created"]
 
 
-class TagSerializer(serializers.HyperlinkedModelSerializer):
+class SubjectSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Tag
-        fields = ["id", "name", "question"]
+        model = Subject
+        fields = ["id", "name"]
+
+
+class TopicSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Topic
+        fields = ["id", "name"]
 
 
 class AnswerSerializer(serializers.HyperlinkedModelSerializer):
