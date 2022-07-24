@@ -4,10 +4,30 @@
 
     <div class="flex justify-center flex-grow">
       <AuthForm v-if="!accountCreated">
+        <div
+          v-if="Object.keys(errors).length !== 0"
+          class="mx-6 mt-8 bg-red w-11/12 p-3 text-neutral-100 font-bold rounded-md"
+        >
+          <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
+          <p class="inline">
+            Error creating account, please fix the following errors:
+          </p>
+          <div
+            v-for="(messages, error) in errors"
+            :key="error"
+            class="mt-2 text-lg"
+          >
+            {{ error }}
+            <p v-for="(message, i) in messages" :key="i" class="text-base">
+              {{ message }}
+            </p>
+          </div>
+        </div>
+
         <ValidationObserver v-slot="{ invalid }" class="w-full">
           <form
             class="flex flex-col w-11/12 mx-6 my-8"
-            @submit.prevent="onSubmit"
+            @submit.prevent="register"
           >
             <InputField
               v-for="field in fields"
@@ -53,9 +73,8 @@
           />
           <p class="text-2xl mx-10 my-5">
             Please proceed to the
-            <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink> or
-            <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
-            for quizzes
+            <NuxtLink to="/quiz" class="text-blue">Login page</NuxtLink> to
+            login!
           </p>
         </div>
       </AuthForm>
@@ -66,43 +85,33 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import AuthFooter from '~/components/Auth/AuthFooter.vue';
-import AuthHeader from '~/components/Auth/AuthHeader.vue';
-import AuthForm from '~/components/Auth/AuthForm.vue';
-import InputField from '~/components/Auth/InputField.vue';
 
 let count = 0;
 export default {
   name: 'SignupPage',
+  auth: false,
   components: {
     ValidationObserver,
-    AuthFooter,
-    AuthHeader,
-    AuthForm,
-    InputField,
   },
   layout: 'auth',
   data: () => ({
     title: 'Sign-Up',
-    password: '',
-    confirm: '',
-    ispassword: true,
-    btnDisable: true,
     accountCreated: false,
     name: '',
+    errors: {},
     fields: [
       {
         name: 'First Name',
         type: 'text',
         index: count++,
-        id: 'firstname',
+        id: 'first_name',
         rules: 'required',
       },
       {
         name: 'Last Name',
         type: 'text',
         index: count++,
-        id: 'lastname',
+        id: 'last_name',
         rules: 'required',
       },
       {
@@ -137,10 +146,22 @@ export default {
     ],
   }),
   methods: {
-    onSubmit() {
-      this.title = 'Account Created!';
-      this.name = document.getElementsByName('First Name')[0].value;
-      this.accountCreated = true;
+    async register(e) {
+      const postData = {};
+      this.fields.forEach((field) => {
+        postData[field.id] = e.target.elements[field.name].value;
+      });
+
+      await this.$axios
+        .post('auth/register/', postData)
+        .then(() => {
+          this.title = 'Account Created!';
+          this.name = e.target.elements['First Name'].value;
+          this.accountCreated = true;
+        })
+        .catch((error) => {
+          this.errors = error.response.data;
+        });
     },
   },
 };

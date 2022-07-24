@@ -14,7 +14,7 @@ from django.core.management.commands.runserver import Command as runserver
 
 
 runserver.default_addr = "0"
-runserver.default_port = "8081"
+runserver.default_port = "8000"
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -66,6 +66,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+# DEV ONLY
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = "api.urls"
 
@@ -145,9 +148,9 @@ REST_FRAMEWORK = {
     ),
     "PAGE_SIZE": 10,
     "NON_FIELD_ERRORS_KEY": "errors",
-    "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions.IsAuthenticated",
-    ),
+    # "DEFAULT_PERMISSION_CLASSES": (
+    #     "rest_framework.permissions.IsAuthenticated",
+    # ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
         "rest_framework.authentication.SessionAuthentication",

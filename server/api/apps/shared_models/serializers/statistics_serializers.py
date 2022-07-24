@@ -7,9 +7,9 @@ class QuestionResponseSerializer(serializers.HyperlinkedModelSerializer):
         model = QuestionResponse
         fields = [
             "id",
-            "question",
-            "selected_answer",
-            "is_correct",
+            "question_count",
+            "total_marks",
+            "user_mark",
             "time_taken",
-            "date_created",
+            "date_taken",
         ]
