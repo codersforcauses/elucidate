@@ -11,11 +11,13 @@ from api.apps.shared_models.serializers import (
 
 
 class QuestionDetailView(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.QuestionSerializer
     queryset = Question.objects.all()
 
 
 class AnswerQuestionListView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.AnswerSerializer
 
     def get_queryset(self):
@@ -23,6 +25,7 @@ class AnswerQuestionListView(generics.ListAPIView):
 
 
 class AnswerQuestionDetailView(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.AnswerSerializer
 
     def get_queryset(self):
@@ -31,6 +34,7 @@ class AnswerQuestionDetailView(generics.RetrieveAPIView):
 
 
 class SubjectQuestionDetailView(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.SubjectSerializer
 
     def get_queryset(self):
@@ -38,6 +42,7 @@ class SubjectQuestionDetailView(generics.RetrieveAPIView):
 
 
 class TopicQuestionListView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.TopicSerializer
 
     def get_queryset(self):
@@ -45,24 +50,30 @@ class TopicQuestionListView(generics.ListAPIView):
 
 
 class QuestionResponseCreateView(generics.CreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuestionResponseSerializer
 
 
 class UserStatisticsCreateUpdateView(generics.CreateAPIView, generics.UpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.UserStatisticsSerializer
 
 
 class QuizStatisticsCreateView(generics.CreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuizStatisticsSerializer
 
 
 class QuizTagCreateView(generics.CreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuizTagSerializer
 
 
 class QuestionStatisticsCreateView(generics.CreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuestionStatisticsSerializer
 
 
 class TopicStatisticsCreateView(generics.CreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.TopicStatisticsSerializer
