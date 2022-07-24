@@ -62,7 +62,7 @@ class QuizStatistics(models.Model):
 
 class QuizTag(models.Model):
     name = models.CharField(max_length=defines.TAG_NAME_MAXLEN)
-    quiz_statistics = models.ForeignKey(QuizStatistics)
+    quiz_statistics = models.ManyToManyField(QuizStatistics)
 
     def __str__(self):
         return self.name
