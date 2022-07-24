@@ -2,7 +2,11 @@ from rest_framework import serializers
 from ..models.statistics_models import QuestionResponse, UserStatistics, QuizStatistics, QuizTag
 
 
-class QuestionResponseSerializer(serializers.HyperlinkedModelSerializer):
+class QuestionResponseSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField()
+    question = serializers.PrimaryKeyRelatedField()
+    selected_answer = serializers.PrimaryKeyRelatedField()
+
     class Meta:
         model = QuestionResponse
         fields = [
@@ -12,13 +16,14 @@ class QuestionResponseSerializer(serializers.HyperlinkedModelSerializer):
             "selected_answer",
             "date_submitted",
         ]
-        # TODO: look into ForeignKey / ManyToManyField serialisation
 
     def create(self, validated_data):
         return QuestionResponse.objects.create(**validated_data)
 
 
-class UserStatisticsSerializer(serializers.HyperlinkedModelSerializer):
+class UserStatisticsSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField()
+
     class Meta:
         model = UserStatistics
         fields = [
@@ -27,7 +32,6 @@ class UserStatisticsSerializer(serializers.HyperlinkedModelSerializer):
             "quizzes_completed",
             "average_score",
         ]
-        # TODO: look into foreikjdfjlksadjflsadjf;/ ...
 
     def create(self, validated_data):
         return UserStatistics.objects.create(**validated_data)
@@ -39,7 +43,9 @@ class UserStatisticsSerializer(serializers.HyperlinkedModelSerializer):
         return instance
 
 
-class QuizStatisticsSerializer(serializers.HyperlinkedModelSerializer):
+class QuizStatisticsSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField()
+
     class Meta:
         model = QuizStatistics
         fields = [
@@ -54,7 +60,9 @@ class QuizStatisticsSerializer(serializers.HyperlinkedModelSerializer):
         return QuizStatistics.objects.create(**validated_data)
 
 
-class QuizTagSerializer(serializers.HyperlinkedModelSerializer):
+class QuizTagSerializer(serializers.ModelSerializer):
+    quiz_statistics = serializers.PrimaryKeyRelatedField()
+
     class Meta:
         model = QuizTag
         fields = [
