@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models.quiz_models import Question, Subject, Topic, Answer, QuestionForm
-from .models.statistics_models import QuestionResponse, UserStatistics, QuizStatistics, QuizTag, QuestionStatistics
+from .models.statistics_models import QuestionResponse, UserStatistics, QuizStatistics, QuizTag, QuestionStatistics, TopicStatistics
 
 
 class AnswerInline(admin.TabularInline):
@@ -46,6 +46,12 @@ class UserStatisticsAdmin(admin.ModelAdmin):
 class QuestionStatisticsAdmin(admin.ModelAdmin):
     list_display = ("question", "number_attempts", "average_score")
     readonly_fields = ["number_attempts", "average_score"]
+
+
+@admin.register(TopicStatistics)
+class TopicStatisticsAdmin(admin.ModelAdmin):
+    list_display = ("topic", "average_score")
+    readonly_fields = ["average_score"]
 
 
 admin.site.register(Subject)

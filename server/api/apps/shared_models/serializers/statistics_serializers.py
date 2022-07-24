@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from ..models.quiz_models import Question, Answer
-from ..models.statistics_models import QuestionResponse, UserStatistics, QuizStatistics, QuizTag, QuestionStatistics
+from ..models.quiz_models import Question, Answer, Topic
+from ..models.statistics_models import QuestionResponse, UserStatistics, QuizStatistics, QuizTag, QuestionStatistics, TopicStatistics
 
 
 class QuestionResponseSerializer(serializers.ModelSerializer):
@@ -87,3 +87,17 @@ class QuestionStatisticsSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return QuestionStatistics.objects.create(**validated_data)
+
+
+class TopicStatisticsSerializer(serializers.ModelSerializer):
+    topic = serializers.PrimaryKeyRelatedField(queryset=Topic.objects.all())
+
+    class Meta:
+        model = TopicStatistics
+        fields = [
+            "id",
+            "topic",
+        ]
+
+    def create(self, validated_data):
+        return TopicStatistics.objects.create(**validated_data)
