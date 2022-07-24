@@ -15,5 +15,6 @@ urlpatterns = [
          views.UserStatisticsCreateUpdateView.as_view()),
     path("submit/quiz_statistics/", views.QuizStatisticsCreateView.as_view()),
     path("submit/quiz_tag/", views.QuizTagCreateView.as_view()),
+    path("submit/question_statistics/", views.QuestionStatisticsCreateView.as_view()),
 ]
 

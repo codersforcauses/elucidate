@@ -36,7 +36,10 @@ class UserStatistics(models.Model):
 
     @property
     def average_score(self):
-        return QuestionResponse.objects.filter(user=self.user, selected_answer__is_correct=True).count() / QuestionResponse.objects.filter(user=self.user).count()
+        total = QuestionResponse.objects.filter(user=self.user).count()
+        if total == 0:
+            return None
+        return QuestionResponse.objects.filter(user=self.user, selected_answer__is_correct=True).count() / total
 
     def __str__(self):
         return str(self.user)
@@ -69,3 +72,24 @@ class QuizTag(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class QuestionStatistics(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=False)
+
+    class Meta:
+        verbose_name_plural = "Question statistics"
+
+    @property
+    def number_attempts(self):
+        return QuestionResponse.objects.filter(question=self.question).count()
+
+    @property
+    def average_score(self):
+        total = QuestionResponse.objects.filter(question=self.question).count()
+        if total == 0:
+            return None
+        return QuestionResponse.objects.filter(question=self.question, selected_answer__is_correct=True).count() / total
+
+    def __str__(self):
+        return str(self.question)

@@ -51,3 +51,7 @@ class QuizStatisticsCreateView(generics.CreateAPIView):
 
 class QuizTagCreateView(generics.CreateAPIView):
     serializer_class = statistics_serializers.QuizTagSerializer
+
+
+class QuestionStatisticsCreateView(generics.CreateAPIView):
+    serializer_class = statistics_serializers.QuestionStatisticsSerializer
