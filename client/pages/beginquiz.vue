@@ -24,19 +24,15 @@
             :preserve-search="true"
             :hide-selected="true"
             placeholder="Search or select topics"
+            class="rounded-lg"
           >
           </multiselect>
         </div>
       </div>
       <div class="flex flex-row justify-between items-center w-full h-15 my-5">
         <h2 class="text-white w-1/4 mx-5">Number of Questions:</h2>
-        <div class="bg-white w-2/3 h-auto mx-5 p-2 rounded-lg shadow-lg">
-          <div>
-            <vue-numeric-input
-              v-model="numOfQuestion"
-              :step="1"
-            ></vue-numeric-input>
-          </div>
+        <div class="bg-white w-2/3 h-auto mx-5 p-2 rounded-md shadow-lg">
+            <input  v-model="numOfQuestion" placeholder='Enter number of questions' type="number" min="1" class= "w-full">
         </div>
       </div>
       <div class="flex flex-row justify-between items-center w-full h-15 my-5">
@@ -66,7 +62,7 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-between mt-auto">
+    <div class="flex justify-between mb-4">
       <button class="bg-red2 rounded-lg shadow-lg py-2 px-4">Start Quiz</button>
     </div>
   </ContentBox>
@@ -75,7 +71,6 @@
 <script>
 
 import Multiselect from 'vue-multiselect';
-import VueNumericInput from 'vue-numeric-input';
 import ContentBox from '~/components/Quiz/ContentBox.vue';
 
 export default {
@@ -84,11 +79,10 @@ export default {
   components: {
     ContentBox,
     Multiselect,
-    VueNumericInput
   },
   layout: 'quizbg',
   data: () => ({
-    numOfQuestion: 0,
+    numOfQuestion: '',
     subjectValue: '',
     topicValue: [],
     subjectOptions: ['Math', 'Geography', 'Physic'],
@@ -100,3 +94,14 @@ export default {
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style >
+.multiselect__tags{
+border-radius:6px;
+font-size:16px;
+border-width:0px;
+}
+.multiselect__placeholder{
+margin-bottom: 0px;
+padding-top:0px;
+}
+</style>
