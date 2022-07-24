@@ -26,15 +26,17 @@ class UserStatistics(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=False
     )
     quizzes_completed = models.PositiveIntegerField(default=0)
-    average_score = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(100.0)])
 
     class Meta:
-        constraints = (
-            models.CheckConstraint(
-                check=models.Q(average_score__gte=0.0) & models.Q(average_score__lte=100.0),
-                name="UserStatistics_average_score_range"
-            ),
-        )
+        verbose_name_plural = "User statistics"
+
+    @property
+    def questions_created(self):
+        return Question.objects.filter(creator=self.user).count()
+
+    @property
+    def average_score(self):
+        return QuestionResponse.objects.filter(user=self.user, selected_answer__is_correct=True).count() / QuestionResponse.objects.filter(user=self.user).count()
 
     def __str__(self):
         return str(self.user)
@@ -55,6 +57,7 @@ class QuizStatistics(models.Model):
                 name="QuizStatistics_score_range"
             ),
         )
+        verbose_name_plural = "Quiz statistics"
 
     def __str__(self):
         return str((self.user, self.quiz_title))

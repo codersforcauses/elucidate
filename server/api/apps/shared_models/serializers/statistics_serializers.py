@@ -32,7 +32,6 @@ class UserStatisticsSerializer(serializers.ModelSerializer):
             "id",
             "user",
             "quizzes_completed",
-            "average_score",
         ]
 
     def create(self, validated_data):
@@ -41,7 +40,6 @@ class UserStatisticsSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.user = validated_data.get("user", instance.user)
         instance.quizzes_completed = validated_data.get("quizzes_completed", instance.quizzes_completed)
-        instance.average_score = validated_data.get("average_score", instance.average_score)
         return instance
 
 
