@@ -40,7 +40,14 @@ class TagQuestionListView(generics.ListAPIView):
 class QuestionResponseCreateView(generics.CreateAPIView):
     serializer_class = statistics_serializers.QuestionResponseSerializer
 
-    def perform_create(self, serializer):
-        q = Question.objects.filter(pk=self.kwargs["question_pk"]),
-        a = Answer.objects.filter(pk=self.kwargs["selected_answer_pk"]),
-        serializer.save(question=q, selected_answer=a, date_submitted=now)
+
+class UserStatisticsCreateUpdateView(generics.CreateAPIView, generics.UpdateAPIView):
+    serializer_class = statistics_serializers.UserStatisticsSerializer
+
+
+class QuizStatisticsCreateView(generics.CreateAPIView):
+    serializer_class = statistics_serializers.QuizStatisticsSerializer
+
+
+class QuizTagCreateView(generics.CreateAPIView):
+    serializer_class = statistics_serializers.QuizTagSerializer
