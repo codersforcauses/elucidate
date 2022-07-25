@@ -1,5 +1,11 @@
 <template>
-  <ValidationObserver v-if="!accountCreated" v-slot="{ invalid }" slim class="w-1/2 max-w-lg" @submit.prevent="register">
+  <ValidationObserver
+    v-if="!accountCreated"
+    v-slot="{ invalid }"
+    slim
+    class="w-1/2 max-w-lg"
+    @submit.prevent="register"
+  >
     <AuthAlert :errors="errors">
       Error creating account, please fix the following errors:
     </AuthAlert>
