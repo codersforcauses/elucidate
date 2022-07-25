@@ -6,7 +6,6 @@ from .models.statistics_models import (
     QuestionResponse,
     UserStatistics,
     QuizStatistics,
-    QuizTag,
     QuestionStatistics,
     TopicStatistics,
 )
@@ -14,11 +13,6 @@ from .models.statistics_models import (
 
 class AnswerInline(admin.TabularInline):
     model = Answer
-
-
-class QuizTagInline(admin.TabularInline):
-    model = QuizTag.quiz_statistics.through
-    verbose_name = "Quiz Tag"
 
 
 class QuestionForm(forms.ModelForm):
@@ -51,6 +45,25 @@ class QuestionResponseForm(forms.ModelForm):
         if selected_answer and answers:
             if selected_answer not in answers:
                 raise ValidationError(f'Invalid selected answer "{selected_answer}": this answer is not an option for the question.')
+        return self.cleaned_data
+
+
+class QuizStatisticsForm(forms.ModelForm):
+    class Meta:
+        model = QuizStatistics
+        fields = ["user", "quiz_title", "subject", "topics", "date_taken", "score"]
+
+    def clean(self):
+        subject = self.cleaned_data.get("subject")
+        topics = self.cleaned_data.get("topics")
+        if subject and topics:
+            for topic in topics:
+                if topic.subject != subject:
+                    raise ValidationError(
+                        f'Invalid topic "{topic}": this topic belongs to the'
+                        f' subject "{topic.subject}" whereas the question'
+                        f' belongs to the subject "{subject}".'
+                    )
         return self.cleaned_data
 
 
@@ -89,9 +102,16 @@ class QuestionResponseAdmin(admin.ModelAdmin):
 
 @admin.register(QuizStatistics)
 class QuizStatisticsAdmin(admin.ModelAdmin):
-    inlines = [
-        QuizTagInline,
-    ]
+    form = QuizStatisticsForm
+
+    def get_object(self, request, object_id, s):
+        self.obj = super(QuizStatisticsAdmin, self).get_object(request, object_id)
+        return self.obj
+
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if db_field.name == "topics":
+            kwargs["queryset"] = Topic.objects.filter(subject=self.obj.subject)
+        return super().formfield_for_manytomany(db_field, request, **kwargs)
 
 
 @admin.register(UserStatistics)

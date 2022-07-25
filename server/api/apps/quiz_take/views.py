@@ -45,7 +45,7 @@ class SubjectQuestionDetailView(generics.RetrieveAPIView):
     serializer_class = quiz_serializers.SubjectSerializer
 
     def get_queryset(self):
-        return Tag.objects.get(question__pk=self.kwargs["question_pk"]).subject
+        return Question.objects.get(pk=self.kwargs["question_pk"]).subject
 
 
 class TopicQuestionListView(generics.ListAPIView):
@@ -71,11 +71,6 @@ class UserStatisticsCreateUpdateView(
 class QuizStatisticsCreateView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuizStatisticsSerializer
-
-
-class QuizTagCreateView(generics.CreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
-    serializer_class = statistics_serializers.QuizTagSerializer
 
 
 class QuestionStatisticsCreateView(generics.CreateAPIView):

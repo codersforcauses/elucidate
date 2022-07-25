@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from .quiz_models import Question, Answer, Topic
+from .quiz_models import Question, Answer, Topic, Subject
 
 from datetime import timedelta
 from . import defines
@@ -65,6 +65,8 @@ class QuizStatistics(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=False
     )
     quiz_title = models.CharField(max_length=defines.QUIZ_NAME_MAXLEN)
+    subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
+    topics = models.ManyToManyField(Topic, blank=True)
     date_taken = models.DateField(null=True)
     score = models.FloatField(
         validators=[MinValueValidator(0.0), MaxValueValidator(100.0)]
@@ -81,14 +83,6 @@ class QuizStatistics(models.Model):
 
     def __str__(self):
         return str((self.user, self.quiz_title))
-
-
-class QuizTag(models.Model):
-    name = models.CharField(max_length=defines.TAG_NAME_MAXLEN)
-    quiz_statistics = models.ManyToManyField(QuizStatistics)
-
-    def __str__(self):
-        return self.name
 
 
 class QuestionStatistics(models.Model):
