@@ -8,8 +8,7 @@ None.
 
 ## Events
 
-- @submit
-    - Emitted when the form is submitted
+None.
 
 ## Slots
 
