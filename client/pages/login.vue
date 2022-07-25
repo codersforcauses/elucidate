@@ -37,15 +37,9 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import AuthForm from '~/components/Auth/AuthForm.vue';
-import InputField from '~/components/Auth/InputField.vue';
-import AuthSubmit from '~/components/Auth/AuthSubmit.vue';
 
 export default {
   components: {
-    AuthForm,
-    AuthSubmit,
-    InputField,
     ValidationObserver,
   },
   layout: 'auth',
