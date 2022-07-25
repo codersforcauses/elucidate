@@ -19,14 +19,24 @@ class Question(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
     )
     date_created = models.DateTimeField(auto_now_add=True, null=True)
+    is_verified = models.BooleanField(default=False)
+    mark = models.PositiveIntegerField(null=True)
 
     def __str__(self):
         return self.text
 
 
-class Tag(models.Model):
+class Subject(models.Model):
+    name = models.CharField(max_length=defines.TAG_NAME_MAXLEN)
+
+    def __str__(self):
+        return self.name
+
+
+class Topic(models.Model):
     name = models.CharField(max_length=defines.TAG_NAME_MAXLEN)
     question = models.ManyToManyField(Question)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
