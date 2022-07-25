@@ -20,7 +20,7 @@
 export default {
   props: {
     errors: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },
