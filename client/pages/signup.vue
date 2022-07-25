@@ -1,25 +1,9 @@
 <template>
-  <ValidationObserver v-if="!accountCreated" v-slot="{ invalid }" slim>
-    <div
-      v-if="Object.keys(errors).length !== 0"
-      class="mx-6 mt-8 bg-red w-11/12 p-3 text-neutral-100 font-bold rounded-md"
-    >
-      <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
-      <p class="inline">
-        Error creating account, please fix the following errors:
-      </p>
-      <div
-        v-for="(messages, error) in errors"
-        :key="error"
-        class="mt-2 text-lg"
-      >
-        {{ error }}
-        <p v-for="(message, i) in messages" :key="i" class="text-base">
-          {{ message }}
-        </p>
-      </div>
-    </div>
-    <AuthForm @submit.prevent="register">
+  <ValidationObserver v-if="!accountCreated" v-slot="{ invalid }" slim class="w-1/2 max-w-lg" @submit.prevent="register">
+    <AuthAlert :errors="errors">
+      Error creating account, please fix the following errors:
+    </AuthAlert>
+    <AuthForm>
       <InputField
         v-for="field in fields"
         :id="field.id"

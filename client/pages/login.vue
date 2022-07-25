@@ -1,5 +1,8 @@
 <template>
-  <ValidationObserver v-slot="{ invalid }" slim>
+  <ValidationObserver v-slot="{ invalid }" slim class="w-1/2 max-w-lg">
+    <AuthAlert :errors="errors">
+      Error signing in, please fix the following errors:
+    </AuthAlert>
     <AuthForm>
       <InputField
         id="email"
