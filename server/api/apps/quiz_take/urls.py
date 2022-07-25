@@ -17,13 +17,5 @@ urlpatterns = [
     path(
         "submit/question_response/", views.QuestionResponseCreateView.as_view()
     ),
-    path(
-        "submit/user_statistics/",
-        views.UserStatisticsCreateUpdateView.as_view(),
-    ),
     path("submit/quiz_statistics/", views.QuizStatisticsCreateView.as_view()),
-    path(
-        "submit/question_statistics/",
-        views.QuestionStatisticsCreateView.as_view(),
-    ),
 ]

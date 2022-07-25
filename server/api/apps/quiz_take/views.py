@@ -61,23 +61,12 @@ class QuestionResponseCreateView(generics.CreateAPIView):
     serializer_class = statistics_serializers.QuestionResponseSerializer
 
 
-class UserStatisticsCreateUpdateView(
-    generics.CreateAPIView, generics.UpdateAPIView
-):
-    permission_classes = [permissions.IsAuthenticated]
-    serializer_class = statistics_serializers.UserStatisticsSerializer
-
-
 class QuizStatisticsCreateView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuizStatisticsSerializer
 
-
-class QuestionStatisticsCreateView(generics.CreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
-    serializer_class = statistics_serializers.QuestionStatisticsSerializer
-
-
-class TopicStatisticsCreateView(generics.CreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
-    serializer_class = statistics_serializers.TopicStatisticsSerializer
+    def perform_create(self, serializer):
+        userstats = UserStatistics.objects.get(user=serializer.user)
+        userstats.quizzes_completed += 1
+        userstats.save()
+        serializer.save()
