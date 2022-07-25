@@ -5,7 +5,7 @@ from ..models.quiz_models import Question, Subject, Topic, Answer
 class QuestionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Question
-        fields = ["id", "text", "question_type", "date_created"]
+        fields = ["id", "text", "question_type", "marks", "date_created"]
 
 
 class SubjectSerializer(serializers.HyperlinkedModelSerializer):

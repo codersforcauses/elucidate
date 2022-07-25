@@ -1,6 +1,15 @@
+from django import forms
+from django.forms import ValidationError
 from django.contrib import admin
-from .models.quiz_models import Question, Subject, Topic, Answer, QuestionForm
-from .models.statistics_models import QuestionResponse, UserStatistics, QuizStatistics, QuizTag, QuestionStatistics, TopicStatistics
+from .models.quiz_models import Question, Subject, Topic, Answer
+from .models.statistics_models import (
+    QuestionResponse,
+    UserStatistics,
+    QuizStatistics,
+    QuizTag,
+    QuestionStatistics,
+    TopicStatistics,
+)
 
 
 class AnswerInline(admin.TabularInline):
@@ -12,11 +21,31 @@ class QuizTagInline(admin.TabularInline):
     verbose_name = "Quiz Tag"
 
 
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ["text", "question_type", "marks", "subject", "topics"]
+
+    def clean(self):
+        subject = self.cleaned_data.get("subject")
+        topics = self.cleaned_data.get("topics")
+        if subject and topics:
+            for topic in topics:
+                if topic.subject != subject:
+                    raise ValidationError(
+                        f'Invalid topic "{topic}": this topic belongs to the'
+                        f' subject "{topic.subject}" whereas the question'
+                        f' belongs to the subject "{subject}".'
+                    )
+        return self.cleaned_data
+
+
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [
         AnswerInline,
     ]
+    readonly_fields = ["date_created"]
     form = QuestionForm
 
     def get_object(self, request, object_id, s):
@@ -38,7 +67,12 @@ class QuizStatisticsAdmin(admin.ModelAdmin):
 
 @admin.register(UserStatistics)
 class UserStatisticsAdmin(admin.ModelAdmin):
-    list_display = ("user", "quizzes_completed", "average_score", "questions_created")
+    list_display = (
+        "user",
+        "quizzes_completed",
+        "average_score",
+        "questions_created",
+    )
     readonly_fields = ["questions_created", "average_score"]
 
 

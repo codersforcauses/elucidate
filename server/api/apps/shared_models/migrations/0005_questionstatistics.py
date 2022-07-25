@@ -5,20 +5,36 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shared_models', '0004_remove_userstatistics_userstatistics_average_score_range_and_more'),
+        (
+            "shared_models",
+            "0004_remove_userstatistics_userstatistics_average_score_range_and_more",
+        ),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='QuestionStatistics',
+            name="QuestionStatistics",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('question', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shared_models.question')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "question",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="shared_models.question",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'Question statistics',
+                "verbose_name_plural": "Question statistics",
             },
         ),
     ]

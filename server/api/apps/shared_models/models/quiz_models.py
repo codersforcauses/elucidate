@@ -1,5 +1,3 @@
-from django import forms
-from django.forms import ValidationError
 from django.conf import settings
 from django.db import models
 from . import defines
@@ -18,7 +16,7 @@ class Topic(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 
 class Question(models.Model):
     class QuestionType(models.TextChoices):
@@ -32,6 +30,7 @@ class Question(models.Model):
         choices=QuestionType.choices,
         default=QuestionType.MULTICHOICE,
     )
+    marks = models.PositiveIntegerField(default=1)
     creator = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
     )
@@ -41,21 +40,6 @@ class Question(models.Model):
 
     def __str__(self):
         return self.text
-
-
-class QuestionForm(forms.ModelForm):
-    class Meta:
-        model = Question
-        fields = ["subject", "topics"]
-
-    def clean(self):
-        subject = self.cleaned_data.get("subject")
-        topics = self.cleaned_data.get("topics")
-        if subject and topics:
-            for topic in topics:
-                if topic.subject != subject:
-                    raise ValidationError(f"Invalid topic \"{topic}\": this topic belongs to the subject \"{topic.subject}\" whereas the question belongs to the subject \"{subject}\".")
-        return self.cleaned_data
 
 
 class Answer(models.Model):

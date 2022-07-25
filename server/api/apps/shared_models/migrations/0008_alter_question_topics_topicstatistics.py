@@ -5,25 +5,41 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shared_models', '0007_remove_topic_question_question_subject_and_more'),
+        (
+            "shared_models",
+            "0007_remove_topic_question_question_subject_and_more",
+        ),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='question',
-            name='topics',
-            field=models.ManyToManyField(blank=True, to='shared_models.topic'),
+            model_name="question",
+            name="topics",
+            field=models.ManyToManyField(blank=True, to="shared_models.topic"),
         ),
         migrations.CreateModel(
-            name='TopicStatistics',
+            name="TopicStatistics",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('topic', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shared_models.topic')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "topic",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="shared_models.topic",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'Topic statistics',
+                "verbose_name_plural": "Topic statistics",
             },
         ),
     ]

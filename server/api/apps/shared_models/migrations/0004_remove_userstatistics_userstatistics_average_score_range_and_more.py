@@ -4,18 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shared_models', '0003_alter_quizstatistics_options_and_more'),
+        ("shared_models", "0003_alter_quizstatistics_options_and_more"),
     ]
 
     operations = [
         migrations.RemoveConstraint(
-            model_name='userstatistics',
-            name='UserStatistics_average_score_range',
+            model_name="userstatistics",
+            name="UserStatistics_average_score_range",
         ),
         migrations.RemoveField(
-            model_name='userstatistics',
-            name='average_score',
+            model_name="userstatistics",
+            name="average_score",
         ),
     ]

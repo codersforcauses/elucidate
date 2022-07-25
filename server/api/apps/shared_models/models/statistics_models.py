@@ -7,6 +7,14 @@ from datetime import timedelta
 from . import defines
 
 
+def sum_marks(x):
+    total = 0
+    for i in x:
+        if i.question and i.question.marks:
+            total += i.question.marks
+    return total
+
+
 class QuestionResponse(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
@@ -36,10 +44,17 @@ class UserStatistics(models.Model):
 
     @property
     def average_score(self):
-        total = QuestionResponse.objects.filter(user=self.user).count()
+        total = sum_marks(QuestionResponse.objects.filter(user=self.user))
         if total == 0:
             return None
-        return QuestionResponse.objects.filter(user=self.user, selected_answer__is_correct=True).count() / total
+        return (
+            sum_marks(
+                QuestionResponse.objects.filter(
+                    user=self.user, selected_answer__is_correct=True
+                )
+            )
+            / total
+        )
 
     def __str__(self):
         return str(self.user)
@@ -51,13 +66,15 @@ class QuizStatistics(models.Model):
     )
     quiz_title = models.CharField(max_length=defines.QUIZ_NAME_MAXLEN)
     date_taken = models.DateField(null=True)
-    score = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(100.0)])
+    score = models.FloatField(
+        validators=[MinValueValidator(0.0), MaxValueValidator(100.0)]
+    )
 
     class Meta:
         constraints = (
             models.CheckConstraint(
                 check=models.Q(score__gte=0.0) & models.Q(score__lte=100.0),
-                name="QuizStatistics_score_range"
+                name="QuizStatistics_score_range",
             ),
         )
         verbose_name_plural = "Quiz statistics"
@@ -75,7 +92,9 @@ class QuizTag(models.Model):
 
 
 class QuestionStatistics(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=False)
+    question = models.ForeignKey(
+        Question, on_delete=models.CASCADE, null=False
+    )
 
     class Meta:
         verbose_name_plural = "Question statistics"
@@ -86,10 +105,19 @@ class QuestionStatistics(models.Model):
 
     @property
     def average_score(self):
-        total = QuestionResponse.objects.filter(question=self.question).count()
+        total = sum_marks(
+            QuestionResponse.objects.filter(question=self.question)
+        )
         if total == 0:
             return None
-        return QuestionResponse.objects.filter(question=self.question, selected_answer__is_correct=True).count() / total
+        return (
+            sum_marks(
+                QuestionResponse.objects.filter(
+                    question=self.question, selected_answer__is_correct=True
+                )
+            )
+            / total
+        )
 
     def __str__(self):
         return str(self.question)
@@ -103,7 +131,17 @@ class TopicStatistics(models.Model):
 
     @property
     def average_score(self):
-        total = QuestionResponse.objects.filter(question__topics__in=[self.topic]).count()
+        total = sum_marks(
+            QuestionResponse.objects.filter(question__topics__in=[self.topic])
+        )
         if total == 0:
             return None
-        return QuestionResponse.objects.filter(question__topics__in=[self.topic], selected_answer__is_correct=True).count() / total
+        return (
+            sum_marks(
+                QuestionResponse.objects.filter(
+                    question__topics__in=[self.topic],
+                    selected_answer__is_correct=True,
+                )
+            )
+            / total
+        )

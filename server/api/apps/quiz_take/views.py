@@ -3,7 +3,12 @@ from rest_framework import permissions
 
 from django.utils.timezone import now
 
-from api.apps.shared_models.models.quiz_models import Question, Answer, Subject, Topic
+from api.apps.shared_models.models.quiz_models import (
+    Question,
+    Answer,
+    Subject,
+    Topic,
+)
 from api.apps.shared_models.serializers import (
     quiz_serializers,
     statistics_serializers,
@@ -29,8 +34,10 @@ class AnswerQuestionDetailView(generics.RetrieveAPIView):
     serializer_class = quiz_serializers.AnswerSerializer
 
     def get_queryset(self):
-        return Answer.objects.get(question__pk=self.kwargs["question_pk"],
-                                  answer__pk=self.kwargs["answer_pk"])
+        return Answer.objects.get(
+            question__pk=self.kwargs["question_pk"],
+            answer__pk=self.kwargs["answer_pk"],
+        )
 
 
 class SubjectQuestionDetailView(generics.RetrieveAPIView):
@@ -54,7 +61,9 @@ class QuestionResponseCreateView(generics.CreateAPIView):
     serializer_class = statistics_serializers.QuestionResponseSerializer
 
 
-class UserStatisticsCreateUpdateView(generics.CreateAPIView, generics.UpdateAPIView):
+class UserStatisticsCreateUpdateView(
+    generics.CreateAPIView, generics.UpdateAPIView
+):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.UserStatisticsSerializer
 

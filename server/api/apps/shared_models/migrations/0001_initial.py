@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,44 +14,126 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Answer',
+            name="Answer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.CharField(max_length=200)),
-                ('is_correct', models.BooleanField(default=False)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("text", models.CharField(max_length=200)),
+                ("is_correct", models.BooleanField(default=False)),
             ],
         ),
         migrations.CreateModel(
-            name='Question',
+            name="Question",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.TextField(blank=True, default='')),
-                ('question_type', models.CharField(choices=[('MC', 'Multiple Choice'), ('NA', 'Numerical Answer'), ('SA', 'Short Answer')], default='MC', max_length=2)),
-                ('date_created', models.DateTimeField(auto_now_add=True, null=True)),
-                ('creator', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("text", models.TextField(blank=True, default="")),
+                (
+                    "question_type",
+                    models.CharField(
+                        choices=[
+                            ("MC", "Multiple Choice"),
+                            ("NA", "Numerical Answer"),
+                            ("SA", "Short Answer"),
+                        ],
+                        default="MC",
+                        max_length=2,
+                    ),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(auto_now_add=True, null=True),
+                ),
+                (
+                    "creator",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Tag',
+            name="Tag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('question', models.ManyToManyField(to='shared_models.question')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "question",
+                    models.ManyToManyField(to="shared_models.question"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='QuestionResponse',
+            name="QuestionResponse",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_submitted', models.DateTimeField(auto_now_add=True, null=True)),
-                ('question', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shared_models.question')),
-                ('selected_answer', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='shared_models.answer')),
-                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "date_submitted",
+                    models.DateTimeField(auto_now_add=True, null=True),
+                ),
+                (
+                    "question",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="shared_models.question",
+                    ),
+                ),
+                (
+                    "selected_answer",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="shared_models.answer",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='answer',
-            name='question',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shared_models.question'),
+            model_name="answer",
+            name="question",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="shared_models.question",
+            ),
         ),
     ]

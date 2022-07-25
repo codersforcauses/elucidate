@@ -7,46 +7,108 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('shared_models', '0001_initial'),
+        ("shared_models", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='QuizStatistics',
+            name="QuizStatistics",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quiz_title', models.CharField(max_length=200)),
-                ('date_taken', models.DateField(null=True)),
-                ('score', models.FloatField(validators=[django.core.validators.MinValueValidator(0.0), django.core.validators.MaxValueValidator(100.0)])),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("quiz_title", models.CharField(max_length=200)),
+                ("date_taken", models.DateField(null=True)),
+                (
+                    "score",
+                    models.FloatField(
+                        validators=[
+                            django.core.validators.MinValueValidator(0.0),
+                            django.core.validators.MaxValueValidator(100.0),
+                        ]
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='UserStatistics',
+            name="UserStatistics",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quizzes_completed', models.PositiveIntegerField(default=0)),
-                ('average_score', models.FloatField(validators=[django.core.validators.MinValueValidator(0.0), django.core.validators.MaxValueValidator(100.0)])),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("quizzes_completed", models.PositiveIntegerField(default=0)),
+                (
+                    "average_score",
+                    models.FloatField(
+                        validators=[
+                            django.core.validators.MinValueValidator(0.0),
+                            django.core.validators.MaxValueValidator(100.0),
+                        ]
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='QuizTag',
+            name="QuizTag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('quiz_statistics', models.ManyToManyField(to='shared_models.quizstatistics')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "quiz_statistics",
+                    models.ManyToManyField(to="shared_models.quizstatistics"),
+                ),
             ],
         ),
         migrations.AddConstraint(
-            model_name='userstatistics',
-            constraint=models.CheckConstraint(check=models.Q(('average_score__gte', 0.0), ('average_score__lte', 100.0)), name='UserStatistics_average_score_range'),
+            model_name="userstatistics",
+            constraint=models.CheckConstraint(
+                check=models.Q(
+                    ("average_score__gte", 0.0), ("average_score__lte", 100.0)
+                ),
+                name="UserStatistics_average_score_range",
+            ),
         ),
         migrations.AddConstraint(
-            model_name='quizstatistics',
-            constraint=models.CheckConstraint(check=models.Q(('score__gte', 0.0), ('score__lte', 100.0)), name='QuizStatistics_score_range'),
+            model_name="quizstatistics",
+            constraint=models.CheckConstraint(
+                check=models.Q(("score__gte", 0.0), ("score__lte", 100.0)),
+                name="QuizStatistics_score_range",
+            ),
         ),
     ]
