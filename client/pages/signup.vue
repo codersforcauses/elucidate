@@ -1,22 +1,27 @@
 <template>
-  <AuthForm v-if="!accountCreated" v-slot="{ invalid }" @submit="onSubmit()">
-    <InputField
-      v-for="field in fields"
-      :id="field.id"
-      :key="field.index"
-      :field-name="field.name"
-      :field-type="field.type"
-      :field-options="field.options"
-      :rules="field.rules"
-      :inputvalue.sync="field.value"
-    />
-    <AuthSubmit :disabled="invalid">Submit</AuthSubmit>
-    <p class="self-center mt-3">
-      Already have an account?
-      <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink>
-    </p>
-  </AuthForm>
-
+  <ValidationObserver
+    v-if="!accountCreated"
+    v-slot="{ invalid }"
+    class="w-11/12 max-w-lg"
+  >
+    <AuthForm @submit="onSubmit()">
+      <InputField
+        v-for="field in fields"
+        :id="field.id"
+        :key="field.index"
+        :field-name="field.name"
+        :field-type="field.type"
+        :field-options="field.options"
+        :rules="field.rules"
+        :inputvalue.sync="field.value"
+      />
+      <AuthSubmit :disabled="invalid">Submit</AuthSubmit>
+      <p class="self-center mt-3">
+        Already have an account?
+        <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink>
+      </p>
+    </AuthForm>
+  </ValidationObserver>
   <AuthForm v-else>
     <div
       class="flex flex-col grow items-center text-center font-bold text-white"
@@ -40,6 +45,7 @@
 </template>
 
 <script>
+import { ValidationObserver } from 'vee-validate';
 import AuthForm from '~/components/Auth/AuthForm.vue';
 import InputField from '~/components/Auth/InputField.vue';
 import AuthSubmit from '~/components/Auth/AuthSubmit.vue';
@@ -51,6 +57,7 @@ export default {
     AuthForm,
     AuthSubmit,
     InputField,
+    ValidationObserver,
   },
   layout: 'auth',
   data: () => ({
