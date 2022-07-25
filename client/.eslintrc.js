@@ -10,4 +10,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['vue', 'cypress'],
+  rules: {
+    'vue/attribute-hyphenation': ['never'],
+  },
 };
