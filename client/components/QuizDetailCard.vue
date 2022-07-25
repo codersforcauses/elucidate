@@ -16,22 +16,20 @@
         <div class="justify-self-start text-sm">{{ totalQues }} Questions</div>
         <div class="justify-self-end text-sm">{{ time }}</div>
       </div>
-      <!-- Objectives -->
+      <!-- Objectives
       <div class="pt-5 px-9">
-        <!-- Title -->
         <div
           class="inline-block text-sm bg-white px-2 mb-2 rounded-sm shadow-md"
         >
           Objectives:
         </div>
-        <!-- List of aims -->
         <div v-for="aim in aimList" :key="aim.content" class="pl-2">
           <div class="flex text-xs pb-1">
             <div class="w-6"><img v-bind:src="pointImg" /></div>
             <div>{{ aim.content }}</div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- Pause and Restart buttons -->
       <div class="flex justify-end px-5 mt-2">
         <button>
@@ -50,9 +48,9 @@
         </button>
       </div>
     </div>
-    <div class="absolute top-16">
+    <!-- <div class="absolute top-16">
       <CountdownTimer />
-    </div>
+    </div> -->
   </div>
 </template>
 
