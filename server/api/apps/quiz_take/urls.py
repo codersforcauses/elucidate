@@ -11,6 +11,7 @@ urlpatterns = [
         views.AnswerQuestionDetailView.as_view(),
     ),
     path("<int:question_pk>/topics/", views.TopicQuestionListView.as_view()),
+    path("<int:question_pk>/topics/<int:topic_pk>", views.TopicQuestionDetailView.as_view()),
     path(
         "<int:question_pk>/subject/", views.SubjectQuestionDetailView.as_view()
     ),

@@ -56,6 +56,14 @@ class TopicQuestionListView(generics.ListAPIView):
         return Topic.objects.filter(question__pk=self.kwargs["question_pk"])
 
 
+class TopicQuestionDetailView(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = quiz_serializers.TopicSerializer
+
+    def get_queryset(self):
+        return Topic.objects.get(question__pk=self.kwargs["question_pk"], pk=self.kwargs["topic_pk"])
+
+
 class QuestionResponseCreateView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuestionResponseSerializer
