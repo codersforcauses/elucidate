@@ -40,6 +40,20 @@ class QuestionForm(forms.ModelForm):
         return self.cleaned_data
 
 
+class QuestionResponseForm(forms.ModelForm):
+    class Meta:
+        model = QuestionResponse
+        fields = ["user", "question", "selected_answer"]
+
+    def clean(self):
+        selected_answer = self.cleaned_data.get("selected_answer")
+        answers = Answer.objects.filter(question=self.cleaned_data.get("question"))
+        if selected_answer and answers:
+            if selected_answer not in answers:
+                raise ValidationError(f'Invalid selected answer "{selected_answer}": this answer is not an option for the question.')
+        return self.cleaned_data
+
+
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [
@@ -56,6 +70,21 @@ class QuestionAdmin(admin.ModelAdmin):
         if db_field.name == "topics":
             kwargs["queryset"] = Topic.objects.filter(subject=self.obj.subject)
         return super().formfield_for_manytomany(db_field, request, **kwargs)
+
+
+@admin.register(QuestionResponse)
+class QuestionResponseAdmin(admin.ModelAdmin):
+    readonly_fields = ["date_submitted"]
+    form = QuestionResponseForm
+
+    def get_object(self, request, object_id, s):
+        self.obj = super(QuestionResponseAdmin, self).get_object(request, object_id)
+        return self.obj
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "selected_answer":
+            kwargs["queryset"] = Answer.objects.filter(question=self.obj.question)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 @admin.register(QuizStatistics)
@@ -90,4 +119,3 @@ class TopicStatisticsAdmin(admin.ModelAdmin):
 
 admin.site.register(Subject)
 admin.site.register(Topic)
-admin.site.register(QuestionResponse)
