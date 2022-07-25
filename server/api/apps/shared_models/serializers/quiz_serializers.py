@@ -1,26 +1,35 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from ..models.quiz_models import Question, Subject, Topic, Answer
 
 
-class QuestionSerializer(serializers.HyperlinkedModelSerializer):
+class QuestionSerializer(serializers.ModelSerializer):
+    creator = serializers.PrimaryKeyRelatedField(queryset=get_user_model().objects.all())
+    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
+    topics = serializers.PrimaryKeyRelatedField(queryset=Topic.objects.all(), many=True)
+
     class Meta:
         model = Question
-        fields = ["id", "text", "question_type", "marks", "date_created"]
+        fields = ["text", "question_type", "marks", "creator", "date_created", "subject", "topics"]
 
 
-class SubjectSerializer(serializers.HyperlinkedModelSerializer):
+class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
-        fields = ["id", "name"]
+        fields = ["name"]
 
 
-class TopicSerializer(serializers.HyperlinkedModelSerializer):
+class TopicSerializer(serializers.ModelSerializer):
+    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
+
     class Meta:
         model = Topic
-        fields = ["id", "name"]
+        fields = ["name", "subject"]
 
 
-class AnswerSerializer(serializers.HyperlinkedModelSerializer):
+class AnswerSerializer(serializers.ModelSerializer):
+    question = serializers.PrimaryKeyRelatedField(queryset=Question.objects.all())
+
     class Meta:
         model = Answer
-        fields = ["id", "text", "is_correct", "question"]
+        fields = ["text", "is_correct", "question"]
