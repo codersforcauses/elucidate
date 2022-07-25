@@ -1,5 +1,5 @@
 <template>
-  <ValidationObserver v-slot="{ invalid }" class="w-11/12 max-w-lg">
+  <ValidationObserver v-slot="{ invalid }" slim>
     <AuthForm>
       <InputField
         id="email"

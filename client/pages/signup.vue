@@ -2,7 +2,7 @@
   <ValidationObserver
     v-if="!accountCreated"
     v-slot="{ invalid }"
-    class="w-11/12 max-w-lg"
+    slim
   >
     <AuthForm @submit="onSubmit()">
       <InputField
