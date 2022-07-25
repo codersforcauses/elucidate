@@ -1,9 +1,5 @@
 <template>
-  <ValidationObserver
-    v-if="!accountCreated"
-    v-slot="{ invalid }"
-    slim
-  >
+  <ValidationObserver v-if="!accountCreated" v-slot="{ invalid }" slim>
     <div
       v-if="Object.keys(errors).length !== 0"
       class="mx-6 mt-8 bg-red w-11/12 p-3 text-neutral-100 font-bold rounded-md"

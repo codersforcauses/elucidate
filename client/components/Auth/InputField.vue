@@ -1,7 +1,12 @@
 <template>
   <div>
     <label class="font-semibold">{{ fieldName }}</label>
-    <ValidationProvider v-slot="{ errors, touched }" slim :vid="id" :rules="rules">
+    <ValidationProvider
+      v-slot="{ errors, touched }"
+      slim
+      :vid="id"
+      :rules="rules"
+    >
       <div class="relative flex items-center -mt-2">
         <input
           v-if="fieldType != 'dropdown'"
