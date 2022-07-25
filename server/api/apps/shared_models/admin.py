@@ -1,24 +1,30 @@
 from django.contrib import admin
-from .models.quiz_models import Question, Tag, Answer
-from .models.statistics_models import QuestionResponse
+from .models.quiz_models import Question, Subject, Topic, Answer
+from .models.statistics_models import QuizStatistics
 
 
 class AnswerInline(admin.TabularInline):
     model = Answer
 
 
-class TagInline(admin.TabularInline):
-    model = Tag.question.through
-    verbose_name = "Tag"
+class SubjectInline(admin.TabularInline):
+    model = Topic.question.through
+    verbose_name = "Subject"
+
+
+class TopicInline(admin.TabularInline):
+    model = Subject
+    verbose_name = "Topic"
 
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [
         AnswerInline,
-        TagInline,
+        SubjectInline,
     ]
 
 
-admin.site.register(Tag)
-admin.site.register(QuestionResponse)
+admin.site.register(Subject)
+admin.site.register(Topic)
+admin.site.register(QuizStatistics)
