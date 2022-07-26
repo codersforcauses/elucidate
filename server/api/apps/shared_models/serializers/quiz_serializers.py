@@ -13,9 +13,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     creator = serializers.PrimaryKeyRelatedField(
         queryset=get_user_model().objects.all()
     )
-    subject = serializers.PrimaryKeyRelatedField(
-        queryset=Subject.objects.all()
-    )
+    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
     topics = serializers.PrimaryKeyRelatedField(
         queryset=Topic.objects.all(), many=True
     )
@@ -41,9 +39,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 
 
 class TopicSerializer(serializers.ModelSerializer):
-    subject = serializers.PrimaryKeyRelatedField(
-        queryset=Subject.objects.all()
-    )
+    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
 
     class Meta:
         model = Topic
