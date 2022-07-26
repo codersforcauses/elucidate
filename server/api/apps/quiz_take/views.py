@@ -9,6 +9,7 @@ from api.apps.shared_models.serializers import (
 
 
 class QuestionDetailView(generics.RetrieveAPIView):
+    """GET request to return information about a specific question"""
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.QuestionSerializer
     queryset = Question.objects.all()
@@ -16,6 +17,7 @@ class QuestionDetailView(generics.RetrieveAPIView):
 
 
 class AnswerQuestionListView(generics.ListAPIView):
+    """GET request to return a list of answers associated with a specific question"""
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.AnswerSerializer
 
@@ -26,6 +28,7 @@ class AnswerQuestionListView(generics.ListAPIView):
 class AnswerQuestionDetailView(
     generics.RetrieveAPIView, generics.CreateAPIView
 ):
+    """GET request to return information about a specific answer associated to a specific question"""
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.AnswerSerializer
 
@@ -43,6 +46,7 @@ class AnswerQuestionDetailView(
 
 
 class SubjectQuestionDetailView(generics.RetrieveAPIView):
+    """GET request to return information about the subject associated to a specific question"""
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.SubjectSerializer
 
@@ -57,6 +61,7 @@ class SubjectQuestionDetailView(generics.RetrieveAPIView):
 
 
 class TopicQuestionListView(generics.ListAPIView):
+    """GET request to return a list of topics associated to a specific question"""
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.TopicSerializer
 
@@ -65,6 +70,7 @@ class TopicQuestionListView(generics.ListAPIView):
 
 
 class TopicQuestionDetailView(generics.RetrieveAPIView):
+    """GET request to return information about a specific topic associated to a specific question"""
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.TopicSerializer
 
@@ -81,10 +87,12 @@ class TopicQuestionDetailView(generics.RetrieveAPIView):
 
 
 class QuestionResponseCreateView(generics.CreateAPIView):
+    """POST request to create a QuestionResponse for a user, upon submitting a question"""
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuestionResponseSerializer
 
 
 class QuizStatisticsCreateView(generics.CreateAPIView):
+    """POST request to create a QuizStatistics entry for a user, upon creating a quiz"""
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuizStatisticsSerializer
