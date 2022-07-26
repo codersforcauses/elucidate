@@ -8,10 +8,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import datetime
-from decouple import config
 from pathlib import Path
-from django.core.management.commands.runserver import Command as runserver
 
+from decouple import config
+from django.core.management.commands.runserver import Command as runserver
 
 runserver.default_addr = "0"
 runserver.default_port = "8081"

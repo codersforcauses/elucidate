@@ -1,17 +1,8 @@
-from rest_framework import generics
-from rest_framework import permissions
-
+from api.apps.shared_models.models.quiz_models import Answer, Question, Topic
+from api.apps.shared_models.serializers import (quiz_serializers,
+                                                statistics_serializers)
 from django.shortcuts import get_object_or_404
-
-from api.apps.shared_models.models.quiz_models import (
-    Question,
-    Answer,
-    Topic,
-)
-from api.apps.shared_models.serializers import (
-    quiz_serializers,
-    statistics_serializers,
-)
+from rest_framework import generics, permissions
 
 
 class QuestionDetailView(generics.RetrieveAPIView):

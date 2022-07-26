@@ -1,18 +1,10 @@
+from api.apps.shared_models.models.quiz_models import (Answer, Question,
+                                                       Subject, Topic)
+from api.apps.shared_models.models.statistics_models import (
+    QuestionResponse, QuestionStatistics, QuizStatistics, TopicStatistics,
+    UserStatistics)
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from api.apps.shared_models.models.quiz_models import (
-    Question,
-    Answer,
-    Topic,
-    Subject,
-)
-from api.apps.shared_models.models.statistics_models import (
-    QuestionResponse,
-    UserStatistics,
-    QuizStatistics,
-    QuestionStatistics,
-    TopicStatistics,
-)
 
 
 class QuestionResponseSerializer(serializers.ModelSerializer):

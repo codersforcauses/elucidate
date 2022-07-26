@@ -1,9 +1,9 @@
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from .quiz_models import Question, Answer, Topic, Subject
 
 from . import defines
+from .quiz_models import Answer, Question, Subject, Topic
 
 
 def sum_marks(x):

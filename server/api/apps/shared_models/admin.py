@@ -1,14 +1,11 @@
 from django import forms
-from django.forms import ValidationError
 from django.contrib import admin
-from .models.quiz_models import Question, Subject, Topic, Answer
-from .models.statistics_models import (
-    QuestionResponse,
-    UserStatistics,
-    QuizStatistics,
-    QuestionStatistics,
-    TopicStatistics,
-)
+from django.forms import ValidationError
+
+from .models.quiz_models import Answer, Question, Subject, Topic
+from .models.statistics_models import (QuestionResponse, QuestionStatistics,
+                                       QuizStatistics, TopicStatistics,
+                                       UserStatistics)
 
 
 class AnswerInline(admin.TabularInline):
