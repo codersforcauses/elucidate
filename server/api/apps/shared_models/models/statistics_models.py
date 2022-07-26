@@ -15,7 +15,7 @@ def sum_marks(x):
     return total
 
 
-class QuestionResponse(models.Model):
+class QuizStatistics(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
     )

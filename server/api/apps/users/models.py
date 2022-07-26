@@ -36,7 +36,7 @@ class User(AbstractUser):
     email = models.EmailField("email address", unique=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    grade = models.SmallIntegerField()
+    grade = models.CharField(max_length=10)
 
     objects = UserManager()
     USERNAME_FIELD = "email"
