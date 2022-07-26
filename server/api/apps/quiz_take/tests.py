@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from django.utils.timezone import now
 from rest_framework import status
 from rest_framework.test import APITestCase
 from api.apps.shared_models.models.quiz_models import Question, Answer, Subject, Topic
@@ -60,3 +61,26 @@ class QuizTakeTests(APITestCase):
         response = self.client.get(reverse("quiz_take:subject_detail", kwargs={"question_pk": q.pk}))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["name"], s.name)
+
+    def test_question_response_create(self):
+        q = Question.objects.get()
+        a = Answer.objects.get(is_correct=True)
+        response = self.client.post(reverse("quiz_take:question_response_create"), {"user": self.user.pk, "question": q.pk, "selected_answer": a.pk}, format="json")
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        qr = QuestionResponse.objects.get()
+        self.assertEqual(qr.user, self.user)
+        self.assertEqual(qr.question, q)
+        self.assertEqual(qr.selected_answer, a)
+
+    def test_quiz_statistics_create(self):
+        s = Subject.objects.get()
+        t = Topic.objects.get()
+        response = self.client.post(reverse("quiz_take:quiz_statistics_create"), {"user": self.user.pk, "quiz_title": "Y12S2 Chemistry", "subject": s.pk, "date_taken": now().date(), "topics": [t.pk], "score": 85.0}, format="json")
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        qs = QuizStatistics.objects.get()
+        self.assertEqual(qs.user, self.user)
+        self.assertEqual(qs.quiz_title, response.data["quiz_title"])
+        self.assertEqual(qs.subject, s)
+        self.assertEqual(str(qs.date_taken), response.data["date_taken"])
+        self.assertEqual(qs.topics.count(), 1)
+        self.assertEqual(qs.score, 85.0)

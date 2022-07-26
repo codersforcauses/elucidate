@@ -71,7 +71,11 @@ class QuizStatisticsSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-        return QuizStatistics.objects.create(**validated_data)
+        topics = validated_data.pop("topics")
+        qs = QuizStatistics.objects.create(**validated_data)
+        for topic in topics:
+            qs.topics.add(topic)
+        return qs
 
 
 class QuestionStatisticsSerializer(serializers.ModelSerializer):
@@ -85,9 +89,6 @@ class QuestionStatisticsSerializer(serializers.ModelSerializer):
             "id",
             "question",
         ]
-
-    def create(self, validated_data):
-        return QuestionStatistics.objects.create(**validated_data)
 
 
 class TopicStatisticsSerializer(serializers.ModelSerializer):
