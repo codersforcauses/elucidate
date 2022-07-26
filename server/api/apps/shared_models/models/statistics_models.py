@@ -88,7 +88,9 @@ class QuizStatistics(models.Model):
 
 
 class QuestionStatistics(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=False)
+    question = models.ForeignKey(
+        Question, on_delete=models.CASCADE, null=False
+    )
 
     class Meta:
         verbose_name_plural = "Question statistics"

@@ -2,9 +2,7 @@ from django.test import TestCase
 from django.utils import timezone
 
 from api.apps.shared_models.models.quiz_models import Answer, Question
-from api.apps.shared_models.models.statistics_models import (
-    QuestionResponse,
-)
+from api.apps.shared_models.models.statistics_models import QuestionResponse
 
 
 class QuestionTestCase(TestCase):
