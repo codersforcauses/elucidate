@@ -1,11 +1,12 @@
+from django.test import TestCase
+from django.utils import timezone
+
 from api.apps.shared_models.models.quiz_models import (
     Answer,
     Question,
     Subject,
     Topic,
 )
-from django.test import TestCase
-from django.utils import timezone
 
 
 class QuestionTestCase(TestCase):

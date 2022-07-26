@@ -1,7 +1,8 @@
-from api.apps.users.models import User
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from rest_framework.serializers import ValidationError
+
+from api.apps.users.models import User
 
 
 class RegistrationSerializer(serializers.ModelSerializer):

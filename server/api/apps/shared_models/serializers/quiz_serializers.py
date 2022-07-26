@@ -1,11 +1,12 @@
+from django.contrib.auth import get_user_model
+from rest_framework import serializers
+
 from api.apps.shared_models.models.quiz_models import (
     Answer,
     Question,
     Subject,
     Topic,
 )
-from django.contrib.auth import get_user_model
-from rest_framework import serializers
 
 
 class QuestionSerializer(serializers.ModelSerializer):
