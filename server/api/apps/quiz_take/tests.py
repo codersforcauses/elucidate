@@ -36,14 +36,14 @@ class QuizTakeTests(APITestCase):
             creator=self.user,
         )
         q1.topics.add(t)
-        q1a1 = Answer.objects.create(
+        Answer.objects.create(
             text=(
                 "Reduction is the gain of an electron, and oxidation the loss"
             ),
             is_correct=True,
             question=q1,
         )
-        q1a2 = Answer.objects.create(
+        Answer.objects.create(
             text=(
                 "Reduction is the loss of an electron, and oxidation the gain"
             ),

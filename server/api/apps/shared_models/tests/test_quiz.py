@@ -60,7 +60,7 @@ class QuestionTestCase(TestCase):
 class SubjectTestCase(TestCase):
     def setUp(self):
         s = Subject.objects.create(name="Unit 3 Physics")
-        q = Question.objects.create(
+        Question.objects.create(
             text="This is a physics question",
             question_type=Question.QuestionType.NUMERIC,
             subject=s,

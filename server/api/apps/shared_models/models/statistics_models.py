@@ -3,7 +3,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from .quiz_models import Question, Answer, Topic, Subject
 
-from datetime import timedelta
 from . import defines
 
 

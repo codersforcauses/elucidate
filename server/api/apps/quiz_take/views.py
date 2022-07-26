@@ -2,12 +2,10 @@ from rest_framework import generics
 from rest_framework import permissions
 
 from django.shortcuts import get_object_or_404
-from django.utils.timezone import now
 
 from api.apps.shared_models.models.quiz_models import (
     Question,
     Answer,
-    Subject,
     Topic,
 )
 from api.apps.shared_models.serializers import (
