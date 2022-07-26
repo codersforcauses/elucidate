@@ -12,7 +12,7 @@ from api.apps.shared_models.models.quiz_models import (
 from api.apps.shared_models.models.statistics_models import (
     QuestionResponse,
     QuizStatistics,
-)  # TODO: other statistics?
+)
 
 
 class QuizTakeTests(APITestCase):
