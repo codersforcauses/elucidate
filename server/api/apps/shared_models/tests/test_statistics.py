@@ -6,8 +6,6 @@ from api.apps.shared_models.models.statistics_models import (
     QuizStatistics,
 )
 
-from datetime import timedelta
-
 
 class QuestionTestCase(TestCase):
     def setUp(self):
@@ -16,11 +14,11 @@ class QuestionTestCase(TestCase):
             text="Question?", question_type=Question.QuestionType.MULTICHOICE
         )
         self.a = Answer.objects.create(
-            text="Answer!", question=q, is_correct=True
+            text="Answer!", question=self.q, is_correct=True
         )
         QuestionResponse.objects.create(
-            question=q,
-            selected_answer=a,
+            question=self.q,
+            selected_answer=self.a,
         )
 
     def test(self):
