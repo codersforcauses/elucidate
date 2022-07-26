@@ -29,6 +29,7 @@ class QuestionSerializer(serializers.ModelSerializer):
             "date_created",
             "subject",
             "topics",
+            "is_verified",
         ]
 
 

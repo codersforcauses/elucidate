@@ -37,6 +37,7 @@ class Question(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
     topics = models.ManyToManyField(Topic, blank=True)
+    is_verified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.text
