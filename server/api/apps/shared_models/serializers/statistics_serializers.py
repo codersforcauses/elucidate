@@ -61,7 +61,9 @@ class QuizStatisticsSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
         queryset=get_user_model().objects.all()
     )
-    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
+    subject = serializers.PrimaryKeyRelatedField(
+        queryset=Subject.objects.all()
+    )
     topics = serializers.PrimaryKeyRelatedField(
         queryset=Topic.objects.all(), many=True
     )
