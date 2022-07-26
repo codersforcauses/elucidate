@@ -29,9 +29,7 @@ class AnswerQuestionListView(generics.ListAPIView):
         return Answer.objects.filter(question__pk=self.kwargs["question_pk"])
 
 
-class AnswerQuestionDetailView(
-    generics.RetrieveAPIView, generics.CreateAPIView
-):
+class AnswerQuestionDetailView(generics.RetrieveAPIView):
     """
     GET request to return information about a specific answer associated to a
     specific question
