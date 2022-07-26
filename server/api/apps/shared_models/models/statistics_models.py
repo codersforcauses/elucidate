@@ -33,7 +33,6 @@ class UserStatistics(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=False
     )
-    quizzes_completed = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name_plural = "User statistics"
@@ -55,6 +54,10 @@ class UserStatistics(models.Model):
             )
             / total
         )
+
+    @property
+    def quizzes_completed(self):
+        return QuizStatistics.objects.filter(user=self.user).count()
 
     def __str__(self):
         return str(self.user)

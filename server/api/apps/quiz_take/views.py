@@ -1,6 +1,7 @@
 from rest_framework import generics
 from rest_framework import permissions
 
+from django.shortcuts import get_object_or_404
 from django.utils.timezone import now
 
 from api.apps.shared_models.models.quiz_models import (
@@ -19,6 +20,7 @@ class QuestionDetailView(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.QuestionSerializer
     queryset = Question.objects.all()
+    lookup_url_kwarg = "question_pk"
 
 
 class AnswerQuestionListView(generics.ListAPIView):
@@ -29,14 +31,20 @@ class AnswerQuestionListView(generics.ListAPIView):
         return Answer.objects.filter(question__pk=self.kwargs["question_pk"])
 
 
-class AnswerQuestionDetailView(generics.RetrieveAPIView):
+class AnswerQuestionDetailView(generics.RetrieveAPIView, generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.AnswerSerializer
 
+    def get_object(self):
+        queryset = self.get_queryset()
+        obj = get_object_or_404(queryset)
+        self.check_object_permissions(self.request, obj)
+        return obj
+
     def get_queryset(self):
-        return Answer.objects.get(
+        return Answer.objects.filter(
             question__pk=self.kwargs["question_pk"],
-            answer__pk=self.kwargs["answer_pk"],
+            pk=self.kwargs["answer_pk"],
         )
 
 
@@ -44,8 +52,14 @@ class SubjectQuestionDetailView(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.SubjectSerializer
 
+    def get_object(self):
+        queryset = self.get_queryset()
+        obj = get_object_or_404(queryset)
+        self.check_object_permissions(self.request, obj)
+        return obj.subject
+
     def get_queryset(self):
-        return Question.objects.get(pk=self.kwargs["question_pk"]).subject
+        return Question.objects.filter(pk=self.kwargs["question_pk"])
 
 
 class TopicQuestionListView(generics.ListAPIView):
@@ -60,8 +74,14 @@ class TopicQuestionDetailView(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.TopicSerializer
 
+    def get_object(self):
+        queryset = self.get_queryset()
+        obj = get_object_or_404(queryset)
+        self.check_object_permissions(self.request, obj)
+        return obj
+
     def get_queryset(self):
-        return Topic.objects.get(question__pk=self.kwargs["question_pk"], pk=self.kwargs["topic_pk"])
+        return Topic.objects.filter(question__pk=self.kwargs["question_pk"], pk=self.kwargs["topic_pk"])
 
 
 class QuestionResponseCreateView(generics.CreateAPIView):
@@ -72,9 +92,3 @@ class QuestionResponseCreateView(generics.CreateAPIView):
 class QuizStatisticsCreateView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = statistics_serializers.QuizStatisticsSerializer
-
-    def perform_create(self, serializer):
-        userstats = UserStatistics.objects.get(user=serializer.user)
-        userstats.quizzes_completed += 1
-        userstats.save()
-        serializer.save()

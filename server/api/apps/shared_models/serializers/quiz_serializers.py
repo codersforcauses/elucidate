@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from ..models.quiz_models import Question, Subject, Topic, Answer
+from api.apps.shared_models.models.quiz_models import Question, Subject, Topic, Answer
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -33,3 +33,6 @@ class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = ["text", "is_correct", "question"]
+
+    def create(self, validated_data):
+        return Answer.objects.create(**validated_data)

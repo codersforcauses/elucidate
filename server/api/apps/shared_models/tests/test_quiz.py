@@ -1,10 +1,6 @@
 from django.test import TestCase
 from django.utils import timezone
-from ..models.quiz_models import Question, Tag, Answer
-
-MC = Question.QuestionType.MULTICHOICE
-NA = Question.QuestionType.NUMERIC
-SA = Question.QuestionType.SHORT_ANSWER
+from api.apps.shared_models.models.quiz_models import Question, Tag, Answer
 
 
 class QuestionTestCase(TestCase):
@@ -12,13 +8,13 @@ class QuestionTestCase(TestCase):
         self.creation_time = timezone.now()
 
         Question.objects.create(
-            text="Test multiple choice question", question_type=MC
+            text="Test multiple choice question", question_type=Question.QuestionType.MULTICHOICE
         )
         Question.objects.create(
-            text="Test numerical answer question", question_type=NA
+            text="Test numerical answer question", question_type=Question.QuestionType.NUMERIC
         )
         Question.objects.create(
-            text="Test short answer question", question_type=SA
+            text="Test short answer question", question_type=Question.QuestionType.SHORT_ANSWER
         )
 
     def test_text(self):
@@ -56,7 +52,7 @@ class QuestionTestCase(TestCase):
 class TagTestCase(TestCase):
     def setUp(self):
         q = Question.objects.create(
-            text="This is a physics question", question_type=NA
+            text="This is a physics question", question_type=Question.QuestionType.NUMERIC
         )
         t = Tag.objects.create(name="Unit 3 Physics")
         q.tag_set.add(t)
@@ -71,7 +67,7 @@ class TagTestCase(TestCase):
 
 class AnswerTestCase(TestCase):
     def setUp(self):
-        q = Question.objects.create(text="Question?", question_type=SA)
+        q = Question.objects.create(text="Question?", question_type=Question.QuestionType.SHORT_ANSWER)
         Answer.objects.create(text="Answer!", question=q, is_correct=True)
 
     def test(self):

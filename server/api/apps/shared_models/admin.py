@@ -122,7 +122,7 @@ class UserStatisticsAdmin(admin.ModelAdmin):
         "average_score",
         "questions_created",
     )
-    readonly_fields = ["questions_created", "average_score"]
+    readonly_fields = ["quizzes_completed", "questions_created", "average_score"]
 
 
 @admin.register(QuestionStatistics)

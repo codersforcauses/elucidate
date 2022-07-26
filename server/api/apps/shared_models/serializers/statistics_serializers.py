@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from ..models.quiz_models import Question, Answer, Topic, Subject
-from ..models.statistics_models import (
+from api.apps.shared_models.models.quiz_models import Question, Answer, Topic, Subject
+from api.apps.shared_models.models.statistics_models import (
     QuestionResponse,
     UserStatistics,
     QuizStatistics,
@@ -45,18 +45,10 @@ class UserStatisticsSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "user",
-            "quizzes_completed",
         ]
 
     def create(self, validated_data):
         return UserStatistics.objects.create(**validated_data)
-
-    def update(self, instance, validated_data):
-        instance.user = validated_data.get("user", instance.user)
-        instance.quizzes_completed = validated_data.get(
-            "quizzes_completed", instance.quizzes_completed
-        )
-        return instance
 
 
 class QuizStatisticsSerializer(serializers.ModelSerializer):
