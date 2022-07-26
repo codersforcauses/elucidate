@@ -8,7 +8,7 @@ The `shared_models` app is designed to hold the models and serializers that need
 
 ### Quiz
 
-There are three shared quiz models:
+There are four shared quiz models:
 
 * Question - a model representing a generic quiz question. Questions come in three types (represented by the `question_type` field): multiple choice, numerical answer and short answer. Each question has a numeric `marks` field, used to weight the question compared to others and give an estimation of its complexity/difficulty. There is also an `is_verified` field, which has a default value of False. Whenever a user submits a question, it will thus be unverified and will not appear in question pools when generating quizzes. Admins can access the admin dashboard and filter questions by their `is_verified` status, and manually approve (and modify if necessary) submitted questions.
 * Subject - a model representing an ATAR subject and unit (e.g. Methods Unit 3, Chemistry Unit 1, Specialist Unit 4, Physics Unit 2, etc.). Each Question will have exactly one Subject attached to it. Subjects can be created, modified and deleted by admins only.
