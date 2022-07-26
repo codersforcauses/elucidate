@@ -3,8 +3,9 @@
 from django.db import migrations, models
 import django.db.models.deletion
 
-
 a = "0004_remove_userstatistics_userstatistics_average_score_range_and_more"
+
+
 class Migration(migrations.Migration):
     dependencies = [
         (
