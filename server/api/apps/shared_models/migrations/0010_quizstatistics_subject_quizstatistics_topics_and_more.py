@@ -5,23 +5,26 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shared_models', '0009_question_marks'),
+        ("shared_models", "0009_question_marks"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='quizstatistics',
-            name='subject',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='shared_models.subject'),
+            model_name="quizstatistics",
+            name="subject",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="shared_models.subject",
+            ),
         ),
         migrations.AddField(
-            model_name='quizstatistics',
-            name='topics',
-            field=models.ManyToManyField(blank=True, to='shared_models.topic'),
+            model_name="quizstatistics",
+            name="topics",
+            field=models.ManyToManyField(blank=True, to="shared_models.topic"),
         ),
         migrations.DeleteModel(
-            name='QuizTag',
+            name="QuizTag",
         ),
     ]

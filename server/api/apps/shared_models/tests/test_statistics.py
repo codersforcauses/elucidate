@@ -9,7 +9,9 @@ from datetime import timedelta
 class QuestionTestCase(TestCase):
     def setUp(self):
         self.creation_time = timezone.now()
-        q = Question.objects.create(text="Question?", question_type=Question.QuestionType.MULTICHOICE)
+        q = Question.objects.create(
+            text="Question?", question_type=Question.QuestionType.MULTICHOICE
+        )
         a = Answer.objects.create(text="Answer!", question=q, is_correct=True)
         QuestionResponse.objects.create(
             question=q,

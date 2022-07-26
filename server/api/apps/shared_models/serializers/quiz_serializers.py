@@ -1,16 +1,35 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from api.apps.shared_models.models.quiz_models import Question, Subject, Topic, Answer
+from api.apps.shared_models.models.quiz_models import (
+    Question,
+    Subject,
+    Topic,
+    Answer,
+)
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-    creator = serializers.PrimaryKeyRelatedField(queryset=get_user_model().objects.all())
-    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
-    topics = serializers.PrimaryKeyRelatedField(queryset=Topic.objects.all(), many=True)
+    creator = serializers.PrimaryKeyRelatedField(
+        queryset=get_user_model().objects.all()
+    )
+    subject = serializers.PrimaryKeyRelatedField(
+        queryset=Subject.objects.all()
+    )
+    topics = serializers.PrimaryKeyRelatedField(
+        queryset=Topic.objects.all(), many=True
+    )
 
     class Meta:
         model = Question
-        fields = ["text", "question_type", "marks", "creator", "date_created", "subject", "topics"]
+        fields = [
+            "text",
+            "question_type",
+            "marks",
+            "creator",
+            "date_created",
+            "subject",
+            "topics",
+        ]
 
 
 class SubjectSerializer(serializers.ModelSerializer):
@@ -20,7 +39,9 @@ class SubjectSerializer(serializers.ModelSerializer):
 
 
 class TopicSerializer(serializers.ModelSerializer):
-    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
+    subject = serializers.PrimaryKeyRelatedField(
+        queryset=Subject.objects.all()
+    )
 
     class Meta:
         model = Topic
@@ -28,7 +49,9 @@ class TopicSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
-    question = serializers.PrimaryKeyRelatedField(queryset=Question.objects.all())
+    question = serializers.PrimaryKeyRelatedField(
+        queryset=Question.objects.all()
+    )
 
     class Meta:
         model = Answer

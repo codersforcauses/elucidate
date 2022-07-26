@@ -41,17 +41,29 @@ class QuestionResponseForm(forms.ModelForm):
 
     def clean(self):
         selected_answer = self.cleaned_data.get("selected_answer")
-        answers = Answer.objects.filter(question=self.cleaned_data.get("question"))
+        answers = Answer.objects.filter(
+            question=self.cleaned_data.get("question")
+        )
         if selected_answer and answers:
             if selected_answer not in answers:
-                raise ValidationError(f'Invalid selected answer "{selected_answer}": this answer is not an option for the question.')
+                raise ValidationError(
+                    f'Invalid selected answer "{selected_answer}": this answer'
+                    " is not an option for the question."
+                )
         return self.cleaned_data
 
 
 class QuizStatisticsForm(forms.ModelForm):
     class Meta:
         model = QuizStatistics
-        fields = ["user", "quiz_title", "subject", "topics", "date_taken", "score"]
+        fields = [
+            "user",
+            "quiz_title",
+            "subject",
+            "topics",
+            "date_taken",
+            "score",
+        ]
 
     def clean(self):
         subject = self.cleaned_data.get("subject")
@@ -91,12 +103,16 @@ class QuestionResponseAdmin(admin.ModelAdmin):
     form = QuestionResponseForm
 
     def get_object(self, request, object_id, s):
-        self.obj = super(QuestionResponseAdmin, self).get_object(request, object_id)
+        self.obj = super(QuestionResponseAdmin, self).get_object(
+            request, object_id
+        )
         return self.obj
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "selected_answer":
-            kwargs["queryset"] = Answer.objects.filter(question=self.obj.question)
+            kwargs["queryset"] = Answer.objects.filter(
+                question=self.obj.question
+            )
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
@@ -105,7 +121,9 @@ class QuizStatisticsAdmin(admin.ModelAdmin):
     form = QuizStatisticsForm
 
     def get_object(self, request, object_id, s):
-        self.obj = super(QuizStatisticsAdmin, self).get_object(request, object_id)
+        self.obj = super(QuizStatisticsAdmin, self).get_object(
+            request, object_id
+        )
         return self.obj
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
@@ -122,7 +140,11 @@ class UserStatisticsAdmin(admin.ModelAdmin):
         "average_score",
         "questions_created",
     )
-    readonly_fields = ["quizzes_completed", "questions_created", "average_score"]
+    readonly_fields = [
+        "quizzes_completed",
+        "questions_created",
+        "average_score",
+    ]
 
 
 @admin.register(QuestionStatistics)

@@ -4,14 +4,16 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shared_models', '0010_quizstatistics_subject_quizstatistics_topics_and_more'),
+        (
+            "shared_models",
+            "0010_quizstatistics_subject_quizstatistics_topics_and_more",
+        ),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='userstatistics',
-            name='quizzes_completed',
+            model_name="userstatistics",
+            name="quizzes_completed",
         ),
     ]

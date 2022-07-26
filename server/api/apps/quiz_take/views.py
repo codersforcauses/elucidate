@@ -31,7 +31,9 @@ class AnswerQuestionListView(generics.ListAPIView):
         return Answer.objects.filter(question__pk=self.kwargs["question_pk"])
 
 
-class AnswerQuestionDetailView(generics.RetrieveAPIView, generics.CreateAPIView):
+class AnswerQuestionDetailView(
+    generics.RetrieveAPIView, generics.CreateAPIView
+):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = quiz_serializers.AnswerSerializer
 
@@ -81,7 +83,9 @@ class TopicQuestionDetailView(generics.RetrieveAPIView):
         return obj
 
     def get_queryset(self):
-        return Topic.objects.filter(question__pk=self.kwargs["question_pk"], pk=self.kwargs["topic_pk"])
+        return Topic.objects.filter(
+            question__pk=self.kwargs["question_pk"], pk=self.kwargs["topic_pk"]
+        )
 
 
 class QuestionResponseCreateView(generics.CreateAPIView):
