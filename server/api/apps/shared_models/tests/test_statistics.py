@@ -4,7 +4,6 @@ from django.utils import timezone
 from api.apps.shared_models.models.quiz_models import Answer, Question
 from api.apps.shared_models.models.statistics_models import (
     QuestionResponse,
-    QuizStatistics,
 )
 
 
@@ -23,7 +22,7 @@ class QuestionTestCase(TestCase):
         )
 
     def test(self):
-        qr = QuizStatistics.objects.all()[0]
+        qr = QuestionResponse.objects.get()
 
         self.assertIsNone(qr.user)
         self.assertEquals(qr.question, self.q)
