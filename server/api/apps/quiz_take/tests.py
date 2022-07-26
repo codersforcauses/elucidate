@@ -1,7 +1,13 @@
-from api.apps.shared_models.models.quiz_models import (Answer, Question,
-                                                       Subject, Topic)
-from api.apps.shared_models.models.statistics_models import (QuestionResponse,
-                                                             QuizStatistics)
+from api.apps.shared_models.models.quiz_models import (
+    Answer,
+    Question,
+    Subject,
+    Topic,
+)
+from api.apps.shared_models.models.statistics_models import (
+    QuestionResponse,
+    QuizStatistics,
+)
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.utils.timezone import now
@@ -31,16 +37,12 @@ class QuizTakeTests(APITestCase):
         )
         q1.topics.add(t)
         Answer.objects.create(
-            text=(
-                "Reduction is the gain of an electron, and oxidation the loss"
-            ),
+            text="Reduction is the gain of an electron, and oxidation the loss",
             is_correct=True,
             question=q1,
         )
         Answer.objects.create(
-            text=(
-                "Reduction is the loss of an electron, and oxidation the gain"
-            ),
+            text="Reduction is the loss of an electron, and oxidation the gain",
             is_correct=False,
             question=q1,
         )

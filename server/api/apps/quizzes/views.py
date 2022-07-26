@@ -1,7 +1,10 @@
 from django.contrib.auth import get_user_model
 from rest_framework import generics, permissions, status
-from rest_framework.permissions import (IsAdminUser, IsAuthenticated,
-                                        IsAuthenticatedOrReadOnly)
+from rest_framework.permissions import (
+    IsAdminUser,
+    IsAuthenticated,
+    IsAuthenticatedOrReadOnly,
+)
 from rest_framework.response import Response
 
 from .models import Quiz

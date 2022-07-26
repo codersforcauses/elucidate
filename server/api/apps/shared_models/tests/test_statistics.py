@@ -1,6 +1,8 @@
 from api.apps.shared_models.models.quiz_models import Answer, Question
-from api.apps.shared_models.models.statistics_models import (QuestionResponse,
-                                                             QuizStatistics)
+from api.apps.shared_models.models.statistics_models import (
+    QuestionResponse,
+    QuizStatistics,
+)
 from django.test import TestCase
 from django.utils import timezone
 

@@ -3,9 +3,13 @@ from django.contrib import admin
 from django.forms import ValidationError
 
 from .models.quiz_models import Answer, Question, Subject, Topic
-from .models.statistics_models import (QuestionResponse, QuestionStatistics,
-                                       QuizStatistics, TopicStatistics,
-                                       UserStatistics)
+from .models.statistics_models import (
+    QuestionResponse,
+    QuestionStatistics,
+    QuizStatistics,
+    TopicStatistics,
+    UserStatistics,
+)
 
 
 class AnswerInline(admin.TabularInline):

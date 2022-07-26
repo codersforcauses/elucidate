@@ -1,5 +1,9 @@
-from api.apps.shared_models.models.quiz_models import (Answer, Question,
-                                                       Subject, Topic)
+from api.apps.shared_models.models.quiz_models import (
+    Answer,
+    Question,
+    Subject,
+    Topic,
+)
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
@@ -8,9 +12,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     creator = serializers.PrimaryKeyRelatedField(
         queryset=get_user_model().objects.all()
     )
-    subject = serializers.PrimaryKeyRelatedField(
-        queryset=Subject.objects.all()
-    )
+    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
     topics = serializers.PrimaryKeyRelatedField(
         queryset=Topic.objects.all(), many=True
     )
@@ -36,9 +38,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 
 
 class TopicSerializer(serializers.ModelSerializer):
-    subject = serializers.PrimaryKeyRelatedField(
-        queryset=Subject.objects.all()
-    )
+    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
 
     class Meta:
         model = Topic
