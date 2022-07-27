@@ -30,7 +30,7 @@
         </div>
         <QuestionBox header="Question:" />
 
-        <ResponseBox header="Response Keywords:" />
+        <ResponseBox header="Sample Response:" />
 
         <div class="flex place-content-end mt-5 pb-5 mx-10">
           <QuizButton color="red" class="mr-10 shadow-md">

@@ -19,7 +19,7 @@
       </div>
 
       <div>
-        <TagBox header="Tags: "></TagBox>
+        <TagBox header="Topics: "></TagBox>
       </div>
       <div class="">
         <QuestionBox header="Question:" />

@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <label class="p-10 text-black text-md font-bold">{{ header }}</label>
+  <div class='flex flex-inline'>
+    <label class="flex ml-[60px] mr-[30px] pr-10 text-white text-xl font-bold">{{ header }}</label>
     <input
-      class="p-2 ml-[80px] mr-0 w-1/2 h-7 rounded shadow-md"
+      class="p-4 m-[6px] mr-0 w-[520px] h-7 rounded shadow-md"
       :type="inputType"
     />
   </div>

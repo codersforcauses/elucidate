@@ -6,19 +6,19 @@
         <input
           v-model="searchedTerm"
           class="p-0 m-0 w-full h-9 rounded shadow-md"
-          placeholder="Search tags..."
+          placeholder="Search topics..."
         />
       </div>
       <div class="flex">
         <SelectTag
-          v-for="tag in searchedTags"
+          v-for="tag in searchedTopics"
           :label="tag.name"
           :colour="tag.colour"
           @toggleTag="toggleTag($event)"
         >
         </SelectTag>
         <p class="pl-10 ml-0 text-white text-xl font-bold">
-          Selected Tags: {{ selectedTags }}
+          Selected topics: {{ selectedTopics }}
         </p>
       </div>
     </div>
@@ -34,8 +34,8 @@ export default {
   data() {
     return {
       searchedTerm: '',
-      // These tags should be generated using the getTags function at the start
-      tags: [
+      // These topics should be generated using the getTopics function at the start
+      topics: [
         { name: 'math', colour: 'bg-[#44a36b]', selected: false },
         { name: 'science', colour: 'bg-[#5c2ad7]', selected: false },
         { name: 'history', colour: 'bg-[#bd52a4]', selected: false },
@@ -45,11 +45,11 @@ export default {
     };
   },
   computed: {
-    searchedTags() {
+    searchedTopics() {
       const result = [];
       const search = this.searchedTerm.toLocaleLowerCase().trim();
       if (search === '') return result;
-      this.tags.forEach((tag) => {
+      this.topics.forEach((tag) => {
         if (tag.name.includes(search)) {
           result.push(tag);
         }
@@ -57,9 +57,9 @@ export default {
       return result;
     },
 
-    selectedTags: function () {
+    selectedTopics: function () {
       const result = [];
-      this.tags.forEach((tag) => {
+      this.topics.forEach((tag) => {
         if (tag.selected) {
           result.push(tag.name);
         }
@@ -68,19 +68,11 @@ export default {
     },
   },
   methods: {
-    getTags: function () {
-      /* const axios = require("axios"); //Temporary axios call, but backend isn't hooked up yet
-      const res = await axios.get(
-        "/tags",
-        { params: { searchedTag } }
-      ) */
-      // Should be in form {name, colour, turned off}
-    },
 
     toggleTag: function (name) {
-      for (let tagIndex = 0; tagIndex < this.tags.length; tagIndex++) {
-        if (this.tags[tagIndex].name === name) {
-          this.tags[tagIndex].selected = !this.tags[tagIndex].selected;
+      for (let tagIndex = 0; tagIndex < this.topics.length; tagIndex++) {
+        if (this.topics[tagIndex].name === name) {
+          this.topics[tagIndex].selected = !this.topics[tagIndex].selected;
           break;
         }
       }
