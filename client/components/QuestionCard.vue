@@ -51,7 +51,7 @@
             placeholder="Your message..."
           ></textarea>
         </div>
-      </div> 
+      </div>
 
       <!-- Next/Back buttons 
       <div class="flex justify-end px-5 mt-2">
