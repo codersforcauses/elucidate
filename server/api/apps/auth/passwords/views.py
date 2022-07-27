@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from base64 import urlsafe_b64encode
 from rest_framework import status
 from rest_framework import generics
@@ -64,7 +63,7 @@ class PasswordReset(generics.GenericAPIView):
 
             reset_url = reverse("reset-password", kwargs={"token": token})
             reset_url = f"https://localhost:8080{reset_url}"
-            
+
             send_mail(
                 'Elucidate Password Reset',
                 f"Your password reset link can be found at: {reset_url}",
@@ -78,7 +77,7 @@ class PasswordReset(generics.GenericAPIView):
                 "message":
                 f"Your password reset link: {reset_url}"
                 },
-            
+
             status = status.HTTP_200_OK)
 
         else: Response(
