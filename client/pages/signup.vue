@@ -1,32 +1,24 @@
 <template>
-  <ValidationObserver
-    v-if="!accountCreated"
-    v-slot="{ invalid }"
-    slim
-    class="w-1/2 max-w-lg"
-    @submit.prevent="register"
-  >
+  <AuthForm v-if="!accountCreated" v-slot="{ invalid }" @submit="register">
     <AuthAlert :errors="errors">
       Error creating account, please fix the following errors:
     </AuthAlert>
-    <AuthForm>
-      <InputField
-        v-for="field in fields"
-        :id="field.id"
-        :key="field.index"
-        :field-name="field.name"
-        :field-type="field.type"
-        :field-options="field.options"
-        :rules="field.rules"
-        :inputvalue.sync="field.value"
-      />
-      <AuthSubmit :disabled="invalid">Submit</AuthSubmit>
-      <p class="self-center mt-3">
-        Already have an account?
-        <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink>
-      </p>
-    </AuthForm>
-  </ValidationObserver>
+    <InputField
+      v-for="field in fields"
+      :id="field.id"
+      :key="field.index"
+      :field-name="field.name"
+      :field-type="field.type"
+      :field-options="field.options"
+      :rules="field.rules"
+      :inputvalue.sync="field.value"
+    />
+    <AuthSubmit :disabled="invalid">Submit</AuthSubmit>
+    <p class="self-center mt-3">
+      Already have an account?
+      <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink>
+    </p>
+  </AuthForm>
   <AuthForm v-else>
     <div
       class="flex flex-col grow items-center text-center font-bold text-white"
@@ -50,15 +42,10 @@
 </template>
 
 <script>
-import { ValidationObserver } from 'vee-validate';
-
 let count = 0;
 export default {
   name: 'SignupPage',
   auth: false,
-  components: {
-    ValidationObserver,
-  },
   layout: 'auth',
   data: () => ({
     title: 'Sign-Up',
