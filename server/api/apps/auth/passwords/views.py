@@ -52,19 +52,19 @@ class PasswordReset(generics.GenericAPIView):
     serializer_class = serializers.EmailSerializer
 
     def post(self, request):
-        
+
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         email = serializer.data["email"]
         user = User.objects.filter(email = email).first()
 
         if user:
-            
+
             token = PasswordResetTokenGenerator().make_token(user)
 
             reset_url = reverse("reset-password", kwargs={"token": token})
             reset_url = f"https://localhost:8080{reset_url}"
-
+            
             send_mail(
                 'Elucidate Password Reset',
                 f"Your password reset link can be found at: {reset_url}",
