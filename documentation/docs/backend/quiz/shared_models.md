@@ -8,10 +8,11 @@ The `shared_models` app is designed to hold the models and serializers that need
 
 ### Quiz
 
-There are three shared quiz models:
+There are four shared quiz models:
 
-* Question - a model representing a generic quiz question. Questions come in three types (represented by the `question_type` field): multiple choice, numerical answer and short answer.
-* Tag - a model representing a generic tag which can be attached to many Questions (and each Question may have many associated Tags). Example Tags would include the subject and unit of study the question pertains to, as well as the topic within that subject/unit. Tags will be able to be created and modified by admins for regular users to use to tag their questions.
+* Question - a model representing a generic quiz question. Questions come in three types (represented by the `question_type` field): multiple choice, numerical answer and short answer. Each question has a numeric `marks` field, used to weight the question compared to others and give an estimation of its complexity/difficulty. There is also an `is_verified` field, which has a default value of False. Whenever a user submits a question, it will thus be unverified and will not appear in question pools when generating quizzes. Admins can access the admin dashboard and filter questions by their `is_verified` status, and manually approve (and modify if necessary) submitted questions.
+* Subject - a model representing an ATAR subject and unit (e.g. Methods Unit 3, Chemistry Unit 1, Specialist Unit 4, Physics Unit 2, etc.). Each Question will have exactly one Subject attached to it. Subjects can be created, modified and deleted by admins only.
+* Topic - a model representing a specific topic of a given Subject (e.g. the Subject "Methods Unit 3" might have the Topics "Differentiation", "Integration", "Logarithms", etc.). Each Topic is associated to a Subject and the Topics for each Subject will be different (e.g. the Subject "English Unit 1" may have the Topics "Poetry", "Creative Writing" and "Prose", whereas the Subject "Chemistry Unit 3" may have the topics "Redox Reactions", "Proteins" and "Equilibrium"). Each Question may have zero, one or many Topics attached to it. Topics will be able to be created and modified by admins for regular users to use to tag their Questions.
 * Answer - a model representing an answer associated with a particular Question. Each Question can have multiple associated answers. Each answer can be marked as being correct or incorrect. For the three different types of Question, the intended use of the Answer model varies:
   * For multiple choice questions, each Answer will appear as an option for the user taking the quiz to select. One or more Answers will be correct, and the remaining Answers will be incorrect.
   * For numerical answer questions, no options will be displayed, and the user must enter a numerical value into a text field. Each of the Answers associated with such a Question should have `is_correct = True`, and if the user's input matches any of these answers, they will be marked correct. Answers which have `is_correct = False` will not do anything and hence **should not be added** to numerical answer questions.
@@ -19,16 +20,15 @@ There are three shared quiz models:
 
 ### Statistics
 
-* QuestionResponse - a model representing a response to a Question submitted by a User, stored in the database for statistics purposes. The QuestionResponse model contains all of the necessary data for the following statistics to be surmised, as per the client's requirements:
-  * How long the User took to complete the Question
-  * How many Users in total have attempted a given Question
-  * How many Users have gotten the Question right and how many have gotten it wrong
-  * The average score (across all Users) for a given Question
-  * The average score (across all Users) for a given Tag (i.e. subject and topic)
+* QuestionResponse - a model representing a response to a Question submitted by a User, stored in the database for statistics purposes. It stores the User that submitted the response, the Question they attempted, the Answer they selected, and the date and time at which they submitted the response. This model is used for calculating properties in other statistics models. It also essentially constitutes the raw data of the system, so can be in principle extracted for deeper statistical analysis.
+* UserStatistics - a model representing various statistics concerning a specific User, to be displayed on their user dashboard. Includes the number of quizzes they have completed, the number of questions the User has created, and their average score (over all the questions they have ever answered).
+* QuizStatistics - a model representing various data relating to a quiz taken by a specific User, to be displayed on their user dashboard. Includes the quiz title, subject, topics, date taken, and score achieved for the quiz. Here "quiz" refers to an ad-hoc quiz created by a user for revision purposes.
+* QuestionStatistics - a model representing various statistics concerning a specific Question, for admin perusal. Includes a reference to the Question at hand, the total number of users who have attempted the question, and the average score (across all users who have attempted) for the question.
+* TopicStatistics - a model representing various statistics concerning all Questions falling under a specific Topic, for admin perusal. Includes a reference to the Topic at hand, and the average score (across all the attempts at all the questions under this topic) for the topic.
 
 ## Serializers
 
-The `shared_models` app provides serializers for each of the above models.
+The `shared_models` app provides primary key serializers (`ModelSerializer`s) for each of the above models. The serializers provide `create` methods where necessary.
 
 ## Testing
 
