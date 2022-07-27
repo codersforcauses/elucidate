@@ -162,3 +162,10 @@ JWT_AUTH = {
     "JWT_EXPIRATION_DELTA": datetime.timedelta(days=7),
 }
 AUTH_USER_MODEL = "users.User"
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'elucidateautobot@gmail.com'
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="null")
