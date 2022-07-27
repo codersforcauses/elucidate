@@ -5,9 +5,17 @@ from rest_framework import status
 from .serializers import QuestionInfoSerializer
 from api.apps.shared_models.models import quiz_models
 from api.apps.shared_models.serializers import quiz_serializers
-
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.permissions import (
+    IsAuthenticated,
+    IsAuthenticatedOrReadOnly,
+    IsAdminUser,
+)
+from .permissions
+from django.contrib.auth import get_user_model
+from rest_framework import permissions
 from django.views.decorators.csrf import csrf_exempt  # will change this later
-
 
 # this method associates a tag with a question or adds a new tag to the
 # database and returns the Tag object
@@ -22,17 +30,13 @@ def AddTagToQuestion(question, tag_name):
         tag = quiz_models.Tag.objects.filter(name=tag_name)[0]
         question.tag_set.add(tag)
     return tag
+    
 
-
-@csrf_exempt
-@api_view(["GET", "POST"])
-def QuestionTask(request):
-    if request.method == "GET":
-        question = quiz_models.Question.objects.all()
-        serializer = quiz_serializers.QuestionSerializer(question, many=True)
-        return JsonResponse(serializer.data, safe=False)
-
-    elif request.method == "POST":
+class QuestionTask(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = quiz_serializers.QuestionSerializer
+    queryset = quiz_models.Question.objects.all()
+    def post(self, request):
         serializer = QuestionInfoSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             question = quiz_models.Question(
@@ -50,133 +54,90 @@ def QuestionTask(request):
                             text=answer[0], is_correct=answer[1]
                         )
                     else:
-                        return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
+                        return Response(status=status.HTTP_400_BAD_REQUEST)
 
             for name in serializer.data["tags"]:
                 AddTagToQuestion(question, name)
 
-            return JsonResponse(
+            return Response(
                 quiz_serializers.QuestionSerializer(question).data,
                 status=status.HTTP_201_CREATED,
             )
 
-    else:
-        return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
+
+class SpecificQuestionTask(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUser | IsOwner]
+    serializer_class = quiz_serializers.QuestionSerializer
+    model = quiz_models.Question
+    
+    def get_object(self):
+        obj_pk = self.kwargs['q_pk']
+        return quiz_models.Question.objects.get(pk=obj_pk)
+    
+    def put(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
 
 
-@csrf_exempt
-@api_view(["GET", "PUT", "DELETE"])
-def SpecificQuestionTask(request, q_pk):
-    question = get_object_or_404(quiz_models.Question, pk=q_pk)
-
-    if request.method == "GET":
-        serializer = quiz_serializers.QuestionSerializer(question)
-        return JsonResponse(serializer.data)
-
-    elif request.method == "PUT":
-        serializer = quiz_serializers.QuestionSerializer(
-            question, data=request.data, partial=True
-        )
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return JsonResponse(serializer.data)
-
-    elif request.method == "DELETE":
-        question.delete()
-        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
-
-    else:
-        return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
-
-
-@csrf_exempt
-@api_view(["GET", "POST"])
-def AnswerTask(request, q_pk):
-    question = get_object_or_404(quiz_models.Question, pk=q_pk)
-
-    if request.method == "GET":
-        answers = question.answer_set.all()
-        serializer = quiz_serializers.AnswerSerializer(answers, many=True)
-        return JsonResponse(serializer.data, safe=False)
-
-    elif request.method == "POST":
+class AnswerTask(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated | IsOwner]
+    serializer_class = quiz_serializers.AnswerSerializer
+    
+    def get_queryset(self):
+        obj_pk = self.kwargs['q_pk']
+        return quiz_models.Question.objects.get(pk=obj_pk).answer_set.all()
+    
+    def post(self, request, q_pk): 
+        question = quiz_models.Question.objects.get(pk=q_pk)
         serializer = quiz_serializers.AnswerSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             answer = question.answer_set.create(
                 text=serializer.data["text"],
                 is_correct=serializer.data["is_correct"],
             )
-            return JsonResponse(
-                quiz_serializers.AnswerSerializer(answer).data,
-                status=status.HTTP_201_CREATED,
-            )
-
-    else:
-        return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
+            return Response(quiz_serializers.AnswerSerializer(answer).data, status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-@csrf_exempt
-@api_view(["GET", "PUT", "DELETE"])
-def SpecificAnswerTask(request, q_pk, a_pk):
-    question = get_object_or_404(quiz_models.Question, pk=q_pk)
-    answer = get_object_or_404(question.answer_set, pk=a_pk)
 
-    if request.method == "GET":
-        serializer = quiz_serializers.AnswerSerializer(answer)
-        return JsonResponse(serializer.data)
-
-    elif request.method == "PUT":
-        serializer = quiz_serializers.AnswerSerializer(
-            answer, data=request.data, partial=True
-        )
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return JsonResponse(serializer.data)
-
-    elif request.method == "DELETE":
-        answer.delete()
-        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
-
-    else:
-        return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
+class SpecificAnswerTask(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUser | IsOwner]
+    serializer_class = quiz_serializers.AnswerSerializer
+    
+    def get_object(self):
+        question_pk = self.kwargs['q_pk']
+        answer_pk = self.kwargs['a_pk']
+        return quiz_models.Question.objects.get(pk=question_pk).answer_set.get(pk=answer_pk)
+    
+    def put(self, request, *args, **kwargs):
+        obj_pk = self.kwargs['q_pk']
+        return self.partial_update(request, *args, **kwargs)
 
 
-@csrf_exempt
-@api_view(["GET", "POST"])
-def TagTask(request, q_pk):
-    question = get_object_or_404(quiz_models.Question, pk=q_pk)
-
-    if request.method == "GET":
-        tags = question.tag_set.all()
-        serializer = quiz_serializers.TagSerializer(tags, many=True)
-        return JsonResponse(serializer.data, safe=False)
-
-    elif request.method == "POST":
+class TagTask(generics.ListCreateAPIView):
+    permission_classes = [IsAdminUser | IsOwner]
+    serializer_class = quiz_serializers.TagSerializer
+    
+    def get_queryset(self):
+        return quiz_models.Question.objects.get(pk=self.kwargs['q_pk']).tag_set.all()
+    
+    def post(self, request, q_pk): 
+        question = quiz_models.Question.objects.get(pk=q_pk)
         serializer = quiz_serializers.TagSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             tag = AddTagToQuestion(question, serializer.data["name"])
-            return JsonResponse(
-                quiz_serializers.TagSerializer(tag).data,
-                status=status.HTTP_201_CREATED,
-            )
-
-    else:
-        return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
+            return Response(quiz_serializers.TagSerializer(tag).data, status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-@csrf_exempt
-@api_view(["GET", "DELETE"])
-def SpecificTagTask(request, q_pk, t_pk):
-    question = get_object_or_404(quiz_models.Question, pk=q_pk)
-    tag = get_object_or_404(question.tag_set, pk=t_pk)
-
-    if request.method == "GET":
-        serializer = quiz_serializers.TagSerializer(tag)
-        return JsonResponse(serializer.data)
-
-    elif request.method == "DELETE":
-        question.tag_set.remove(tag)  # remove reference to tag, not delete tag
-        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
-
-    else:
-        return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
+class SpecificTagTask(generics.RetrieveDestroyAPIView):
+    permission_classes = [IsAdminUser | IsOwner]
+    serializer_class = quiz_serializers.TagSerializer
+    model = quiz_models.Tag
+    
+    def get_object(self):
+        return quiz_models.Question.objects.get(pk=self.kwargs['q_pk']).tag_set.get(pk=self.kwargs['t_pk'])
+    
+    def delete(self, request):
+        question = quiz_models.Question.objects.get(pk=self.kwargs['q_pk'])
+        question.tag_set.remove(self.get_object())
+        return Response(status=status.HTTP_204_NO_CONTENT)
