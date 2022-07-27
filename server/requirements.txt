@@ -1,75 +1,75 @@
-asgiref @ file:///root/.cache/pypoetry/artifacts/ce/c7/af/28ec82c729702811eda645dad4fd0977c3e640712982506405e1282975/asgiref-3.5.2-py3-none-any.whl
-black @ file:///root/.cache/pypoetry/artifacts/6c/f0/b2/ba19ae97b8b9ff6ea614c0d9122fc6c4e52c29a9ddb98c27932a816d3d/black-22.6.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+asgiref
+black
 CacheControl==0.12.11
 cachy==0.3.0
 certifi==2022.6.15
 cffi==1.15.1
 charset-normalizer==2.1.0
 cleo==0.8.1
-click @ file:///root/.cache/pypoetry/artifacts/3d/47/f3/b0ca9f2b70c4a033bdb0bb1e4ec6ddc71c8b93758a44544c20bfa8c5d8/click-8.1.3-py3-none-any.whl
+click
 clikit==0.6.2
-coreapi @ file:///root/.cache/pypoetry/artifacts/b9/df/58/37f5e2e98c3cea90ce2bd76758bf5117f165600462d470ede11adc4dae/coreapi-2.3.3-py2.py3-none-any.whl
-coreschema @ file:///root/.cache/pypoetry/artifacts/1f/e2/a6/8f2ce1c01e19cf7e4fc97cee9970131d1efc645718497fb3511ee0720f/coreschema-0.0.4.tar.gz
-coverage @ file:///root/.cache/pypoetry/artifacts/7d/7f/bf/c81d79b3c1f8dc6d72c41d05a807750e42d1d4a77ce8cb25fe31663031/coverage-6.4.2-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+coreapi
+coreschema
+coverage
 crashtest==0.3.1
 cryptography==37.0.4
-defusedxml @ file:///root/.cache/pypoetry/artifacts/cb/cf/33/a98d777c9bcfbd6b4a466ea914e678e3af94c5781c0440bcb2ac525fcd/defusedxml-0.7.1-py2.py3-none-any.whl
+defusedxml
 distlib==0.3.4
-Django @ file:///root/.cache/pypoetry/artifacts/96/54/67/21c59bf6c9c0a7b5413fb4e8b589df0b169087f1340f7ba62f50d3430c/Django-4.0.6-py3-none-any.whl
-django-cors-headers @ file:///root/.cache/pypoetry/artifacts/a0/ea/13/eb13b024cd79c5717d757bdd5c2e540ffdbe514c9bb67f08aaa8dfeff9/django_cors_headers-3.13.0-py3-none-any.whl
-django-filter @ file:///root/.cache/pypoetry/artifacts/75/88/fa/b065e664cca407b28ae6d011139dde468272222a09ff3d1955649122c3/django_filter-22.1-py3-none-any.whl
-django-templated-mail @ file:///root/.cache/pypoetry/artifacts/a1/df/58/1fde08c0262bbe33d8f543080c9331a50d622a8ed528e5ecc1eb11c09a/django_templated_mail-1.1.1-py3-none-any.whl
-djangorestframework @ file:///root/.cache/pypoetry/artifacts/99/a0/0c/e3047637296e93ff0027ddc594d55cb7f41709a80b97ade185f0d7bc48/djangorestframework-3.13.1-py3-none-any.whl
-djangorestframework-simplejwt @ file:///root/.cache/pypoetry/artifacts/eb/03/1c/2e116e06f8137df45dea4bd93cb191b5ab1c74e8b8392cad1ca0afd429/djangorestframework_simplejwt-4.8.0-py3-none-any.whl
-djoser @ file:///root/.cache/pypoetry/artifacts/72/e7/27/8942ef7adcf0c9dc778c61392566eb3a089bd9701465177cb5b6399224/djoser-2.1.0-py3-none-any.whl
-drf-jwt @ file:///root/.cache/pypoetry/artifacts/ce/75/9c/e24fd111603551dce8f05ddba7a37752247b8354dcb1590115da39cc41/drf_jwt-1.19.2-py2.py3-none-any.whl
+Django
+django-cors-headers
+django-filter
+django-templated-mail
+djangorestframework
+djangorestframework-simplejwt
+djoser
+drf-jwt
 filelock==3.7.1
-flake8 @ file:///root/.cache/pypoetry/artifacts/3e/a8/4c/cc0ceb2a888d4c210de5f7a3e1131eb9f440c010f393faa407909ac951/flake8-4.0.1-py2.py3-none-any.whl
+flake8
 html5lib==1.1
 idna==3.3
-isort @ file:///root/.cache/pypoetry/artifacts/e9/b6/13/58a87b6678ca487544d8c64480d70af5b59a01e86b2ea6cebffdb38e16/isort-5.10.1-py3-none-any.whl
-itypes @ file:///root/.cache/pypoetry/artifacts/20/f3/70/e09b760712d8c5f8e81fac2417a58f4590bcfeda05d0d480b0d5618f8b/itypes-1.2.0-py2.py3-none-any.whl
+isort
+itypes
 jeepney==0.8.0
-Jinja2 @ file:///root/.cache/pypoetry/artifacts/3b/d4/fc/e5590520f55a4e824953051aee96874e0d34a95026bfc9c1fa3ee2a61b/Jinja2-3.1.2-py3-none-any.whl
+Jinja2
 keyring==23.7.0
 lockfile==0.12.2
-Markdown @ file:///root/.cache/pypoetry/artifacts/1d/49/80/ae9b0911949f1cc5567130034ebcbea39f94ef0ceca5c401c717b4d6e7/Markdown-3.4.1-py3-none-any.whl
-MarkupSafe @ file:///root/.cache/pypoetry/artifacts/9b/a9/c2/8aae90464d13b4bd651d124831b666865f4c0b9bdf38222897ee67634c/MarkupSafe-2.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-mccabe @ file:///root/.cache/pypoetry/artifacts/e1/6a/91/a7f45fe7af979afbabc3267f3f00389f5993191265417c658ca7d4ef94/mccabe-0.6.1-py2.py3-none-any.whl
+Markdown
+MarkupSafe
+mccabe
 msgpack==1.0.4
-mypy-extensions @ file:///root/.cache/pypoetry/artifacts/9c/c2/23/dfe4a2d794ed707aee9c9ec9a9fe216276a0095f24a6c7843a7180f367/mypy_extensions-0.4.3-py2.py3-none-any.whl
-oauthlib @ file:///root/.cache/pypoetry/artifacts/38/0b/22/81bd4f8a40b2abd912848edec0d0eedb041437c20baa1ae2807ff4f9fc/oauthlib-3.2.0-py3-none-any.whl
+mypy-extensions
+oauthlib
 packaging==20.9
 pastel==0.2.1
-pathspec @ file:///root/.cache/pypoetry/artifacts/8c/c0/0a/af0157e0d1adcc49525cf443a6f0a99d4638092f0f31d0599e15de425c/pathspec-0.9.0-py2.py3-none-any.whl
+pathspec
 pexpect==4.8.0
 pkginfo==1.8.3
 platformdirs==2.5.2
 poetry==1.1.14
 poetry-core==1.0.8
-psycopg2 @ file:///root/.cache/pypoetry/artifacts/00/08/2c/70b39cc156b2ad17f7552e133206ab00df2d0caec1fe072f744ea31f24/psycopg2-2.9.3.tar.gz
+psycopg2
 ptyprocess==0.7.0
-pycodestyle @ file:///root/.cache/pypoetry/artifacts/01/83/97/4e3dcf28bec195c38e807011aaf2496e60a3408a6bbd49d89378afc54e/pycodestyle-2.8.0-py2.py3-none-any.whl
+pycodestyle
 pycparser==2.21
-pyflakes @ file:///root/.cache/pypoetry/artifacts/15/74/b1/b1ad94b7a1cbb4739741816b4b82bb87d1b962e50b7192c9cac3eca023/pyflakes-2.4.0-py2.py3-none-any.whl
-PyJWT @ file:///root/.cache/pypoetry/artifacts/b9/f9/f7/4b7dd3b85223bd5f32c882fa1f92ac522ff2291e4cb5a63ff2bc3c4511/PyJWT-2.4.0-py3-none-any.whl
+pyflakes
+PyJWT
 pylev==1.4.0
 pyparsing==3.0.9
-python-decouple @ file:///root/.cache/pypoetry/artifacts/86/36/72/374f4a445859057ba694a5c3d100095fd0c28122b003dd38d850463424/python_decouple-3.6-py3-none-any.whl
-python3-openid @ file:///root/.cache/pypoetry/artifacts/45/49/ac/9f07c37b7b62350e88f5768a2ec08609778b0ce5f3555a35fa6b3b7ce4/python3_openid-3.2.0-py3-none-any.whl
-pytz @ file:///root/.cache/pypoetry/artifacts/77/7e/7b/67efc96154a8f509d7addf5ecf3ede119c39aa8e58aa60814609d1d6b2/pytz-2022.1-py2.py3-none-any.whl
+python-decouple
+python3-openid
+pytz
 requests==2.28.1
-requests-oauthlib @ file:///root/.cache/pypoetry/artifacts/89/7b/ea/afa7d3867e61578c3a1ddb9a4cbbcff1e77ba93158070e491ec5b87c56/requests_oauthlib-1.3.1-py2.py3-none-any.whl
+requests-oauthlib
 requests-toolbelt==0.9.1
 SecretStorage==3.3.2
 shellingham==1.4.0
 six==1.16.0
-social-auth-app-django @ file:///root/.cache/pypoetry/artifacts/3b/2c/81/b440f22a2748114e9315ba144376190a7ed1bf98e77a80f5aa0a22010a/social_auth_app_django-4.0.0-py3-none-any.whl
-social-auth-core @ file:///root/.cache/pypoetry/artifacts/93/76/84/ac9bd968098513430d303a2dfe04ad1ccb223b5d4304d9de39f3891e49/social_auth_core-4.3.0-py3-none-any.whl
-sqlparse @ file:///root/.cache/pypoetry/artifacts/fe/f8/96/1add5ee20cc21e530104f7f6fc8b57e102548d908d5ae44e95a1de5416/sqlparse-0.4.2-py3-none-any.whl
-tomli @ file:///root/.cache/pypoetry/artifacts/0b/4c/b4/31e4ec1ed65478332d25bc6fd87c7da782fcb6c845643f534cf1393fed/tomli-2.0.1-py3-none-any.whl
+social-auth-app-django
+social-auth-core
+sqlparse
+tomli
 tomlkit==0.11.1
-uritemplate @ file:///root/.cache/pypoetry/artifacts/4f/02/1c/426897e229b69f908710baa7889150d22e45668cd9814350cd5c88340b/uritemplate-4.1.1-py2.py3-none-any.whl
+uritemplate
 urllib3==1.26.10
 virtualenv==20.15.1
 webencodings==0.5.1
