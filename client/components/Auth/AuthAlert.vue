@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="Object.keys(errors).length !== 0"
-    class="bg-red p-3 m-6 text-neutral-100 font-bold rounded-md"
+    class="bg-red p-3 my-6 text-neutral-100 font-bold rounded-md"
   >
     <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
     <p class="inline">
