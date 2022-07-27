@@ -12,7 +12,7 @@ class CreateQuizTest(TestCase):
 
     def test_details(self):
         response = self.client.post(
-            "/quiz-api/question/",
+            "/api/create-quiz/question/",
             {
                 "question_type": "SA",
                 "text": "Test Question 1",
@@ -33,7 +33,7 @@ class CreateQuizTest(TestCase):
         self.assertEqual(response.json["text"], "Test Question 1")
 
         response = self.client.put(
-            f"/quiz-api/question/{question_id}/",
+            f"/api/create-quiz/question/{question_id}/",
             {"question_type": "MC"},
             content_type="application/json",
         )
@@ -41,7 +41,7 @@ class CreateQuizTest(TestCase):
         self.assertEqual(json["question_type"], "MC")
 
         response = self.client.post(
-            f"/quiz-api/question/{question_id}/answer/",
+            f"/api/create-quiz/question/{question_id}/answer/",
             {"is_correct": True, "text": "Test Answer 2"},
         )
         json = response.json
@@ -55,14 +55,14 @@ class CreateQuizTest(TestCase):
         self.assertEqual(json[0]["text"], "Test Answer 2")
 
         response = self.client.get(
-            f"/quiz-api/question/{question_id}/answer/{answer_id}"
+            f"/api/create-quiz/question/{question_id}/answer/{answer_id}"
         )
         json = response.json
         self.assertEqual(json["is_correct"], True)
         self.assertEqual(json["text"], "Test Answer 2")
 
         response = self.client.put(
-            f"/quiz-api/question/{question_id}/answer/{answer_id}",
+            f"/api/create-quiz/question/{question_id}/answer/{answer_id}",
             {"is_correct": False},
             content_type="application/json",
         )
@@ -70,7 +70,7 @@ class CreateQuizTest(TestCase):
         self.assertEqual(json["is_correct"], False)
 
         response = self.client.post(
-            f"/quiz-api/question/{question_id}/tag/", {"name": "tag3"}
+            f"/api/create-quiz/question/{question_id}/tag/", {"name": "tag3"}
         )
         json = response.json
         self.assertEqual(json["name"], "tag3")
@@ -81,7 +81,7 @@ class CreateQuizTest(TestCase):
         self.assertEqual(json[2]["name"], "tag3")
 
         response = self.client.get(
-            f"/quiz-api/question/{question_id}/tag/{tag_id}"
+            f"/api/create-quiz/question/{question_id}/tag/{tag_id}"
         )
         json = response.json
         self.assertEqual(json["name"], "tag3")

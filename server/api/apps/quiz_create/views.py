@@ -40,29 +40,27 @@ class QuestionTask(generics.ListCreateAPIView):
         serializer = QuestionInfoSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             question = quiz_models.Question(
-                text=serializer.data["text"],
-                question_type=serializer.data["question_type"],
-                date_created=serializer.data["date_created"],
-            )
+                text=serializer.data['text'],
+                question_type=serializer.data['question_type'],
+                date_created=serializer.data['date_created'])
             question.save()
 
-            if "answers" in serializer.data:
-                for answer in serializer.data["answers"]:
+            if 'answers' in serializer.data:
+                for answer in serializer.data['answers']:
                     # vaildate fields as the serialiser doesn't verify them
                     if type(answer[0]) is str and type(answer[1]) is bool:
                         question.answer_set.create(
-                            text=answer[0], is_correct=answer[1]
-                        )
+                            text=answer[0],
+                            is_correct=answer[1])
                     else:
                         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-            for name in serializer.data["tags"]:
+            for name in serializer.data['tags']:
                 AddTagToQuestion(question, name)
 
             return Response(
                 quiz_serializers.QuestionSerializer(question).data,
-                status=status.HTTP_201_CREATED,
-            )
+                status=status.HTTP_201_CREATED)
 
 
 class SpecificQuestionTask(generics.RetrieveUpdateDestroyAPIView):
