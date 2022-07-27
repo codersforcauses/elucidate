@@ -20,13 +20,24 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@fortawesome/fontawesome-svg-core/styles.css'],
+
+  css: [
+    '@fontsource/montserrat/variable.css',
+    '@fortawesome/fontawesome-svg-core/styles.css',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~/plugins/fontawesome.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/Section',
+      '~/components/Input',
+      '~/components/Auth',
+    ],
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -38,21 +49,50 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     '@nuxt/image',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.BACKEND_URL || 'http://127.0.0.1:8081/api/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ['vee-validate/dist/rules'],
+  },
   devServerHandlers: [],
 
   // Purge CSS Configuration: https://go.nuxtjs.dev/config-purgecss
   purgeCSS: {
     whitelistPatterns: [/svg.*/, /fa.*/],
+  },
+
+  router: {
+    // set to false for easier testing
+    // middleware: ['auth'],
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          // required: true,
+          // type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: 'auth/login/', method: 'post' },
+          logout: { url: 'auth/logout/', method: 'post' },
+          user: { url: 'auth/user/', method: 'get' },
+        },
+      },
+    },
   },
 };

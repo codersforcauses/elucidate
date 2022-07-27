@@ -37,6 +37,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+.yarn
 
 # TypeScript v1 declaration files
 typings/
@@ -88,3 +89,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Cypress videos
+videos/

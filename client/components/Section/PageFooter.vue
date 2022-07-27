@@ -1,13 +1,17 @@
 <template>
-  <footer class="m-10">
-    <div class="flex items-center justify-around text-sm font-bold">
+  <footer class="h-20">
+    <div class="flex items-center justify-around mb-2 text-sm font-bold">
       <div class="flex justify-center w-full">
         <NuxtLink to="/" class="mx-4">Home</NuxtLink>
         <NuxtLink to="/quiz" class="mx-4">Quiz</NuxtLink>
         <NuxtLink to="/about" class="mx-4">About</NuxtLink>
       </div>
       <div class="flex justify-center w-full">
-        <img src="~/static/logo.png" class="h-14" />
+        <nuxt-img
+          src="branding/logo_full.png"
+          class="h-12"
+          alt="Elucidate Logo"
+        />
       </div>
       <div class="flex justify-center w-full">
         <NuxtLink to="/about" class="mx-4">Resources</NuxtLink>
@@ -16,7 +20,7 @@
       </div>
     </div>
     <hr />
-    <div class="flex items-center justify-center py-8 text-gray-400 text-4xl">
+    <div class="flex items-center justify-center py-8 text-4xl text-gray-400">
       <a href="https://www.facebook.com/AtarSurvivalGuide/">
         <font-awesome-icon :icon="['fab', 'fa-facebook']" class="mx-4" />
       </a>

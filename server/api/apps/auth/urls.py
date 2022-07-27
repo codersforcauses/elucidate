@@ -5,8 +5,11 @@ from rest_framework_jwt.views import (
     verify_jwt_token,
 )
 
+from .views import RegistrationView
+
 urlpatterns = [
-    path("token", obtain_jwt_token, name="get-jwt-token"),
-    path("token/refresh", refresh_jwt_token, name="refresh-jwt-token"),
-    path("token/verify", verify_jwt_token, name="verify-jwt-token"),
+    path("login/", obtain_jwt_token, name="get-jwt-token"),
+    path("refresh/", refresh_jwt_token, name="refresh-jwt-token"),
+    path("verify/", verify_jwt_token, name="verify-jwt-token"),
+    path("register/", RegistrationView.as_view(), name="register"),
 ]
