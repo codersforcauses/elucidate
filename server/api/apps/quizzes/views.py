@@ -1,14 +1,14 @@
-from rest_framework import generics, status
-from rest_framework.response import Response
+from django.contrib.auth import get_user_model
+from rest_framework import generics, permissions, status
 from rest_framework.permissions import (
+    IsAdminUser,
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
-    IsAdminUser,
 )
-from .serializers import QuizCreationSerializer, QuizDetailSerializer
+from rest_framework.response import Response
+
 from .models import Quiz
-from django.contrib.auth import get_user_model
-from rest_framework import permissions
+from .serializers import QuizCreationSerializer, QuizDetailSerializer
 
 
 class IsOwner(permissions.BasePermission):
