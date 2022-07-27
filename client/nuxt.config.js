@@ -71,8 +71,8 @@ export default {
   },
 
   router: {
-    // set to false for easier testing
-    // middleware: ['auth'],
+    // Comment out the line below to disable authentication
+    middleware: ['auth'],
   },
 
   auth: {

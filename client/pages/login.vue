@@ -1,5 +1,13 @@
 <template>
-  <ValidationObserver v-slot="{ invalid }" slim class="w-1/2 max-w-lg">
+  <ValidationObserver
+    v-slot="{ invalid }"
+    slim
+    class="w-1/2 max-w-lg"
+    @submit.prevent="signin"
+  >
+    <AuthAlert :errors="errors">
+      Error while signing in, please fix the following errors:
+    </AuthAlert>
     <AuthForm>
       <InputField
         id="email"
@@ -43,8 +51,29 @@ export default {
     ValidationObserver,
   },
   layout: 'auth',
+  data() {
+    return {
+      errors: {},
+    };
+  },
   head: {
     title: 'Login',
+  },
+  methods: {
+    async signin(e) {
+      // Get the values from the form
+      const elements = e.target.elements;
+      const data = {
+        email: elements.Email.value,
+        password: elements.Password.value,
+      };
+
+      try {
+        await this.$auth.loginWith('local', { data });
+      } catch (error) {
+        this.errors[error.name] = [error.message];
+      }
+    },
   },
 };
 </script>
