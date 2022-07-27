@@ -80,6 +80,6 @@ class PasswordReset(generics.GenericAPIView):
         else: Response(
             {
                 "message":
-                "User does note exist"
+                "User does not exist"
             }, status = status.HTTP_400_BAD_REQUEST
         )
