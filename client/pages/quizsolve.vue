@@ -40,7 +40,7 @@ export default {
         this.quizdata = quiz;
         // Fill data properties
         this.quiz_name = this.quizdata.quiz_name;
-        this.quiz_num_questions = this.quizdata.question_choices.length;
+        this.quiz_num_questions = 1;
         break;
       }
     }

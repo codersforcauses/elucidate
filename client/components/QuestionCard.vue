@@ -20,27 +20,30 @@
       </div>
 
       <!-- Question Choices -->
-      <div class="justify-center grid grid-cols-1 w-full select-none">
-        <select
-          v-model="answer"
-          multiple
-          class="overflow-hidden border-transparent focus:outline-none bg-transparent h-64"
-        >
-          <option
-            v-for="(choice, index) in this.quizdata.question_choices[
-              this.curr - 1
-            ]"
-            :key="index"
-            class="py-2 px-4 my-5 mx-20 z-50 text-center shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-gray-700 hover:bg-gray-200 focus:outline-none active:shadow-none"
+      <div v-if="this.question_type === 1">
+        <div class="justify-center grid grid-cols-1 w-full select-none">
+          <select
+            v-model="answer"
+            multiple
+            class="overflow-hidden border-transparent focus:outline-none bg-transparent h-64"
           >
-            {{ choice }}
-          </option>
-        </select>
-        <div>Selected: {{ answer }}</div>
-        <div>Answer array: {{ answerArray }}</div>
+            <option
+              v-for="(choice, index) in this.quizdata.question_choices[
+                this.curr - 1
+              ]"
+              :key="index"
+              class="py-2 px-4 my-5 mx-20 z-50 text-center shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-gray-700 hover:bg-gray-200 focus:outline-none active:shadow-none"
+            >
+              {{ choice }}
+            </option>
+          </select>
+          <div>Selected: {{ answer }}</div>
+          <div>Answer array: {{ answerArray }}</div>
+        </div>
       </div>
 
-      <!-- Text-based question -->
+      <!-- Short Answer Choices -->
+      <!-- <div v-if="this.question_type === 2"> -->
       <div class="p-5">
         <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
           <div>Answer</div>
@@ -52,6 +55,13 @@
           ></textarea>
         </div>
       </div>
+      <!-- </div> -->
+
+      <!-- Numerical Answer Choices -->
+      <!-- <div v-if="this.question_type === 3">
+
+      </div> -->
+
 
       <!-- Next/Back buttons 
       <div class="flex justify-end px-5 mt-2">
@@ -143,6 +153,7 @@ export default {
       answer: '',
       answerArray: [],
       completed: false,
+      question_type: null
     };
   },
   methods: {
@@ -163,9 +174,22 @@ export default {
       this.answerArray.push(this.answer);
     },
     created() {
+      
       if (this.quizdata === null) {
         this.not_found = true;
       }
+      console.log(this.quizdata)
+
+      if (this.quizdata.question_type[0] === "mcq"){
+        this.question_type = 1 // 1 is mcq
+      } else if (this.quizdata.question_type[0] === "short_answer") {
+        this.question_type = 2 // 2 is short_answer
+      } else if (this.quizdata.question_type[0] === "numerical") {
+        this.question_type = 3 // 3 is numerical
+      } else {
+        console.log("Unknown question_type");
+      }
+      console.log(this.question_type)
     },
   },
   components: { ProgressBar },
