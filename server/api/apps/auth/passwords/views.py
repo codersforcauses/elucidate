@@ -57,11 +57,9 @@ class PasswordReset(generics.GenericAPIView):
         user = User.objects.filter(email = email).first()
 
         if user:
-
             token = PasswordResetTokenGenerator().make_token(user)
-
             reset_url = reverse("reset-password", kwargs={"token": token})
-            reset_url = f"https://localhost:8080{reset_url}"
+            reset_url = f"localhost:8080{reset_url}"
 
             send_mail(
                 'Elucidate Password Reset',
@@ -74,7 +72,7 @@ class PasswordReset(generics.GenericAPIView):
             return Response(
                 {
                 "message":
-                f"Your password reset link: {reset_url}"
+                f"Email has been sent"
                 },
 
             status = status.HTTP_200_OK)
@@ -82,6 +80,6 @@ class PasswordReset(generics.GenericAPIView):
         else: Response(
             {
                 "message":
-                "user does note exist"
+                "User does note exist"
             }, status = status.HTTP_400_BAD_REQUEST
         )
