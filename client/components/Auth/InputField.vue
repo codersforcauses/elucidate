@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="font-semibold">{{ fieldName }}</label>
+    <label class="font-semibold" :for="fieldName">{{ fieldName }}</label>
     <ValidationProvider
       v-slot="{ errors, touched }"
       slim
@@ -10,6 +10,7 @@
       <div class="relative flex items-center -mt-2">
         <input
           v-if="fieldType != 'dropdown'"
+          :id="fieldName"
           v-model="inputValue"
           :name="fieldName"
           :type="showText ? 'text' : fieldType"
@@ -29,6 +30,7 @@
         </div>
         <select
           v-if="fieldType == 'dropdown'"
+          :id="fieldName"
           v-model="inputValue"
           :name="fieldName"
           class="w-full h-10 px-5 my-3 drop-shadow-lg"
@@ -38,6 +40,7 @@
           </option>
           <option
             v-for="(option, index) in fieldOptions"
+            :id="fieldName"
             :key="index"
             :value="option"
             v-text="option"
