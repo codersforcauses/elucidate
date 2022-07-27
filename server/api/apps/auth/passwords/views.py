@@ -9,7 +9,6 @@ from rest_framework.permissions import IsAuthenticated
 from api.apps.users.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.urls import reverse 
-from django.utils.encoding import force_bytes
 from django.core.mail import send_mail
 
 # Create your views here.
