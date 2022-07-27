@@ -129,7 +129,13 @@ export default {
           this.accountCreated = true;
         })
         .catch((error) => {
-          this.errors = error.response.data;
+          if (error.response) {
+            this.errors = error.response.data;
+          } else if (error.request) {
+            this.errors['No Response'] = [error.request];
+          } else {
+            this.errors['Unknown Error'] = [error.message];
+          }
         });
     },
   },
