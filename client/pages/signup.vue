@@ -19,19 +19,22 @@
       <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink>
     </p>
   </AuthForm>
-  <AuthForm v-else class="items-center text-center font-bold text-white">
-    <p class="text-3xl my-5">Congratulations {{ name }}!</p>
-    <p class="text-2xl my-5">
-      Your new Elucidate account <br />
+  <AuthForm
+    v-else
+    class="place-items-center gap-5 font-bold text-2xl text-white"
+  >
+    <h1 class="text-3xl">Congratulations {{ name }}!</h1>
+    <p>
+      Your new Elucidate account<wbr />
       has been created
     </p>
     <font-awesome-icon
       :icon="['fas', 'fa-face-smile-beam']"
       class="text-[10rem] my-10"
     />
-    <p class="text-2xl mx-10 my-5">
+    <p>
       Please proceed to the
-      <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink> or
+      <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink><wbr /> or
       <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
       for quizzes
     </p>
