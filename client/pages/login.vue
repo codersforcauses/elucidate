@@ -27,7 +27,7 @@
     <p class="place-self-center">
       Don't have an account?
       <NuxtLink
-        to="/signup"
+        to="/sign-up"
         class="text-blue font-semibold underline underline-offset-2"
       >
         Sign up!

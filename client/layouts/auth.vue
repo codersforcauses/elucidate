@@ -19,9 +19,13 @@
 export default {
   computed: {
     title() {
-      // Make first letter uppercase
       const rawTitle = this.$route.name;
-      return rawTitle.charAt(0).toUpperCase() + rawTitle.slice(1);
+      // Make first letter uppercase
+      return (
+        (rawTitle.charAt(0).toUpperCase() + rawTitle.slice(1))
+          // Change dashes to spaces
+          .replace(/-/, ' ')
+      );
     },
   },
 };

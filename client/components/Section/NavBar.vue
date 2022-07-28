@@ -17,7 +17,7 @@
       <ButtonElement to="/login" type="primary" class="mr-3">
         Log in
       </ButtonElement>
-      <ButtonElement to="/signup" type="secondary" class="mr-10">
+      <ButtonElement to="/sign-up" type="secondary" class="mr-10">
         Sign up
       </ButtonElement>
     </div>
