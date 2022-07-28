@@ -1,6 +1,6 @@
 describe('Signup', () => {
   beforeEach(() => {
-    cy.visit('signup');
+    cy.visit('sign-up');
   });
   it('can signup', () => {
     cy.get('input[name="First Name"]').type('John');
