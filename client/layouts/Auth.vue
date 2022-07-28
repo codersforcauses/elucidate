@@ -19,9 +19,9 @@
 export default {
   computed: {
     title() {
-      // Make first letter uppercase
+      // Seperate words in the pages name provided it is in PascalCase
       const rawTitle = this.$route.name;
-      return rawTitle.charAt(0).toUpperCase() + rawTitle.slice(1);
+      return rawTitle.replace(/[A-Z]/g, ' $&');
     },
   },
 };
