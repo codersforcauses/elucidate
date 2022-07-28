@@ -30,7 +30,7 @@
         to="/signup"
         class="text-blue font-semibold underline underline-offset-2"
       >
-        sign up!
+        Sign up!
       </NuxtLink>
     </p>
   </AuthForm>
