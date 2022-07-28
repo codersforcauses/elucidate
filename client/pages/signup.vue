@@ -46,7 +46,7 @@ let count = 0;
 export default {
   name: 'SignupPage',
   auth: false,
-  layout: 'Auth',
+  layout: 'auth',
   data: () => ({
     title: 'Sign-Up',
     accountCreated: false,

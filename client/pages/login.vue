@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  layout: 'Auth',
+  layout: 'auth',
   data() {
     return {
       errors: {},
