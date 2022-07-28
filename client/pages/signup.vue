@@ -19,25 +19,22 @@
       <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink>
     </p>
   </AuthForm>
-  <AuthForm v-else>
-    <div
-      class="flex flex-col grow items-center text-center font-bold text-white"
-    >
-      <p class="text-3xl my-5">Congratulations {{ name }}!</p>
-      <p class="text-2xl mx-10 my-5">
-        Your new Elucidate account has been created
-      </p>
-      <font-awesome-icon
-        :icon="['fas', 'fa-face-smile-beam']"
-        class="text-[10rem] my-10 text-white"
-      />
-      <p class="text-2xl mx-10 my-5">
-        Please proceed to the
-        <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink> or
-        <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
-        for quizzes
-      </p>
-    </div>
+  <AuthForm v-else class="items-center text-center font-bold text-white">
+    <p class="text-3xl my-5">Congratulations {{ name }}!</p>
+    <p class="text-2xl my-5">
+      Your new Elucidate account <br />
+      has been created
+    </p>
+    <font-awesome-icon
+      :icon="['fas', 'fa-face-smile-beam']"
+      class="text-[10rem] my-10"
+    />
+    <p class="text-2xl mx-10 my-5">
+      Please proceed to the
+      <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink> or
+      <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
+      for quizzes
+    </p>
   </AuthForm>
 </template>
 
