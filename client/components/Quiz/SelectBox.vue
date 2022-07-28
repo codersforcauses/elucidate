@@ -1,6 +1,9 @@
 <template>
-  <div class="flex items-center mx-2 w-auto">
-    <div class="bg-green2 rounded-lg shadow-lg hover:bg-red hover:text-white">
+  <div class="flex items-center mr-5 w-auto" @click="select">
+    <div
+      class="rounded-full px-3 text-black hover:shadow-lg transition-shadow duration-200 ease-in-out"
+      :class="isSelected ? 'bg-aquablue font-semibold' : 'bg-aquablue2'"
+    >
       <p class="select-none m-2 whitespace-nowrap">{{ label }}</p>
     </div>
   </div>
@@ -11,6 +14,15 @@ export default {
   name: 'SelectBox',
   props: {
     label: String,
-  }
+  },
+  data: () => ({
+    isSelected: false,
+  }),
+  methods: {
+    select: function () {
+      this.isSelected = !this.isSelected;
+      console.log(this.isSelected);
+    },
+  },
 };
 </script>

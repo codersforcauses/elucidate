@@ -13,6 +13,9 @@ module.exports = {
         blue3: '#7087FF50',
         blue4: '#7087FF25',
 
+        aquablue: '#AAF5EB',
+        aquablue2: '#AAF5EB75',
+
         green: '#53DFCB',
         green2: '#53DFCB75',
         green3: '#53DFCB50',
@@ -28,7 +31,7 @@ module.exports = {
         red3: '#F54A8750',
         red4: '#F54A8725',
 
-        orange: '#FCD47C',
+        purple: '#AFBCFF',
 
         white: '#FFFFFF',
         lightgrey: '#E6E6E6',
