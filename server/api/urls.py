@@ -22,4 +22,5 @@ urlpatterns = [
     path("api/users/", include("api.apps.users.urls")),
     path("api/quizzes/", include("api.apps.quizzes.urls")),
     path("api/take-quiz/", include("api.apps.quiz_take.urls")),
+    path("api/user-statistics", include("api.apps.user_statistics.urls"))
 ]

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "rest_framework_jwt",
     "api.apps.quizzes",
     "api.apps.users",
+    "api.apps.user_statistics"
 ]
 
 MIDDLEWARE = [
