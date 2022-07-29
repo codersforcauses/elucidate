@@ -21,7 +21,6 @@ export default {
   methods: {
     select: function () {
       this.isSelected = !this.isSelected;
-      console.log(this.isSelected);
     },
   },
 };
