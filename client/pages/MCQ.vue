@@ -1,27 +1,28 @@
 <template>
-  <div class="flex flex-col mb-10">
+  <div class="flex flex-col my-10">
     <Box title="Make a Question" :is-centered="false">
-      <div class="inline-flex mt-10 mb-5 mx-20">
-        <p class="flex align-middle mr-8 text-white text-l font-bold">
-          Question Type:
-        </p>
-        <div class="inline-flex gap-2 text-white text-md font-bold">
-          <button class="bg-yellow rounded-full shadow-md px-3 py-1">
-            Multiple Choice
-          </button>
-          <button class="bg-blue rounded-full shadow-md px-3 py-1">
-            Short Answer
-          </button>
-          <button class="bg-red rounded-full shadow-md px-3 py-1">
-            Numeric Question
-          </button>
-        </div>
+      <div class="inline-flex mt-10 mx-20">
+        <InputLabel field-name="Types: ">
+          <div
+            class="inline-flex ml-[100px] gap-3 text-white text-md font-bold"
+          >
+            <button class="bg-yellow rounded-full shadow-md px-5 py-3">
+              Multiple Choice
+            </button>
+            <button class="bg-blue rounded-full shadow-md px-5 py-3">
+              Short Answer
+            </button>
+            <button class="bg-red rounded-full shadow-md px-5 py-3">
+              Numeric Question
+            </button>
+          </div>
+        </InputLabel>
       </div>
       <div>
         <InputLabel class="ml-[70px]" field-name="Subjects: ">
           <MultiselectBox
             ref="selectedSubject"
-            class="flex flex-row ml-[18px] justify-centre items-center w-full shadow-md"
+            class="flex flex-row ml-[18px] w-[700px] justify-centre items-center shadow-md"
             :options="subjectOptions"
             placeholder="Search or select a subject"
           ></MultiselectBox>
@@ -31,7 +32,7 @@
         <InputLabel class="ml-[80px]" field-name="Topics: ">
           <MultiselectBox
             ref="selectedTopics"
-            class="flex flex-row ml-[30px] justify-centre items-center w-full shadow-md"
+            class="flex flex-row ml-[30px] w-[700px] justify-centre items-center shadow-md"
             :options="topicOptions"
             placeholder="Search or select topics"
             :multiple="true"
@@ -39,17 +40,21 @@
           ></MultiselectBox>
         </InputLabel>
       </div>
-      <div>
-        <QuestionBox header="Question:" />
-      </div>
-      <div class="flex flex-col columns-4 gap-2 ml-10">
-        <AnswersBox header="A:" />
-        <AnswersBox header="B:" />
-        <AnswersBox header="C:" />
-        <AnswersBox header="D:" />
-      </div>
 
-      <div class="flex place-content-end mt-5 pb-5 mx-10">
+      <InputLabel class="ml-[60px]" field-name="Question: "
+        ><QuestionBox></QuestionBox
+      ></InputLabel>
+
+      <InputLabel class="ml-[50px]" field-name="Answers: ">
+        <div class="flex flex-col columns-4 gap-2">
+          <AnswersBox header="A:" />
+          <AnswersBox header="B:" />
+          <AnswersBox header="C:" />
+          <AnswersBox header="D:" />
+        </div>
+      </InputLabel>
+
+      <div class="flex place-content-end mt-5 pb-5 mr-10">
         <QuizButton color="red" class="mr-10 shadow-md">
           + Add Question
         </QuizButton>

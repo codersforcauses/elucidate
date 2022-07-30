@@ -1,11 +1,7 @@
 <template>
-  <div class="flex flex-inline mb-5 mx-10">
-    <label
-      class="flex align-text-top ml-5 pr-10 text-white text-xl font-bold"
-      >{{ header }}</label
-    >
+  <div class="flex flex-inline mb-5">
     <textarea
-      class="p-0 m-0 w-[520px] h-[100px] rounded shadow-md"
+      class="p-0 mx-5 w-[700px] h-[100px] rounded shadow-md"
       :type="inputType"
     ></textarea>
   </div>
@@ -15,7 +11,6 @@
 export default {
   name: 'QuestionBox',
   props: {
-    header: String,
     inputType: String,
   },
 };
