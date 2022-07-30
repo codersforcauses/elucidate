@@ -9,7 +9,7 @@
     <input
       type="text"
       placeholder="Find a quiz"
-      class="h-10 bg-transparent focus:outline-none w-80"
+      class="h-10 bg-transparent focus:outline-none w-[100%]"
     />
   </div>
 </template>
