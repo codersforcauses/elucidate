@@ -51,6 +51,9 @@ class UserStatisticsSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "user",
+            "questions_created",
+            "average_score",
+            "quizzes_completed",
         ]
 
     def create(self, validated_data):

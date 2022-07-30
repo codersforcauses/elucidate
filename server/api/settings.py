@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "rest_framework_jwt",
     "api.apps.quizzes",
     "api.apps.users",
+    "api.apps.user_statistics",
 ]
 
 MIDDLEWARE = [
@@ -94,7 +95,6 @@ WSGI_APPLICATION = "api.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
