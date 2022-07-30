@@ -7,19 +7,13 @@ This API is used to manage the user lifecycle. It allows us to:
 * Update user information
 * Delete a user  
 
-----
-
 ## URL
 
 `/users`
 
-----
-
 ## Methods
   
 `GET` | `POST` | `DELETE` | `PUT`
-
-----  
 
 ## URL Parameters
 
@@ -31,13 +25,9 @@ This API is used to manage the user lifecycle. It allows us to:
 | _/users/[id]_ |     `PUT`     | Updates an existing users details          |
 | _/users/[id]_ |     `DELETE`  | Deletes an existing user from the database |
 
-----
-
 ## Required
 
    `id=[integer]`
-
-----
 
 ## Data Parameters
 
@@ -47,8 +37,6 @@ This API is used to manage the user lifecycle. It allows us to:
   |     email            |      String      |  Email address of the user  |
 
   **_More to come!_**
-
-----
 
 ## Success Response
   
@@ -69,8 +57,6 @@ This API is used to manage the user lifecycle. It allows us to:
 
 **_More to come_**
 
-----
-
 ## Error Response
 
 * **Code:** 403 FORBIDDEN
@@ -89,13 +75,9 @@ This API is used to manage the user lifecycle. It allows us to:
 
     **Content:** `{ "username": ["This field may not be blank."] }`
 
-----
-
 ## Sample Call
 
 **_Still to do_**
-
-----
 
 ## Notes
 

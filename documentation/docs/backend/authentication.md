@@ -1,6 +1,5 @@
 # Authentication REST API
 
-----
 This API is used to manage the authentication lifecycle. It allows us to:
 
 * Register a user
@@ -10,12 +9,10 @@ This API is used to manage the authentication lifecycle. It allows us to:
 * [TODO] Log out a user  
 * [TODO] Delete a user
 
-----
 **Base URL:**
 
 /api/auth
 
-----  
 **Endpoints:**
 
 ## /register/
