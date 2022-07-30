@@ -45,7 +45,7 @@ Frontend
 
 Backend
 
-- Webserver
+- Web server
     - [Django](https://www.djangoproject.com/)
     - [Django Rest Framework](https://www.django-rest-framework.org/)
     - [Apache](https://httpd.apache.org/)
@@ -77,14 +77,14 @@ Other
 
 - Once docker is installed, try running it. If docker-engine starts successfully, you can proceed.
 - If your docker requires you to install WSL, you can easily do so by the following steps:
-    - Open powershell with administrator privileges.
+    - Open PowerShell with administrator privileges.
     - Type `wsl --install`.
     - Restart your computer and try running `wsl` in cmd. If you get no error, then you are all set.
 - If you get an error about needing to update the kernel, you can do so by installing [this package](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi).
     - Then run `wsl --set-default-version 2`.
-- If you are asked to enable Windows Virtualisation Platform, or HyperV then:
-    - Run `bcdedit /set hypervisorlaunchtype auto` in an admin privilege Powershell and restart your computer.
-- Once docker-engine is running successfully, you can close the docker window as it should continue running in the background.
+- If you are asked to enable Windows Virtualisation Platform, or Hyper-V then:
+    - Run `bcdedit /set hypervisorlaunchtype auto` in an admin privilege PowerShell and restart your computer.
+- Once docker-engine is running successfully, you can close the docker window, as it should continue running in the background.
 
 #### Linux
 
@@ -92,8 +92,8 @@ Other
 
 ### Potential Errors While Running The Docker Container
 
-- **Windows** : If the client and/or server continers fail to run due to `runtime.sh` not being found, then you need to change the line endings of the "runtime.sh" file (located in `docker/client/` and `docker/server`) from CRLF to LF.
-    - You can do this in VS code by opening the `runtime.sh` file, and at the bottom-right corner, click on CRLF. A dialogue box pops up, click on LF and save the file.
+- **Windows** : If the client and/or server containers fail to run due to `runtime.sh` not being found, then you need to change the line endings of the `runtime.sh` file (located in `docker/client/` and `docker/server`) from CRLF to LF.
+    - You can do this in VS Code by opening the `runtime.sh` file, and in the bottom-right corner, click on CRLF. A dialogue box pops up, click on LF and save the file.
   <p align="center">
     <img src="https://cdn.discordapp.com/attachments/831493951185485883/990558770209882162/unknown.png" height="50px"/>
   </p>
@@ -116,7 +116,7 @@ Other
 ![Client folder](https://cdn.discordapp.com/attachments/701301203849576501/990567691284795402/unknown.png)
 
 - The first time this is launched, it may take up to 5 minutes to install and configure everything.
-- After you are shown the workspace, there should be a pop up at the bottom right asking you to install recommended extensions. Click install.
+- After you are shown the workspace, there should be a pop-up at the bottom right asking you to install recommended extensions. Click install.
 
 ![Install extensions](https://cdn.discordapp.com/attachments/701301203849576501/990568208878694400/unknown.png)
 
@@ -149,7 +149,7 @@ Other
 - To start developing, navigate to the remote extensions tab. Hover over the frontend or backend container and click the folder icon.
   ![open folder](https://media.discordapp.net/attachments/701301203849576501/990574912181784656/unknown.png)
 
-- Note, for the backend, you may need to start the database container first. To do so, right click on the database container and click `Start Container`.
+- Note, for the backend, you may need to start the database container first. To do so, right-click on the database container and click `Start Container`.
 
 ![start db](https://media.discordapp.net/attachments/701301203849576501/990571489587789864/unknown.png)
 

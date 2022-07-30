@@ -1,7 +1,7 @@
 # Tailwind Theme
 
 Elucidate uses a global style declared in `tailwind.config.js`.
-It follows the branding guidelines of Atar Survival Guide.
+It follows the branding guidelines of ATAR Survival Guide.
 Any unspecified styling uses Tailwind's default style.
 
 ## Colour Palette
@@ -23,7 +23,7 @@ The primary colour is
 
 - Green `#53DFCB`
 
-There isn't a secondary colour at time of writing.
+There isn't a secondary colour at the time of writing.
 
 Dark mode is not supported.
 
@@ -33,9 +33,9 @@ Drop shadows are always black & point downwards.
 They are based on the default style in Figma.
 
 The blur radius is `4px`.
-X & y offets are `0px 4px`.
+X & y offsets are `0px 4px`.
 
-The colour is defined as a RGBA value.
+The colour is defined as an RGBA value.
 It is pure black `0,0,0`.
 The transparency varies according to the size (`md`, `sm` etc.)
 

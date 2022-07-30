@@ -1,5 +1,6 @@
 {
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-  }
+  },
+  "markdown.extension.list.indentationSize": "inherit"
 }

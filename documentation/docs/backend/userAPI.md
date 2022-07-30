@@ -1,6 +1,5 @@
 # User REST API
 
-----
 This API is used to manage the user lifecycle. It allows us to:
 
 * Retrieve both a list of registered users, or a single user
@@ -8,18 +7,15 @@ This API is used to manage the user lifecycle. It allows us to:
 * Update user information
 * Delete a user  
 
-----
-**URL:**
+## URL
 
-_/users_
+`/users`
 
-----
-**Methods:**
+## Methods
   
 `GET` | `POST` | `DELETE` | `PUT`
 
-----  
-**URL Params:**
+## URL Parameters
 
 | URL           |     Method    | Description                                |
 | :---          |     :----:    | :---                                       |
@@ -29,13 +25,11 @@ _/users_
 | _/users/[id]_ |     `PUT`     | Updates an existing users details          |
 | _/users/[id]_ |     `DELETE`  | Deletes an existing user from the database |
 
-----
-   **Required:**
+## Required
 
    `id=[integer]`
 
-----
-**Data Params:**
+## Data Parameters
 
   |         Key          |     Data Type    |        Description          |
   | :----                 |     :----:       | :---                        |
@@ -44,50 +38,51 @@ _/users_
 
   **_More to come!_**
 
-----
-**Success Response:**
+## Success Response
   
-  <_What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!_>
+  <_What should the status code be on success and is there any returned data? This is useful when people need to know what their callbacks should expect!_>
 
-* **Code:** 200 OK<br />
-    **Content:** <br />
-    ```
+* **Code:** 200 OK
 
+    **Content:**
+
+```json
 {
   "url": "http://127.0.0.1:8000/users/1/",
   "username": "foo",
   "email": "foo@bar.com",
   "groups": []`
 }
-    ```
+```
 
 **_More to come_**
 
-----
-**Error Response:**
+## Error Response
 
-* **Code:** 403 FORBIDDEN <br />
+* **Code:** 403 FORBIDDEN
+
     **Content:** `{ detail: "Authentication credentials were not provided." }`
 
   OR
 
-* **Code:** 400 BAD REQUEST <br />
+* **Code:** 400 BAD REQUEST
+
     **Content:** `{ "username": ["A user with that username already exists."] }`
 
   OR
 
-* **Code:** 400 BAD REQUEST <br />
+* **Code:** 400 BAD REQUEST
+
     **Content:** `{ "username": ["This field may not be blank."] }`
 
-----
-**Sample Call:**
+## Sample Call
 
-_Still to do_
+**_Still to do_**
 
-**Notes:**
+## Notes
 
 * Still to do:
-    * Need to workout how to make sure it checks that no duplicate emails are added
+    * Need to work out how to make sure it checks that no duplicate emails are added
     * Need to make email required field
     * Need to update fields when I know what all of them are
-    * Update markdown to include any user creation into a default group so they only have certain priviledges
+    * Update markdown to include any user creation into a default group, so they only have certain privileges

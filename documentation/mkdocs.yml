@@ -1,5 +1,6 @@
 site_name: Elucidate Documentation
 copyright: Copyright Coders for Causes
+site_url: https://elucidate-project-documentation.readthedocs.io
 repo_url: https://github.com/codersforcauses/elucidate
 
 theme:
