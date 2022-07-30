@@ -57,7 +57,7 @@ jobs:
 
       - name: Cache .venv 📦
         id: cached-poetry-dependencies
-        uses: actions/cache@v3.0.4
+        uses: actions/cache@v3.0.5
         with:
           path: server/.venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
@@ -82,9 +82,10 @@ jobs:
         run: |
           source .venv/bin/activate
           coverage run manage.py test
-          coverage json
+          coverage xml
 
       - name: Upload Coverage ☂️
         uses: codecov/codecov-action@v3.1.0
         with:
           flags: backend
+          files: ./server/coverage.xml

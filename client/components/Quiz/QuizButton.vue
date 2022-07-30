@@ -1,11 +1,13 @@
 <template>
-  <button
-    :class="`inline-flex rounded-full shadow-sm 
-    ${colour} ${textColour} 
-    font-bold px-7 py-1`"
-  >
-    <slot />
-  </button>
+  <div>
+    <button
+      :class="`inline-flex rounded-full shadow-sm 
+      ${colour} ${textColour} 
+      font-bold px-7 py-1`"
+    >
+      <slot />
+    </button>
+  </div>
 </template>
 
 <script>
