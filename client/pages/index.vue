@@ -8,13 +8,13 @@
             What do you want <br />to learn today?
           </h1>
           <!-- Search bar -->
-          <InputSearchBar />
+          <SearchBar />
           <!-- 'I already have acc' button which directs user to the log in page -->
           <haveAccBtn />
-          <img class="mt-5 w-96 justify-self-start" src="~/assets/shapes.png" />
+          <nuxt-img src="shapes.png" class="mt-5 w-96 justify-self-start" />
         </div>
         <div>
-          <img v-bind:src="illustration" />
+          <nuxt-img src="QAimage.svg" />
         </div>
       </div>
     </div>
@@ -33,10 +33,5 @@
 <script>
 export default {
   name: 'IndexPage',
-  data: function () {
-    return {
-      illustration: require('~/assets/QAimage.svg'),
-    };
-  },
 };
 </script>

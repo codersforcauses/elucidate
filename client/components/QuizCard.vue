@@ -11,7 +11,7 @@
       </div>
     </div>
     <div>
-      <img v-bind:src="arrowImage" class="float-left" />
+      <nuxt-img src="Polygon.svg" class="float-left" />
       <div class="ml-11">
         <!-- Topic Name -->
         <div class="text-black text-3xl">{{ topicName }}</div>
@@ -36,7 +36,6 @@ export default {
   name: 'QuizCard',
   data: function () {
     return {
-      arrowImage: require('~/assets/Polygon.svg'),
       topicName: 'Topic Name',
       subjectName: 'Subject Name',
       totalQues: '50 questions',
