@@ -2,9 +2,9 @@
     <div class="flex mx-20">
         <div>
             <QuizDetailCard
-                v-if="!this.not_found"
-                :topicName="this.quiz_name"
-                :totalQues="this.quiz_num_questions"
+                v-if="!not_found"
+                :topic-name="quiz_name"
+                :total-ques="quiz_num_questions"
             />
         </div>
         <div class="relative w-full pb-4 ml-4 bg-indigo-300 rounded-sm shadow-md min-h-full">
@@ -18,7 +18,7 @@
                 </div>
                 <div>
                 <!-- Question Choices -->
-                <div v-if="this.quizdata.question_type[0] === 'mcq'">
+                <div v-if="quizdata.question_type[0] === 'mcq'">
                     <div class="justify-center grid grid-cols-1 w-full select-none">
                     <select
                         v-model="answer"
@@ -26,8 +26,8 @@
                         class="overflow-hidden border-transparent focus:outline-none bg-transparent h-64"
                     >
                         <option
-                        v-for="(choice, index) in this.quizdata.question_choices[
-                            this.curr - 1
+                        v-for="(choice, index) in quizdata.question_choices[
+                            curr - 1
                         ]"
                         :key="index"
                         class="py-2 px-4 my-5 mx-20 z-50 text-center shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-gray-700 hover:bg-gray-200 focus:outline-none active:shadow-none"
@@ -41,7 +41,7 @@
                 </div>
 
                 <!-- Short Answer Choices -->
-                <div v-if="this.quizdata.question_type[0] === 'short_answer'">
+                <div v-if="quizdata.question_type[0] === 'short_answer'">
                     <div class="p-5">
                         <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
                         <div>Answer</div>
@@ -64,7 +64,7 @@
 <script>
 import dummyjson from '../components/dummy.json';
 export default {
-  name: 'quizReview',
+  name: 'QuizReview',
   data() {
     return {
       quizID: parseInt(this.$route.query.quizid),

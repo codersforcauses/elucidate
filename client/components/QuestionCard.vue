@@ -4,23 +4,23 @@
   >
     <!-- Question Number -->
     <div class="flex bg-teal-100 py-4 rounded-sm">
-      <div v-if="!this.not_found" class="w-1/3 px-5">
-        <h1>Question {{ this.curr }} / {{ this.max }}</h1>
+      <div v-if="!not_found" class="w-1/3 px-5">
+        <h1>Question {{ curr }} / {{ max }}</h1>
       </div>
-      <ProgressBar v-if="!this.not_found" :curr="this.curr" :max="this.max" />
+      <ProgressBar v-if="!not_found" :curr="curr" :max="max" />
     </div>
 
     <!-- Non-Header Question Block -->
-    <div v-if="!this.not_found">
+    <div v-if="!not_found">
       <!-- Question Detail -->
       <div class="">
         <div class="justify-self-start text-sm m-5">
-          {{ this.quizdata.question_desc[this.curr - 1] }}
+          {{ quizdata.question_desc[curr - 1] }}
         </div>
       </div>
 
       <!-- Question Choices -->
-      <div v-if="this.quizdata.question_type[0] === 'mcq'">
+      <div v-if="quizdata.question_type[0] === 'mcq'">
         <div class="justify-center grid grid-cols-1 w-full select-none">
           <select
             v-model="answer"
@@ -28,8 +28,8 @@
             class="overflow-hidden border-transparent focus:outline-none bg-transparent h-64"
           >
             <option
-              v-for="(choice, index) in this.quizdata.question_choices[
-                this.curr - 1
+              v-for="(choice, index) in quizdata.question_choices[
+                curr - 1
               ]"
               :key="index"
               class="py-2 px-4 my-5 mx-20 z-50 text-center shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-gray-700 hover:bg-gray-200 focus:outline-none active:shadow-none"
@@ -43,7 +43,7 @@
       </div>
 
       <!-- Short Answer Choices -->
-      <div v-if="this.quizdata.question_type[0] === 'short_answer'">
+      <div v-if="quizdata.question_type[0] === 'short_answer'">
       <div class="p-5">
         <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
           <div>Answer</div>
@@ -85,13 +85,13 @@
     </div>
     <!-- Submit button -->
     <input
-      type="submit"
-      @click="submitAnswer"
       v-if="!completed"
+      type="submit"
       value="Submit Answer"
       data-mdb-ripple="true"
       data-mdb-ripple-color="light"
       class="inline-block float-right text-center px-6 py-1 my-5 mx-24 bg-indigo-500 text-white text-md rounded-lg shadow-md hover:bg-indigo-600 hover:shadow-lg hover:cursor-pointer focus:bg-indigo-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-700 active:shadow-lg transition duration-300 ease-in-out"
+      @click="submitAnswer"
     />
 
     <!-- Main modal -->
@@ -118,7 +118,7 @@
             <p
               class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
             >
-              You just finished the {{ this.quizdata.quiz_name }} quiz with a
+              You just finished the {{ quizdata.quiz_name }} quiz with a
               total of {{ curr }} questions.
             </p>
           </div>
@@ -148,6 +148,8 @@ import ProgressBar from './ProgressBar.vue';
 import dummyjson from './dummy.json';
 export default {
   name: 'QuestionCard',
+  components: { ProgressBar },
+  props: ['quizdata', 'max', 'not_found'],
   data: function () {
     return {
       curr: 1,
@@ -182,7 +184,5 @@ export default {
       }
     },
   },
-  components: { ProgressBar },
-  props: ['quizdata', 'max', 'not_found'],
 };
 </script>

@@ -33,17 +33,6 @@ export default {
       FullDashArray: 190,
     };
   },
-  methods: {
-    // Set the interval to increment time passed by 1 every 60000 ms or 1 minute
-    startTimer() {
-      this.timeInterval = setInterval(() => (this.timePassed += 1), 60000);
-    },
-
-    // Clear the interval
-    stopTimer() {
-      clearInterval(this.timeInterval);
-    },
-  },
   computed: {
     timeLeft() {
       return this.timeLimit - this.timePassed;
@@ -76,17 +65,28 @@ export default {
     },
   },
 
-  // Start the timer as window loads
-  mounted: function () {
-    this.startTimer();
-  },
-
   watch: {
     // stop the timer (clear interval) when the timer reaches 0
     timeLeft(value) {
       if (value === 0) {
         this.stopTimer();
       }
+    },
+  },
+
+  // Start the timer as window loads
+  mounted: function () {
+    this.startTimer();
+  },
+  methods: {
+    // Set the interval to increment time passed by 1 every 60000 ms or 1 minute
+    startTimer() {
+      this.timeInterval = setInterval(() => (this.timePassed += 1), 60000);
+    },
+
+    // Clear the interval
+    stopTimer() {
+      clearInterval(this.timeInterval);
     },
   },
 };

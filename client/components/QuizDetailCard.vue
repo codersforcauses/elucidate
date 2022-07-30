@@ -60,6 +60,7 @@ import dummyjson from './dummy.json';
 
 export default {
   name: 'QuizDetailCard',
+  props: ['topicName', 'totalQues'],
   data: function () {
     return {
       quizName: 'Quiz Name',
@@ -67,6 +68,5 @@ export default {
       time: '1 hour',
     };
   },
-  props: ['topicName', 'totalQues'],
 };
 </script>
