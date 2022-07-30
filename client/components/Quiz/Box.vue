@@ -1,9 +1,8 @@
 <template>
-  <div class="mx-50 place-items-center">
+  <div class="mx-50 place-items-center shadow-md">
     <div :class="`flex ${isCentered ? 'self-center' : ''}`">
       <h1 class="w-full font-bold text-xl bg-green2 p-7 rounded-tl rounded-tr">
         {{ title }}
-        {{ subtitle }}
       </h1>
     </div>
 
@@ -18,7 +17,6 @@ export default {
   Name: 'Box',
   props: {
     title: String,
-    subtitle: String,
     isCentered: Boolean,
   },
 };

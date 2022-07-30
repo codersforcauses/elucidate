@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col mb-10">
-    <Box title="Make a Question" subtitle="" :is-centered="false">
+    <Box title="Make a Question" :is-centered="false">
       <div class="inline-flex mt-10 mb-5 mx-20">
         <p class="flex align-middle mr-8 text-white text-l font-bold">
           Question Type:
@@ -17,11 +17,29 @@
           </button>
         </div>
       </div>
-
       <div>
-        <TagBox header="Topics: "></TagBox>
+        <InputLabel class="ml-[70px]" field-name="Subjects: ">
+          <MultiselectBox
+            ref="selectedSubject"
+            class="flex flex-row ml-[18px] justify-centre items-center w-full shadow-md"
+            :options="subjectOptions"
+            placeholder="Search or select a subject"
+          ></MultiselectBox>
+        </InputLabel>
       </div>
-      <div class="">
+      <div>
+        <InputLabel class="ml-[80px]" field-name="Topics: ">
+          <MultiselectBox
+            ref="selectedTopics"
+            class="flex flex-row ml-[30px] justify-centre items-center w-full shadow-md"
+            :options="topicOptions"
+            placeholder="Search or select topics"
+            :multiple="true"
+            :hide-selected="true"
+          ></MultiselectBox>
+        </InputLabel>
+      </div>
+      <div>
         <QuestionBox header="Question:" />
       </div>
       <div class="flex flex-col columns-4 gap-2 ml-10">
@@ -42,11 +60,12 @@
 </template>
 
 <script>
-import Box from '~/components/Box.vue';
-import QuestionBox from '~/components/QuestionBox.vue';
-import AnswersBox from '~/components/AnswersBox.vue';
+import Box from '~/components/Quiz/Box.vue';
+import QuestionBox from '~/components/Quiz/QuestionBox.vue';
+import AnswersBox from '~/components/Quiz/AnswersBox.vue';
 import QuizButton from '~/components/Quiz/QuizButton.vue';
-import TagBox from '~/components/TagBox.vue';
+import MultiselectBox from '~/components/Quiz/MultiselectBox.vue';
+import InputLabel from '~/components/Quiz/InputLabel.vue';
 
 export default {
   components: {
@@ -54,7 +73,12 @@ export default {
     QuestionBox,
     AnswersBox,
     QuizButton,
-    TagBox,
+    MultiselectBox,
+    InputLabel,
   },
+  data: () => ({
+    subjectOptions: ['Maths', 'Chemistry'],
+    topicOptions: ['Differentiation', 'Calculus'],
+  }),
 };
 </script>
