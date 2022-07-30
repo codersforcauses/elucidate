@@ -1,10 +1,9 @@
 <template>
   <div>
-    <label class="font-semibold">{{ fieldName }}</label>
-    <ValidationProvider v-slot="{ errors, touched }" :vid="id" :rules="rules">
-      <div class="relative flex items-center -mt-2">
+    <label>{{ fieldName }}</label>
+    <ValidationProvider v-slot="{ errors }" :vid="id" :rules="rules">
+      <div class="relative flex items-center">
         <input
-          v-if="fieldType != 'dropdown'"
           v-model="inputValue"
           :name="fieldName"
           :type="showText ? 'text' : fieldType"
@@ -13,8 +12,8 @@
         <div
           v-if="fieldType == 'password'"
           class="absolute right-0 top-auto bottom-auto left-auto w-10"
-          @mouseenter="toggleShowText"
-          @mouseleave="toggleShowText"
+          @mouseenter="clickCheck"
+          @mouseleave="clickCheck"
         >
           <font-awesome-icon
             :icon="['fas', 'fa-eye']"
@@ -22,24 +21,8 @@
             :class="showText ? 'text-blue2' : 'text-gray-400'"
           />
         </div>
-        <select
-          v-if="fieldType == 'dropdown'"
-          v-model="inputValue"
-          :name="fieldName"
-          class="w-full h-10 px-5 my-3 drop-shadow-lg"
-        >
-          <option selected disabled value="">
-            Please Choose Your Grade...
-          </option>
-          <option
-            v-for="(option, index) in fieldOptions"
-            :key="index"
-            :value="option"
-            v-text="option"
-          />
-        </select>
       </div>
-      <span v-if="touched" class="text-red">{{ errors[0] }}</span>
+      <span class="text-red">{{ errors[0] }}</span>
     </ValidationProvider>
   </div>
 </template>
@@ -48,11 +31,22 @@
 // Validation
 // ---------------------------------------
 import { ValidationProvider, extend } from 'vee-validate';
-import { required, email, min } from 'vee-validate/dist/rules';
+import {
+  required,
+  email,
+  min,
+  digits,
+  confirmed,
+} from 'vee-validate/dist/rules';
 
 extend('email', {
   ...email,
   message: 'Invalid email address',
+});
+
+extend('confirmed', {
+  ...confirmed,
+  message: "Passwords don't match",
 });
 
 extend('required', {
@@ -63,6 +57,11 @@ extend('required', {
 extend('min', {
   ...min,
   message: '{_field_} must have at least {length} characters',
+});
+
+extend('digits', {
+  ...digits,
+  message: '{length} digits required',
 });
 
 extend('password', {
@@ -80,34 +79,18 @@ export default {
     ValidationProvider,
   },
   props: {
-    fieldName: {
-      type: String,
-      default: 'Field',
-    },
-    fieldType: {
-      type: String,
-      default: 'text',
-    },
+    fieldName: String,
+    fieldType: String,
     isPassword: Boolean,
-    fieldOptions: {
-      type: Array,
-      default: undefined,
-    },
-    id: {
-      type: String,
-      default: undefined,
-    },
-    rules: {
-      type: String,
-      default: undefined,
-    },
+    id: String,
+    rules: String,
   },
   data: () => ({
     showText: false,
     inputValue: '',
   }),
   methods: {
-    toggleShowText: function () {
+    clickCheck: function () {
       this.showText = !this.showText;
     },
   },
