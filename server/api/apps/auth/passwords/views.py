@@ -18,27 +18,30 @@ class ChangePasswordView(generics.UpdateAPIView):
     """
     serializer_class = ChangePasswordSerializer
     model = User
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get_object(self, queryset=None):
-        obj = self.request.user
+        # obj = self.request.user
+        
         return obj
 
     def update(self, request, *args, **kwargs):
-        self.object = self.get_object()
+        # self.object = self.get_object()
+      
         serializer = self.get_serializer(data=request.data)
 
         if serializer.is_valid():
-            
-            self.object.set_password(serializer.data.get("new_password"))
-            self.object.save()
-            response = {
-                'status': 'success',
-                'code': status.HTTP_200_OK,
-                'message': 'Password updated successfully',
-                'data': []
-            }
-            
+            self.object = User.objects.filter(serializer.data.get("email")).first()
+            # if(PasswordResetTokenGenerator.check_token(self.object, kwargs)):
+                self.object.set_password(serializer.data.get("new_password"))
+                self.object.save()
+                response = {
+                    'status': 'success',
+                    'code': status.HTTP_200_OK,
+                    'message': 'Password updated successfully',
+                    'data': []
+                }
+                
             return Response(response)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -58,7 +61,7 @@ class PasswordReset(generics.GenericAPIView):
 
         if user:
             token = PasswordResetTokenGenerator().make_token(user)
-            reset_url = reverse("reset-password", kwargs={"token": token})
+            reset_url = reverse("reset", kwargs={"token": token})
             reset_url = f"localhost:8080{reset_url}"
 
             send_mail(
