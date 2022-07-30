@@ -19,7 +19,7 @@ _/users_
 `GET` | `POST` | `DELETE` | `PUT`
 
 ----  
-**URL Params:**
+**URL Parameters:**
 
 | URL           |     Method    | Description                                |
 | :---          |     :----:    | :---                                       |
@@ -35,7 +35,7 @@ _/users_
    `id=[integer]`
 
 ----
-**Data Params:**
+**Data Parameters:**
 
   |         Key          |     Data Type    |        Description          |
   | :----                 |     :----:       | :---                        |
@@ -47,7 +47,7 @@ _/users_
 ----
 **Success Response:**
   
-  <_What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!_>
+  <_What should the status code be on success and is there any returned data? This is useful when people need to know what their callbacks should expect!_>
 
 * **Code:** 200 OK<br />
     **Content:** <br />
@@ -87,7 +87,7 @@ _Still to do_
 **Notes:**
 
 * Still to do:
-    * Need to workout how to make sure it checks that no duplicate emails are added
+    * Need to work out how to make sure it checks that no duplicate emails are added
     * Need to make email required field
     * Need to update fields when I know what all of them are
-    * Update markdown to include any user creation into a default group so they only have certain priviledges
+    * Update markdown to include any user creation into a default group, so they only have certain privileges
