@@ -11,7 +11,7 @@
           <SearchBar />
           <!-- 'I already have acc' button which directs user to the log in page -->
           <haveAccBtn />
-          <nuxt-img src="shapes.png" class="mt-5 w-96 justify-self-start" />
+          <nuxt-img src="shapes.svg" class="mt-5 w-96 justify-self-start" />
         </div>
         <div>
           <nuxt-img src="QAimage.svg" />
