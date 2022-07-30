@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-80">
-    <div class="ml-12 pb-4 bg-violet-300 rounded-sm shadow-md">
+    <div class="ml-12 pb-4 bg-indigo-300 rounded-sm shadow-md">
       <!-- Quiz Name -->
       <div class="bg-teal-100 py-4 rounded-sm">
         <h1 class="text-center">{{ quizName }}</h1>
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div> -->
-      <!-- Pause and Restart buttons -->
+      <!-- Pause and Restart buttons 
       <div class="flex justify-end px-5 mt-2">
         <button>
           <div
@@ -46,8 +46,9 @@
             Restart
           </div>
         </button>
-      </div>
+      </div> -->
     </div>
+
     <!-- <div class="absolute top-16">
       <CountdownTimer />
     </div> -->
@@ -64,11 +65,6 @@ export default {
       quizName: 'Quiz Name',
       pointImg: require('~/assets/point.svg'),
       time: '1 hour',
-      aimList: [
-        { content: 'Aim no.1' },
-        { content: 'Aim no.2' },
-        { content: 'Aim no.3' },
-      ],
     };
   },
   props: ['topicName', 'totalQues'],

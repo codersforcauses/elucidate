@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-full pb-4 bg-violet-300 rounded-sm shadow-md min-h-full"
+    class="relative w-full pb-4 bg-indigo-300 rounded-sm shadow-md min-h-full"
   >
     <!-- Question Number -->
     <div class="flex bg-teal-100 py-4 rounded-sm">
@@ -20,7 +20,7 @@
       </div>
 
       <!-- Question Choices -->
-      <div v-if="this.question_type === 1">
+      <div v-if="this.quizdata.question_type[0] === 'mcq'">
         <div class="justify-center grid grid-cols-1 w-full select-none">
           <select
             v-model="answer"
@@ -43,17 +43,18 @@
       </div>
 
       <!-- Short Answer Choices -->
-      <!-- <div v-if="this.question_type === 2"> -->
+      <div v-if="this.quizdata.question_type[0] === 'short_answer'">
       <div class="p-5">
         <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
           <div>Answer</div>
           <textarea
             id="message"
             rows="4"
-            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Your message..."
           ></textarea>
         </div>
+      </div>
       </div>
       <!-- </div> -->
 
@@ -153,7 +154,9 @@ export default {
       answer: '',
       answerArray: [],
       completed: false,
-      question_type: null
+      mcq_type: false,
+      SA_type: false,
+      num_type: false
     };
   },
   methods: {
@@ -174,22 +177,9 @@ export default {
       this.answerArray.push(this.answer);
     },
     created() {
-      
       if (this.quizdata === null) {
         this.not_found = true;
       }
-      console.log(this.quizdata)
-
-      if (this.quizdata.question_type[0] === "mcq"){
-        this.question_type = 1 // 1 is mcq
-      } else if (this.quizdata.question_type[0] === "short_answer") {
-        this.question_type = 2 // 2 is short_answer
-      } else if (this.quizdata.question_type[0] === "numerical") {
-        this.question_type = 3 // 3 is numerical
-      } else {
-        console.log("Unknown question_type");
-      }
-      console.log(this.question_type)
     },
   },
   components: { ProgressBar },
