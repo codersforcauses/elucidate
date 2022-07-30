@@ -26,19 +26,6 @@ services:
       # Barrier for OS node modules specific
       - /app_code/node_modules
 
-  docs:
-    build:
-      context: .
-      dockerfile: docker/docs/Dockerfile
-    container_name: elucidate_docs
-    restart: unless-stopped
-    env_file:
-      - .env
-    ports:
-      - 8000:8000
-    volumes:
-      - ./documentation:/documentation
-
   server:
     build:
       context: .

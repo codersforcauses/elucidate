@@ -35,7 +35,7 @@ export default {
       '~/components',
       '~/components/Section',
       '~/components/Input',
-      '~/components/Form',
+      '~/components/Auth',
     ],
   },
 
@@ -49,13 +49,13 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     '@nuxt/image',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.BACKEND_URL || 'http://127.0.0.1:8081/api/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -67,5 +67,32 @@ export default {
   // Purge CSS Configuration: https://go.nuxtjs.dev/config-purgecss
   purgeCSS: {
     whitelistPatterns: [/svg.*/, /fa.*/],
+  },
+
+  router: {
+    // set to false for easier testing
+    // middleware: ['auth'],
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          // required: true,
+          // type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: 'auth/login/', method: 'post' },
+          logout: { url: 'auth/logout/', method: 'post' },
+          user: { url: 'auth/user/', method: 'get' },
+        },
+      },
+    },
   },
 };
