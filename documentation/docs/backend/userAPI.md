@@ -93,7 +93,7 @@ This API is used to manage the user lifecycle. It allows us to:
 
 ## Sample Call
 
-_Still to do_
+**_Still to do_**
 
 ----
 
