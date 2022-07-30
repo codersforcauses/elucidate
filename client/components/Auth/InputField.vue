@@ -1,10 +1,9 @@
 <template>
   <div>
     <label class="font-semibold">{{ fieldName }}</label>
-    <ValidationProvider v-slot="{ errors, touched }" :vid="id" :rules="rules">
+    <ValidationProvider v-slot="{ errors }" :vid="id" :rules="rules">
       <div class="relative flex items-center -mt-2">
         <input
-          v-if="fieldType != 'dropdown'"
           v-model="inputValue"
           :name="fieldName"
           :type="showText ? 'text' : fieldType"
@@ -12,9 +11,9 @@
         />
         <div
           v-if="fieldType == 'password'"
-          class="absolute right-0 top-auto bottom-auto left-auto w-10"
-          @mouseenter="toggleShowText"
-          @mouseleave="toggleShowText"
+          class="w-10 absolute top-auto left-auto bottom-auto right-0"
+          @mouseenter="clickCheck"
+          @mouseleave="clickCheck"
         >
           <font-awesome-icon
             :icon="['fas', 'fa-eye']"
@@ -39,7 +38,7 @@
           />
         </select>
       </div>
-      <span v-if="touched" class="text-red">{{ errors[0] }}</span>
+      <span class="text-red">{{ errors[0] }}</span>
     </ValidationProvider>
   </div>
 </template>
@@ -89,10 +88,6 @@ export default {
       default: 'text',
     },
     isPassword: Boolean,
-    fieldOptions: {
-      type: Array,
-      default: undefined,
-    },
     id: {
       type: String,
       default: undefined,
@@ -107,7 +102,7 @@ export default {
     inputValue: '',
   }),
   methods: {
-    toggleShowText: function () {
+    clickCheck: function () {
       this.showText = !this.showText;
     },
   },
