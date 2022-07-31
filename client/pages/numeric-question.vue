@@ -48,7 +48,7 @@
         /></InputLabel>
 
         <InputLabel class="ml-[75px]" field-name="Answer: "
-          ><ResponseBox class="ml-[8px]"></ResponseBox>
+          ><AnswersBox></AnswersBox>
         </InputLabel>
 
         <div class="flex place-content-end mt-5 pb-5 mx-10">
@@ -65,7 +65,7 @@
 <script>
 import Box from '~/components/Quiz/Box.vue';
 import QuestionBox from '~/components/Quiz/QuestionBox.vue';
-import ResponseBox from '~/components/Quiz/ResponseBox.vue';
+import AnswersBox from '~/components/Quiz/AnswersBox.vue';
 import QuizButton from '~/components/Quiz/QuizButton.vue';
 import MultiselectBox from '~/components/Quiz/MultiselectBox.vue';
 import InputLabel from '~/components/Quiz/InputLabel.vue';
@@ -74,7 +74,7 @@ export default {
   components: {
     Box,
     QuestionBox,
-    ResponseBox,
+    AnswersBox,
     QuizButton,
     MultiselectBox,
     InputLabel,
