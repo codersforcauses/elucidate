@@ -2,16 +2,16 @@
   <div class="flex m-20">
     <div>
       <QuizDetailCard
-        v-if="!this.not_found"
-        :topicName="this.quiz_name"
-        :totalQues="this.quiz_num_questions"
+        v-if="!not_found"
+        :topic-name="quiz_name"
+        :total-ques="quiz_num_questions"
       />
     </div>
     <div class="ml-10 min-w-[50%] min-h-[40%]">
       <QuestionCard
-        :not_found="this.not_found"
-        :quizdata="this.quizdata"
-        :max="this.quiz_num_questions"
+        :not_found="not_found"
+        :quizdata="quizdata"
+        :max="quiz_num_questions"
       />
     </div>
   </div>
@@ -21,7 +21,7 @@
 <script>
 import dummyjson from '../components/dummy.json';
 export default {
-  name: 'quizSolve',
+  name: 'QuizSolve',
   data() {
     return {
       quizID: parseInt(this.$route.query.quizid),

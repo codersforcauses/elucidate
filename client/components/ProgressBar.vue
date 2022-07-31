@@ -1,17 +1,17 @@
 <script>
 export default {
-  data() {
-    return {
-      // curr:1,
-      // max:20
-    };
-  },
   // methods: {
   //   clicked() {
   //     curr = Math.random() * max
   //   }
   // },
   props: ['curr', 'max'],
+  data() {
+    return {
+      // curr:1,
+      // max:20
+    };
+  },
 };
 </script>
 

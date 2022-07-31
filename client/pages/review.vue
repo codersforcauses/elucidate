@@ -17,15 +17,18 @@
           <div>Mark</div>
         </div>
         <reviewCard
-        :not_found="this.not_found"
-        :quizdata="this.quizdata"
-        :max="this.quiz_num_questions"
+          :not_found="this.not_found"
+          :quizdata="this.quizdata"
+          :max="this.quiz_num_questions"
         />
       </div>
       <!-- Explanation -->
-        <div v-if="this.quizdata.answer[0]" class="inline-block bg-teal-200 rounded-lg p-4 ml-36">
-            <div>Your answer is correct</div>
-        </div>
+      <div
+        v-if="this.quizdata.answer[0]"
+        class="inline-block bg-teal-200 rounded-lg p-4 ml-36"
+      >
+        <div>Your answer is correct</div>
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +36,7 @@
 <script>
 import dummyjson from '../components/dummy.json';
 export default {
-  name: 'quizReview',
+  name: 'QuizReview',
   data() {
     return {
       quizID: parseInt(this.$route.query.quizid),
