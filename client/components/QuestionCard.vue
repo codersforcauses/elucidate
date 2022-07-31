@@ -44,39 +44,24 @@
 
       <!-- Short Answer Choices -->
       <div v-if="this.quizdata.question_type[0] === 'short_answer'">
-      <div class="p-5">
-        <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
-          <div>Answer</div>
-          <textarea
-            id="message"
-            rows="4"
-            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Your message..."
-          ></textarea>
+        <div class="p-5">
+          <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
+            <div>Answer</div>
+            <textarea
+              id="message"
+              rows="4"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Your message..."
+            ></textarea>
+          </div>
         </div>
       </div>
-      </div>
-      <!-- </div> -->
 
       <!-- Numerical Answer Choices -->
-      <!-- <div v-if="this.question_type === 3">
+      <div v-if="this.quizdata.question_type[0] === 'numerical'">
 
-      </div> -->
+      </div>
 
-
-      <!-- Next/Back buttons 
-      <div class="flex justify-end px-5 mt-2">
-        <button>
-          <div class="inline-block text-center text-xs text-white py-0.5 px-2 mr-1 bg-yellow-600 rounded-xl shadow-md hover:bg-yellow-700 hover:shadow-lg focus:bg-yellow-700 focus:shadow-lg focus:outline-none active:bg-yellow-800 active:shadow-lg transition duration-300 ease-in-out" @click="prevQuestion">
-              Back
-          </div>
-        </button>
-        <button>
-          <div class="inline-block text-center text-xs text-white py-0.5 px-2 bg-pink-600 rounded-xl shadow-md hover:bg-pink-700 hover:shadow-lg focus:bg-pink-700 focus:shadow-lg focus:outline-none active:bg-pink-800 active:shadow-lg transition duration-300 ease-in-out" @click="nextQuestion">
-              Next
-          </div>
-        </button>
-      </div> -->
     </div>
     <div v-else class="content-center">
       <h1 class="text-center text-4xl text-white mt-20">
@@ -154,9 +139,6 @@ export default {
       answer: '',
       answerArray: [],
       completed: false,
-      mcq_type: false,
-      SA_type: false,
-      num_type: false
     };
   },
   methods: {

@@ -17,7 +17,8 @@
       ["nice", "bad", "good", "great"],
       ["idk", "4021", "4028", "4232"]
     ],
-    "tags": ["Maths", "Problem/Solving"]
+    "tags": ["Maths", "Problem/Solving"],
+    "answer": ["10x"]
   },
   {
     "quiz_id": 102,
@@ -41,9 +42,7 @@
   {
     "quiz_id": 103,
     "quiz_name": "Favourite Colours",
-    "question_desc": [
-      "Which of these U.S. states does NOT border Canada?"
-    ],
+    "question_desc": ["Which of these U.S. states does NOT border Canada?"],
     "question_type": ["short_answer"],
     "tags": ["Geography", "Humanities"]
   }
