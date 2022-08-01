@@ -23,7 +23,7 @@
     "@nuxtjs/auth-next": "5.0.0-1648802546.c9880dc",
     "@nuxtjs/axios": "5.13.6",
     "consola": "2.15.3",
-    "core-js": "3.23.3",
+    "core-js": "3.24.1",
     "nuxt": "2.15.8",
     "vee-validate": "3",
     "vue": "2.7.5",
