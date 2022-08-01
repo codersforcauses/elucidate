@@ -1,26 +1,23 @@
 <template>
-  <div
-    v-if="Object.keys(errors).length !== 0"
-    class="bg-red p-3 my-6 text-neutral-100 font-bold rounded-md"
+  <ul
+    class="bg-red p-3 my-6 text-neutral-100 font-bold rounded-md list-disc"
   >
-    <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
-    <p class="inline">
+    <h1>
+      <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
       <slot> Please fix the following errors: </slot>
-    </p>
-    <div v-for="(messages, error) in errors" :key="error" class="mt-2 text-lg">
-      {{ error }}
-      <p v-for="(message, i) in messages" :key="i" class="text-base">
-        {{ message }}
-      </p>
-    </div>
-  </div>
+    </h1>
+    <li v-for="error in errors" :key="error.toString()" class="ml-8">
+      <h2>{{ error.name }}</h2>
+      <p>{{ error.message }}</p>
+    </li>
+  </ul>
 </template>
 
 <script>
 export default {
   props: {
     errors: {
-      type: Object,
+      type: Array[Error],
       required: true,
     },
   },

@@ -6,8 +6,8 @@ Hides if there aren't any errors.
 ## Props
 
 - `errors`
-    - An array of error objects.
-    - Object.
+    - An array of errors to be shown in the list.
+    - Array[Error].
     - Required.
 
 ## Events

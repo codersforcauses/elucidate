@@ -1,10 +1,15 @@
 # AuthForm
 
 A teal coloured box used to house authorisation form components.
+Features an error list using AuthAlert.
 
 ## Props
 
-None.
+- `errors`
+    - An array of errors to be shown in the error list.
+    - Array[Error].
+    - Optional.
+    - []
 
 ## Events
 

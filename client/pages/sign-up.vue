@@ -1,8 +1,5 @@
 <template>
-  <AuthForm v-if="!accountCreated" v-slot="{ invalid }" @submit="register">
-    <AuthAlert :errors="errors">
-      Error creating account, please fix the following errors:
-    </AuthAlert>
+  <AuthForm v-if="!accountCreated"  v-slot="{ invalid }" error-header="Error creating account, please fix the following errors:" :errors="errors" @submit="register">
     <InputField
       v-for="field in fields"
       :id="field.id"
@@ -51,7 +48,7 @@ export default {
     title: 'Sign-Up',
     accountCreated: false,
     name: '',
-    errors: {},
+    errors: [],
     fields: [
       {
         name: 'First Name',
@@ -117,11 +114,11 @@ export default {
         })
         .catch((error) => {
           if (error.response) {
-            this.errors = error.response.data;
+            this.errors = [error.response.data];
           } else if (error.request) {
-            this.errors['No Response'] = [error.request];
+            this.errors = [{name: 'No Response', message: error.request.toString()}];
           } else {
-            this.errors['Unknown Error'] = [error.message];
+            this.errors = [error];
           }
         });
     },

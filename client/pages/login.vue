@@ -1,8 +1,5 @@
 <template>
-  <AuthForm v-slot="{ invalid }" @submit="signin">
-    <AuthAlert :errors="errors">
-      Error while signing in, please fix the following errors:
-    </AuthAlert>
+  <AuthForm v-slot="{ invalid }" error-header="Error while signing in, please fix the following errors:" :errors="errors" @submit="signin">
     <InputField
       id="email"
       class="w-full"
@@ -41,7 +38,7 @@ export default {
   layout: 'auth',
   data() {
     return {
-      errors: {},
+      errors: [],
     };
   },
   head: {
@@ -59,7 +56,7 @@ export default {
       try {
         await this.$auth.loginWith('local', { data });
       } catch (error) {
-        this.errors[error.name] = [error.message];
+        this.errors = [error];
       }
     },
   },
