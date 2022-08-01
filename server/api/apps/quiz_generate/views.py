@@ -16,11 +16,13 @@ class GenerateQuizView(generics.CreateAPIView):
     """
     POST request to return random questions based on request parameters.
     """
+
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            # filter questions by subject and topics
+            # filter questions by verification, subject and topics
             questions = self.get_queryset()
+            questions = questions.filter(is_verified=True)
             questions = questions.filter(subject=serializer.data["subject"])
             for topic in serializer.data["topics"]:
                 questions = questions.filter(topics=topic)
@@ -30,16 +32,16 @@ class GenerateQuizView(generics.CreateAPIView):
             for question in questions:
                 pk_list.append(question.pk)
 
-            # shorten PK list to question_count
             question_count = serializer.data["question_count"]
             if question_count < 1:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-            elif question_count >= questions.count():
-                return Response({"pk_array": pk_list})
-            else:
-                return Response(
-                    {"pk_array": random.sample(pk_list, question_count)}
-                )
+
+            # make sure question_count is not larger than pk_list
+            if question_count > questions.count():
+                question_count = questions.count()
+            return Response(
+                {"pk_array": random.sample(pk_list, question_count)}
+            )
 
 
 class SubjectExistsView(generics.CreateAPIView):
@@ -51,6 +53,7 @@ class SubjectExistsView(generics.CreateAPIView):
     POST request to check if a subject exists in the database.
     If it does exist, return the subject's PK.
     """
+
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
@@ -70,6 +73,7 @@ class TopicExistsView(generics.CreateAPIView):
     If it does exist, check that it is related to the subject and
     return the topic's PK.
     """
+
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
