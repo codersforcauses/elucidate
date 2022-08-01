@@ -1,7 +1,5 @@
 <template>
-  <ul
-    class="bg-red p-3 my-6 text-neutral-100 font-bold rounded-md list-disc"
-  >
+  <ul class="bg-red p-3 my-6 text-neutral-100 font-bold rounded-md list-disc">
     <h1>
       <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
       <slot> Please fix the following errors: </slot>

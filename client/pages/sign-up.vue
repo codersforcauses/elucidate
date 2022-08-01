@@ -1,5 +1,11 @@
 <template>
-  <AuthForm v-if="!accountCreated"  v-slot="{ invalid }" error-header="Error creating account, please fix the following errors:" :errors="errors" @submit="register">
+  <AuthForm
+    v-if="!accountCreated"
+    v-slot="{ invalid }"
+    error-header="Error creating account, please fix the following errors:"
+    :errors="errors"
+    @submit="register"
+  >
     <InputField
       v-for="field in fields"
       :id="field.id"
@@ -116,7 +122,9 @@ export default {
           if (error.response) {
             this.errors = [error.response.data];
           } else if (error.request) {
-            this.errors = [{name: 'No Response', message: error.request.toString()}];
+            this.errors = [
+              { name: 'No Response', message: error.request.toString() },
+            ];
           } else {
             this.errors = [error];
           }

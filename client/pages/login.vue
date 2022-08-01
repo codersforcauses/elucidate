@@ -1,5 +1,10 @@
 <template>
-  <AuthForm v-slot="{ invalid }" error-header="Error while signing in, please fix the following errors:" :errors="errors" @submit="signin">
+  <AuthForm
+    v-slot="{ invalid }"
+    error-header="Error while signing in, please fix the following errors:"
+    :errors="errors"
+    @submit="signin"
+  >
     <InputField
       id="email"
       class="w-full"
