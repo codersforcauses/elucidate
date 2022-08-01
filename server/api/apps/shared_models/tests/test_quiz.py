@@ -1,10 +1,12 @@
 from django.test import TestCase
 from django.utils import timezone
-from ..models.quiz_models import Question, Tag, Answer
 
-MC = Question.QuestionType.MULTICHOICE
-NA = Question.QuestionType.NUMERIC
-SA = Question.QuestionType.SHORT_ANSWER
+from api.apps.shared_models.models.quiz_models import (
+    Answer,
+    Question,
+    Subject,
+    Topic,
+)
 
 
 class QuestionTestCase(TestCase):
@@ -12,13 +14,16 @@ class QuestionTestCase(TestCase):
         self.creation_time = timezone.now()
 
         Question.objects.create(
-            text="Test multiple choice question", question_type=MC
+            text="Test multiple choice question",
+            question_type=Question.QuestionType.MULTICHOICE,
         )
         Question.objects.create(
-            text="Test numerical answer question", question_type=NA
+            text="Test numerical answer question",
+            question_type=Question.QuestionType.NUMERIC,
         )
         Question.objects.create(
-            text="Test short answer question", question_type=SA
+            text="Test short answer question",
+            question_type=Question.QuestionType.SHORT_ANSWER,
         )
 
     def test_text(self):
@@ -53,25 +58,46 @@ class QuestionTestCase(TestCase):
         )
 
 
-class TagTestCase(TestCase):
+class SubjectTestCase(TestCase):
     def setUp(self):
-        q = Question.objects.create(
-            text="This is a physics question", question_type=NA
+        s = Subject.objects.create(name="Unit 3 Physics")
+        Question.objects.create(
+            text="This is a physics question",
+            question_type=Question.QuestionType.NUMERIC,
+            subject=s,
         )
-        t = Tag.objects.create(name="Unit 3 Physics")
-        q.tag_set.add(t)
 
     def test(self):
         q = Question.objects.get(text="This is a physics question")
-        t = Tag.objects.get(name="Unit 3 Physics")
-        self.assertEqual(str(t), "Unit 3 Physics")
+        s = Subject.objects.get(name="Unit 3 Physics")
+        self.assertEqual(str(s), "Unit 3 Physics")
+        self.assertEqual(q.subject, s)
 
-        self.assertTrue(t in q.tag_set.all())
+
+class TopicTestCase(TestCase):
+    def setUp(self):
+        s = Subject.objects.create(name="Unit 3 Physics")
+        t = Topic.objects.create(name="Projectile Motion", subject=s)
+        q = Question.objects.create(
+            text="Another physics question!",
+            question_type=Question.QuestionType.SHORT_ANSWER,
+            subject=s,
+        )
+        q.topics.add(t)
+
+    def test(self):
+        q = Question.objects.get(text="Another physics question!")
+        s = Subject.objects.get(name="Unit 3 Physics")
+        t = Topic.objects.get(name="Projectile Motion")
+        self.assertEqual(t.subject, s)
+        self.assertTrue(t in q.topics.all())
 
 
 class AnswerTestCase(TestCase):
     def setUp(self):
-        q = Question.objects.create(text="Question?", question_type=SA)
+        q = Question.objects.create(
+            text="Question?", question_type=Question.QuestionType.SHORT_ANSWER
+        )
         Answer.objects.create(text="Answer!", question=q, is_correct=True)
 
     def test(self):

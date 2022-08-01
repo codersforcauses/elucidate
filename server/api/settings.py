@@ -8,13 +8,13 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import datetime
-from decouple import config
 from pathlib import Path
+
+from decouple import config
 from django.core.management.commands.runserver import Command as runserver
 
-
 runserver.default_addr = "0"
-runserver.default_port = "8000"
+runserver.default_port = "8081"
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,7 +41,7 @@ ALLOWED_HOSTS = config(
 
 INSTALLED_APPS = [
     "api.apps.shared_models",
-    "api.apps.quiz_create",
+    "api.apps.quiz_take",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -67,6 +67,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+# DEV ONLY
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = "api.urls"
 
@@ -146,9 +149,9 @@ REST_FRAMEWORK = {
     ),
     "PAGE_SIZE": 10,
     "NON_FIELD_ERRORS_KEY": "errors",
-    "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions.IsAuthenticated",
-    ),
+    # "DEFAULT_PERMISSION_CLASSES": (
+    #     "rest_framework.permissions.IsAuthenticated",
+    # ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
         "rest_framework.authentication.SessionAuthentication",

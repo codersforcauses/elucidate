@@ -1,7 +1,8 @@
 from django.urls import reverse
-from api.apps.users.models import User
 from rest_framework import status
 from rest_framework.test import APITestCase
+
+from api.apps.users.models import User
 
 
 class AuthTestCase(APITestCase):
@@ -10,7 +11,7 @@ class AuthTestCase(APITestCase):
             email="john.doe@example.com",
             first_name="John",
             last_name="Doe",
-            grade=11,
+            grade="Grade 11",
             password="password",
         )
         # self.testuser.set_password("password")
