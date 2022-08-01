@@ -51,7 +51,7 @@ export default {
   auth: false,
   layout: 'auth',
   data: () => ({
-    title: 'Sign-Up',
+    title: 'Sign Up',
     accountCreated: false,
     name: '',
     errors: [],
@@ -101,8 +101,10 @@ export default {
       },
     ],
   }),
-  head: {
-    title: 'Sign Up',
+  head() {
+    return {
+      title: this.title,
+    };
   },
   methods: {
     async register(e) {
