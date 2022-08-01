@@ -30,7 +30,7 @@ class QuizGenerateTests(APITestCase):
             question_type="MC",
             marks=1,
             creator=self.user,
-            is_verified=True
+            is_verified=True,
         )
         self.q1.topics.add(self.t)
         self.q2 = Question.objects.create(
@@ -39,7 +39,7 @@ class QuizGenerateTests(APITestCase):
             question_type="MC",
             marks=1,
             creator=self.user,
-            is_verified=True
+            is_verified=True,
         )
         self.q2.topics.add(self.t2)
 
