@@ -24,7 +24,7 @@
           <InputLabel class="ml-[70px]" field-name="Subjects: ">
             <MultiselectBox
               ref="selectedSubject"
-              class="flex flex-row ml-[18px] w-[700px] justify-centre items-center shadow-md"
+              class="flex flex-row ml-[18px] w-[700px] justify-centre items-center shadow-md rounded-lg"
               :options="subjectOptions"
               placeholder="Search or select a subject"
             ></MultiselectBox>
@@ -34,7 +34,7 @@
           <InputLabel class="ml-[80px]" field-name="Topics: ">
             <MultiselectBox
               ref="selectedTopics"
-              class="flex flex-row ml-[30px] w-[700px] justify-centre items-center shadow-md"
+              class="flex flex-row ml-[30px] w-[700px] justify-centre items-center shadow-md rounded-lg"
               :options="topicOptions"
               placeholder="Search or select topics"
               :multiple="true"
@@ -52,10 +52,12 @@
         </InputLabel>
 
         <div class="flex place-content-end mt-5 pb-5 mx-10">
-          <QuizButton color="red" class="mr-10 shadow-md">
+          <QuizButton color="red" class="mr-10 shadow-md rounded-full">
             + Add Question
           </QuizButton>
-          <QuizButton color="red" class="shadow-md">Finish</QuizButton>
+          <QuizButton color="red" class="shadow-md rounded-full"
+            >Finish</QuizButton
+          >
         </div>
       </Box>
     </div>
