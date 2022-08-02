@@ -16,7 +16,15 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', href: 'branding/logo.svg' }],
+    link: [
+      { rel: 'icon', href: 'branding/logo.svg' },
+      // Safari pinned tab icon
+      {
+        rel: 'mask-icon',
+        href: 'branding/elucidate-logo-mask.svg',
+        color: '#aeb0c7',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
