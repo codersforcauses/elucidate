@@ -24,6 +24,12 @@ export default {
         href: 'branding/elucidate-logo-mask.svg',
         color: '#aeb0c7',
       },
+      // iOS icon
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: 'branding/apple-touch-icon.png',
+      },
     ],
   },
 
