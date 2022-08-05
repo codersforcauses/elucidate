@@ -89,10 +89,16 @@ export default {
     showText: false,
     inputValue: '',
   }),
+  watch: {
+    inputValue: function (newInputValue) {
+      this.$emit('input', newInputValue);
+    },
+  },
   methods: {
     clickCheck: function () {
       this.showText = !this.showText;
     },
   },
 };
+
 </script>
