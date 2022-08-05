@@ -12,6 +12,6 @@
 
 <script>
 export default {
-  name: 'haveAccBtn',
+  name: 'HaveAccBtn',
 };
 </script>
