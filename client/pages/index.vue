@@ -14,7 +14,7 @@
           <nuxt-img src="shapes.svg" class="mt-5 w-96 justify-self-start" />
         </div>
         <div>
-          <nuxt-img src="QAimage.svg" />
+          <nuxt-img src="QAimage.png" />
         </div>
       </div>
     </div>
