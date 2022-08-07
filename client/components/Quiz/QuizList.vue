@@ -18,10 +18,8 @@
 </template>
 
 <script>
-import QuizListItem from './QuizListItem.vue';
 export default {
   name: 'QuizList',
-  components: { QuizListItem },
   props: {
     quizzes: {
       type: Array,

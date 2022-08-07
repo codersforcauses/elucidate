@@ -47,13 +47,8 @@
 </template>
 
 <script>
-import LeftBanner from '../components/Dashboard/LeftBanner.vue';
-import QuizList from '../components/Quiz/QuizList.vue';
-import UserAttributeCard from '../components/Dashboard/UserAttributeCard.vue';
-
 export default {
   name: 'UserDashboard',
-  components: { LeftBanner, UserAttributeCard, QuizList },
   data: () => ({
     User: { stats: {} },
     quizzesTaken: [],
