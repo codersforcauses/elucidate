@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils';
 import SearchBar from '@/components/Input/SearchBar.vue';
+import { mount } from '@vue/test-utils';
 
 describe('SearchBar', () => {
   it('is a Vue instance', () => {
