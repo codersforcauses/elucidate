@@ -23,11 +23,8 @@
 </template>
 
 <script>
-import ButtonElement from '../Input/ButtonElement.vue';
-import ColouredBox from '../Quiz/ColouredBox.vue';
 export default {
   name: 'UserAttributeCard',
-  components: { ButtonElement, ColouredBox },
   props: {
     label: {
       type: String,

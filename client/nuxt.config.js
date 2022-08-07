@@ -35,8 +35,9 @@ export default {
       '~/components',
       '~/components/Section',
       '~/components/Input',
-      '~/components/Form',
       '~/components/Auth',
+      '~/components/Dashboard',
+      '~/components/Quiz',
     ],
   },
 
