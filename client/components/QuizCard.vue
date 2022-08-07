@@ -1,28 +1,25 @@
 <template>
-  <div class="p-5 bg-white rounded-xl border border-gray-200 drop-shadow-md">
-    <div class="flex justify-between">
-      <!-- Quiz tags - looping through an array of tags -->
-      <div class="flex flex-wrap">
-        <div v-for="tag in tags" :key="tag.tagLabel">
-          <div class="text-center p-1 mr-2 mb-4 bg-yellow-300 rounded-md">
-            {{ tag.tagLabel }}
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="p-10 bg-white border border-gray-200 rounded-xl drop-shadow-md">
     <div>
       <nuxt-img src="Polygon.svg" class="float-left" />
-      <div class="ml-11">
+      <div class="mx-11">
         <!-- Topic Name -->
-        <div class="text-black text-3xl">{{ topicName }}</div>
+        <div class="text-3xl font-bold font-openSans">
+          {{ topicName }}
+        </div>
         <!-- Subject Name -->
-        <div class="text-black text-xl my-1.5">{{ subjectName }}</div>
+        <div class="text-xl my-1.5">{{ subjectName }}</div>
+
         <!-- Total questions and duration -->
-        <div class="grid grid-cols-2">
-          <div class="text-black text-md justify-self-start">
+        <div class="text-md font-roboto text-darkblue">
+          <span class="mr-5">
             {{ totalQues }}
-          </div>
-          <div class="text-black text-md jusitfy-self-end">{{ totalHour }}</div>
+          </span>
+
+          <span>
+            <font-awesome-icon :icon="['fas', 'stopwatch']" />
+            {{ totalHour }}
+          </span>
         </div>
       </div>
       <!-- Start button component -->
@@ -40,12 +37,6 @@ export default {
       subjectName: 'Subject Name',
       totalQues: '50 questions',
       totalHour: '1hr',
-      tags: [
-        { tagLabel: 'Tag 1' },
-        { tagLabel: 'Tag 2' },
-        { tagLabel: 'Tag 3' },
-        { tagLabel: 'Tag 4' },
-      ],
     };
   },
 };
