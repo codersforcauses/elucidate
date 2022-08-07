@@ -33,7 +33,7 @@
     "webpack": "4.46.0"
   },
   "devDependencies": {
-    "@babel/core": "7.18.6",
+    "@babel/core": "7.18.10",
     "@nuxt/image": "0.7.1",
     "@nuxtjs/eslint-config": "^10.0.0",
     "@nuxtjs/tailwindcss": "5.3.1",
