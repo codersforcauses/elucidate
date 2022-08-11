@@ -144,7 +144,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "django"
-version = "4.0.6"
+version = "4.0.7"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
@@ -156,8 +156,8 @@ sqlparse = ">=0.2.2"
 tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 
 [package.extras]
-argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
+argon2 = ["argon2-cffi (>=19.1.0)"]
 
 [[package]]
 name = "django-cors-headers"
@@ -237,7 +237,7 @@ djangorestframework-simplejwt = ">=4.3.0,<5.0.0"
 social-auth-app-django = ">=4.0.0,<5.0.0"
 
 [package.extras]
-test = ["pytest (>=6.0.2,<7.0.0)", "codecov (>=2.0.16,<3.0.0)", "coverage (>=5.3,<6.0)", "pytest-cov (>=2.10.1,<3.0.0)", "pytest-django (>=3.10.0,<4.0.0)", "pytest-pythonpath (>=0.7.3,<0.8.0)", "djet (>=0.2.2,<0.3.0)"]
+test = ["djet (>=0.2.2,<0.3.0)", "pytest-pythonpath (>=0.7.3,<0.8.0)", "pytest-django (>=3.10.0,<4.0.0)", "pytest-cov (>=2.10.1,<3.0.0)", "coverage (>=5.3,<6.0)", "codecov (>=2.0.16,<3.0.0)", "pytest (>=6.0.2,<7.0.0)"]
 
 [[package]]
 name = "drf-jwt"
@@ -253,10 +253,10 @@ djangorestframework = ">=3.7"
 PyJWT = {version = ">=1.5.2,<3.0.0", extras = ["crypto"]}
 
 [package.extras]
-dev = ["tox"]
+test = ["six", "pytest-runner", "pytest-django", "pytest-cov", "pytest (>=3.0)", "mock"]
+lint = ["flake8", "black", "isort"]
 docs = ["mkdocs (==0.13.2)"]
-lint = ["isort", "black", "flake8"]
-test = ["mock", "pytest (>=3.0)", "pytest-cov", "pytest-django", "pytest-runner", "six"]
+dev = ["tox"]
 
 [[package]]
 name = "flake8"
@@ -602,7 +602,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "a815541806f9fc5a5fba43e4d77f9751a7fbad48131e2697f703bcda4e68cd5e"
+content-hash = "4400b4ed8ac064f0dab693d84e40e0ad2902618a7284e374e58fc51a6b7d009a"
 
 [metadata.files]
 asgiref = [
@@ -796,8 +796,8 @@ defusedxml = [
     {file = "defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69"},
 ]
 django = [
-    {file = "Django-4.0.6-py3-none-any.whl", hash = "sha256:ca54ebedfcbc60d191391efbf02ba68fb52165b8bf6ccd6fe71f098cac1fe59e"},
-    {file = "Django-4.0.6.tar.gz", hash = "sha256:a67a793ff6827fd373555537dca0da293a63a316fe34cb7f367f898ccca3c3ae"},
+    {file = "Django-4.0.7-py3-none-any.whl", hash = "sha256:41bd65a9e5f8a89cdbfa7a7bba45cd7431ae89e750af82dea8a35fd1a7ecbe66"},
+    {file = "Django-4.0.7.tar.gz", hash = "sha256:9c6d5ad36be798e562ddcaa6b17b1c3ff2d3c4f529a47432b69fb9a30f847461"},
 ]
 django-cors-headers = [
     {file = "django-cors-headers-3.13.0.tar.gz", hash = "sha256:f9dc6b4e3f611c3199700b3e5f3398c28757dcd559c2f82932687f3d0443cfdf"},
