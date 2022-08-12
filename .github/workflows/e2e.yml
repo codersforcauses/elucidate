@@ -46,7 +46,7 @@ jobs:
         working-directory: client
 
       - name: Cache node_modules 📦
-        uses: actions/cache@v3.0.6
+        uses: actions/cache@v3.0.7
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -73,7 +73,7 @@ jobs:
 
       - name: Cache .venv 📦
         id: cached-poetry-dependencies
-        uses: actions/cache@v3.0.6
+        uses: actions/cache@v3.0.7
         with:
           path: server/.venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
