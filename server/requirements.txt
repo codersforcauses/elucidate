@@ -32,7 +32,7 @@ isort
 itypes
 jeepney==0.8.0
 Jinja2
-keyring==23.7.0
+keyring==23.8.2
 lockfile==0.12.2
 Markdown
 MarkupSafe
