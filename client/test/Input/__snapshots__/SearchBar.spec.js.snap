@@ -10,7 +10,7 @@ exports[`SearchBar renders correctly 1`] = `
   />
    
   <input
-    class="h-10 bg-transparent focus:outline-none w-80"
+    class="h-10 bg-transparent focus:outline-none w-[100%]"
     placeholder="Find a quiz"
     type="text"
   />
