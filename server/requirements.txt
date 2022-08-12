@@ -11,7 +11,7 @@ clikit==0.6.2
 coreapi
 coreschema
 coverage
-crashtest==0.3.1
+crashtest==0.4.0
 cryptography==37.0.4
 defusedxml
 distlib==0.3.4
