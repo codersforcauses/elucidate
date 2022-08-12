@@ -13,6 +13,8 @@ module.exports = {
         blue3: '#7087FF50',
         blue4: '#7087FF25',
 
+        darkblue: '#132D54',
+
         green: '#53DFCB',
         green2: '#53DFCB75',
         green3: '#53DFCB50',
@@ -33,6 +35,7 @@ module.exports = {
         white: '#FFFFFF',
         lightgrey: '#E6E6E6',
         darkgrey: '#ADADAD',
+
         black: '#000000',
       },
       dropShadow: {
