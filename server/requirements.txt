@@ -14,7 +14,7 @@ coverage
 crashtest==0.3.1
 cryptography==37.0.4
 defusedxml
-distlib==0.3.4
+distlib==0.3.5
 Django
 django-cors-headers
 django-filter
