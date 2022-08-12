@@ -1,8 +1,8 @@
 <template>
   <div class="p-10 bg-white border border-gray-200 rounded-xl drop-shadow-md">
-    <div>
-      <nuxt-img src="Polygon.svg" class="float-left" />
-      <div class="mx-11">
+    <div class="flex items-start">
+      <nuxt-img src="Polygon.svg" />
+      <div class="ml-6">
         <!-- Topic Name -->
         <div class="text-3xl font-bold font-openSans">
           {{ topicName }}
@@ -12,19 +12,24 @@
 
         <!-- Total questions and duration -->
         <div class="text-md font-roboto text-darkblue">
-          <span class="mr-5">
+          <span class="mr-5 whitespace-nowrap">
             {{ totalQues }}
           </span>
 
-          <span>
+          <span class="whitespace-nowrap">
             <font-awesome-icon :icon="['fas', 'stopwatch']" />
             {{ totalHour }}
           </span>
         </div>
       </div>
-      <!-- Start button component -->
-      <StartButton />
+      <font-awesome-icon
+        :icon="['fas', subjectIcon]"
+        :class="`text-9xl flex-grow
+            ${subjectColor}`"
+      />
     </div>
+    <!-- Start button component -->
+    <StartButton />
   </div>
 </template>
 
@@ -37,6 +42,8 @@ export default {
       subjectName: 'Subject Name',
       totalQues: '50 questions',
       totalHour: '1hr',
+      subjectIcon: 'calculator',
+      subjectColor: 'text-red',
     };
   },
 };
