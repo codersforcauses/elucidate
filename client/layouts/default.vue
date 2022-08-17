@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <NavBar />
-    <Nuxt class="my-auto" />
+  <div class="font-Montserrat">
+    <NavBar class="sticky top-0" />
+    <Nuxt class="min-h-[72vh]" />
     <PageFooter />
   </div>
 </template>

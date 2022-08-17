@@ -13,6 +13,7 @@ module.exports = {
         blue3: '#7087FF50',
         blue4: '#7087FF25',
 
+        darkblue: '#132D54',
         aquablue: '#AAF5EB',
         aquablue2: '#AAF5EB75',
 
@@ -36,6 +37,7 @@ module.exports = {
         white: '#FFFFFF',
         lightgrey: '#E6E6E6',
         darkgrey: '#ADADAD',
+
         black: '#000000',
       },
       dropShadow: {
@@ -44,6 +46,7 @@ module.exports = {
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
         openSans: ['Open Sans', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
       },
     },
   },
