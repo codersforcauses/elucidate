@@ -91,6 +91,7 @@ export default {
     multChoiceSelected: false,
     shortAnswerSelected: false,
     numericSelected: false,
+    // Hardcoded options, need fetch data from backend
     allOptions: {
       Maths: ['Differentiation', 'Trigonometry', 'Integration'],
       Physics: ['Motion', 'Force', 'Planet'],
@@ -118,7 +119,7 @@ export default {
       }
     },
     getValues() {
-      console.log(this.data);
+      // Need to send data to backend
     },
   },
 };

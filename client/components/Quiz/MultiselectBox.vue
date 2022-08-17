@@ -61,7 +61,7 @@ export default {
     },
     classname: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   data: () => ({
@@ -76,4 +76,3 @@ export default {
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-
