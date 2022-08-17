@@ -58,11 +58,10 @@ export default {
         password: elements.Password.value,
       };
 
-      try {
-        await this.$auth.loginWith('local', { data });
-      } catch (error) {
-        this.errors = [error];
-      }
+      await this.$auth
+        .login({ data })
+        .then((resp) => this.$auth.setUserToken(resp.data))
+        .catch((error) => (this.errors = error.response.data));
     },
   },
 };

@@ -1,10 +1,10 @@
 <template>
-  <nav class="flex items-center justify-between h-20 bg-white shadow-xl">
+  <nav class="flex items-center justify-between h-20 bg-white shadow-xl z-50">
     <div class="flex items-center text-gray-600">
       <NuxtLink to="/" class="h-12 ml-32 -mt-2">
         <nuxt-img
           src="branding/logo_full.png"
-          class="h-12"
+          class="h-12 max-w-none"
           alt="Elucidate Logo Full"
         />
       </NuxtLink>
@@ -14,12 +14,15 @@
     </div>
     <div class="flex items-center">
       <SearchBar class="mr-24" />
-      <ButtonElement to="/login" type="primary" class="mr-3">
-        Log in
-      </ButtonElement>
-      <ButtonElement to="/sign-up" type="secondary" class="mr-10">
-        Sign up
-      </ButtonElement>
+
+      <div v-if="!this.$auth.loggedIn">
+        <ButtonElement to="/login" type="primary" class="mr-3">
+          Log in
+        </ButtonElement>
+        <ButtonElement to="/sign-up" type="secondary" class="mr-10">
+          Sign up
+        </ButtonElement>
+      </div>
     </div>
   </nav>
 </template>

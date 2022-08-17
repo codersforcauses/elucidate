@@ -19,7 +19,7 @@
     <AuthSubmit :disabled="invalid">Submit</AuthSubmit>
     <p class="self-center mt-3">
       Already have an account?
-      <NuxtLink to="/login" class="text-blue">Click here to log in</NuxtLink>
+      <NuxtLink to="/login" class="text-blue">Click here</NuxtLink> to log in
     </p>
   </AuthForm>
   <AuthForm
@@ -28,7 +28,7 @@
   >
     <h1 class="text-3xl">Congratulations {{ name }}!</h1>
     <p>
-      Your new Elucidate account<wbr />
+      Your new Elucidate account <wbr />
       has been created
     </p>
     <font-awesome-icon
@@ -37,9 +37,7 @@
     />
     <p>
       Please proceed to the
-      <NuxtLink to="/quiz" class="text-blue">Home Page</NuxtLink><wbr /> or
-      <NuxtLink to="/login" class="text-blue">Search</NuxtLink>
-      for quizzes
+      <NuxtLink to="/login" class="text-blue">login page</NuxtLink> to login!
     </p>
   </AuthForm>
 </template>
@@ -122,13 +120,13 @@ export default {
         })
         .catch((error) => {
           if (error.response) {
-            this.errors = [error.response.data];
+            this.errors = error.response.data;
           } else if (error.request) {
-            this.errors = [
-              { name: 'No Response', message: error.request.toString() },
-            ];
+            this.errors = {
+              'No Response': error.request.toString(),
+            };
           } else {
-            this.errors = [error];
+            this.errors = error;
           }
         });
     },

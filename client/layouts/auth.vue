@@ -11,7 +11,7 @@
       <p class="text-3xl italic">{{ title }}</p>
     </div>
     <Nuxt />
-    <nuxt-img src="shapes.svg" class="w-72 mt-auto" alt="Shapes" />
+    <nuxt-img src="shapes.svg" class="w-72 mt-4" alt="Shapes" />
   </div>
 </template>
 

@@ -3,6 +3,7 @@
     <AuthAlert v-if="errors.length !== 0" :errors="errors">
       {{ errorHeader }}
     </AuthAlert>
+
     <ValidationObserver
       v-slot="v"
       tag="form"

@@ -80,7 +80,6 @@ export default {
   auth: {
     strategies: {
       local: {
-        scheme: 'refresh',
         token: {
           property: 'token',
           global: true,
@@ -92,13 +91,12 @@ export default {
         },
         user: {
           property: 'user',
-          // autoFetch: true
         },
         endpoints: {
           login: { url: 'auth/login/', method: 'post' },
           refresh: { url: 'auth/refresh', method: 'post' },
           logout: { url: 'auth/logout/', method: 'post' },
-          user: { url: 'auth/user/', method: 'get' },
+          user: false,
         },
       },
     },
