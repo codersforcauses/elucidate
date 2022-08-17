@@ -1,51 +1,68 @@
 <template>
   <ContentBox class="flex justify-center" title="Begin Quiz">
     <div class="flex flex-col my-10 w-full h-auto">
-      <QuizInput field-name="Subject" :shadow-on="true">
+      <InputLabel field-name="Subject" :shadow-on="true">
         <MultiselectBox
           ref="selectedSubject"
-          :options="subjectOptions"
+          :options="Object.keys(allOptions)"
           placeholder="Search or select a subject"
+          @getData="updateSubject($event)"
         ></MultiselectBox>
-      </QuizInput>
-      <QuizInput field-name="Topics" :shadow-on="true">
+      </InputLabel>
+      <InputLabel field-name="Topics" :shadow-on="true">
         <MultiselectBox
-          ref="selectedTopics"
-          :options="topicOptions"
+          ref="choosenTopics"
+          :options="selectedSubject ? allOptions[selectedSubject] : []"
           placeholder="Search or select topics"
           :multiple="true"
           :hide-selected="true"
+          :allow-empty="true"
+          @getData="(selectedTopics = $event), checkValidity()"
         ></MultiselectBox>
-      </QuizInput>
-      <QuizInput field-name="Number of Questions" :shadow-on="true">
+      </InputLabel>
+      <InputLabel field-name="Number of Questions" :shadow-on="true">
         <input
           v-model="numOfQuestion"
           placeholder="Enter number of questions"
           type="number"
           min="1"
+          oninput="validity.valid||(value='')"
           class="w-full p-2 rounded-lg"
+          @input="checkValidity()"
         />
-      </QuizInput>
-      <QuizInput field-name="Type of Questions" :shadow-on="false">
+      </InputLabel>
+      <InputLabel field-name="Type of Questions" :shadow-on="false">
         <div class="flex">
-          <SelectBox ref="multipleChoice" label="Multiple Choice" />
-          <SelectBox ref="shortAnswer" label="Short Answer" />
-          <SelectBox ref="longAnswer" label="Long Answer" />
+          <SelectBox
+            ref="multipleChoice"
+            label="Multiple Choice"
+            @getData="(multChoiceSelected = $event), checkValidity()"
+          />
+          <SelectBox
+            ref="shortAnswer"
+            label="Short Answer"
+            @getData="(shortAnswerSelected = $event), checkValidity()"
+          />
+          <SelectBox
+            ref="longAnswer"
+            label="Numeric"
+            @getData="(numericSelected = $event), checkValidity()"
+          />
         </div>
-      </QuizInput>
+      </InputLabel>
     </div>
     <div class="flex justify-between">
       <button
-        class="rounded-full hover:font-bold bg-red2 hover:bg-red hover:text-white shadow-lg py-2 px-12 mb-7"
+        :disabled="!validData"
+        class="rounded-full shadow-lg py-2 px-12 mb-7"
+        :class="
+          validData
+            ? 'hover:font-bold bg-red2 hover:bg-red hover:text-white'
+            : 'text-darkgrey bg-lightgrey'
+        "
         @click="getValues"
       >
         Start Quiz
-      </button>
-      <button
-        class="rounded-full hover:font-bold bg-red2 hover:bg-red hover:text-white shadow-lg py-2 px-12 mb-7"
-        @click="changeOptions"
-      >
-        change
       </button>
     </div>
   </ContentBox>
@@ -54,7 +71,7 @@
 <script>
 import MultiselectBox from '~/components/Quiz/MultiselectBox.vue';
 import ContentBox from '~/components/Quiz/ContentBox.vue';
-import QuizInput from '~/components/Quiz/QuizInput.vue';
+import InputLabel from '~/components/Quiz/InputLabel.vue';
 import SelectBox from '~/components/Quiz/SelectBox.vue';
 
 export default {
@@ -62,42 +79,71 @@ export default {
   components: {
     ContentBox,
     MultiselectBox,
-    QuizInput,
     SelectBox,
+    InputLabel,
   },
   layout: 'quizbg',
   data: () => ({
     numOfQuestion: '',
-    subjectOptions: ['Maths', 'Geography', 'Physics'],
-    topicOptions: ['Differentiation', 'Trigonometry', 'Integration'],
+    selectedSubject: '',
+    selectedTopics: [],
+    validData: false,
+    multChoiceSelected: false,
+    shortAnswerSelected: false,
+    numericSelected: false,
     allOptions: {
-      Maths: [
-        'Maths - Differentiation',
-        'Maths - Trigonometry',
-        'Maths - Integration',
-      ],
-      Physics: ['Physics - Motion', 'Physics - Force', 'Physics - Planet'],
-      Geography: [
-        'Geography - GPS',
-        'Geography - Country',
-        'Geography - Culture',
-      ],
+      Maths: ['Differentiation', 'Trigonometry', 'Integration'],
+      Physics: ['Motion', 'Force', 'Planet'],
+      Geography: ['GPS', 'Country', 'Culture'],
     },
   }),
   methods: {
-    changeOptions() {
-      this.topicOptions = this.allOptions[this.$refs.selectedSubject.value];
+    updateSubject(selectedSubject) {
+      this.selectedSubject = selectedSubject;
+      this.$refs.choosenTopics.value = [];
+    },
+    checkValidity() {
+      const quesTypeSelected =
+        this.multChoiceSelected ||
+        this.shortAnswerSelected ||
+        this.numericSelected;
+      if (
+        this.selectedTopics.length > 0 &&
+        this.numOfQuestion &&
+        quesTypeSelected
+      ) {
+        this.validData = true;
+      } else {
+        this.validData = false;
+      }
     },
     getValues() {
-      const allValues = [];
-      allValues.push(this.$refs.selectedSubject.value);
-      allValues.push(this.$refs.selectedTopics.value);
-      allValues.push(this.numOfQuestion);
-      allValues.push(this.$refs.multipleChoice.isSelected);
-      allValues.push(this.$refs.shortAnswer.isSelected);
-      allValues.push(this.$refs.longAnswer.isSelected);
-      console.log(allValues);
+      console.log(this.data);
     },
   },
 };
 </script>
+
+<style>
+.beginQuizSelector .multiselect__tag,
+.beginQuizSelector .multiselect__option--highlight,
+.beginQuizSelector .multiselect__option--highlight::after {
+  background-color: #fcd47c;
+  color: black;
+}
+
+.beginQuizSelector .multiselect__tag i:hover {
+  background-color: #d19a24;
+  color: black;
+}
+
+.beginQuizSelector .multiselect__tags {
+  border-radius: 6px;
+  font-size: 16px;
+  border-width: 0px;
+}
+.beginQuizSelector .multiselect__placeholder {
+  margin-bottom: 0px;
+  padding-top: 0px;
+}
+</style>

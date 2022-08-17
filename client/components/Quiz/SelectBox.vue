@@ -13,7 +13,10 @@
 export default {
   name: 'SelectBox',
   props: {
-    label: String,
+    label: {
+      type: String,
+      default: '',
+    },
   },
   data: () => ({
     isSelected: false,
@@ -21,6 +24,7 @@ export default {
   methods: {
     select: function () {
       this.isSelected = !this.isSelected;
+      this.$emit('getData', this.isSelected);
     },
   },
 };
