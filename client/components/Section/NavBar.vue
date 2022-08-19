@@ -1,7 +1,7 @@
 <template>
-  <nav class="flex items-center justify-between h-20 bg-white shadow-xl z-50">
+  <nav class="z-50 flex items-center justify-between h-20 bg-white shadow-xl">
     <div class="flex items-center text-gray-600">
-      <NuxtLink to="/" class="h-12 ml-32 -mt-2">
+      <NuxtLink to="/" class="h-12 ml-4 lg:ml-32 -mt-2">
         <nuxt-img
           src="branding/logo_full.png"
           class="h-12 max-w-none"
@@ -13,13 +13,17 @@
       <NuxtLink to="/about" class="mx-4">About</NuxtLink>
     </div>
     <div class="flex items-center">
-      <SearchBar class="mr-24" />
+      <SearchBar class="hidden mr-24 xl:flex" />
 
-      <div v-if="!this.$auth.loggedIn">
-        <ButtonElement to="/login" type="primary" class="mr-3">
+      <div v-if="!this.$auth.loggedIn" class="whitespace-nowrap hidden sm:flex">
+        <ButtonElement to="/login" type="primary" class="mr-10 md:mr-3">
           Log in
         </ButtonElement>
-        <ButtonElement to="/sign-up" type="secondary" class="mr-10">
+        <ButtonElement
+          to="/sign-up"
+          type="secondary"
+          class="mr-10 hidden md:inline"
+        >
           Sign up
         </ButtonElement>
       </div>
