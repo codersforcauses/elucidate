@@ -27,6 +27,18 @@
           Sign up
         </ButtonElement>
       </div>
+
+      <div v-else class="flex items-center">
+        <NuxtLink to="/user-dashboard" class="mr-10 hidden xs:inline">
+          <font-awesome-layers class="fa-2x">
+            <font-awesome-icon :icon="['fas', 'circle']" class="text-green" />
+            <font-awesome-icon
+              :icon="['fas', 'user']"
+              class="text-lg text-white"
+            />
+          </font-awesome-layers>
+        </NuxtLink>
+      </div>
     </div>
   </nav>
 </template>
