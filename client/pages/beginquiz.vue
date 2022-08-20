@@ -11,7 +11,7 @@
       </InputLabel>
       <InputLabel field-name="Topics" :shadow-on="true">
         <MultiselectBox
-          ref="choosenTopics"
+          ref="chosenTopics"
           :options="selectedSubject ? allOptions[selectedSubject] : []"
           placeholder="Search or select topics"
           :multiple="true"
@@ -101,7 +101,7 @@ export default {
   methods: {
     updateSubject(selectedSubject) {
       this.selectedSubject = selectedSubject;
-      this.$refs.choosenTopics.value = [];
+      this.$refs.chosenTopics.value = [];
     },
     checkValidity() {
       const quesTypeSelected =
