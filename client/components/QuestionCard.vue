@@ -41,7 +41,7 @@
       </div>
 
       <!-- Short Answer Choices -->
-      <div v-if="this.quizdata.question_type[0] === 'short_answer'">
+      <div v-if="quizdata.question_type[0] === 'short_answer'">
         <div class="p-5">
           <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
             <div>Answer</div>
@@ -56,7 +56,7 @@
       </div>
 
       <!-- Numerical Answer Choices -->
-      <div v-if="this.quizdata.question_type[0] === 'numerical'"></div>
+      <div v-if="quizdata.question_type[0] === 'numerical'"></div>
     </div>
     <div v-else class="content-center">
       <h1 class="text-center text-4xl text-white mt-20">
