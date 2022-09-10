@@ -27,7 +27,6 @@
             @submit.prevent="handleSubmit(onSubmit)"
           >
             <InputField
-             
               class="w-80"
               :field-name="field.name"
               :field-type="field.type"
@@ -58,31 +57,27 @@ export default {
       type: 'email',
       id: 'email',
       rules: 'required|email',
-      value: ''
+      value: '',
     },
   }),
   methods: {
     async onSubmit() {
       // <!-- backend -->
 
-      const postData = {email: this.field.value};
-      
-// <!-- send data to the server -->
+      const postData = { email: this.field.value };
+
+      // <!-- send data to the server -->
       await this.$axios
-        .post('auth/reset/', {email: this.field.email})
-        .then(() => {
-       
-        })
+        .post('auth/reset/', { email: this.field.email })
+        .then(() => {})
         .catch((error) => {
           this.errors = error.response.data;
         });
     },
-    
+
     handleEmail(email) {
       this.field.value = email;
-    }
-      
     },
+  },
 };
-
 </script>

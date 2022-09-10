@@ -72,20 +72,10 @@ export default {
 };
 </script>
 <!-- backend -->
-  async register(e) {
-      const postData = {};
-      this.fields.forEach((field) => {
-        postData[field.id] = e.target.elements[field.name].value;
-      });
+async register(e) { const postData = {}; this.fields.forEach((field) => {
+postData[field.id] = e.target.elements[field.name].value; });
 <!-- send data to the server -->
-      await this.$axios
-        .post('auth/register/', postData)
-        .then(() => {
-          this.title = 'Account Created!';
-          this.name = e.target.elements['First Name'].value;
-          this.accountCreated = true;
-        })
-        .catch((error) => {
-          this.errors = error.response.data;
-        });
-    },
+await this.$axios .post('auth/register/', postData) .then(() => { this.title =
+'Account Created!'; this.name = e.target.elements['First Name'].value;
+this.accountCreated = true; }) .catch((error) => { this.errors =
+error.response.data; }); },
