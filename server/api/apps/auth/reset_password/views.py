@@ -35,10 +35,11 @@ class ResetPasswordView(generics.RetrieveUpdateAPIView):
         is_valid_token = PasswordResetTokenGenerator().check_token(
             token=token, user=user
         )
-        return is_valid_token
+        return is_valid_token, user
 
     def get(self, request, *args, **kwargs):
-        if not self.validate_token(request):
+        is_valid_token, user = self.validate_token(request)
+        if not is_valid_token:
             return Response(
                 {
                     "message": (
@@ -54,7 +55,8 @@ class ResetPasswordView(generics.RetrieveUpdateAPIView):
         )
 
     def update(self, request, *args, **kwargs):
-        if not self.validate_token(request):
+        is_valid_token, user = self.validate_token(request)
+        if not is_valid_token:
             return Response(
                 {
                     "message": (
@@ -71,19 +73,13 @@ class ResetPasswordView(generics.RetrieveUpdateAPIView):
                 serializer.errors, status=status.HTTP_400_BAD_REQUEST
             )
 
-        user = (
-            get_user_model()
-            .objects.filter(email=serializer.data.get("email"))
-            .first()
-        )
-
         if not user:
             return Response(
                 {"message": "Email does not exist"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        user.set_password(serializer.data.get("new_password"))
+        user.set_password(serializer.data.get("password"))
         user.save()
 
         return Response(

@@ -16,6 +16,7 @@ This API is used to manage the authentication lifecycle. It allows us to:
 /api/auth
 
 ----  
+
 **Endpoints:**
 
 ## /register/
