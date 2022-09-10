@@ -1,16 +1,23 @@
 <template>
   <div>
-    <label>{{ fieldName }}</label>
-    <ValidationProvider v-slot="{ errors }" :vid="id" :rules="rules">
-      <div class="relative flex items-center">
+    <label class="font-semibold" :for="fieldName">{{ fieldName }}</label>
+    <ValidationProvider
+      v-slot="{ errors, touched }"
+      slim
+      :vid="id"
+      :rules="rules"
+    >
+      <div class="relative flex items-center -mt-2">
         <input
+          v-if="fieldType !== 'dropdown'"
+          :id="fieldName"
           v-model="inputValue"
           :name="fieldName"
           :type="showText ? 'text' : fieldType"
           class="w-full h-10 px-2 my-3 drop-shadow-lg"
         />
         <div
-          v-if="fieldType == 'password'"
+          v-if="fieldType === 'password'"
           class="absolute right-0 top-auto bottom-auto left-auto w-10"
           @mouseenter="clickCheck"
           @mouseleave="clickCheck"
@@ -21,6 +28,24 @@
             :class="showText ? 'text-blue2' : 'text-gray-400'"
           />
         </div>
+        <select
+          v-if="fieldType === 'dropdown'"
+          :id="fieldName"
+          v-model="inputValue"
+          :name="fieldName"
+          class="w-full h-10 px-5 my-3 drop-shadow-lg"
+        >
+          <option selected disabled value="">
+            Please Choose Your Grade...
+          </option>
+          <option
+            v-for="(option, index) in fieldOptions"
+            :id="fieldName"
+            :key="index"
+            :value="option"
+            v-text="option"
+          />
+        </select>
       </div>
       <span class="text-red">{{ errors[0] }}</span>
     </ValidationProvider>

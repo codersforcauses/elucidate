@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 
-class AuthTestCase(APITestCase):
+class RegisterTestCase(APITestCase):
     def test_get_request(self):
         """
         GIVEN: GET request to endpoint '/api/auth/register'
