@@ -20,7 +20,7 @@
       field-type="password"
     />
     <NuxtLink
-      to="/forgot-password"
+      to="/reset/reset-password"
       class="self-end text-xs font-semibold text-white underline underline-offset-2"
     >
       forgot password?

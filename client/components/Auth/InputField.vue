@@ -19,8 +19,8 @@
         <div
           v-if="fieldType === 'password'"
           class="absolute right-0 top-auto bottom-auto left-auto w-10"
-          @mouseenter="clickCheck"
-          @mouseleave="clickCheck"
+          @mouseenter="toggleShowText"
+          @mouseleave="toggleShowText"
         >
           <font-awesome-icon
             :icon="['fas', 'fa-eye']"
@@ -47,7 +47,7 @@
           />
         </select>
       </div>
-      <span class="text-red">{{ errors[0] }}</span>
+      <span v-if="touched" class="text-red">{{ errors[0] }}</span>
     </ValidationProvider>
   </div>
 </template>
@@ -56,39 +56,19 @@
 // Validation
 // ---------------------------------------
 import { ValidationProvider, extend } from 'vee-validate';
-import {
-  required,
-  email,
-  min,
-  digits,
-  confirmed,
-} from 'vee-validate/dist/rules';
-
+import { required, email, min } from 'vee-validate/dist/rules';
 extend('email', {
   ...email,
   message: 'Invalid email address',
 });
-
-extend('confirmed', {
-  ...confirmed,
-  message: "Passwords don't match",
-});
-
 extend('required', {
   ...required,
   message: 'This field is required',
 });
-
 extend('min', {
   ...min,
   message: '{_field_} must have at least {length} characters',
 });
-
-extend('digits', {
-  ...digits,
-  message: '{length} digits required',
-});
-
 extend('password', {
   params: ['target'],
   validate(value, { target }) {
@@ -97,30 +77,40 @@ extend('password', {
   message: 'Password confirmation does not match',
 });
 // ---------------------------------------
-
 export default {
   name: 'InputField',
   components: {
     ValidationProvider,
   },
   props: {
-    fieldName: String,
-    fieldType: String,
+    fieldName: {
+      type: String,
+      default: 'Field',
+    },
+    fieldType: {
+      type: String,
+      default: 'text',
+    },
     isPassword: Boolean,
-    id: String,
-    rules: String,
+    fieldOptions: {
+      type: Array,
+      default: undefined,
+    },
+    id: {
+      type: String,
+      default: undefined,
+    },
+    rules: {
+      type: String,
+      default: undefined,
+    },
   },
   data: () => ({
     showText: false,
     inputValue: '',
   }),
-  watch: {
-    inputValue: function (newInputValue) {
-      this.$emit('input', newInputValue);
-    },
-  },
   methods: {
-    clickCheck: function () {
+    toggleShowText: function () {
       this.showText = !this.showText;
     },
   },
