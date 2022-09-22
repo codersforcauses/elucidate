@@ -11,6 +11,7 @@
         Please enter <wbr />your registered email.
       </p>
     </div>
+    <div class="text-white" v-if="emailLoading">Sending email...</div>
     <InputField
       :id="emailField.id"
       :key="emailField.index"
@@ -28,11 +29,13 @@
     class="gap-5 text-2xl font-bold text-white place-items-center"
   >
     <h1 class="text-3xl">Reset Link Has Been Sent!</h1>
-    <p>Please check your spam folder if you cannot find the email.</p>
     <font-awesome-icon
       :icon="['fas', 'fa-face-smile-beam']"
       class="text-[10rem] my-10"
     />
+    <p class="text-center">
+      Please check your spam folder if you cannot find the email.
+    </p>
   </AuthForm>
 
   <AuthForm
@@ -42,11 +45,11 @@
     :errors="errors"
     @submit="resetPassword"
   >
-    <div class="mt-1 mb-3">
-      <p v-if="uid !== ''" class="text-center text-white">
+    <div class="mt-1 mb-3 text-white">
+      <p v-if="uid !== ''" class="text-center">
         Resetting password for {{ uid }}
       </p>
-      <p class="text-center text-white">Please enter <wbr />a new password.</p>
+      <p class="text-center">Please enter <wbr />a new password.</p>
     </div>
     <InputField
       v-for="field in fields"
@@ -65,8 +68,8 @@
     v-else
     class="gap-5 text-2xl font-bold text-white place-items-center"
   >
-    <h1 class="text-3xl">Congratulations!</h1>
-    <p>
+    <h1 class="text-3xl text-center">Congratulations!</h1>
+    <p class="text-center">
       Your password has been reset. Now you <wbr />can login with your new
       password!
     </p>
@@ -92,6 +95,7 @@ export default {
   data: () => ({
     title: 'Reset Password',
     passwordResetSuccess: false,
+    emailLoading: false,
     emailSentSuccess: false,
     uid: '',
     errors: [],
@@ -129,46 +133,12 @@ export default {
   },
 
   async mounted() {
-    const rawUid = this.$route.query.uid;
-    const rawToken = this.$route.query.token;
-
-    if (!rawUid) {
-      return;
-    }
-
-    const formattedUid =
-      rawUid.charAt(rawUid.length - 1) === '/'
-        ? rawUid.substring(0, rawUid.length - 1)
-        : rawUid;
-
-    const formattedToken =
-      rawUid.charAt(rawUid.length - 1) === '/'
-        ? rawUid.substring(0, rawUid.length - 1)
-        : rawUid;
-
-    const url =
-      'auth/reset/' + `?token=${this.formattedToken}&uid=${this.formattedUid}/`;
-
-    try {
-      this.uid = atob(formattedUid);
-      console.log(this.uid);
-    } catch (err) {
-      console.log(err);
-      this.errors = { Errors: ['email UID is invalid'] };
-      return;
-    }
-
-    await this.$axios
-      .$get(url)
-      .then((resp) => (this.emailSentSuccess = true))
-      .catch((error) => {
-        this.errors = error.response.data;
-        console.log(error.response.data);
-      });
+    this.resetPassword();
   },
 
   methods: {
     async sendResetLink(e) {
+      this.emailLoading = true;
       const elements = e.target.elements;
       const data = {
         email: elements.Email.value,
@@ -177,14 +147,60 @@ export default {
       const url = 'auth/reset/email/';
       await this.$axios
         .$post(url, data)
-        .then((resp) => (this.passwordResetSuccess = true))
+        .then((resp) => (this.emailSentSuccess = true))
         .catch((error) => {
           this.errors = error.response.data;
-          console.log(error.response.data);
+          this.emailLoading = false;
         });
     },
 
-    resetPassword() {},
+    async resetPassword(e = null) {
+      const rawUid = this.$route.query.uid;
+      const rawToken = this.$route.query.token;
+
+      if (!rawUid) {
+        return;
+      }
+
+      const formattedUid =
+        rawUid.charAt(rawUid.length - 1) === '/'
+          ? rawUid.substring(0, rawUid.length - 1)
+          : rawUid;
+
+      const formattedToken =
+        rawToken.charAt(rawToken.lengthrawToken - 1) === '/'
+          ? rawToken.substring(0, rawToken.length - 1)
+          : rawToken;
+
+      const url =
+        'auth/reset/' + `?token=${formattedToken}&uid=${formattedUid}/`;
+
+      try {
+        this.uid = atob(formattedUid);
+      } catch (err) {
+        this.errors = { Errors: ['email UID is invalid'] };
+        return;
+      }
+
+      if (e !== null) {
+        const elements = e.target.elements;
+        const data = {
+          password: elements.Password.value,
+        };
+        await this.$axios
+          .$put(url, data)
+          .then((resp) => (this.passwordResetSuccess = true))
+          .catch((error) => {
+            this.errors = error.response.data;
+            console.log(error.response.data);
+          });
+      } else {
+        await this.$axios.$get(url).catch((error) => {
+          this.errors = error.response.data;
+          console.log(error.response.data);
+        });
+      }
+    },
   },
 };
 </script>

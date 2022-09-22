@@ -123,7 +123,7 @@ class EmailResetLinkView(generics.GenericAPIView):
                 "Elucidate Password Reset",
                 f"Your password reset link can be found at: {reset_url}\n"
                 + "It will expire in"
-                f" {settings.PASSWORD_RESET_TIMEOUT / 60} minutes.",
+                f" {settings.PASSWORD_RESET_TIMEOUT // 60} minutes.",
                 settings.EMAIL_HOST_USER,
                 [email],
                 fail_silently=False,

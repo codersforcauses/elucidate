@@ -26,8 +26,8 @@
     v-else
     class="gap-5 text-2xl font-bold text-white place-items-center"
   >
-    <h1 class="text-3xl">Congratulations {{ name }}!</h1>
-    <p>
+    <h1 class="text-3xl text-center">Congratulations {{ name }}!</h1>
+    <p class="text-center">
       Your new Elucidate account <wbr />
       has been created
     </p>
