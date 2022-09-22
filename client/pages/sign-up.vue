@@ -24,7 +24,7 @@
   </AuthForm>
   <AuthForm
     v-else
-    class="place-items-center gap-5 font-bold text-2xl text-white"
+    class="gap-5 text-2xl font-bold text-white place-items-center"
   >
     <h1 class="text-3xl">Congratulations {{ name }}!</h1>
     <p>

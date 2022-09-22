@@ -1,6 +1,6 @@
 <template>
   <AuthForm
-    v-if="!$route.query.token"
+    v-if="!emailSentSuccess && !$route.query.uid"
     v-slot="{ invalid }"
     error-header="Error sending reset link, please fix the following errors:"
     :errors="errors"
@@ -24,6 +24,18 @@
   </AuthForm>
 
   <AuthForm
+    v-else-if="emailSentSuccess"
+    class="gap-5 text-2xl font-bold text-white place-items-center"
+  >
+    <h1 class="text-3xl">Reset Link Has Been Sent!</h1>
+    <p>Please check your spam folder if you cannot find the email.</p>
+    <font-awesome-icon
+      :icon="['fas', 'fa-face-smile-beam']"
+      class="text-[10rem] my-10"
+    />
+  </AuthForm>
+
+  <AuthForm
     v-else-if="!passwordResetSuccess"
     v-slot="{ invalid }"
     error-header="Error resetting password, please fix the following errors:"
@@ -31,6 +43,9 @@
     @submit="resetPassword"
   >
     <div class="mt-1 mb-3">
+      <p v-if="uid !== ''" class="text-center text-white">
+        Resetting password for {{ uid }}
+      </p>
       <p class="text-center text-white">Please enter <wbr />a new password.</p>
     </div>
     <InputField
@@ -48,12 +63,12 @@
 
   <AuthForm
     v-else
-    class="place-items-center gap-5 font-bold text-2xl text-white"
+    class="gap-5 text-2xl font-bold text-white place-items-center"
   >
     <h1 class="text-3xl">Congratulations!</h1>
     <p>
       Your password has been reset. Now you <wbr />can login with your new
-      password
+      password!
     </p>
     <font-awesome-icon
       :icon="['fas', 'fa-face-smile-beam']"
@@ -77,10 +92,12 @@ export default {
   data: () => ({
     title: 'Reset Password',
     passwordResetSuccess: false,
+    emailSentSuccess: false,
+    uid: '',
     errors: [],
 
     emailField: {
-      name: 'email',
+      name: 'Email',
       type: 'email',
       index: 0,
       id: 'email',
@@ -89,14 +106,14 @@ export default {
 
     fields: [
       {
-        name: 'password',
+        name: 'Password',
         type: 'password',
         index: count++,
         id: 'password',
         rules: 'required|min:6',
       },
       {
-        name: 'confirm password',
+        name: 'Confirm Password',
         type: 'password',
         index: count++,
         id: 'confirm',
@@ -104,17 +121,69 @@ export default {
       },
     ],
   }),
+
   head() {
     return {
       title: this.title,
     };
   },
+
+  async mounted() {
+    const rawUid = this.$route.query.uid;
+    const rawToken = this.$route.query.token;
+
+    if (!rawUid) {
+      return;
+    }
+
+    const formattedUid =
+      rawUid.charAt(rawUid.length - 1) === '/'
+        ? rawUid.substring(0, rawUid.length - 1)
+        : rawUid;
+
+    const formattedToken =
+      rawUid.charAt(rawUid.length - 1) === '/'
+        ? rawUid.substring(0, rawUid.length - 1)
+        : rawUid;
+
+    const url =
+      'auth/reset/' + `?token=${this.formattedToken}&uid=${this.formattedUid}/`;
+
+    try {
+      this.uid = atob(formattedUid);
+      console.log(this.uid);
+    } catch (err) {
+      console.log(err);
+      this.errors = { Errors: ['email UID is invalid'] };
+      return;
+    }
+
+    await this.$axios
+      .$get(url)
+      .then((resp) => (this.emailSentSuccess = true))
+      .catch((error) => {
+        this.errors = error.response.data;
+        console.log(error.response.data);
+      });
+  },
+
   methods: {
-    onSubmit() {
-      alert('submitted');
+    async sendResetLink(e) {
+      const elements = e.target.elements;
+      const data = {
+        email: elements.Email.value,
+      };
+
+      const url = 'auth/reset/email/';
+      await this.$axios
+        .$post(url, data)
+        .then((resp) => (this.passwordResetSuccess = true))
+        .catch((error) => {
+          this.errors = error.response.data;
+          console.log(error.response.data);
+        });
     },
 
-    sendResetLink() {},
     resetPassword() {},
   },
 };
