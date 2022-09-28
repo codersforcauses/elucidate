@@ -21,6 +21,7 @@ module.exports = {
         aquablue2: '#AAF5EB75',
 
         green: '#53DFCB',
+        green1: '#81E6D9',
         green2: '#53DFCB75',
         green3: '#53DFCB50',
         green4: '#53DFCB25',

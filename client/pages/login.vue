@@ -20,7 +20,7 @@
       field-type="password"
     />
     <NuxtLink
-      to="/forgot-password"
+      to="/reset-password"
       class="self-end text-xs font-semibold text-white underline underline-offset-2"
     >
       forgot password?
@@ -30,7 +30,7 @@
       Don't have an account?
       <NuxtLink
         to="/sign-up"
-        class="text-blue font-semibold underline underline-offset-2"
+        class="font-semibold underline text-blue underline-offset-2"
       >
         Sign up!
       </NuxtLink>
@@ -61,7 +61,10 @@ export default {
       await this.$auth
         .login({ data })
         .then((resp) => this.$auth.setUserToken(resp.data))
-        .catch((error) => (this.errors = error.response.data));
+        .catch((error) => {
+          this.errors = error.response.data;
+          console.log(error.response.data);
+        });
     },
   },
 };

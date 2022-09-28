@@ -57,22 +57,18 @@
 // ---------------------------------------
 import { ValidationProvider, extend } from 'vee-validate';
 import { required, email, min } from 'vee-validate/dist/rules';
-
 extend('email', {
   ...email,
   message: 'Invalid email address',
 });
-
 extend('required', {
   ...required,
   message: 'This field is required',
 });
-
 extend('min', {
   ...min,
   message: '{_field_} must have at least {length} characters',
 });
-
 extend('password', {
   params: ['target'],
   validate(value, { target }) {
@@ -81,7 +77,6 @@ extend('password', {
   message: 'Password confirmation does not match',
 });
 // ---------------------------------------
-
 export default {
   name: 'InputField',
   components: {

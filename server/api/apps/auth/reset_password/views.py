@@ -42,15 +42,15 @@ class ResetPasswordView(generics.RetrieveUpdateAPIView):
         if not is_valid_token:
             return Response(
                 {
-                    "message": (
+                    "Errors": [
                         "the password reset token is invalid or has expired."
-                    )
+                    ]
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
         return Response(
-            {"message": "the password reset token is valid"},
+            {"Errors": ["the password reset token is valid"]},
             status=status.HTTP_200_OK,
         )
 
@@ -59,9 +59,9 @@ class ResetPasswordView(generics.RetrieveUpdateAPIView):
         if not is_valid_token:
             return Response(
                 {
-                    "message": (
+                    "Errors": [
                         "the password reset token is invalid or has expired."
-                    )
+                    ]
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
@@ -75,7 +75,7 @@ class ResetPasswordView(generics.RetrieveUpdateAPIView):
 
         if not user:
             return Response(
-                {"message": "Email does not exist"},
+                {"Errors": ["Email does not exist"]},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
@@ -107,21 +107,23 @@ class EmailResetLinkView(generics.GenericAPIView):
 
         if not user:
             return Response(
-                {"message": "Email does not exist"},
+                {"Errors": ["Email does not exist"]},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
         token = PasswordResetTokenGenerator().make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.email))
 
-        reset_url = f"{settings.FRONTEND_URL}/reset/?token={token}&uid={uid}/"
+        reset_url = (
+            f"{settings.FRONTEND_URL}/reset-password/?token={token}&uid={uid}/"
+        )
 
         try:
             send_mail(
                 "Elucidate Password Reset",
                 f"Your password reset link can be found at: {reset_url}\n"
                 + "It will expire in"
-                f" {settings.PASSWORD_RESET_TIMEOUT / 60} minutes.",
+                f" {settings.PASSWORD_RESET_TIMEOUT // 60} minutes.",
                 settings.EMAIL_HOST_USER,
                 [email],
                 fail_silently=False,

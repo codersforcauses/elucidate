@@ -55,6 +55,10 @@
 export default {
   name: 'ButtonElement',
   props: {
+    submitType: {
+      type: String,
+      default: undefined,
+    },
     to: {
       type: String,
       default: undefined,

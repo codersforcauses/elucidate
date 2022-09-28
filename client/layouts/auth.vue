@@ -19,13 +19,20 @@
 export default {
   computed: {
     title() {
-      const rawTitle = this.$route.name;
+      const rawPath = this.$route.path;
+
+      // Remove trailing '/'
+      let title =
+        rawPath.charAt(rawPath.length - 1) === '/'
+          ? rawPath.substring(0, rawPath.length - 1)
+          : rawPath;
+      // Remove directories
+      title = title.split('/').pop();
       // Make first letter uppercase
-      return (
-        (rawTitle.charAt(0).toUpperCase() + rawTitle.slice(1))
-          // Change dashes to spaces
-          .replace(/-/, ' ')
-      );
+      title = title.charAt(0).toUpperCase() + title.slice(1);
+      // Change dashes to spaces
+      title = title.replace(/-/, ' ');
+      return title;
     },
   },
 };
