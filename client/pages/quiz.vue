@@ -5,6 +5,5 @@
 <script>
 export default {
   name: 'QuizPage',
-  middleware: 'auth',
 };
 </script>

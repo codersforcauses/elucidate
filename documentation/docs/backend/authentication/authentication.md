@@ -1,6 +1,5 @@
 # Authentication REST API
 
-----
 This API is used to manage the authentication lifecycle. It allows us to:
 
 * Register a user
@@ -10,18 +9,18 @@ This API is used to manage the authentication lifecycle. It allows us to:
 * [TODO] Log out a user  
 * [TODO] Delete a user
 
-----
 **Base URL:**
 
 /api/auth
 
 ----  
+
 **Endpoints:**
 
 ## /register/
 
 Methods: POST
-Description: Register an user. Returns the user JSON as the response.
+Description: Register a user. Returns the user JSON as the response.
 Success status code: 201 Created
 
 **Data Parameters:**
@@ -61,7 +60,7 @@ Example response
 ## /login/
 
 Methods: POST
-Description: Login an user. Returns the access token as a JSON body.
+Description: Login a user. Returns the access token as a JSON body.
 Success status code: 201 Created
 
 **Data Parameters:**

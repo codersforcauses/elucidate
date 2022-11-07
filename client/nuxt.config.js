@@ -7,6 +7,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'elucidate-frontend',
+    titleTemplate: '%s - Elucidate',
     htmlAttrs: {
       lang: 'en',
     },
@@ -36,6 +37,8 @@ export default {
       '~/components/Section',
       '~/components/Input',
       '~/components/Auth',
+      '~/components/Dashboard',
+      '~/components/Quiz',
     ],
   },
 
@@ -74,8 +77,8 @@ export default {
   },
 
   router: {
-    // set to false for easier testing
-    // middleware: ['auth'],
+    // Comment out the line below to disable authentication
+    middleware: ['auth'],
   },
 
   auth: {
@@ -87,14 +90,17 @@ export default {
           // required: true,
           // type: 'Bearer'
         },
+        refreshToken: {
+          data: 'token',
+        },
         user: {
           property: 'user',
-          // autoFetch: true
         },
         endpoints: {
           login: { url: 'auth/login/', method: 'post' },
+          refresh: { url: 'auth/refresh', method: 'post' },
           logout: { url: 'auth/logout/', method: 'post' },
-          user: { url: 'auth/user/', method: 'get' },
+          user: false,
         },
       },
     },

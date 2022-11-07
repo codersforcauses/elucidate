@@ -162,3 +162,12 @@ JWT_AUTH = {
     "JWT_EXPIRATION_DELTA": datetime.timedelta(days=7),
 }
 AUTH_USER_MODEL = "users.User"
+
+# in seconds
+PASSWORD_RESET_TIMEOUT = 60
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="null")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="null")
