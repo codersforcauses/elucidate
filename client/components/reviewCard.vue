@@ -7,9 +7,7 @@
     <div v-if="quizdata.question_type[0] === 'mcq'">
       <div class="justify-center grid grid-cols-1 w-full select-none">
         <div
-          v-for="(choice, index) in quizdata.question_choices[
-            curr - 1
-          ]"
+          v-for="(choice, index) in quizdata.question_choices[curr - 1]"
           :key="index"
           class="py-2 px-4 my-5 mx-20 z-50 text-center shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm"
         >
