@@ -3,9 +3,6 @@ from datetime import datetime
 import json
 
 
-
-
-
 class CreateQuizTest(TestCase):
     def setUp(self):
         self.client = Client()

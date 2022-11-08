@@ -10,7 +10,7 @@ class QuestionInfoSerializer(serializers.Serializer):
     text = serializers.CharField()
     question_type = serializers.ChoiceField(
         choices=Question.QuestionType.choices
-        )
+    )
     marks = serializers.IntegerField(min_value=1)
     subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
     topics = serializers.PrimaryKeyRelatedField(
