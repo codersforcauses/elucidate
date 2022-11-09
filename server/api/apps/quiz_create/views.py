@@ -99,7 +99,8 @@ class SpecificAnswerTask(generics.RetrieveUpdateDestroyAPIView):
         )
 
     def put(self, request, *args, **kwargs):
-        obj_pk = self.kwargs["q_pk"]
+        # obj_pk = self.kwargs["q_pk"]
+        self.kwargs["q_pk"]
         return self.partial_update(request, *args, **kwargs)
 
 
