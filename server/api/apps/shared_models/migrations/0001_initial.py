@@ -5,90 +5,185 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Answer',
+            name="Answer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.CharField(max_length=200)),
-                ('is_correct', models.BooleanField(default=False)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("text", models.CharField(max_length=200)),
+                ("is_correct", models.BooleanField(default=False)),
             ],
         ),
         migrations.CreateModel(
-            name='Question',
+            name="Question",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.TextField(blank=True, default='')),
-                ('question_type', models.CharField(choices=[('MC', 'Multiple Choice'), ('NA', 'Numerical Answer'), ('SA', 'Short Answer')], default='MC', max_length=2)),
-                ('marks', models.PositiveIntegerField(default=1)),
-                ('date_created', models.DateTimeField(auto_now_add=True, null=True)),
-                ('is_verified', models.BooleanField(default=False)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("text", models.TextField(blank=True, default="")),
+                (
+                    "question_type",
+                    models.CharField(
+                        choices=[
+                            ("MC", "Multiple Choice"),
+                            ("NA", "Numerical Answer"),
+                            ("SA", "Short Answer"),
+                        ],
+                        default="MC",
+                        max_length=2,
+                    ),
+                ),
+                ("marks", models.PositiveIntegerField(default=1)),
+                (
+                    "date_created",
+                    models.DateTimeField(auto_now_add=True, null=True),
+                ),
+                ("is_verified", models.BooleanField(default=False)),
             ],
         ),
         migrations.CreateModel(
-            name='QuestionResponse',
+            name="QuestionResponse",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_submitted', models.DateTimeField(auto_now_add=True, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "date_submitted",
+                    models.DateTimeField(auto_now_add=True, null=True),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='QuestionStatistics',
+            name="QuestionStatistics",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'Question statistics',
+                "verbose_name_plural": "Question statistics",
             },
         ),
         migrations.CreateModel(
-            name='QuizStatistics',
+            name="QuizStatistics",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quiz_title', models.CharField(max_length=200)),
-                ('date_taken', models.DateField(null=True)),
-                ('score', models.FloatField(validators=[django.core.validators.MinValueValidator(0.0), django.core.validators.MaxValueValidator(100.0)])),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("quiz_title", models.CharField(max_length=200)),
+                ("date_taken", models.DateField(null=True)),
+                (
+                    "score",
+                    models.FloatField(
+                        validators=[
+                            django.core.validators.MinValueValidator(0.0),
+                            django.core.validators.MaxValueValidator(100.0),
+                        ]
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'Quiz statistics',
+                "verbose_name_plural": "Quiz statistics",
             },
         ),
         migrations.CreateModel(
-            name='Subject',
+            name="Subject",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Topic',
+            name="Topic",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='TopicStatistics',
+            name="TopicStatistics",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'Topic statistics',
+                "verbose_name_plural": "Topic statistics",
             },
         ),
         migrations.CreateModel(
-            name='UserStatistics',
+            name="UserStatistics",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'User statistics',
+                "verbose_name_plural": "User statistics",
             },
         ),
     ]

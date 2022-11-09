@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework_jwt.views import (
     obtain_jwt_token,
     refresh_jwt_token,

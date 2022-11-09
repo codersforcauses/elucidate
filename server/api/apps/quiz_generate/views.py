@@ -1,11 +1,13 @@
-from django.shortcuts import get_object_or_404
-from rest_framework import generics, permissions
-from . import serializers
-from rest_framework import status
-from api.apps.shared_models.models.quiz_models import Question, Topic, Subject
-from api.apps.shared_models.serializers import quiz_serializers
-from rest_framework.response import Response
 import random
+
+from django.shortcuts import get_object_or_404
+from rest_framework import generics, permissions, status
+from rest_framework.response import Response
+
+from api.apps.shared_models.models.quiz_models import Question, Subject, Topic
+from api.apps.shared_models.serializers import quiz_serializers
+
+from . import serializers
 
 
 class GenerateQuizView(generics.CreateAPIView):

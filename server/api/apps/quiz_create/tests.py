@@ -1,6 +1,6 @@
-from django.test import TestCase, Client
 from datetime import datetime
-import json
+
+from django.test import Client, TestCase
 
 
 class CreateQuizTest(TestCase):

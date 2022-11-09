@@ -1,8 +1,6 @@
 from rest_framework import serializers
-from api.apps.shared_models.models.quiz_models import (
-    Subject,
-    Topic,
-)
+
+from api.apps.shared_models.models.quiz_models import Subject, Topic
 
 
 class GenerateQuizRequestSerializer(serializers.Serializer):

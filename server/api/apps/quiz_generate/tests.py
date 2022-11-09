@@ -2,11 +2,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework.test import APITestCase
 
-from api.apps.shared_models.models.quiz_models import (
-    Question,
-    Subject,
-    Topic,
-)
+from api.apps.shared_models.models.quiz_models import Question, Subject, Topic
 
 
 class QuizGenerateTests(APITestCase):
