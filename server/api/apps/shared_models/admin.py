@@ -93,8 +93,10 @@ class QuestionAdmin(admin.ModelAdmin):
         return self.obj
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
-        if db_field.name == "topics":
-            kwargs["queryset"] = Topic.objects.filter(subject=self.obj.subject)
+        # if db_field.name == "topics":
+        #     kwargs["queryset"] = (
+        #       Topic.objects.filter(subject=self.obj.subject)
+        #     )
         return super().formfield_for_manytomany(db_field, request, **kwargs)
 
 
