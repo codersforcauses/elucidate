@@ -21,14 +21,13 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = [
-            "text",
+            "question",
             "question_type",
             "marks",
             "creator",
             "date_created",
             "subject",
             "topics",
-            "is_verified",
         ]
 
 
@@ -53,7 +52,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        fields = ["text", "is_correct", "question"]
+        fields = ["answer", "is_correct", "question"]
 
     def create(self, validated_data):
         return Answer.objects.create(**validated_data)

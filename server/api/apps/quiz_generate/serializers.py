@@ -4,7 +4,9 @@ from api.apps.shared_models.models.quiz_models import Subject, Topic
 
 
 class GenerateQuizRequestSerializer(serializers.Serializer):
-    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
+    subject = serializers.PrimaryKeyRelatedField(
+        queryset=Subject.objects.all()
+    )
     topics = serializers.PrimaryKeyRelatedField(
         queryset=Topic.objects.all(), many=True
     )

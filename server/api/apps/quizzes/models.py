@@ -6,15 +6,28 @@ User = get_user_model()
 
 
 class Quiz(models.Model):
-    topic = models.ManyToManyField(
+    topics = models.ManyToManyField(
         quiz_models.Topic,
     )
     questions = models.ManyToManyField(
-        quiz_models.Question,
+        quiz_models.Question, through="QuizQuestion"
     )
     created_at = models.DateTimeField(auto_now_add=True)
     attempts = models.IntegerField(default=0)
     correct = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.pk)
+
+
+class QuizQuestion(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    question = models.ForeignKey(
+        quiz_models.Question, on_delete=models.CASCADE
+    )
+
+    class Meta:
+        unique_together = ("quiz", "question")
 
     def __str__(self):
         return str(self.pk)
