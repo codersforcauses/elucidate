@@ -6,10 +6,10 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'elucidate-frontend',
-    titleTemplate: '%s - Elucidate',
+    title: 'Home',
+    titleTemplate: '%s | Elucidate',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'en-AU',
     },
     meta: [
       { charset: 'utf-8' },
@@ -19,18 +19,19 @@ export default {
     ],
     link: [
       { rel: 'icon', href: 'branding/logo.svg' },
-      // Safari pinned tab icon
-      {
-        rel: 'mask-icon',
-        href: 'branding/elucidate-logo-mask.svg',
-        color: '#aeb0c7',
-      },
-      // iOS icon
-      {
-        rel: 'apple-touch-icon',
-        sizes: '180x180',
-        href: 'branding/apple-touch-icon.png',
-      },
+      // TODO
+      // // Safari pinned tab icon
+      // {
+      //   rel: 'mask-icon',
+      //   href: 'branding/elucidate-logo-mask.svg',
+      //   color: '#aeb0c7',
+      // },
+      // // iOS icon
+      // {
+      //   rel: 'apple-touch-icon',
+      //   sizes: '180x180',
+      //   href: 'branding/apple-touch-icon.png',
+      // },
     ],
   },
 
