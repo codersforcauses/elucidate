@@ -19,7 +19,14 @@ class AnswerInline(admin.TabularInline):
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ["question", "question_type", "marks", "subject", "topics", "is_verified"]
+        fields = [
+            "question",
+            "question_type",
+            "marks",
+            "subject",
+            "topics",
+            "is_verified",
+        ]
 
     def clean(self):
         subject = self.cleaned_data.get("subject")

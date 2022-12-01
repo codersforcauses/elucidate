@@ -22,9 +22,7 @@ class Quiz(models.Model):
 
 class QuizQuestion(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    question = models.ForeignKey(
-        quiz_models.Question, on_delete=models.CASCADE
-    )
+    question = models.ForeignKey(quiz_models.Question, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ("quiz", "question")

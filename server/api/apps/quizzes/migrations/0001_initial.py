@@ -5,42 +5,71 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('shared_models', '0004_rename_text_answer_answer'),
+        ("shared_models", "0004_rename_text_answer_answer"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Quiz',
+            name="Quiz",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('attempts', models.IntegerField(default=0)),
-                ('correct', models.IntegerField(default=0)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("attempts", models.IntegerField(default=0)),
+                ("correct", models.IntegerField(default=0)),
             ],
         ),
         migrations.CreateModel(
-            name='QuizQuestion',
+            name="QuizQuestion",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('questions', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shared_models.question')),
-                ('quiz', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='quizzes.quiz')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "questions",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="shared_models.question",
+                    ),
+                ),
+                (
+                    "quiz",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="quizzes.quiz",
+                    ),
+                ),
             ],
             options={
-                'unique_together': {('quiz', 'questions')},
+                "unique_together": {("quiz", "questions")},
             },
         ),
         migrations.AddField(
-            model_name='quiz',
-            name='questions',
-            field=models.ManyToManyField(through='quizzes.QuizQuestion', to='shared_models.question'),
+            model_name="quiz",
+            name="questions",
+            field=models.ManyToManyField(
+                through="quizzes.QuizQuestion", to="shared_models.question"
+            ),
         ),
         migrations.AddField(
-            model_name='quiz',
-            name='topics',
-            field=models.ManyToManyField(to='shared_models.topic'),
+            model_name="quiz",
+            name="topics",
+            field=models.ManyToManyField(to="shared_models.topic"),
         ),
     ]

@@ -4,20 +4,19 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shared_models', '0004_rename_text_answer_answer'),
-        ('quizzes', '0001_initial'),
+        ("shared_models", "0004_rename_text_answer_answer"),
+        ("quizzes", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='quizquestion',
-            old_name='questions',
-            new_name='question',
+            model_name="quizquestion",
+            old_name="questions",
+            new_name="question",
         ),
         migrations.AlterUniqueTogether(
-            name='quizquestion',
-            unique_together={('quiz', 'question')},
+            name="quizquestion",
+            unique_together={("quiz", "question")},
         ),
     ]
