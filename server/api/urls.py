@@ -21,5 +21,7 @@ urlpatterns = [
     path("api/auth/", include("api.apps.auth.urls")),
     path("api/users/", include("api.apps.users.urls")),
     path("api/quizzes/", include("api.apps.quizzes.urls")),
+    path("api/generate-quiz/", include("api.apps.quiz_generate.urls")),
     path("api/take-quiz/", include("api.apps.quiz_take.urls")),
+    path("api/create-question/", include("api.apps.question_create.urls")),
 ]

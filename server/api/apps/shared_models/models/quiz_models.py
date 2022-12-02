@@ -25,7 +25,7 @@ class Question(models.Model):
         NUMERIC = "NA", "Numerical Answer"
         SHORT_ANSWER = "SA", "Short Answer"
 
-    text = models.TextField(blank=True, default="")
+    question = models.TextField(blank=True, default="")
     question_type = models.CharField(
         max_length=2,
         choices=QuestionType.choices,
@@ -41,13 +41,13 @@ class Question(models.Model):
     is_verified = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.text
+        return self.question
 
 
 class Answer(models.Model):
-    text = models.CharField(max_length=defines.ANSWER_TEXT_MAXLEN)
+    answer = models.CharField(max_length=defines.ANSWER_TEXT_MAXLEN)
     is_correct = models.BooleanField(default=False)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.text
+        return self.answer

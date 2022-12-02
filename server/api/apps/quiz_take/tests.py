@@ -31,19 +31,23 @@ class QuizTakeTests(APITestCase):
         t = Topic.objects.create(name="Electrochemistry", subject=s)
         q1 = Question.objects.create(
             subject=s,
-            text="What is the difference between reduction and oxidation?",
+            question="What is the difference between reduction and oxidation?",
             question_type="MC",
             marks=1,
             creator=self.user,
         )
         q1.topics.add(t)
         Answer.objects.create(
-            text="Reduction is the gain of an electron, and oxidation the loss",
+            answer=(
+                "Reduction is the gain of an electron, and oxidation the loss"
+            ),
             is_correct=True,
             question=q1,
         )
         Answer.objects.create(
-            text="Reduction is the loss of an electron, and oxidation the gain",
+            answer=(
+                "Reduction is the loss of an electron, and oxidation the gain"
+            ),
             is_correct=False,
             question=q1,
         )
@@ -54,7 +58,7 @@ class QuizTakeTests(APITestCase):
             reverse("quiz_take:question_detail", kwargs={"question_pk": q.pk})
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["text"], q.text)
+        self.assertEqual(response.data["question"], q.question)
         self.assertEqual(response.data["creator"], q.creator.pk)
         self.assertEqual(len(response.data["topics"]), q.topics.count())
 
@@ -76,7 +80,7 @@ class QuizTakeTests(APITestCase):
             )
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["text"], a.text)
+        self.assertEqual(response.data["answer"], a.answer)
         self.assertEqual(response.data["question"], a.question.pk)
 
     def test_topics_list(self):

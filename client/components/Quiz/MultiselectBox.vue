@@ -1,18 +1,19 @@
 <template>
-  <div>
-    <multiselect
-      v-model="value"
-      :options="options"
-      :multiple="multiple"
-      :close-on-select="closeOnSelect"
-      :clear-on-select="clearOnSelect"
-      :preserve-search="preserveSearch"
-      :hide-selected="hideSelected"
-      :placeholder="placeholder"
-      class="rounded-lg beginQuizSelector"
-    >
-    </multiselect>
-  </div>
+  <multiselect
+    v-model="value"
+    :options="options"
+    :multiple="multiple"
+    :close-on-select="closeOnSelect"
+    :clear-on-select="clearOnSelect"
+    :preserve-search="preserveSearch"
+    :hide-selected="hideSelected"
+    :placeholder="placeholder"
+    :allow-empty="allowEmpty"
+    deselect-label=""
+    class="rounded-lg beginQuizSelector"
+    @input="passData"
+  >
+  </multiselect>
 </template>
 
 <script>
@@ -25,7 +26,9 @@ export default {
   props: {
     options: {
       type: Array,
-      default: undefined,
+      default() {
+        return [];
+      },
     },
     multiple: {
       type: Boolean,
@@ -51,13 +54,20 @@ export default {
       type: String,
       default: '',
     },
-    header: String,
+    allowEmpty: {
+      type: Boolean,
+      default: false,
+    },
+    classname: {
+      type: String,
+      default: '',
+    },
   },
   data: () => ({
     value: [],
   }),
   methods: {
-    getValue() {
+    passData() {
       this.$emit('getData', this.value);
     },
   },

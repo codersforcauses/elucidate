@@ -9,10 +9,11 @@ class QuestionTestCase(TestCase):
     def setUp(self):
         self.creation_time = timezone.now()
         self.q = Question.objects.create(
-            text="Question?", question_type=Question.QuestionType.MULTICHOICE
+            question="Question?",
+            question_type=Question.QuestionType.MULTICHOICE,
         )
         self.a = Answer.objects.create(
-            text="Answer!", question=self.q, is_correct=True
+            answer="Answer!", question=self.q, is_correct=True
         )
         QuestionResponse.objects.create(
             question=self.q,

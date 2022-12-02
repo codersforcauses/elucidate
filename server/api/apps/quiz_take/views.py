@@ -3,7 +3,7 @@ from rest_framework import generics, permissions
 
 from api.apps.shared_models.models.quiz_models import Answer, Question, Topic
 from api.apps.shared_models.serializers import (
-    quiz_serializers,
+    question_serializers,
     statistics_serializers,
 )
 
@@ -12,7 +12,7 @@ class QuestionDetailView(generics.RetrieveAPIView):
     """GET request to return information about a specific question"""
 
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = quiz_serializers.QuestionSerializer
+    serializer_class = question_serializers.QuestionSerializer
     queryset = Question.objects.all()
     lookup_url_kwarg = "question_pk"
 
@@ -23,7 +23,7 @@ class AnswerQuestionListView(generics.ListAPIView):
     """
 
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = quiz_serializers.AnswerSerializer
+    serializer_class = question_serializers.AnswerSerializer
 
     def get_queryset(self):
         return Answer.objects.filter(question__pk=self.kwargs["question_pk"])
@@ -36,7 +36,7 @@ class AnswerQuestionDetailView(generics.RetrieveAPIView):
     """
 
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = quiz_serializers.AnswerSerializer
+    serializer_class = question_serializers.AnswerSerializer
 
     def get_object(self):
         queryset = self.get_queryset()
@@ -58,7 +58,7 @@ class SubjectQuestionDetailView(generics.RetrieveAPIView):
     """
 
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = quiz_serializers.SubjectSerializer
+    serializer_class = question_serializers.SubjectSerializer
 
     def get_object(self):
         queryset = self.get_queryset()
@@ -76,7 +76,7 @@ class TopicQuestionListView(generics.ListAPIView):
     """
 
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = quiz_serializers.TopicSerializer
+    serializer_class = question_serializers.TopicSerializer
 
     def get_queryset(self):
         return Topic.objects.filter(question__pk=self.kwargs["question_pk"])
@@ -89,7 +89,7 @@ class TopicQuestionDetailView(generics.RetrieveAPIView):
     """
 
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = quiz_serializers.TopicSerializer
+    serializer_class = question_serializers.TopicSerializer
 
     def get_object(self):
         queryset = self.get_queryset()
