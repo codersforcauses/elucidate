@@ -42,7 +42,8 @@ class QuizGenerateTests(APITestCase):
     # def test_question_generation(self):
     #     response = self.client.post(
     #         reverse("quiz_generate:generate-quiz"),
-    #         {"subject": self.s.pk, "topics": [self.t.pk], "question_count": 1},
+    #         {"subject": self.s.pk, "topics": [self.t.pk],
+    #               "question_count": 1},
     #         format="json",
     #     )
     #     self.assertEqual(response.data["pk_array"], [self.q1.pk])
