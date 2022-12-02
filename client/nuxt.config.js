@@ -115,5 +115,6 @@ export default {
         },
       },
     },
+    plugins: ['~/plugins/axios.js'],
   },
 };
