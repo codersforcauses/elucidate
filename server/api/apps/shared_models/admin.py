@@ -19,7 +19,14 @@ class AnswerInline(admin.TabularInline):
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ["text", "question_type", "marks", "subject", "topics"]
+        fields = [
+            "question",
+            "question_type",
+            "marks",
+            "subject",
+            "topics",
+            "is_verified",
+        ]
 
     def clean(self):
         subject = self.cleaned_data.get("subject")
@@ -93,8 +100,10 @@ class QuestionAdmin(admin.ModelAdmin):
         return self.obj
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
-        if db_field.name == "topics":
-            kwargs["queryset"] = Topic.objects.filter(subject=self.obj.subject)
+        # if db_field.name == "topics":
+        #     kwargs["queryset"] = (
+        #       Topic.objects.filter(subject=self.obj.subject)
+        #     )
         return super().formfield_for_manytomany(db_field, request, **kwargs)
 
 

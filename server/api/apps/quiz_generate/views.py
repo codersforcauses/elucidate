@@ -1,16 +1,21 @@
-from django.shortcuts import get_object_or_404
-from rest_framework import generics, permissions
-from . import serializers
-from rest_framework import status
-from api.apps.shared_models.models.quiz_models import Question, Topic, Subject
-from api.apps.shared_models.serializers import quiz_serializers
-from rest_framework.response import Response
 import random
+
+from django.shortcuts import get_object_or_404
+from rest_framework import generics, permissions, status
+from rest_framework.response import Response
+
+from api.apps.shared_models.models.quiz_models import Question, Subject, Topic
+from api.apps.shared_models.serializers import question_serializers
+
+# from api.apps.quizzes import
+
+from .serializers import GenerateQuizRequestSerializer
+from api.apps.quizzes.models import Quiz
 
 
 class GenerateQuizView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = serializers.GenerateQuizRequestSerializer
+    serializer_class = GenerateQuizRequestSerializer
     queryset = Question.objects.all()
 
     """
@@ -27,11 +32,6 @@ class GenerateQuizView(generics.CreateAPIView):
             for topic in serializer.data["topics"]:
                 questions = questions.filter(topics=topic)
 
-            # create a list of just the question PKs
-            pk_list = []
-            for question in questions:
-                pk_list.append(question.pk)
-
             question_count = serializer.data["question_count"]
             if question_count < 1:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -39,14 +39,27 @@ class GenerateQuizView(generics.CreateAPIView):
             # make sure question_count is not larger than pk_list
             if question_count > questions.count():
                 question_count = questions.count()
-            return Response(
-                {"pk_array": random.sample(pk_list, question_count)}
-            )
+
+            question_pks = [question.pk for question in questions]
+            random_pks = random.sample(question_pks, question_count)
+
+            quiz = Quiz.objects.get_queryset()
+            for q_pk in random_pks:
+                quiz.filter(questions=q_pk)
+                print(quiz)
+
+            if len(quiz) == 0:
+                quiz = Quiz.objects.create()
+                quiz.questions.set(random_pks)
+                quiz.topics.set(serializer.data["topics"])
+            else:
+                quiz = quiz[0]
+            return Response({"quiz_id": quiz.pk, "questions": random_pks})
 
 
 class SubjectExistsView(generics.CreateAPIView):
     permission_classes = [permissions.AllowAny]
-    serializer_class = quiz_serializers.SubjectSerializer
+    serializer_class = question_serializers.SubjectSerializer
     queryset = Subject.objects.all()
 
     """
@@ -65,7 +78,7 @@ class SubjectExistsView(generics.CreateAPIView):
 
 class TopicExistsView(generics.CreateAPIView):
     permission_classes = [permissions.AllowAny]
-    serializer_class = quiz_serializers.TopicSerializer
+    serializer_class = question_serializers.TopicSerializer
     queryset = Topic.objects.all()
 
     """
