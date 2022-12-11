@@ -4,7 +4,7 @@
       <InputLabel field-name="Subject" :shadow-on="true">
         <MultiselectBox
           ref="selectedSubject"
-          :options="Object.keys(allOptions)"
+          :options="Object.keys(subjects)"
           placeholder="Search or select a subject"
           @getData="updateSubject($event)"
         ></MultiselectBox>
@@ -12,7 +12,7 @@
       <InputLabel field-name="Topics" :shadow-on="true">
         <MultiselectBox
           ref="chosenTopics"
-          :options="selectedSubject ? allOptions[selectedSubject] : []"
+          :options="topics.map((topic) => Object.keys(topic)[0])"
           placeholder="Search or select topics"
           :multiple="true"
           :hide-selected="true"
@@ -23,9 +23,10 @@
       <InputLabel field-name="Number of Questions" :shadow-on="true">
         <input
           v-model="numOfQuestion"
-          placeholder="Enter number of questions"
+          placeholder="Enter number of questions (max 100)"
           type="number"
           min="1"
+          max="100"
           oninput="validity.valid||(value='')"
           class="w-full p-2 rounded-lg"
           @input="checkValidity()"
@@ -75,43 +76,61 @@ export default {
   layout: 'quizbg',
   data: () => ({
     numOfQuestion: '',
-    selectedSubject: '',
+    selectedSubject: -1,
     selectedTopics: [],
     validData: false,
     multChoiceSelected: false,
     shortAnswerSelected: false,
     numericSelected: false,
 
-    allOptions: {
-      Maths: ['Differentiation', 'Trigonometry', 'Integration'],
-      Physics: ['Motion', 'Force', 'Planet'],
-      Geography: ['GPS', 'Country', 'Culture'],
-    },
+    subjects: {},
+    topics: [],
   }),
 
   async mounted() {
     // this.$auth.strategies.local.token.get();
-    await this.$axios
-      .$get('quizzes/subjects/')
-      .then((resp) => console.log(resp));
+    const res = await this.$axios.$get('quizzes/subjects/');
     // .catch((error) => {
     //   console.log(error);
     // });
+    const subjectsObj = {};
+    for (const subject of res.results) {
+      subjectsObj[subject.name] = subject.pk;
+    }
+
+    this.subjects = subjectsObj;
   },
+
   methods: {
-    updateSubject(selectedSubject) {
-      this.selectedSubject = selectedSubject;
+    async updateSubject(selectedSubject) {
+      this.selectedSubject = this.subjects[selectedSubject];
       this.$refs.chosenTopics.value = [];
+
+      console.log(this.selectedSubject);
+      // populate chosen subject with topics
+      const res = await this.$axios
+        .$get('quizzes/topics/?subject=' + this.subjects[selectedSubject])
+        .catch((err) => console.log(err));
+      res.results.map((obj) => {
+        let name = obj.name;
+        let pk = obj.pk;
+        this.topics.push({ [name]: pk });
+      });
     },
     checkValidity() {
-      const quesTypeSelected =
+      const validateQuestionTypes =
         this.multChoiceSelected ||
         this.shortAnswerSelected ||
         this.numericSelected;
+
+      const validateTopics = this.selectedTopics.length > 0;
+      const validateQuestionNum =
+        this.numOfQuestion > 0 && this.numOfQuestion < 100;
+
       if (
-        this.selectedTopics.length > 0 &&
-        this.numOfQuestion &&
-        quesTypeSelected
+        validateQuestionTypes &&
+        validateQuestionNum &&
+        validateQuestionTypes
       ) {
         this.validData = true;
       } else {
@@ -119,7 +138,13 @@ export default {
       }
     },
     getValues() {
-      // Need to send data to backend
+      console.log(
+        this.selectedTopics,
+        this.numOfQuestion,
+        this.multChoiceSelected,
+        this.shortAnswerSelected,
+        this.numericSelected
+      );
     },
   },
 };
