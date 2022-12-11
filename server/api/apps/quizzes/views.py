@@ -6,7 +6,6 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 from rest_framework.response import Response
-
 from .models import Quiz
 from .serializers import QuizCreationSerializer, QuizDetailSerializer
 from api.apps.shared_models.serializers.question_serializers import (
@@ -107,7 +106,13 @@ class SubjectListView(generics.ListAPIView, IsOwner):
     queryset = Subject.objects.all()
 
 
-class TopicListView(generics.ListAPIView, IsOwner):
+class TopicListView(generics.ListAPIView):
     serializer_class = TopicSerializer
     permission_classes = [IsAuthenticated]
-    queryset = Topic.objects.all()
+
+    def get_queryset(self):
+        query = self.request.query_params.get("subject")
+        if query is not None:
+            return Topic.objects.filter(subject=query)
+        else:
+            return Topic.objects.none()

@@ -13,7 +13,9 @@ class QuestionSerializer(serializers.ModelSerializer):
     creator = serializers.PrimaryKeyRelatedField(
         queryset=get_user_model().objects.all()
     )
-    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
+    subject = serializers.PrimaryKeyRelatedField(
+        queryset=Subject.objects.all()
+    )
     topics = serializers.PrimaryKeyRelatedField(
         queryset=Topic.objects.all(), many=True
     )
@@ -34,15 +36,24 @@ class QuestionSerializer(serializers.ModelSerializer):
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
-        fields = ["name"]
+        fields = ["name", "pk"]
 
 
 class TopicSerializer(serializers.ModelSerializer):
-    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
+    subject = serializers.PrimaryKeyRelatedField(
+        queryset=Subject.objects.all()
+    )
 
     class Meta:
         model = Topic
-        fields = ["name", "subject"]
+        fields = ["pk", "name", "subject"]
+
+    def get_fields(self, *args, **kwargs):
+        fields = super().get_fields(*args, **kwargs)
+        request = self.context.get("request")
+        if request is not None and not request.parser_context.get("kwargs"):
+            fields.pop("subject", None)
+        return fields
 
 
 class AnswerSerializer(serializers.ModelSerializer):
