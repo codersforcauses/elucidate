@@ -138,13 +138,32 @@ export default {
       }
     },
     getValues() {
-      console.log(
-        this.selectedTopics,
-        this.numOfQuestion,
-        this.multChoiceSelected,
-        this.shortAnswerSelected,
-        this.numericSelected
-      );
+      const selectedTopics = this.$refs.chosenTopics.value.map((topic) => {
+        for (const obj of this.topics) {
+          if (Object.keys(obj)[0] === topic) {
+            return obj[topic];
+          }
+        }
+      });
+      const postData = {
+        subject: this.selectedSubject,
+        topics: selectedTopics,
+        question_count: parseInt(this.numOfQuestion),
+        question_types: {
+          multiple_choice: this.multChoiceSelected,
+          short_answer: this.shortAnswerSelected,
+          numeric: this.numericSelected,
+        },
+      };
+
+      this.$axios
+        .$post('generate-quiz/generate/', postData)
+        .then((res) => {
+          this.$router.push({
+            path: '/quiz/' + res.quiz_id,
+          });
+        })
+        .catch((err) => console.log(err));
     },
   },
 };
