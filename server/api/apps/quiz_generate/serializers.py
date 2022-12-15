@@ -9,10 +9,9 @@ class GenerateQuizRequestSerializer(serializers.Serializer):
         queryset=Topic.objects.all(), many=True
     )
     question_count = serializers.IntegerField(min_value=1)
+    question_types = serializers.DictField(
+        child=serializers.BooleanField(),
+    )
 
     class Meta:
-        fields = [
-            "subject",
-            "topics",
-            "question_count",
-        ]
+        fields = ["subject", "topics", "question_count", "question_types"]

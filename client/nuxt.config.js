@@ -97,9 +97,7 @@ export default {
       local: {
         token: {
           property: 'token',
-          global: true,
-          // required: true,
-          // type: 'Bearer'
+          maxAge: 604800, // 7 days in seconds
         },
         refreshToken: {
           data: 'token',
@@ -115,5 +113,6 @@ export default {
         },
       },
     },
+    plugins: ['~/plugins/axios.js'],
   },
 };

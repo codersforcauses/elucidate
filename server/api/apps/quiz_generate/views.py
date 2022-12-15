@@ -32,6 +32,14 @@ class GenerateQuizView(generics.CreateAPIView):
             for topic in serializer.data["topics"]:
                 questions = questions.filter(topics=topic)
 
+            if serializer.data["question_types"]["multiple_choice"]:
+                questions = questions.filter(question_type="MC")
+
+            if serializer.data["question_types"]["numeric"]:
+                questions = questions.filter(question_type="NA")
+
+            if serializer.data["question_types"]["short_answer"]:
+                questions = questions.filter(question_type="SA")
             question_count = serializer.data["question_count"]
             if question_count < 1:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -46,7 +54,6 @@ class GenerateQuizView(generics.CreateAPIView):
             quiz = Quiz.objects.get_queryset()
             for q_pk in random_pks:
                 quiz.filter(questions=q_pk)
-                print(quiz)
 
             if len(quiz) == 0:
                 quiz = Quiz.objects.create()
@@ -54,7 +61,7 @@ class GenerateQuizView(generics.CreateAPIView):
                 quiz.topics.set(serializer.data["topics"])
             else:
                 quiz = quiz[0]
-            return Response({"quiz_id": quiz.pk, "questions": random_pks})
+            return Response({"quiz_id": quiz.pk})
 
 
 class SubjectExistsView(generics.CreateAPIView):

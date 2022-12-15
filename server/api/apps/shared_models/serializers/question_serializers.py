@@ -34,7 +34,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
-        fields = ["name"]
+        fields = ["name", "pk"]
 
 
 class TopicSerializer(serializers.ModelSerializer):
@@ -42,7 +42,14 @@ class TopicSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Topic
-        fields = ["name", "subject"]
+        fields = ["pk", "name", "subject"]
+
+    def get_fields(self, *args, **kwargs):
+        fields = super().get_fields(*args, **kwargs)
+        request = self.context.get("request")
+        if request is not None and not request.parser_context.get("kwargs"):
+            fields.pop("subject", None)
+        return fields
 
 
 class AnswerSerializer(serializers.ModelSerializer):
