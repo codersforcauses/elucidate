@@ -5,9 +5,8 @@ from . import views
 app_name = "quiz_generate"
 urlpatterns = [
     path(
-        "generate",
+        "generate/",
         views.GenerateQuizView.as_view(),
-        name="generate-quiz",
     ),
     path(
         "subject-exists",

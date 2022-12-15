@@ -6,9 +6,13 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 from rest_framework.response import Response
-
 from .models import Quiz
 from .serializers import QuizCreationSerializer, QuizDetailSerializer
+from api.apps.shared_models.serializers.question_serializers import (
+    SubjectSerializer,
+    TopicSerializer,
+)
+from api.apps.shared_models.models.quiz_models import Topic, Subject
 
 
 class IsOwner(permissions.BasePermission):
@@ -94,3 +98,21 @@ class UserQuizDetail(generics.RetrieveUpdateDestroyAPIView):
         quiz = Quiz.objects.all().filter(creator=user).get(id=quiz_pk)
         quiz.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class SubjectListView(generics.ListAPIView, IsOwner):
+    serializer_class = SubjectSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = Subject.objects.all()
+
+
+class TopicListView(generics.ListAPIView):
+    serializer_class = TopicSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        query = self.request.query_params.get("subject")
+        if query is not None:
+            return Topic.objects.filter(subject=query)
+        else:
+            return Topic.objects.none()

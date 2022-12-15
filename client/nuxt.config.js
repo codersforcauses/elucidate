@@ -6,10 +6,10 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'elucidate-frontend',
-    titleTemplate: '%s - Elucidate',
+    title: 'Home',
+    titleTemplate: '%s | Elucidate',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'en-AU',
     },
     meta: [
       { charset: 'utf-8' },
@@ -17,7 +17,22 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', href: 'branding/logo.svg' },
+      // TODO
+      // // Safari pinned tab icon
+      // {
+      //   rel: 'mask-icon',
+      //   href: 'branding/elucidate-logo-mask.svg',
+      //   color: '#aeb0c7',
+      // },
+      // // iOS icon
+      // {
+      //   rel: 'apple-touch-icon',
+      //   sizes: '180x180',
+      //   href: 'branding/apple-touch-icon.png',
+      // },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -86,9 +101,7 @@ export default {
       local: {
         token: {
           property: 'token',
-          global: true,
-          // required: true,
-          // type: 'Bearer'
+          maxAge: 604800, // 7 days in seconds
         },
         refreshToken: {
           data: 'token',
@@ -104,5 +117,6 @@ export default {
         },
       },
     },
+    plugins: ['~/plugins/axios.js'],
   },
 };

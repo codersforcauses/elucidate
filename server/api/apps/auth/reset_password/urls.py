@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import ResetPasswordView, EmailResetLinkView
+
+from .views import EmailResetLinkView, ResetPasswordView
 
 urlpatterns = [
     path("email/", EmailResetLinkView.as_view(), name="send-reset-email"),

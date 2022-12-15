@@ -32,7 +32,7 @@ class AuthTestCase(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         # Mints a valid JWT
-        assert response.data["token"].startswith("eyJ0")
+        assert response.data["token"].startswith("eyJ")
 
     def test_get_token_inactive_user(self):
         """

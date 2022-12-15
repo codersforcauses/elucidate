@@ -15,4 +15,6 @@ urlpatterns = [
         views.UserQuizDetail.as_view(),
         name="user-quiz-detail",
     ),
+    path("subjects/", views.SubjectListView.as_view(), name="subjects"),
+    path("topics/", views.TopicListView.as_view(), name="topics"),
 ]
