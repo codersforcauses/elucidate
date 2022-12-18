@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 from . import defines
-from .quiz_models import Answer, Question, Subject, Topic
+from .quiz_models import Question, Subject, Topic
 
 
 def sum_marks(x):
@@ -19,10 +19,9 @@ class QuestionResponse(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
     )
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    selected_answer = models.ForeignKey(
-        Answer, on_delete=models.CASCADE, null=True
-    )
+    selected_answer = models.TextField(null=True)
     date_submitted = models.DateTimeField(auto_now_add=True, null=True)
+    attempt_id = models.UUIDField(null=True)
 
     def __str__(self):
         return str((self.question, self.selected_answer))
@@ -88,7 +87,9 @@ class QuizStatistics(models.Model):
 
 
 class QuestionStatistics(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=False)
+    question = models.ForeignKey(
+        Question, on_delete=models.CASCADE, null=False
+    )
 
     class Meta:
         verbose_name_plural = "Question statistics"

@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from api.apps.shared_models.models.quiz_models import (
-    Answer,
     Question,
     Subject,
     Topic,
@@ -23,14 +22,11 @@ class QuestionResponseSerializer(serializers.ModelSerializer):
     question = serializers.PrimaryKeyRelatedField(
         queryset=Question.objects.all()
     )
-    selected_answer = serializers.PrimaryKeyRelatedField(
-        queryset=Answer.objects.all()
-    )
 
     class Meta:
         model = QuestionResponse
         fields = [
-            "id",
+            "attempt_id",
             "user",
             "question",
             "selected_answer",
@@ -61,7 +57,9 @@ class QuizStatisticsSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
         queryset=get_user_model().objects.all()
     )
-    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
+    subject = serializers.PrimaryKeyRelatedField(
+        queryset=Subject.objects.all()
+    )
     topics = serializers.PrimaryKeyRelatedField(
         queryset=Topic.objects.all(), many=True
     )

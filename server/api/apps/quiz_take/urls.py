@@ -10,16 +10,6 @@ urlpatterns = [
         name="question_detail",
     ),
     path(
-        "question/<int:question_pk>/answers/",
-        views.AnswerQuestionListView.as_view(),
-        name="answers_list",
-    ),
-    path(
-        "question/<int:question_pk>/answers/<int:answer_pk>",
-        views.AnswerQuestionDetailView.as_view(),
-        name="answer_detail",
-    ),
-    path(
         "question/<int:question_pk>/topics/",
         views.TopicQuestionListView.as_view(),
         name="topics_list",

@@ -56,9 +56,8 @@ class GenerateQuizView(generics.CreateAPIView):
                 quiz.filter(questions=q_pk)
 
             if len(quiz) == 0:
-                quiz = Quiz.objects.create()
+                quiz = Quiz.objects.create(topics=serializer.data["topics"])
                 quiz.questions.set(random_pks)
-                quiz.topics.set(serializer.data["topics"])
             else:
                 quiz = quiz[0]
             return Response({"quiz_id": quiz.pk})
