@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "████ ${APP_NAME^^} - DJANGO CONTAINER STARTING... ████████████████████████████████████"
-figlet $APP_NAME
 
 # Debug / Sanity check info
 echo "Current Dir / Files (Debug)" | boxes -d shell -p a1l2
@@ -21,7 +20,7 @@ python manage.py migrate --noinput
 
 # Create Django Superuser
 printf "\n" && echo "Creating Django Superuser" | boxes -d shell -p a1l2
-python manage.py createsuperuser --noinput
+python manage.py createsuperuser --grade 11 --noinput
 
 printf "\n" && echo "MIGRATION & SETUP TASK COMPLETED" | boxes -d dog -a c
 

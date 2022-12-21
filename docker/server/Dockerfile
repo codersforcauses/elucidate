@@ -24,8 +24,6 @@ RUN poetry config virtualenvs.create false && poetry install --no-dev && pip ins
 COPY /docker/server/runtime.sh /runtime.sh
 RUN chmod +x /runtime.sh
 
-# RUN figlet WAIS
-
 # ========================================
 # ---- Executed at Container Runtime ----
 # ========================================
