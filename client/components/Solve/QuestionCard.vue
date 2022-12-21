@@ -7,7 +7,7 @@
       <div v-if="!not_found" class="w-1/3 px-5">
         <h1>Question {{ curr }} / {{ max }}</h1>
       </div>
-      <ProgressBar v-if="!not_found" :curr="curr" :max="max" />
+      <!-- <ProgressBar v-if="!not_found" :curr="curr" :max="max" /> -->
     </div>
 
     <!-- Non-Header Question Block -->
@@ -124,11 +124,8 @@
 </template>
 
 <script>
-import ProgressBar from './ProgressBar.vue';
-import dummyjson from './dummy.json';
 export default {
   name: 'QuestionCard',
-  components: { ProgressBar },
   props: ['quizdata', 'max', 'not_found'],
   data: function () {
     return {
@@ -139,10 +136,10 @@ export default {
     };
   },
   methods: {
-    nextQuestion() {
-      if (this.curr == this.max) return; // TODO: Fade out styling for Next button (this.currr == this.max)
-      this.curr++;
-    },
+    // nextQuestion() {
+    //   if (this.curr == this.max) return; // TODO: Fade out styling for Next button (this.currr == this.max)
+    //   this.curr++;
+    // },
     prevQuestion() {
       if (this.curr == 1) return; // TODO: Fade out Styling for Prev button (this.curr == 1)
       this.curr--;

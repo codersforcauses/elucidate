@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import dummyjson from '../components/dummy.json';
+import dummyjson from '../components/Solve/dummy.json';
 export default {
   name: 'QuizReview',
   data() {

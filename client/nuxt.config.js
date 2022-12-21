@@ -54,6 +54,7 @@ export default {
       '~/components/Auth',
       '~/components/Dashboard',
       '~/components/Quiz',
+      '~/components/Solve',
     ],
   },
 

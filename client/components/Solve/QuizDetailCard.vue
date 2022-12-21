@@ -56,8 +56,6 @@
 </template>
 
 <script>
-import dummyjson from './dummy.json';
-
 export default {
   name: 'QuizDetailCard',
   props: ['topicName', 'totalQues'],

@@ -160,7 +160,7 @@ export default {
         .$post('generate-quiz/generate/', postData)
         .then((res) => {
           this.$router.push({
-            path: '/quiz/' + res.quiz_id,
+            path: '/quizsolve?quizid=' + res.quiz_id,
           });
         })
         .catch((err) => console.log(err));
