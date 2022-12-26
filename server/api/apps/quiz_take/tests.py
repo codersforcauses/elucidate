@@ -62,26 +62,26 @@ class QuizTakeTests(APITestCase):
         self.assertEqual(response.data["creator"], q.creator.pk)
         self.assertEqual(len(response.data["topics"]), q.topics.count())
 
-    def test_answers_list(self):
-        q = Question.objects.get()
-        response = self.client.get(
-            reverse("quiz_take:answers_list", kwargs={"question_pk": q.pk})
-        )
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data["results"]), Answer.objects.count())
+    # def test_answers_list(self):
+    #     q = Question.objects.get()
+    #     response = self.client.get(
+    #         reverse("quiz_take:answers_list", kwargs={"question_pk": q.pk})
+    #     )
+    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
+    #     self.assertEqual(len(response.data["results"]), Answer.objects.count())
 
-    def test_answer_detail(self):
-        q = Question.objects.get()
-        a = Answer.objects.get(is_correct=True)
-        response = self.client.get(
-            reverse(
-                "quiz_take:answer_detail",
-                kwargs={"question_pk": q.pk, "answer_pk": a.pk},
-            )
-        )
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["answer"], a.answer)
-        self.assertEqual(response.data["question"], a.question.pk)
+    # def test_answer_detail(self):
+    #     q = Question.objects.get()
+    #     a = Answer.objects.get(is_correct=True)
+    #     response = self.client.get(
+    #         reverse(
+    #             "quiz_take:answer_detail",
+    #             kwargs={"question_pk": q.pk, "answer_pk": a.pk},
+    #         )
+    #     )
+    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
+    #     self.assertEqual(response.data["answer"], a.answer)
+    #     self.assertEqual(response.data["question"], a.question.pk)
 
     def test_topics_list(self):
         q = Question.objects.get()
@@ -113,19 +113,19 @@ class QuizTakeTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["name"], s.name)
 
-    def test_question_response_create(self):
-        q = Question.objects.get()
-        a = Answer.objects.get(is_correct=True)
-        response = self.client.post(
-            reverse("quiz_take:question_response_create"),
-            {"user": self.user.pk, "question": q.pk, "selected_answer": a.pk},
-            format="json",
-        )
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        qr = QuestionResponse.objects.get()
-        self.assertEqual(qr.user, self.user)
-        self.assertEqual(qr.question, q)
-        self.assertEqual(qr.selected_answer, a)
+    # def test_question_response_create(self):
+    #     q = Question.objects.get()
+    #     a = Answer.objects.get(is_correct=True)
+    #     response = self.client.post(
+    #         reverse("quiz_take:question_response_create"),
+    #         {"user": self.user.pk, "question": q.pk, "selected_answer": a.pk},
+    #         format="json",
+    #     )
+    #     self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+    #     qr = QuestionResponse.objects.get()
+    #     self.assertEqual(qr.user, self.user)
+    #     self.assertEqual(qr.question, q)
+    #     self.assertEqual(qr.selected_answer, a)
 
     def test_quiz_statistics_create(self):
         s = Subject.objects.get()

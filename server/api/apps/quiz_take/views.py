@@ -79,7 +79,7 @@ class TopicQuestionListView(generics.ListAPIView):
     serializer_class = question_serializers.TopicSerializer
 
     def get_queryset(self):
-        return Topic.objects.filter(question__pk=self.kwargs["question_pk"])
+        return Topic.objects.filter(question__pk=self.kwargs["question_pk"]).order_by('id')
 
 
 class TopicQuestionDetailView(generics.RetrieveAPIView):
