@@ -9,30 +9,6 @@ from api.apps.shared_models.models.quiz_models import (
 )
 
 
-class QuestionSerializer(serializers.ModelSerializer):
-    creator = serializers.PrimaryKeyRelatedField(
-        queryset=get_user_model().objects.all()
-    )
-    subject = serializers.PrimaryKeyRelatedField(
-        queryset=Subject.objects.all()
-    )
-    topics = serializers.PrimaryKeyRelatedField(
-        queryset=Topic.objects.all(), many=True
-    )
-
-    class Meta:
-        model = Question
-        fields = [
-            "question",
-            "question_type",
-            "marks",
-            "creator",
-            "date_created",
-            "subject",
-            "topics",
-        ]
-
-
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
@@ -67,3 +43,22 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return Answer.objects.create(**validated_data)
+
+class QuestionSerializer(serializers.ModelSerializer):
+    creator = serializers.PrimaryKeyRelatedField(
+        queryset=get_user_model().objects.all()
+    )
+    subject = SubjectSerializer()
+    topics = TopicSerializer(many=True)
+
+    class Meta:
+        model = Question
+        fields = [
+            "question",
+            "question_type",
+            "marks",
+            "creator",
+            "date_created",
+            "subject",
+            "topics",
+        ]
