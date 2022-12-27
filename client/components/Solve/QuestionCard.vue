@@ -1,34 +1,34 @@
 <template>
   <div
+    v-if="questionData"
     class="relative w-full pb-4 bg-indigo-300 rounded-sm shadow-md min-h-full"
   >
     <!-- Question Number -->
     <div class="flex bg-teal-100 py-4 rounded-sm">
-      <div v-if="!not_found" class="w-1/3 px-5">
-        <h1>Question {{ curr }} / {{ max }}</h1>
+      <div v-if="!notFound" class="px-5">
+        <span class="mr-2">Question {{ curr }}:</span>
+        <span class="font-bold">{{ questionData.question }}</span>
       </div>
-      <!-- <ProgressBar v-if="!not_found" :curr="curr" :max="max" /> -->
+      <!-- <ProgressBar v-if="!notFound" :curr="curr" :max="max" /> -->
     </div>
 
     <!-- Non-Header Question Block -->
-    <div v-if="!not_found">
+    <div v-if="!notFound">
       <!-- Question Detail -->
       <div class="">
-        <div class="justify-self-start text-sm m-5">
-          {{ quizdata.question_desc[curr - 1] }}
-        </div>
+        <div class="justify-self-start text-sm m-5"></div>
       </div>
 
       <!-- Question Choices -->
-      <div v-if="quizdata.question_type[0] === 'mcq'">
+      <div v-if="questionData.question_type === 'MC'">
         <div class="justify-center grid grid-cols-1 w-full select-none">
-          <select
+          <!-- <select
             v-model="answer"
             multiple
             class="overflow-hidden border-transparent focus:outline-none bg-transparent h-64"
           >
             <option
-              v-for="(choice, index) in quizdata.question_choices[curr - 1]"
+              v-for="(choice, index) in questionData.question_choices[curr - 1]"
               :key="index"
               class="py-2 px-4 my-5 mx-20 z-50 text-center shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-gray-700 hover:bg-gray-200 focus:outline-none active:shadow-none"
             >
@@ -36,12 +36,12 @@
             </option>
           </select>
           <div>Selected: {{ answer }}</div>
-          <div>Answer array: {{ answerArray }}</div>
+          <div>Answer array: {{ answerArray }}</div>-->
         </div>
       </div>
 
       <!-- Short Answer Choices -->
-      <div v-if="quizdata.question_type[0] === 'short_answer'">
+      <div v-if="questionData.question_type === 'SA'">
         <div class="p-5">
           <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
             <div>Answer</div>
@@ -49,19 +49,19 @@
               id="message"
               rows="4"
               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Your message..."
+              placeholder="Your answer..."
             ></textarea>
           </div>
         </div>
       </div>
 
       <!-- Numerical Answer Choices -->
-      <div v-if="quizdata.question_type[0] === 'numerical'"></div>
+      <div v-if="questionData.question_type === 'NA'"></div>
     </div>
     <div v-else class="content-center">
-      <h1 class="text-center text-4xl text-white mt-20">
+      <span class="text-center text-4xl text-white mt-20">
         Ooops! Quiz Not Found
-      </h1>
+      </span>
     </div>
     <!-- Submit button -->
     <input
@@ -70,7 +70,7 @@
       value="Submit Answer"
       data-mdb-ripple="true"
       data-mdb-ripple-color="light"
-      class="inline-block float-right text-center px-6 py-1 my-5 mx-24 bg-indigo-500 text-white text-md rounded-lg shadow-md hover:bg-indigo-600 hover:shadow-lg hover:cursor-pointer focus:bg-indigo-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-700 active:shadow-lg transition duration-300 ease-in-out"
+      class="text-center absolute bottom-4 right-4 p-2 bg-indigo-500 text-white text-md rounded-lg shadow-md hover:bg-indigo-600 hover:shadow-lg hover:cursor-pointer focus:bg-indigo-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-700 active:shadow-lg transition duration-300 ease-in-out"
       @click="submitAnswer"
     />
 
@@ -98,8 +98,8 @@
             <p
               class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
             >
-              You just finished the {{ quizdata.quiz_name }} quiz with a total
-              of {{ curr }} questions.
+              <!-- You just finished the {{ questionData.quiz_name }} quiz with a
+              total of {{ curr }} questions. -->
             </p>
           </div>
           <!-- Modal footer -->
@@ -126,7 +126,7 @@
 <script>
 export default {
   name: 'QuestionCard',
-  props: ['quizdata', 'max', 'not_found'],
+  props: ['questionData', 'max', 'notFound'],
   data: function () {
     return {
       curr: 1,
@@ -153,8 +153,8 @@ export default {
       this.answerArray.push(this.answer);
     },
     created() {
-      if (this.quizdata === null) {
-        this.not_found = true;
+      if (this.questionData === null) {
+        this.notFound = true;
       }
     },
   },

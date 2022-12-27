@@ -4,7 +4,7 @@
       {{ quizdata.question_desc[curr - 1] }}
     </div>
     <!-- Question Choices -->
-    <div v-if="quizdata.question_type[0] === 'mcq'">
+    <div v-if="quizdata.question_type === 'mcq'">
       <div class="justify-center grid grid-cols-1 w-full select-none">
         <div
           v-for="(choice, index) in quizdata.question_choices[curr - 1]"
@@ -17,7 +17,7 @@
     </div>
 
     <!-- Short Answer Choices -->
-    <div v-if="quizdata.question_type[0] === 'short_answer'">
+    <div v-if="quizdata.question_type === 'short_answer'">
       <div class="p-5">
         <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
           <div>Your Answer</div>

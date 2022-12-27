@@ -2,41 +2,50 @@
   <div class="flex m-20">
     <div>
       <QuizDetailCard
-        v-if="!not_found"
-        :topic-name="topics"
-        :total-ques="quiz_num_questions"
+        v-if="!notFound"
+        :subject-name="subjectName"
+        :topics="topics"
+        :total-ques="numQuestions"
       />
     </div>
-    <!-- <div class="ml-10 min-w-[50%] min-h-[40%]">
+    <div class="ml-10 min-w-[50%] min-h-[40%]">
       <QuestionCard
-        :not_found="not_found"
-        :quizdata="quizdata"
-        :max="quiz_num_questions"
+        :notFound="notFound"
+        :questionData="questionData"
+        :max="numQuestions"
       />
-    </div> -->
+    </div>
   </div>
   <!-- <ProgressBar></ProgressBar> -->
 </template>
 
 <script>
-import dummyjson from '../components/Solve/dummy.json';
 export default {
   name: 'QuizSolve',
   data() {
     return {
       quizID: parseInt(this.$route.query.quizid),
-      quizdata: null,
-      quiz_name: null,
-      quiz_num_questions: null,
-      not_found: false,
+      currQuestion: parseInt(this.$route.query.question) || 1,
+      questionData: null,
+      numQuestions: null,
+      subjectName: null,
+      notFound: false,
+      topics: null,
     };
   },
   async mounted() {
     const res = await this.$axios.$get(`quizzes/${this.$route.query.quizid}`);
-    console.log(res);
+    this.subjectName = res.questions[0].subject.name;
+    this.numQuestions = res.questions.length;
+    this.topics = res.topics;
+    if (this.currQuestion < 1 || this.currQuestion > this.numQuestions) {
+      this.notFound = true;
+    }
+    this.questionData = res.questions[this.currQuestion - 1];
+    console.log(this.questionData);
 
-    // if (this.quizdata === null) {
-    //   this.not_found = true;
+    // if (this.questionData === null) {
+    //   this.notFound = true;
     // }
   },
 };
