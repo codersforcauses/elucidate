@@ -39,7 +39,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        fields = ["answer", "is_correct", "question"]
+        fields = ["answer", "question"]
 
     def create(self, validated_data):
         return Answer.objects.create(**validated_data)
@@ -50,7 +50,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     )
     subject = SubjectSerializer()
     topics = TopicSerializer(many=True)
-
+    answer = AnswerSerializer(many=True)
     class Meta:
         model = Question
         fields = [
@@ -61,4 +61,5 @@ class QuestionSerializer(serializers.ModelSerializer):
             "date_created",
             "subject",
             "topics",
+            "answer"
         ]

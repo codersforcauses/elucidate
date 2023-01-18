@@ -47,7 +47,7 @@ class Question(models.Model):
 class Answer(models.Model):
     answer = models.CharField(max_length=defines.ANSWER_TEXT_MAXLEN)
     is_correct = models.BooleanField(default=False)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="answer")
 
     def __str__(self):
         return self.answer

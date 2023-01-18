@@ -25,9 +25,19 @@ urlpatterns = [
         name="subject_detail",
     ),
     path(
-        "submit/question_response/",
-        views.QuestionResponseCreateView.as_view(),
-        name="question_response_create",
+        "save/<int:quiz_pk>",
+        views.QuestionResponseListView.as_view(),
+        name="question_response_list",
+    ),
+    path(
+        "save/<int:quiz_pk>/<int:question_pk>",
+        views.QuestionResponseDetailsView.as_view(),
+        name="question_response_details",
+    ),
+    path(
+        "save/",
+        views.QuestionResponseCreateUpdateView.as_view(),
+        name="question_response_create_update",
     ),
     path(
         "submit/quiz_statistics/",

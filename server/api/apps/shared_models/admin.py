@@ -109,7 +109,6 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(QuestionResponse)
 class QuestionResponseAdmin(admin.ModelAdmin):
-    readonly_fields = ["date_submitted"]
     form = QuestionResponseForm
 
     def get_object(self, request, object_id, s):

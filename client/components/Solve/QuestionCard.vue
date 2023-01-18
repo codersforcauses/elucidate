@@ -4,59 +4,68 @@
     class="relative w-full pb-4 bg-indigo-300 rounded-sm shadow-md min-h-full"
   >
     <!-- Question Number -->
-    <div class="flex bg-teal-100 py-4 rounded-sm">
-      <div v-if="!notFound" class="px-5">
+    <div
+      class="flex flex-col lg:flex-row bg-teal-100 py-4 px-6 rounded-sm justify-between"
+    >
+      <div>
         <span class="mr-2">Question {{ curr }}:</span>
-        <span class="font-bold">{{ questionData.question }}</span>
+        <span class="font-bold mr-2">{{ questionData.question }}</span>
       </div>
+
+      <div>{{ questionData.marks }} marks</div>
       <!-- <ProgressBar v-if="!notFound" :curr="curr" :max="max" /> -->
     </div>
 
     <!-- Non-Header Question Block -->
-    <div v-if="!notFound">
-      <!-- Question Detail -->
-      <div class="">
-        <div class="justify-self-start text-sm m-5"></div>
-      </div>
-
+    <div v-if="!notFound" class="p-6">
       <!-- Question Choices -->
       <div v-if="questionData.question_type === 'MC'">
+        <p class="mb-4">Answer</p>
         <div class="justify-center grid grid-cols-1 w-full select-none">
-          <!-- <select
-            v-model="answer"
-            multiple
-            class="overflow-hidden border-transparent focus:outline-none bg-transparent h-64"
-          >
-            <option
-              v-for="(choice, index) in questionData.question_choices[curr - 1]"
-              :key="index"
-              class="py-2 px-4 my-5 mx-20 z-50 text-center shadow-md rounded-full bg-white text-black font-sans font-semibold text-sm border-black btn-primary hover:text-gray-700 hover:bg-gray-200 focus:outline-none active:shadow-none"
+          <div v-for="(choice, index) in questionData.answer" :key="index">
+            <input
+              type="radio"
+              v-model="answer"
+              :value="choice.answer"
+              :id="index"
+              class="hidden"
+            />
+            <label
+              :class="`py-2 px-4 mb-4 text-center shadow-md rounded-full bg-white  font-sans font-semibold text-sm border-black block btn-primary  hover:bg-gray-200 focus:outline-none active:shadow-none ${
+                answer === choice.answer
+                  ? '!bg-indigo-500 text-white'
+                  : 'text-black'
+              }`"
+              :for="index"
+              >{{ choice.answer }}</label
             >
-              {{ choice }}
-            </option>
-          </select>
+          </div>
           <div>Selected: {{ answer }}</div>
-          <div>Answer array: {{ answerArray }}</div>-->
         </div>
       </div>
 
       <!-- Short Answer Choices -->
       <div v-if="questionData.question_type === 'SA'">
-        <div class="p-5">
-          <div class="bg-teal-200 min-h-full p-5 rounded-sm shadow-md">
-            <div>Answer</div>
-            <textarea
-              id="message"
-              rows="4"
-              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Your answer..."
-            ></textarea>
-          </div>
-        </div>
+        <p class="mb-4">Answer</p>
+        <textarea
+          v-model="answer"
+          id="message"
+          rows="4"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Your answer..."
+        ></textarea>
       </div>
 
       <!-- Numerical Answer Choices -->
-      <div v-if="questionData.question_type === 'NA'"></div>
+      <div v-if="questionData.question_type === 'NA'">
+        <p class="mb-4">Answer</p>
+        <input
+          v-model="answer"
+          type="text"
+          placeholder="Your answer..."
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
     </div>
     <div v-else class="content-center">
       <span class="text-center text-4xl text-white mt-20">
@@ -64,15 +73,33 @@
       </span>
     </div>
     <!-- Submit button -->
-    <input
-      v-if="!completed"
-      type="submit"
-      value="Submit Answer"
-      data-mdb-ripple="true"
-      data-mdb-ripple-color="light"
-      class="text-center absolute bottom-4 right-4 p-2 bg-indigo-500 text-white text-md rounded-lg shadow-md hover:bg-indigo-600 hover:shadow-lg hover:cursor-pointer focus:bg-indigo-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-700 active:shadow-lg transition duration-300 ease-in-out"
-      @click="submitAnswer"
-    />
+    <div v-if="curr !== 1">
+      <input
+        type="submit"
+        value="Previous Question"
+        class="text-center absolute bottom-4 left-4 p-2 bg-indigo-500 text-white text-md rounded-lg shadow-md hover:bg-indigo-600 hover:shadow-lg hover:cursor-pointer focus:bg-indigo-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-700 active:shadow-lg transition duration-300 ease-in-out"
+        @click="prevQuestion"
+      />
+    </div>
+    <div v-if="curr !== max">
+      <input
+        type="submit"
+        value="Next Question"
+        class="text-center absolute bottom-4 right-4 p-2 bg-indigo-500 text-white text-md rounded-lg shadow-md hover:bg-indigo-600 hover:shadow-lg hover:cursor-pointer focus:bg-indigo-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-700 active:shadow-lg transition duration-300 ease-in-out"
+        @click="nextQuestion"
+      />
+    </div>
+    <div v-else>
+      <input
+        v-if="!completed"
+        type="submit"
+        value="Submit Answer"
+        data-mdb-ripple="true"
+        data-mdb-ripple-color="light"
+        class="text-center absolute bottom-4 right-4 p-2 bg-indigo-500 text-white text-md rounded-lg shadow-md hover:bg-indigo-600 hover:shadow-lg hover:cursor-pointer focus:bg-indigo-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-indigo-700 active:shadow-lg transition duration-300 ease-in-out"
+        @click="submitAnswer"
+      />
+    </div>
 
     <!-- Main modal -->
     <div
@@ -98,8 +125,8 @@
             <p
               class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
             >
-              <!-- You just finished the {{ questionData.quiz_name }} quiz with a
-              total of {{ curr }} questions. -->
+              You just finished the quiz with a total of
+              {{ curr }} questions.
             </p>
           </div>
           <!-- Modal footer -->
@@ -126,36 +153,41 @@
 <script>
 export default {
   name: 'QuestionCard',
-  props: ['questionData', 'max', 'notFound'],
+  props: ['max', 'notFound', 'curr', 'quizID', 'questionData'],
   data: function () {
     return {
-      curr: 1,
       answer: '',
-      answerArray: [],
       completed: false,
     };
   },
   methods: {
-    // nextQuestion() {
-    //   if (this.curr == this.max) return; // TODO: Fade out styling for Next button (this.currr == this.max)
-    //   this.curr++;
-    // },
+    async saveQuestion() {
+      const question = parseInt(this.$route.query.question);
+      const quizid = parseInt(this.$route.query.quizid);
+      const res = await this.$axios.$post(`take-quiz/save/`, {
+        selected_answer: this.answer,
+        question: question,
+        quiz: quizid,
+      });
+      console.log(res);
+    },
+    nextQuestion() {
+      this.saveQuestion();
+      if (this.curr == this.max) return;
+      this.$router.push({
+        path: '/quizsolve',
+        query: { quizid: this.quizID, question: this.curr + 1 },
+      });
+    },
     prevQuestion() {
-      if (this.curr == 1) return; // TODO: Fade out Styling for Prev button (this.curr == 1)
-      this.curr--;
+      if (this.curr == 1) return;
+      this.$router.push({
+        path: '/quizsolve',
+        query: { quizid: this.quizID, question: this.curr - 1 },
+      });
     },
     submitAnswer() {
-      if (this.curr < this.max) {
-        this.curr++;
-      } else {
-        this.completed = true;
-      }
-      this.answerArray.push(this.answer);
-    },
-    created() {
-      if (this.questionData === null) {
-        this.notFound = true;
-      }
+      this.completed = true;
     },
   },
 };

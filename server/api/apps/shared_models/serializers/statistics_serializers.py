@@ -14,11 +14,15 @@ from api.apps.shared_models.models.statistics_models import (
     UserStatistics,
 )
 
+class QuestionResponseDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionResponse
+        fields = [
+            "selected_answer",
+        ]
 
-class QuestionResponseSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(
-        queryset=get_user_model().objects.all()
-    )
+
+class QuestionResponseListSerializer(serializers.ModelSerializer):
     question = serializers.PrimaryKeyRelatedField(
         queryset=Question.objects.all()
     )
@@ -26,16 +30,26 @@ class QuestionResponseSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionResponse
         fields = [
-            "attempt_id",
-            "user",
             "question",
-            "selected_answer",
-            "date_submitted",
         ]
 
+class QuestionResponseSerializer(serializers.ModelSerializer):
+    question = serializers.PrimaryKeyRelatedField(
+        queryset=Question.objects.all()
+    )
+
+    class Meta:
+        model = QuestionResponse
+        fields = [
+            "quiz",
+            "question",
+            "selected_answer",
+            "user"
+        ]
+        read_only_fields = ("user",)
+    
     def create(self, validated_data):
         return QuestionResponse.objects.create(**validated_data)
-
 
 class UserStatisticsSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(

@@ -45,6 +45,30 @@
           </div>
         </button>
       </div> -->
+
+        <!-- Progress -->
+
+        <p class="mt-5 font-bold">Progress</p>
+        <div class="grid grid-cols-4 gap-2">
+          <NuxtLink
+            v-for="index in totalQues"
+            v-bind:key="index"
+            :to="`/quizsolve?quizid=${quizID}&question=${index}`"
+          >
+            <div
+              v-if="index === curr"
+              class="cursor-pointer bg-white border-2 border-solid border-black w-12 h-12 rounded-md flex items-center justify-center font-bold"
+            >
+              {{ index }}
+            </div>
+            <div
+              v-else
+              class="cursor-pointer bg-white border border-solid border-gray-400 w-12 h-12 rounded-md flex items-center justify-center font-bold"
+            >
+              {{ index }}
+            </div>
+          </NuxtLink>
+        </div>
       </div>
 
       <!-- <div class="absolute top-16">
@@ -57,7 +81,7 @@
 <script>
 export default {
   name: 'QuizDetailCard',
-  props: ['subjectName', 'topics', 'totalQues'],
+  props: ['subjectName', 'topics', 'totalQues', 'quizID', 'curr'],
   data: function () {
     return {
       pointImg: require('~/assets/point.svg'),

@@ -6,15 +6,21 @@
         :subject-name="subjectName"
         :topics="topics"
         :total-ques="numQuestions"
+        :quizID="quizID"
+        :curr="currQuestion"
       />
     </div>
-    <div class="ml-10 min-w-[50%] min-h-[40%]">
-      <QuestionCard
-        :notFound="notFound"
-        :questionData="questionData"
-        :max="numQuestions"
-      />
-    </div>
+    <keep-alive>
+      <div class="ml-10 min-w-[50%] min-h-[40%]">
+        <QuestionCard
+          :quizID="quizID"
+          :notFound="notFound"
+          :questionData="questionData"
+          :max="numQuestions"
+          :curr="currQuestion"
+        />
+      </div>
+    </keep-alive>
   </div>
   <!-- <ProgressBar></ProgressBar> -->
 </template>
@@ -33,20 +39,26 @@ export default {
       topics: null,
     };
   },
-  async mounted() {
-    const res = await this.$axios.$get(`quizzes/${this.$route.query.quizid}`);
-    this.subjectName = res.questions[0].subject.name;
-    this.numQuestions = res.questions.length;
-    this.topics = res.topics;
+  watch: {
+    '$route.query': '$fetch',
+  },
+  async fetch() {
+    this.currQuestion = parseInt(this.$route.query.question) || 1;
+    const res_quiz = await this.$axios.$get(
+      `quizzes/${this.$route.query.quizid}`
+    );
+
+    const res_attempt = await this.$axios.$get(
+      `take-quiz/save/${this.$route.query.quizid}`
+    );
+
+    this.subjectName = res_quiz.questions[0].subject.name;
+    this.numQuestions = res_quiz.questions.length;
+    this.topics = res_quiz.topics;
     if (this.currQuestion < 1 || this.currQuestion > this.numQuestions) {
       this.notFound = true;
     }
-    this.questionData = res.questions[this.currQuestion - 1];
-    console.log(this.questionData);
-
-    // if (this.questionData === null) {
-    //   this.notFound = true;
-    // }
+    this.questionData = res_quiz.questions[this.currQuestion - 1];
   },
 };
 </script>
