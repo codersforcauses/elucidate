@@ -25,12 +25,12 @@ urlpatterns = [
         name="subject_detail",
     ),
     path(
-        "save/<int:quiz_pk>",
+        "save/<int:quiz_pk>/",
         views.QuestionResponseListView.as_view(),
         name="question_response_list",
     ),
     path(
-        "save/<int:quiz_pk>/<int:question_pk>",
+        "save/<int:quiz_pk>/<int:question_pk>/",
         views.QuestionResponseDetailsView.as_view(),
         name="question_response_details",
     ),

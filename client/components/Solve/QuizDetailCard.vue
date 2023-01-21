@@ -57,13 +57,23 @@
           >
             <div
               v-if="index === curr"
-              class="cursor-pointer bg-white border-2 border-solid border-black w-12 h-12 rounded-md flex items-center justify-center font-bold"
+              :class="
+                'cursor-pointer bg-white border-2 border-solid border-black w-12 h-12 rounded-md flex items-center justify-center font-bold ' +
+                (attempts.filter((c) => index === c.question).length === 0
+                  ? 'bg-white'
+                  : 'bg-green1')
+              "
             >
               {{ index }}
             </div>
             <div
               v-else
-              class="cursor-pointer bg-white border border-solid border-gray-400 w-12 h-12 rounded-md flex items-center justify-center font-bold"
+              :class="
+                'cursor-pointer border border-solid border-gray-400 w-12 h-12 rounded-md flex items-center justify-center font-bold ' +
+                (attempts.filter((c) => index === c.question).length === 0
+                  ? 'bg-white'
+                  : 'bg-green1')
+              "
             >
               {{ index }}
             </div>
@@ -81,7 +91,7 @@
 <script>
 export default {
   name: 'QuizDetailCard',
-  props: ['subjectName', 'topics', 'totalQues', 'quizID', 'curr'],
+  props: ['subjectName', 'topics', 'totalQues', 'quizID', 'curr', 'attempts'],
   data: function () {
     return {
       pointImg: require('~/assets/point.svg'),

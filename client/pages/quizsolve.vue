@@ -8,6 +8,7 @@
         :total-ques="numQuestions"
         :quizID="quizID"
         :curr="currQuestion"
+        :attempts="attempts"
       />
     </div>
     <keep-alive>
@@ -35,6 +36,7 @@ export default {
       questionData: null,
       numQuestions: null,
       subjectName: null,
+      attempts: null,
       notFound: false,
       topics: null,
     };
@@ -42,6 +44,7 @@ export default {
   watch: {
     '$route.query': '$fetch',
   },
+
   async fetch() {
     this.currQuestion = parseInt(this.$route.query.question) || 1;
     const res_quiz = await this.$axios.$get(
@@ -59,6 +62,7 @@ export default {
       this.notFound = true;
     }
     this.questionData = res_quiz.questions[this.currQuestion - 1];
+    this.attempts = res_attempt;
   },
 };
 </script>

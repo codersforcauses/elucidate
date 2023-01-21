@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import dummyjson from './dummy.json';
 export default {
   name: 'ReviewCard',
   props: ['quizdata', 'max', 'not_found'],

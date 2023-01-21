@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import dummyjson from '../components/Solve/dummy.json';
 export default {
   name: 'QuizReview',
   data() {
@@ -48,17 +47,16 @@ export default {
   },
   created() {
     // TODO: Use API to process route.query.quizID
-
     // process dummyjson
-    for (const quiz of dummyjson) {
-      if (this.quizID === quiz.quiz_id) {
-        this.quizdata = quiz;
-        // Fill data properties
-        this.quiz_name = this.quizdata.quiz_name;
-        this.quiz_num_questions = 1;
-        break;
-      }
-    }
+    // for (const quiz of dummyjson) {
+    //   if (this.quizID === quiz.quiz_id) {
+    //     this.quizdata = quiz;
+    //     // Fill data properties
+    //     this.quiz_name = this.quizdata.quiz_name;
+    //     this.quiz_num_questions = 1;
+    //     break;
+    //   }
+    // }
   },
 };
 </script>

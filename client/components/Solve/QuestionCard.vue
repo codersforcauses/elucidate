@@ -152,6 +152,9 @@
 
 <script>
 export default {
+  watch: {
+    '$route.query': '$fetch',
+  },
   name: 'QuestionCard',
   props: ['max', 'notFound', 'curr', 'quizID', 'questionData'],
   data: function () {
@@ -160,15 +163,35 @@ export default {
       completed: false,
     };
   },
+  async fetch() {
+    await this.$axios
+      .$get(`take-quiz/save/${this.quizID}/${this.curr}/`)
+      .then((data) => {
+        console.log(data);
+        this.answer = data.selected_answer;
+      })
+      .catch((err) => {
+        console.log(err);
+        this.answer = '';
+      });
+  },
   methods: {
     async saveQuestion() {
-      const question = parseInt(this.$route.query.question);
+      const question = parseInt(this.$route.query.question) || 1;
       const quizid = parseInt(this.$route.query.quizid);
-      const res = await this.$axios.$post(`take-quiz/save/`, {
-        selected_answer: this.answer,
-        question: question,
-        quiz: quizid,
-      });
+      const res = await this.$axios
+        .$post(`take-quiz/save/`, {
+          selected_answer: this.answer,
+          question: question,
+          quiz: quizid,
+        })
+        .catch(
+          await this.$axios.$patch(`take-quiz/save/`, {
+            selected_answer: this.answer,
+            question: question,
+            quiz: quizid,
+          })
+        );
       console.log(res);
     },
     nextQuestion() {
@@ -180,6 +203,7 @@ export default {
       });
     },
     prevQuestion() {
+      this.saveQuestion();
       if (this.curr == 1) return;
       this.$router.push({
         path: '/quizsolve',
@@ -187,6 +211,7 @@ export default {
       });
     },
     submitAnswer() {
+      this.saveQuestion();
       this.completed = true;
     },
   },
