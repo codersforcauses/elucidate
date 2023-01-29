@@ -15,6 +15,8 @@ class Quiz(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     attempts = models.IntegerField(default=0)
     correct = models.IntegerField(default=0)
+    completed = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return str(self.pk)

@@ -13,6 +13,7 @@ from .serializers import GenerateQuizRequestSerializer
 from api.apps.quizzes.models import Quiz
 from django.db.models import Q
 
+
 class GenerateQuizView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = GenerateQuizRequestSerializer
@@ -53,6 +54,8 @@ class GenerateQuizView(generics.CreateAPIView):
             quiz = Quiz.objects.create()
             quiz.topics.set(serializer.data["topics"])
             quiz.questions.set(random_pks)
+            quiz.user = request.user
+            quiz.save()
             return Response({"quiz_id": quiz.pk})
 
 

@@ -30,7 +30,9 @@ class QuizDetailSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "questions",
-            "topics"
+            "topics",
+            "user",
+            "completed"
             # "created_at",
             # "updated_at",
             # "attempts",

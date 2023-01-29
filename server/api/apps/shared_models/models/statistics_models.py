@@ -23,7 +23,8 @@ class QuestionResponse(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     selected_answer = models.TextField()
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-
+    is_correct =  models.BooleanField(null=True) # null to account for self marked questions
+    
     def __str__(self):
         return str((self.question, self.selected_answer))
 

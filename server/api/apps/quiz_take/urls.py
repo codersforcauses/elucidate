@@ -40,6 +40,11 @@ urlpatterns = [
         name="question_response_create_update",
     ),
     path(
+        "submit/<quiz_id>",
+        views.SubmitView.as_view(),
+        name="submit",
+    ),
+    path(
         "submit/quiz_statistics/",
         views.QuizStatisticsCreateView.as_view(),
         name="quiz_statistics_create",

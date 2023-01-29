@@ -177,7 +177,7 @@ export default {
   },
   methods: {
     async saveQuestion() {
-      const question = parseInt(this.$route.query.question) || 1;
+      const question = parseInt(this.$route.query.question);
       const quizid = parseInt(this.$route.query.quizid);
       const res = await this.$axios
         .$post(`take-quiz/save/`, {
@@ -211,7 +211,6 @@ export default {
       });
     },
     submitAnswer() {
-      this.saveQuestion();
       this.completed = true;
     },
   },
