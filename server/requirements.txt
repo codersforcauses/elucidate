@@ -12,7 +12,7 @@ coreapi
 coreschema
 coverage
 crashtest==0.3.1
-cryptography==37.0.4
+cryptography==39.0.1
 defusedxml
 distlib==0.3.4
 Django
