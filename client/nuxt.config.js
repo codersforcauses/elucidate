@@ -54,6 +54,7 @@ export default {
       '~/components/Auth',
       '~/components/Dashboard',
       '~/components/Quiz',
+      '~/components/Solve',
     ],
   },
 
@@ -81,7 +82,11 @@ export default {
     transpile: ['vee-validate/dist/rules'],
   },
   devServerHandlers: [],
-
+  watchers: {
+    webpack: {
+      poll: true,
+    },
+  },
   // Purge CSS Configuration: https://go.nuxtjs.dev/config-purgecss
   purgeCSS: {
     whitelistPatterns: [/svg.*/, /fa.*/],

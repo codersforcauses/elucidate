@@ -17,3 +17,4 @@ services:
       - ./client:/app_code
       # Barrier for OS node modules specific
       - /app_code/node_modules
+

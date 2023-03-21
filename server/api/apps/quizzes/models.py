@@ -6,23 +6,28 @@ User = get_user_model()
 
 
 class Quiz(models.Model):
-    topics = models.ManyToManyField(
-        quiz_models.Topic,
-    )
     questions = models.ManyToManyField(
         quiz_models.Question, through="QuizQuestion"
+    )
+    topics = models.ManyToManyField(
+        quiz_models.Topic,
     )
     created_at = models.DateTimeField(auto_now_add=True)
     attempts = models.IntegerField(default=0)
     correct = models.IntegerField(default=0)
+    completed = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return str(self.pk)
 
 
+# Many to many field
 class QuizQuestion(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    question = models.ForeignKey(quiz_models.Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(
+        quiz_models.Question, on_delete=models.CASCADE
+    )
 
     class Meta:
         unique_together = ("quiz", "question")

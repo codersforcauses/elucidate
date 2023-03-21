@@ -3,8 +3,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 from . import defines
-from .quiz_models import Answer, Question, Subject, Topic
-
+from .quiz_models import Question, Subject, Topic
+from api.apps.quizzes.models import Quiz
 
 def sum_marks(x):
     total = 0
@@ -15,15 +15,16 @@ def sum_marks(x):
 
 
 class QuestionResponse(models.Model):
+    class Meta:
+        unique_together = (('user', 'question', 'quiz'),)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    selected_answer = models.ForeignKey(
-        Answer, on_delete=models.CASCADE, null=True
-    )
-    date_submitted = models.DateTimeField(auto_now_add=True, null=True)
-
+    selected_answer = models.TextField()
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    is_correct =  models.BooleanField(null=True) # null to account for self marked questions
+    
     def __str__(self):
         return str((self.question, self.selected_answer))
 
@@ -88,7 +89,9 @@ class QuizStatistics(models.Model):
 
 
 class QuestionStatistics(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=False)
+    question = models.ForeignKey(
+        Question, on_delete=models.CASCADE, null=False
+    )
 
     class Meta:
         verbose_name_plural = "Question statistics"

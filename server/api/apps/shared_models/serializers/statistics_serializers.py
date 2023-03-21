@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from api.apps.shared_models.models.quiz_models import (
-    Answer,
     Question,
     Subject,
     Topic,
@@ -15,31 +14,42 @@ from api.apps.shared_models.models.statistics_models import (
     UserStatistics,
 )
 
+class QuestionResponseDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionResponse
+        fields = [
+            "selected_answer",
+        ]
 
-class QuestionResponseSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(
-        queryset=get_user_model().objects.all()
-    )
+
+class QuestionResponseListSerializer(serializers.ModelSerializer):
     question = serializers.PrimaryKeyRelatedField(
         queryset=Question.objects.all()
-    )
-    selected_answer = serializers.PrimaryKeyRelatedField(
-        queryset=Answer.objects.all()
     )
 
     class Meta:
         model = QuestionResponse
         fields = [
-            "id",
-            "user",
             "question",
-            "selected_answer",
-            "date_submitted",
         ]
 
+class QuestionResponseSerializer(serializers.ModelSerializer):
+    question = serializers.PrimaryKeyRelatedField(
+        queryset=Question.objects.all()
+    )
+
+    class Meta:
+        model = QuestionResponse
+        fields = [
+            "quiz",
+            "question",
+            "selected_answer",
+            "user"
+        ]
+        read_only_fields = ("user",)
+    
     def create(self, validated_data):
         return QuestionResponse.objects.create(**validated_data)
-
 
 class UserStatisticsSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
@@ -61,7 +71,9 @@ class QuizStatisticsSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
         queryset=get_user_model().objects.all()
     )
-    subject = serializers.PrimaryKeyRelatedField(queryset=Subject.objects.all())
+    subject = serializers.PrimaryKeyRelatedField(
+        queryset=Subject.objects.all()
+    )
     topics = serializers.PrimaryKeyRelatedField(
         queryset=Topic.objects.all(), many=True
     )

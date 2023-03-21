@@ -23,7 +23,6 @@ class IsOwner(permissions.BasePermission):
     message = "You must be the owner of this object."
 
     def has_object_permission(self, request, view, obj):
-        print("inside here")
         return obj.creator == request.user.id
 
 
@@ -49,7 +48,7 @@ class QuizCreateListView(generics.GenericAPIView):
 
 class QuizDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = QuizDetailSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated | IsOwner]
     queryset = Quiz.objects.all()
 
     def get(self, request, pk):
@@ -100,7 +99,7 @@ class UserQuizDetail(generics.RetrieveUpdateDestroyAPIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class SubjectListView(generics.ListAPIView, IsOwner):
+class SubjectListView(generics.ListAPIView):
     serializer_class = SubjectSerializer
     permission_classes = [IsAuthenticated]
     queryset = Subject.objects.all()

@@ -20,7 +20,7 @@ class QuizQuestionInline(admin.TabularInline):
 class QuizForm(forms.ModelForm):
     class Meta:
         model = Quiz
-        fields = ["topics"]
+        fields = ["questions", "topics"]
 
 
 @admin.register(Quiz)

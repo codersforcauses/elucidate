@@ -11,6 +11,7 @@ from api.apps.shared_models.serializers import question_serializers
 
 from .serializers import GenerateQuizRequestSerializer
 from api.apps.quizzes.models import Quiz
+from django.db.models import Q
 
 
 class GenerateQuizView(generics.CreateAPIView):
@@ -29,19 +30,19 @@ class GenerateQuizView(generics.CreateAPIView):
             questions = self.get_queryset()
             questions = questions.filter(is_verified=True)
             questions = questions.filter(subject=serializer.data["subject"])
-            for topic in serializer.data["topics"]:
-                questions = questions.filter(topics=topic)
+            questions = questions.filter(topics__in=serializer.data["topics"]).distinct()
+            print(questions)
+            if not serializer.data["question_types"]["multiple_choice"]:
+                questions = questions.filter(~Q(question_type="MC"))
 
-            if serializer.data["question_types"]["multiple_choice"]:
-                questions = questions.filter(question_type="MC")
+            if not serializer.data["question_types"]["numeric"]:
+                questions = questions.filter(~Q(question_type="NA"))
 
-            if serializer.data["question_types"]["numeric"]:
-                questions = questions.filter(question_type="NA")
+            if not serializer.data["question_types"]["short_answer"]:
+                questions = questions.filter(~Q(question_type="SA"))
 
-            if serializer.data["question_types"]["short_answer"]:
-                questions = questions.filter(question_type="SA")
             question_count = serializer.data["question_count"]
-            if question_count < 1:
+            if question_count < 1 or questions.count() < 1:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
 
             # make sure question_count is not larger than pk_list
@@ -50,17 +51,11 @@ class GenerateQuizView(generics.CreateAPIView):
 
             question_pks = [question.pk for question in questions]
             random_pks = random.sample(question_pks, question_count)
-
-            quiz = Quiz.objects.get_queryset()
-            for q_pk in random_pks:
-                quiz.filter(questions=q_pk)
-
-            if len(quiz) == 0:
-                quiz = Quiz.objects.create()
-                quiz.questions.set(random_pks)
-                quiz.topics.set(serializer.data["topics"])
-            else:
-                quiz = quiz[0]
+            quiz = Quiz.objects.create()
+            quiz.topics.set(serializer.data["topics"])
+            quiz.questions.set(random_pks)
+            quiz.user = request.user
+            quiz.save()
             return Response({"quiz_id": quiz.pk})
 
 

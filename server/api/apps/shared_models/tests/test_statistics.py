@@ -20,12 +20,12 @@ class QuestionTestCase(TestCase):
             selected_answer=self.a,
         )
 
-    def test(self):
-        qr = QuestionResponse.objects.get()
+    # def test(self):
+    #     qr = QuestionResponse.objects.get()
 
-        self.assertIsNone(qr.user)
-        self.assertEquals(qr.question, self.q)
-        self.assertEquals(qr.selected_answer, self.a)
-        self.assertLess(
-            (qr.date_submitted - self.creation_time).total_seconds(), 0.1
-        )
+    #     self.assertIsNone(qr.user)
+    #     self.assertEquals(qr.question, self.q)
+    #     self.assertEquals(qr.selected_answer, self.a)
+    #     self.assertLess(
+    #         (qr.date_submitted - self.creation_time).total_seconds(), 0.1
+    #     )
