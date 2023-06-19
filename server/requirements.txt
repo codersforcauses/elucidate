@@ -62,7 +62,7 @@ pytz
 requests==2.28.1
 requests-oauthlib
 requests-toolbelt==0.9.1
-SecretStorage==3.3.2
+SecretStorage==3.3.3
 shellingham==1.4.0
 six==1.16.0
 social-auth-app-django
