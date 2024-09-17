@@ -23,7 +23,7 @@ djangorestframework
 djangorestframework-simplejwt
 djoser
 drf-jwt
-filelock==3.7.1
+filelock==3.16.1
 flake8
 gunicorn
 html5lib==1.1
