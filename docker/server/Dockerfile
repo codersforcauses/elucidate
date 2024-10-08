@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 python:3.10.5
+FROM --platform=linux/amd64 python:3.13.0
 
 # SET WORKING DIRECTORY
 WORKDIR /app_code
