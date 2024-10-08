@@ -1,4 +1,4 @@
-FROM python:3.10.5
+FROM python:3.13.0
 
 # SET WORKING DIRECTORY
 WORKDIR /app_code
