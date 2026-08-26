@@ -46,7 +46,7 @@ pathspec
 pexpect==4.8.0
 pkginfo==1.8.3
 platformdirs==2.5.2
-poetry==1.1.14
+poetry==2.3.4
 poetry-core==1.0.8
 psycopg2
 ptyprocess==0.7.0
