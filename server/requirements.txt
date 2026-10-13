@@ -37,7 +37,7 @@ lockfile==0.12.2
 Markdown
 MarkupSafe
 mccabe
-msgpack==1.0.4
+msgpack==1.2.1
 mypy-extensions
 oauthlib
 packaging==20.9
