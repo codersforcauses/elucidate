@@ -4,7 +4,7 @@ CacheControl==0.12.11
 cachy==0.3.0
 certifi==2022.6.15
 cffi==1.15.1
-charset-normalizer==2.1.0
+charset-normalizer==2.1.1
 cleo==0.8.1
 click
 clikit==0.6.2
